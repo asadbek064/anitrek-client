@@ -312,8 +312,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title} (${currentEpisode.name}) - Kaguya`}
-        description={`Xem phim ${title} (${currentEpisode.name}) tại Kaguya. Hoàn toàn miễn phí, không quảng cáo`}
+        title={`${title} (${currentEpisode.name}) - AnimeOnline`}
+        description={`Watch ${title} (${currentEpisode.name}) at AnimeOnline. Completely free, no ads`}
         image={anime.bannerImage}
       />
 
@@ -328,10 +328,10 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
           <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-4">
             <p className="text-4xl font-semibold text-center">｡゜(｀Д´)゜｡</p>
             <p className="text-xl text-center">
-              Đã có lỗi xảy ra ({error?.response?.data?.error})
+                An error has occurred ({error?.response?.data?.error})
             </p>
             <p className="text-lg text-center">
-              Bạn có thể chọn source khác hoặc thử lại sau.
+              You can choose another source or try again later.
             </p>
           </div>
         </Portal>
@@ -342,10 +342,10 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
             <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-4">
               <p className="text-4xl font-semibold text-center">｡゜(｀Д´)゜｡</p>
               <p className="text-xl text-center">
-                Đã có lỗi xảy ra (No sources found)
+                An error has occurred (No sources found)
               </p>
               <p className="text-lg text-center">
-                Bạn có thể chọn source khác hoặc thử lại sau.
+                You can choose another source or try again later.
               </p>
             </div>
           </Portal>

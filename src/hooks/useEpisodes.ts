@@ -14,6 +14,7 @@ const query = `
 `;
 
 const useEpisodes = (mediaId: number) => {
+  console.log(mediaId);
   return useQuery(["episodes", mediaId], async () => {
     const { data, error } = await supabase
       .from<AnimeSourceConnection>("kaguya_anime_source")

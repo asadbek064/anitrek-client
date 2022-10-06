@@ -146,7 +146,7 @@ const Home = () => {
               )}
             >
               <Section
-                title={t("should_watch_today", { ns: "anime_home" })}
+                title={t("should watch today", { ns: "anime_home" })}
                 className="w-full md:w-[80%] md:!pr-0"
               >
                 {randomAnime && (

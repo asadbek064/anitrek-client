@@ -36,6 +36,7 @@ yarn-error.log*
 .env.production.local
 
 
+
 # service worker
 **/public/precache.*.*.js
 **/public/sw.js

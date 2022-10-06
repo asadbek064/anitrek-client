@@ -340,3 +340,16 @@ export type NotificationEntity = {
   message: string;
   redirectUrl: string;
 };
+
+
+export interface ExperimentAnimeTitles {
+  title: string;
+  cover_img: string;
+  isDub: boolean,
+  isSub: boolean,
+  quality: string;
+  isNew?: boolean;
+  isRemastered?:boolean;
+  isDownload: boolean;
+  isNSFW: boolean;
+}

@@ -1,26 +1,15 @@
-import { AiringSort } from "@/types/anilist";
-import { removeArrayOfObjectDup } from "@/utils";
-import dayjs from "dayjs";
-import { useMemo } from "react";
 import { isMobile } from "react-device-detect";
 import useAiTitles from "./useAiTitles";
+import {ExperimentAnimeTitles} from '@/types/index';
 
 const useAnime4K = () => {
-  const { data, isLoading, ...rest } = useAiTitles();
+  const { ...data } = useAiTitles();
+  let ultrahd_titles: ExperimentAnimeTitles[] = [];
 
-  const mediaList = useMemo(() => {
-    if (isLoading) return null;
-
-    return removeArrayOfObjectDup(
-      data?.map((schedule) => schedule.media) || [],
-      "id"
-    );
-  }, [data, isLoading]);
+  // filter data and selecte only 4k titles
 
   return {
-    data: mediaList,
-    isLoading,
-    ...rest,
+    data
   };
 };
 

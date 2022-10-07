@@ -7,9 +7,12 @@ const useAiTitles = () => {
 };
 
 
-async function getAllAvailableAiTitles(): Promise<void> {
-    const { data } = await axios.get(process.env.ANIMETTV_SERVER_URL+"api/watch-anime/anime60fps-available-titles");
-    Promise.resolve(data);
+async function getAllAvailableAiTitles(): Promise<ExperimentAnimeTitles[]> {
+    const { data } = await axios.get("http://localhost:3011/api/watch-anime/anime60fps-available-titles");
+    if (data) {
+      Promise.resolve(data);
+    } 
+    return [];
 }
 
 export default useAiTitles;

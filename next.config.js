@@ -8,6 +8,18 @@ const withPWA = require("next-pwa");
 const defaultRuntimeCaching = require("./cache");
 const { i18n } = require("./next-i18next.config");
 
+const envVars = {
+  env: {
+    NEXT_PUBLIC_SUPABASE_URL:"https://ajaxillvjdoaympzpwif.supabase.co",
+    NEXT_PUBLIC_SUPABASE_ANON_KEY:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqYXhpbGx2amRvYXltcHpwd2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ5MDg4NTAsImV4cCI6MTk4MDQ4NDg1MH0.S93eQ_DlGl0KrywDA5v28QOal2_Vqg7JpYs09aLaNYo",
+    NEXT_PUBLIC_NODE_SERVER_URL:"http://localhost:3001/",
+    ANIMETTV_SERVER_URL:"http://localhost:3011/",
+    NEXT_PUBLIC_SOCKET_SERVER_URL:"",
+    NEXT_PUBLIC_PROXY_SERVER_URL:"",
+    NEXT_PUBLIC_WEB_PUSH:"",
+    SENTRY_AUTH_TOKEN:""
+  }
+}
 const moduleExports = withPWA({
   images: {
     domains: [
@@ -36,7 +48,8 @@ const moduleExports = withPWA({
     runtimeCaching: defaultRuntimeCaching,
   },
   i18n,
-});
+}, envVars);
+
 
 const sentryWebpackPluginOptions = {
   // Additional config options for the Sentry Webpack plugin. Keep in mind that
@@ -53,3 +66,39 @@ const sentryWebpackPluginOptions = {
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+
+
+
+/* 
+
+# Supabase (See: https://github.com/hoangvu12/kaguya-database)
+
+NEXT_PUBLIC_SUPABASE_URL=https://ajaxillvjdoaympzpwif.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqYXhpbGx2amRvYXltcHpwd2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ5MDg4NTAsImV4cCI6MTk4MDQ4NDg1MH0.S93eQ_DlGl0KrywDA5v28QOal2_Vqg7JpYs09aLaNYo
+
+# Google Analytics
+
+NEXT_PUBLIC_GA_ID=
+
+# See: https://github.com/hoangvu12/kaguya-scraper
+
+NEXT_PUBLIC_NODE_SERVER_URL=http://localhost:3001/
+ANIMETTV_SERVER_URL=http://localhost:3011/
+
+# See: https://github.com/hoangvu12/kaguya-socket
+
+NEXT_PUBLIC_SOCKET_SERVER_URL=
+
+# See: https://github.com/hoangvu12/requests-proxy
+
+NEXT_PUBLIC_PROXY_SERVER_URL=
+
+# Public web push key (https://github.com/hoangvu12/kaguya-scraper)
+
+NEXT_PUBLIC_WEB_PUSH=
+
+# Sentry
+
+SENTRY_AUTH_TOKEN=
+
+*/

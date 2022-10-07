@@ -4,6 +4,7 @@ import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
 import Section from "@/components/shared/Section";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
+import useAnime4K from "@/hooks/useAnime4K";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
 import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
@@ -24,9 +25,8 @@ const Anime4K = () => {
   });
 
 
-  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } =
-    useRecentlyUpdated();
-
+  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
+  console.log(useAnime4K());
 
   return (
     <React.Fragment>
@@ -45,7 +45,6 @@ const Anime4K = () => {
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
            
             </Section>
-
             {recentlyUpdatedLoading ? (
               <ListSwiperSkeleton />
             ) : (

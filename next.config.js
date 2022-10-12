@@ -16,7 +16,7 @@ const envVars = {
     ANIMETTV_SERVER_URL:"http://localhost:3011/",
     NEXT_PUBLIC_SOCKET_SERVER_URL:"",
     NEXT_PUBLIC_PROXY_SERVER_URL:"",
-    NEXT_PUBLIC_WEB_PUSH:"",
+    NEXT_PUBLIC_WEB_PUSH:"BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
     SENTRY_AUTH_TOKEN:""
   }
 }

@@ -1,18 +1,19 @@
+import { getAiTitles } from "@/services/animettv";
 import { ExperimentAnimeTitles } from "@/types/index";
 import axios, { AxiosError } from "axios";
 import { useQuery, UseQueryOptions } from "react-query";
 
-const useAiTitles = () => {
-  return getAllAvailableAiTitles();
+const useAiTitles = (
+  args?: ExperimentAnimeTitles,
+  options?: Omit<UseQueryOptions<AxiosError, ExperimentAnimeTitles[]>, "queryKey" | "queryFn">) => {
+  return useQuery<ExperimentAnimeTitles[]>(
+    [{args}],
+    () => {
+      return getAiTitles();
+    }
+  );
 };
 
-
-async function getAllAvailableAiTitles(): Promise<ExperimentAnimeTitles[]> {
-    const { data } = await axios.get("http://localhost:3011/api/watch-anime/anime60fps-available-titles");
-    if (data) {
-      Promise.resolve(data);
-    } 
-    return [];
-}
-
 export default useAiTitles;
+
+

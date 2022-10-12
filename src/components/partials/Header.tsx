@@ -23,7 +23,7 @@ const routes = [
     title: "Home",
     href: "/",
   },
- /*  {
+  /* {
     title: "Manga",
     href: "/manga",
   }, */
@@ -31,18 +31,18 @@ const routes = [
     title: "anime_scene_search",
     href: "/scene-search",
   },
-  {
+  /* {
     title: "Anime4K",
     href: "/anime-4k"
-  },
- /*  {
+  }, */
+  /* {
     title: "watch_with_friends",
     href: "/wwf",
   }, */
-/*   {
+  {
     title: "Anime Themes",
     href: "/themes",
-  }, */
+  },
 ];
 
 const Header = () => {

@@ -5,6 +5,7 @@ import HomeBanner from "@/components/shared/HomeBanner";
 import Section from "@/components/shared/Section";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
 import useAnime4K from "@/hooks/useAnime4K";
+import useAiTitle from "@/hooks/useAiTitles";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
 import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
@@ -26,7 +27,6 @@ const Anime4K = () => {
 
 
   const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
-  console.log(useAnime4K());
 
   return (
     <React.Fragment>

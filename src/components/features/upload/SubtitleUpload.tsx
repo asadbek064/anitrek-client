@@ -103,7 +103,7 @@ const SubtitleUpload: React.FC<Partial<SubtitleUploadProps>> = ({
                       />
                     </div>
                     <div className="space-y-1">
-                      <label>Ngôn ngữ (VD: vi hoặc en)</label>
+                      <label>Language (eg sp or en)</label>
 
                       <Input
                         onChange={(e) => {

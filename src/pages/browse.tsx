@@ -13,7 +13,7 @@ import Section from "@/components/shared/Section";
 
 const components = {
   anime: AnimeBrowseList,
-  manga: MangaBrowseList,
+  /* manga: MangaBrowseList, */
   characters: CharacterBrowseList,
   voice_actors: VABrowseList,
 };

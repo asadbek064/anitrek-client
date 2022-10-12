@@ -33,8 +33,6 @@ type Translation = Record<TranslationKeys[number], Translate[]>;
 
 export const getConstantTranslation = (locale: string) => {
   switch (locale) {
-    case "vi":
-      return viTranslations;
     case "en":
       return enTranslations;
     case "ru":

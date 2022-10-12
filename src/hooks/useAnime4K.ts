@@ -1,16 +1,27 @@
 import { isMobile } from "react-device-detect";
 import useAiTitles from "./useAiTitles";
 import {ExperimentAnimeTitles} from '@/types/index';
+import { useMemo } from "react";
 
 const useAnime4K = () => {
-  const { ...data } = useAiTitles();
+  const { data, isLoading, ...res  } = useAiTitles();
   let ultrahd_titles: ExperimentAnimeTitles[] = [];
 
-  // filter data and selecte only 4k titles
+  const mediaList = useMemo(() => {
+    if (isLoading) return null;
+    
+    console.log(data);
+    return data;
+  }, [data, isLoading]);
 
+  
   return {
-    data
-  };
+    data: mediaList,
+    isLoading,
+    ...res
+  }
 };
 
 export default useAnime4K;
+
+

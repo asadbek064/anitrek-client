@@ -5,9 +5,9 @@ const CURRENT_YEAR = dayjs().year();
 
 export const WEBSITE_URL = "https://animet.tv";
 export const DISCORD_URL = "https://discord.gg/nNY94AqFtK";
-export const FACEBOOK_URL = "https://www.facebook.com/kaguyaa.live";
+export const FACEBOOK_URL = "https://discord.gg/nNY94AqFtK";
 export const KO_FI_URL = "https://ko-fi.com/animettv";
-export const DISCORD_REG_URL = "https://discord.gg/62RkwWkvkP";
+export const DISCORD_REG_URL = "https://discord.gg/nNY94AqFtK";
 
 export const REVALIDATE_TIME = 86_400; // 24 hours
 export const SKIP_TIME = 90; // 1m30s

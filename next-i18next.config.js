@@ -4,6 +4,7 @@ const LocalStorageBackend = require("i18next-localstorage-backend").default;
 
 const isDev = process.env.NODE_ENV === "development";
 
+
 module.exports = {
   backend: {
     backendOptions: [{ expirationTime: isDev ? 60 : 60 * 60 * 1000 }], // 1 hour

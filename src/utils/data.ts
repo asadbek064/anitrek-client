@@ -1,5 +1,4 @@
 import enTranslations from "@/constants/en";
-import viTranslations from "@/constants/vi";
 import ruTranslations from "@/constants/ru";
 import esTranslations from "@/constants/es";
 import { Chapter, Episode, Translation as TranslationType } from "@/types";

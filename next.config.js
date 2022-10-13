@@ -1,8 +1,3 @@
-// This file sets a custom webpack configuration to use your Next.js app
-// with Sentry.
-// https://nextjs.org/docs/api-reference/next.config.js/introduction
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/
-
 const { withSentryConfig } = require("@sentry/nextjs");
 const withPWA = require("next-pwa");
 const defaultRuntimeCaching = require("./cache");
@@ -17,10 +12,13 @@ const envVars = {
     NEXT_PUBLIC_SOCKET_SERVER_URL:"",
     NEXT_PUBLIC_PROXY_SERVER_URL:"",
     NEXT_PUBLIC_WEB_PUSH:"BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
-    SENTRY_AUTH_TOKEN:""
+    SENTRY_AUTH_TOKEN:"34dae03c4b0811ed9e9f4ed53395ef1a",
+    SENTRY_DSN: "https://97cdd21525fe4685b8d62348e2d39c66@o610195.ingest.sentry.io/4503976885354496",
+    ENTRY_IGNORE_API_RESOLUTION_ERROR: 1
   }
 }
 const moduleExports = withPWA({
+  future: { webpack: true },
   images: {
     domains: [
       "s4.anilist.co",
@@ -48,57 +46,23 @@ const moduleExports = withPWA({
     runtimeCaching: defaultRuntimeCaching,
   },
   i18n,
-}, envVars);
+  envVars,
+  sentry: {
+    hideSourceMaps: true,
+  },
+});
 
 
 const sentryWebpackPluginOptions = {
-  // Additional config options for the Sentry Webpack plugin. Keep in mind that
-  // the following options are set automatically, and overriding them is not
-  // recommended:
-  //   release, url, org, project, authToken, configFile, stripPrefix,
-  //   urlPrefix, include, ignore
-
+  token: process.env.SENTRY_AUTH_TOKEN,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
   silent: true, // Suppresses all logs
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
+  ignore: ["node_modules", "webpack.config.js"],
+  project: "animeonline",
+  org:"sentry"
 };
 
 // Make sure adding Sentry options is the last code to run before exporting, to
 // ensure that your source maps include changes from all other Webpack plugins
 module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
 
-
-
-/* 
-
-# Supabase (See: https://github.com/hoangvu12/kaguya-database)
-
-NEXT_PUBLIC_SUPABASE_URL=https://ajaxillvjdoaympzpwif.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqYXhpbGx2amRvYXltcHpwd2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ5MDg4NTAsImV4cCI6MTk4MDQ4NDg1MH0.S93eQ_DlGl0KrywDA5v28QOal2_Vqg7JpYs09aLaNYo
-
-# Google Analytics
-
-NEXT_PUBLIC_GA_ID=
-
-# See: https://github.com/hoangvu12/kaguya-scraper
-
-NEXT_PUBLIC_NODE_SERVER_URL=http://localhost:3001/
-ANIMETTV_SERVER_URL=http://localhost:3011/
-
-# See: https://github.com/hoangvu12/kaguya-socket
-
-NEXT_PUBLIC_SOCKET_SERVER_URL=
-
-# See: https://github.com/hoangvu12/requests-proxy
-
-NEXT_PUBLIC_PROXY_SERVER_URL=
-
-# Public web push key (https://github.com/hoangvu12/kaguya-scraper)
-
-NEXT_PUBLIC_WEB_PUSH=
-
-# Sentry
-
-SENTRY_AUTH_TOKEN=
-
-*/

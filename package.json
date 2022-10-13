@@ -100,5 +100,8 @@
     "commitizen": {
       "path": "git-cz"
     }
+  },
+  "engines": {
+    "node": ">=0.7.0 <16.15.0"
   }
 }

@@ -35,10 +35,10 @@ const routes = [
     title: "Anime4K",
     href: "/anime-4k"
   }, */
-  /* {
+  {
     title: "watch_with_friends",
     href: "/wwf",
-  }, */
+  },
   {
     title: "Anime Themes",
     href: "/themes",
@@ -154,7 +154,7 @@ const Header = () => {
           <HeaderProfile />
         ) : (
           <div className="flex items-center space-x-2">
-            {/* <Link href={`/login?redirectedFrom=${router.asPath}`}>
+           {/*  <Link href={`/login?redirectedFrom=${router.asPath}`}>
               <a>
                 <Button primary>
                   <p className="line-clamp-1">{t("login")}</p>

@@ -1,4 +1,3 @@
-const { withSentryConfig } = require("@sentry/nextjs");
 const withPWA = require("next-pwa");
 const defaultRuntimeCaching = require("./cache");
 const { i18n } = require("./next-i18next.config");
@@ -14,7 +13,6 @@ const envVars = {
     NEXT_PUBLIC_WEB_PUSH:"BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
     SENTRY_AUTH_TOKEN:"34dae03c4b0811ed9e9f4ed53395ef1a",
     SENTRY_DSN: "https://97cdd21525fe4685b8d62348e2d39c66@o610195.ingest.sentry.io/4503976885354496",
-    ENTRY_IGNORE_API_RESOLUTION_ERROR: 1
   }
 }
 const moduleExports = withPWA({
@@ -47,22 +45,7 @@ const moduleExports = withPWA({
   },
   i18n,
   envVars,
-  sentry: {
-    hideSourceMaps: true,
-  },
 });
 
-
-const sentryWebpackPluginOptions = {
-  token: process.env.SENTRY_AUTH_TOKEN,
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-  silent: true, // Suppresses all logs
-  ignore: ["node_modules", "webpack.config.js"],
-  project: "animeonline",
-  org:"sentry"
-};
-
-// Make sure adding Sentry options is the last code to run before exporting, to
-// ensure that your source maps include changes from all other Webpack plugins
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+module.exports = moduleExports;
 

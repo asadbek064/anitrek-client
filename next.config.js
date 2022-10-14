@@ -13,6 +13,7 @@ const envVars = {
     NEXT_PUBLIC_WEB_PUSH:"BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
     SENTRY_AUTH_TOKEN:"34dae03c4b0811ed9e9f4ed53395ef1a",
     SENTRY_DSN: "https://97cdd21525fe4685b8d62348e2d39c66@o610195.ingest.sentry.io/4503976885354496",
+    NODE_ENV: "production",
   }
 }
 const moduleExports = withPWA({

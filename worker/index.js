@@ -6,8 +6,8 @@ self.addEventListener("push", function (event) {
   event.waitUntil(
     registration.showNotification(title, {
       ...options,
-      icon: "https://www.kaguya.live/_next/image?url=%2Flogo.png&w=1920&q=75",
-      badge: "https://www.kaguya.live/_next/image?url=%2Flogo.png&w=96&q=96",
+      icon: "https://animet.tv/assets/logo/animet-tv_chibi_1.webp",
+      badge: "https://animet.tv/assets/logo/animet-tv_chibi_1.webp",
     })
   );
 });

@@ -48,7 +48,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ studio: initialStudio }) => {
 
   return (
     <>
-      <Head title={`${initialStudio.name} - Kaguya`} />
+      <Head title={`${initialStudio.name} - AnimeOnline`} />
 
       <div className="pb-8">
         <Section className="pt-24 px-4 sm:px-12 z-10 pb-4 mb-8">
@@ -84,7 +84,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ studio: initialStudio }) => {
           )}
 
           {!hasNextPage && !!anime.length && (
-            <p className="mt-8 text-2xl text-center">It's over...</p>
+            <p className="mt-8 text-2xl text-center">It&lsquo;s over...</p>
           )}
         </Section>
       </div>

@@ -83,7 +83,7 @@ const BrowseList: React.FC<BrowseListProps> = ({ defaultQuery }) => {
               )}
 
               {!hasNextPage && !!totalData.length && (
-                <p className="mt-8 text-2xl text-center">It's over...</p>
+                <p className="mt-8 text-2xl text-center">It&quot;s over...</p>
               )}
             </React.Fragment>
           ) : (

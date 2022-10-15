@@ -310,20 +310,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               )}
             </DetailsSection>
 
-            {!!anime?.characters?.edges?.length && (
-              <DetailsSection
-                title={t("characters_section")}
-                className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
-              >
-                {anime.characters.edges.map((characterEdge, index) => (
-                  <CharacterConnectionCard
-                    characterEdge={characterEdge}
-                    key={index}
-                  />
-                ))}
-              </DetailsSection>
-            )}
-
             {!!anime?.relations?.nodes?.length && (
               <DetailsSection title={t("relations_section")}>
                 <List data={anime.relations.nodes}>
@@ -344,9 +330,24 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               </DetailsSection>
             )}
 
+            {!!anime?.characters?.edges?.length && (
+              <DetailsSection
+                title={t("characters_section")}
+                className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
+              >
+                {anime.characters.edges.map((characterEdge, index) => (
+                  <CharacterConnectionCard
+                    characterEdge={characterEdge}
+                    key={index}
+                  />
+                ))}
+              </DetailsSection>
+            )}
+            
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
             </DetailsSection>
+            
           </div>
         </Section>
       </div>

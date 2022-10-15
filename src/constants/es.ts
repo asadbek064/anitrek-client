@@ -87,12 +87,12 @@ export const GENRES = [
     thumbnail:
       "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101759-MhlCoeqnODso.jpg",
   },
-  {
+  /* {
     value: "Hentai",
     label: "Hentai",
     thumbnail:
       "https://s4.anilist.co/file/anilistcdn/media/anime/banner/99894-MWIuMGnDIg1x.jpg",
-  },
+  }, */
   {
     value: "Horror",
     label: "Terror",

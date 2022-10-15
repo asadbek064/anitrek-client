@@ -78,8 +78,8 @@ const useBrowse = (options: UseBrowseOptions) => {
         ...(genres?.length && { genre_in: genres }),
         // If keyword is given, but there is no media ids found, search the media using keyword.
         ...(keyword && !translationMediaIds?.length && { search: keyword }),
-        isAdult:
-          isAdult || genres.includes("Hentai") || genres.includes("Ecchi"),
+        isAdult: false
+          /* isAdult || genres.includes("Hentai") || genres.includes("Ecchi"), */
       });
 
       return data;

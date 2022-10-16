@@ -77,6 +77,7 @@ const Header = () => {
         ref={drawerRef}
         containerClassName="sm:hidden mr-4"
         className="flex justify-between flex-col py-8"
+        aria-label="Menu lable"
         button={<GiHamburgerMenu className="w-6 h-6" />}
       >
         <div>
@@ -136,7 +137,7 @@ const Header = () => {
       <div className="flex items-center space-x-4 ml-auto">
         {/* <Notifications /> */}
 
-        <NavItem href={searchUrl}>
+        <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
             <AiOutlineSearch
             className={classNames(

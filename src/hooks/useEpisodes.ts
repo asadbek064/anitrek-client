@@ -29,7 +29,7 @@ const useEpisodes = (mediaId: number) => {
     );
     
     // CR detection 
-    let CR_ID = await getCRavilable(sortedEpisodes[0].sourceMediaId);
+   /*  let CR_ID = await getCRavilable(sortedEpisodes[0].sourceMediaId);
     
     if (CR_ID !== null) {
       localStorage.setItem('CR_ID', JSON.stringify(CR_ID));
@@ -37,7 +37,7 @@ const useEpisodes = (mediaId: number) => {
       if (localStorage.get('CR_ID') !== undefined) {
         localStorage.removeItem('CR_ID');
       }
-    }
+    } */
 
     return sortedEpisodes;
   });

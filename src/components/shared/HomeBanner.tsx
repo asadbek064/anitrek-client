@@ -248,7 +248,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
                     modestbranding: 1,
                     controls: 0,
                     mute: 1,
-                    origin: "https://kaguya.live",
+                    origin: "https://animet.tv",
                   },
                 }}
                 containerClassName={classNames(

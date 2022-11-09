@@ -2,14 +2,20 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   mode: "jit",
-  content: [
+  content: [  
     "./src/components/**/*.{ts,tsx,js,jsx}",
     "./src/pages/**/*.{ts,tsx,js,jsx}",
   ],
   theme: {
     extend: {
       colors: {
-        primary: colors.red,
+        primary: {
+          DEFAULT: "#F70B53",
+          200: "#F9487E",
+          300: "#F9487E",
+          400: "#F9487E",
+          500: "#F7175C"
+        },
 
         background: {
           DEFAULT: "#111111",
@@ -20,7 +26,7 @@ module.exports = {
           600: "#333333",
           700: "#262626",
           800: "#1a1a1a",
-          900: "#0d0d0d",
+          900: "#111111",
         },
         typography: {
           DEFAULT: "#FFFFFF",

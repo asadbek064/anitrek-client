@@ -68,7 +68,7 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
 
     const isVisible = currentSlide.classList.contains("swiper-slide-visible");
 
-    currentSlide.style.transition = "all 300ms";
+    currentSlide.style.transition = "all 250ms";
 
     if (!isVisible) return;
 
@@ -224,10 +224,10 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
         return (
           <SwiperSlide
             onMouseEnter={
-              isMobile ? noop : debounce(handleSlideHover(index), 300)
+              /* isMobile */true ? noop : debounce(handleSlideHover(index), 300)
             }
             onMouseLeave={
-              isMobile ? noop : debounce(handleSlideLeave(index), 300)
+              /* isMobile */true ? noop : debounce(handleSlideLeave(index), 300)
             }
             key={index}
           >

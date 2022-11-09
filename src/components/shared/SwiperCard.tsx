@@ -14,7 +14,8 @@ import { AnimatePresence, motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiFillLike } from "react-icons/ai";
+import { BsFillHeartFill } from "react-icons/bs";
 import { MdTagFaces } from "react-icons/md";
 import Description from "./Description";
 
@@ -170,7 +171,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                     <motion.div className="relative z-50 flex items-center space-x-2">
                       {data.averageScore && (
                         <TextIcon
-                          LeftIcon={MdTagFaces}
+                          LeftIcon={AiFillLike}
                           iconClassName="text-green-300"
                         >
                           <p>{data.averageScore}%</p>
@@ -178,7 +179,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                       )}
 
                       <TextIcon
-                        LeftIcon={AiFillHeart}
+                        LeftIcon={BsFillHeartFill}
                         iconClassName="text-red-400"
                       >
                         <p>{numberWithCommas(data.favourites)}</p>

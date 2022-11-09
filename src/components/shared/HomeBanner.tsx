@@ -19,8 +19,9 @@ import React, {
   useState,
 } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
-import { AiFillHeart, AiFillPlayCircle } from "react-icons/ai";
-import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
+import { AiFillHeart, AiFillLike, AiFillPlayCircle } from "react-icons/ai";
+import { BsFillHeartFill, BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
+import { ImPlay } from "react-icons/im";
 import { MdTagFaces } from "react-icons/md";
 import YouTube from "react-youtube";
 import {} from "youtube-player/dist/types";
@@ -92,7 +93,7 @@ const MobileHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
                     />
                   )}
 
-                  <div className="fixed-0 absolute flex items-end bg-gradient-to-b from-transparent via-black/60 to-black/80">
+                  <div className="fixed-0 absolute flex items-end bg-gradient-to-b from-transparent via-black/60 to-black/100">
                     <div className="p-4">
                       <h1 className="text-xl font-bold uppercase line-clamp-1">
                         {title}
@@ -275,12 +276,12 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
 
           <div className="mt-4 flex flex-wrap items-center gap-x-8 text-lg">
             {activeSlide.averageScore && (
-              <TextIcon LeftIcon={MdTagFaces} iconClassName="text-green-300">
+              <TextIcon LeftIcon={AiFillLike} iconClassName="text-green-300">
                 <p>{activeSlide.averageScore}%</p>
               </TextIcon>
             )}
 
-            <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+            <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-red-400">
               <p>{numberWithCommas(activeSlide.favourites)}</p>
             </TextIcon>
 
@@ -300,7 +301,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
         <Link href={createMediaDetailsUrl(activeSlide)}>
           <a>
             <CircleButton
-              LeftIcon={AiFillPlayCircle}
+              LeftIcon={ImPlay}
               outline
               className="absolute left-2/3 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 md:block"
               iconClassName="w-16 h-16"

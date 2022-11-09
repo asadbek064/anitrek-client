@@ -12,7 +12,7 @@ module.exports = {
         primary: colors.red,
 
         background: {
-          DEFAULT: "#000000",
+          DEFAULT: "#111111",
           200: "#666666",
           300: "#595959",
           400: "#4d4d4d",

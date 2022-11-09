@@ -3,45 +3,62 @@ import Drawer, { DrawerRef } from "@/components/shared/Drawer";
 import HeaderProfile from "@/components/shared/HeaderProfile";
 import Logo from "@/components/shared/Logo";
 import NavItem from "@/components/shared/NavItem";
-import { DISCORD_URL, FACEBOOK_URL } from "@/constants";
+import { DISCORD_URL, KO_FI_URL } from "@/constants";
 import { useUser } from "@supabase/auth-helpers-react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
-import { AiFillFacebook, AiOutlineSearch } from "react-icons/ai";
-import { FaDiscord } from "react-icons/fa";
+import React, { ComponentType, useEffect, useRef, useState } from "react";
+import { AiFillHome, AiOutlinePlus, AiOutlineSearch } from "react-icons/ai";
+import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { MdOutlineLiveTv } from "react-icons/md";
+import { RiFinderLine } from "react-icons/ri";
 import Notifications from "../features/notifications/Notifications";
 import PWAInstallPrompt from "../features/pwa/PWAInstallPrompt";
 import LanguageSwitcher from "../shared/LanguageSwitcher";
 import Section from "../shared/Section";
+import TextIcon, { IconProps } from "../shared/TextIcon";
 
-const routes = [
+interface _route {
+  title: string;
+  href: string;
+  icon: ComponentType<IconProps>;
+}
+const routes: _route[] = [
   {
     title: "Home",
     href: "/",
+    icon: AiFillHome
   },
   /* {
     title: "Manga",
     href: "/manga",
   }, */
   {
-    title: "anime_scene_search",
+    title: "SceneFinder",
     href: "/scene-search",
+    icon: RiFinderLine
+  },
+  {
+    title: "WatchList",
+    href: "/scene-search",
+    icon: AiOutlinePlus
   },
   /* {
     title: "Anime4K",
     href: "/anime-4k"
   }, */
   {
-    title: "watch_with_friends",
+    title: "Watch2together",
     href: "/wwf",
+    icon: MdOutlineLiveTv
   },
   {
-    title: "Anime Themes",
+    title: "AniMusic",
     href: "/themes",
+    icon: FaMusic
   },
 ];
 
@@ -70,7 +87,7 @@ const Header = () => {
         "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-500",
         !isTop
           ? "bg-background"
-          : "bg-gradient-to-b from-black/80 via-black/60 to-transparent"
+          : "bg-gradient-to-b from-black/88 via-black/30 to-transparent"
       )}
     >
       <Drawer
@@ -88,16 +105,22 @@ const Header = () => {
               <div onClick={drawerRef.current?.close} key={route.href}>
                 <NavItem className="block" href={route.href}>
                   {({ isActive }) => (
-                    <p
-                      className={classNames(
-                        "pl-4 border-l-4 font-semibold text-2xl",
-                        isActive
-                          ? "border-primary-500 text-white"
-                          : "border-background-900 text-typography-secondary"
-                      )}
-                    >
-                      {t(route.title)}
-                    </p>
+                    <div className="flex flex-row pl-2 py-1.5">
+                      <TextIcon
+                      iconClassName="py-0.5"
+                      LeftIcon={route.icon}
+                    ></TextIcon>
+                      <p
+                        className={classNames(
+                          "pl-3 border-l-4 font-semibold text-3xl",
+                          isActive
+                            ? "border-primary-500 text-white"
+                            : "border-background-900 text-typography-secondary"
+                        )}
+                      >
+                        {t(route.title)}
+                      </p>
+                    </div>
                   )}
                 </NavItem>
               </div>
@@ -106,10 +129,12 @@ const Header = () => {
         </div>
 
         <div className="px-4 space-y-4">
-          <div className="flex items-center justify-center space-x-4">
+          <div className="flex items-center justify-center space-x-8">
             <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
-            <ContactItem href={FACEBOOK_URL} Icon={AiFillFacebook} />
+            <ContactItem href={KO_FI_URL} Icon={FaDonate} />
           </div>
+
+          <p className="text-xs flex justify-center">Verison: 3.0.0</p>
         </div>
       </Drawer>
 
@@ -121,14 +146,20 @@ const Header = () => {
         {routes.map((route) => (
           <NavItem href={route.href} key={route.href}>
             {({ isActive }) => (
-              <p
-                className={classNames(
-                  "hover:text-white transition duration-300",
-                  isActive && "text-primary-300"
-                )}
-              >
-                {t(route.title)}
-              </p>
+              <div className="flex flex-row gap-x-2">
+                <TextIcon
+                  iconClassName="py-0.5"
+                  LeftIcon={route.icon}
+                ></TextIcon>
+                <p
+                  className={classNames(
+                    "hover:text-white transition duration-300",
+                    isActive && "text-primary-300"
+                  )}
+                >
+                  {t(route.title)}
+                </p>
+              </div>
             )}
           </NavItem>
         ))}
@@ -140,28 +171,29 @@ const Header = () => {
         <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
             <AiOutlineSearch
-            className={classNames(
-              "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300",
-              isActive && "text-primary-300"
+              className={classNames(
+                "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300",
+                isActive && "text-primary-300"
               )}
-              />
-              )}
+            />
+          )}
         </NavItem>
 
         <PWAInstallPrompt />
-        <LanguageSwitcher />
+        <LanguageSwitcher/>
+        
 
         {user ? (
           <HeaderProfile />
         ) : (
           <div className="flex items-center space-x-2">
-           {/*  <Link href={`/login?redirectedFrom=${router.asPath}`}>
+            <Link href={`/login?redirectedFrom=${router.asPath}`}>
               <a>
                 <Button primary>
                   <p className="line-clamp-1">{t("login")}</p>
                 </Button>
               </a>
-            </Link> */}
+            </Link>
           </div>
         )}
       </div>

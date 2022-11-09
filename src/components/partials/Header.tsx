@@ -138,7 +138,7 @@ const Header = () => {
         </div>
       </Drawer>
 
-      <div className="relative h-2/3 w-10 mr-8">
+      <div className="relative h-2/3  mr-8">
         <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
       </div>
 

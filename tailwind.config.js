@@ -26,7 +26,7 @@ module.exports = {
           600: "#333333",
           700: "#262626",
           800: "#1a1a1a",
-          900: "#111111",
+          900: "#1C1C1C",
         },
         typography: {
           DEFAULT: "#FFFFFF",

@@ -154,7 +154,7 @@ const ProgressSlider: React.FC<ProgressSliderProps> = ({
 
         {!hideDot && (
           <Slider.Dot
-            className="h-4 w-4 absolute bg-primary-500 rounded-full"
+            className="h-4 w-4 absolute bg-primary-500 p-2 rounded-full"
             percent={currentPercent}
           />
         )}

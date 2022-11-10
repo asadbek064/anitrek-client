@@ -45,7 +45,7 @@ const TracePage = () => {
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-1">{t("heading")}</h1>
 
-          <h3 className="text-lg mb-2">{t("description")}</h3>
+        {/*   <h3 className="text-lg mb-2">{t("description")}</h3> */}
 
           <p className="italic text-xs mb-1">
             {t("made_by")}{" "}

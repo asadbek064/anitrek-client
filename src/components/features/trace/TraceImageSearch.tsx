@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 import { AiOutlineCloudUpload, AiOutlineSearch } from "react-icons/ai";
+import { BiCloudUpload } from "react-icons/bi";
 import { MdOutlineDelete, MdOutlineRestartAlt } from "react-icons/md";
 import ReactImageUploading, { ImageType } from "react-images-uploading";
 import { toast } from "react-toastify";
@@ -85,7 +86,7 @@ const TraceImageSearch: React.FC<TraceImageSearchProps> = ({
               )}
               {...dragProps}
             >
-              <AiOutlineCloudUpload className="text-gray-300 w-24 h-24" />
+              <BiCloudUpload className="text-gray-300 w-24 h-24" />
 
               <p className="text-gray-300">
                 {t("drag_and_drop")} {t("common:or")}{" "}

@@ -10,11 +10,13 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ComponentType, useEffect, useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { AiFillHome, AiOutlinePlus, AiOutlineSearch } from "react-icons/ai";
+import { BiLogIn } from "react-icons/bi";
 import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdOutlineLiveTv } from "react-icons/md";
-import { RiFinderLine } from "react-icons/ri";
+import { RiFinderLine, RiVipDiamondFill } from "react-icons/ri";
 import Notifications from "../features/notifications/Notifications";
 import PWAInstallPrompt from "../features/pwa/PWAInstallPrompt";
 import LanguageSwitcher from "../shared/LanguageSwitcher";
@@ -46,10 +48,11 @@ const routes: _route[] = [
     href: "/scene-search",
     icon: AiOutlinePlus
   },
-  /* {
-    title: "Anime4K",
-    href: "/anime-4k"
-  }, */
+  {
+    title: "A.iUpscaled",
+    href: "/anime-4k",
+    icon: RiVipDiamondFill,
+  },
   {
     title: "Watch2together",
     href: "/wwf",
@@ -125,6 +128,18 @@ const Header = () => {
                 </NavItem>
               </div>
             ))}
+
+            {user ? '': (
+              <Link href={`/login?redirectedFrom=${router.asPath}`}>
+              <a>
+                
+                <Button secondary className="mt-10">
+                  <TextIcon  LeftIcon={BiLogIn}></TextIcon>
+                  <p className="line-clamp-1 text-3xl font-semibold">{t("login")}</p>
+                </Button>
+              </a>
+            </Link>
+            )}
           </div>
         </div>
 
@@ -146,7 +161,7 @@ const Header = () => {
         {routes.map((route) => (
           <NavItem href={route.href} key={route.href}>
             {({ isActive }) => (
-              <div className="flex flex-row gap-x-2">
+              <div className="flex flex-row gap-x-2 place-items-center">
                 <TextIcon
                   iconClassName="py-0.5"
                   LeftIcon={route.icon}
@@ -186,14 +201,18 @@ const Header = () => {
         {user ? (
           <HeaderProfile />
         ) : (
-          <div className="flex items-center space-x-2">
-            <Link href={`/login?redirectedFrom=${router.asPath}`}>
-              <a>
-                <Button primary>
-                  <p className="line-clamp-1">{t("login")}</p>
-                </Button>
-              </a>
-            </Link>
+          <div>
+              { !isMobile ? 
+                <div className="flex items-center space-x-2">
+                <Link href={`/login?redirectedFrom=${router.asPath}`}>
+                  <a>
+                    <Button primary>
+                      <p className="line-clamp-1">{t("login")}</p>
+                    </Button>
+                  </a>
+                </Link>
+              </div>
+               : ''}
           </div>
         )}
       </div>

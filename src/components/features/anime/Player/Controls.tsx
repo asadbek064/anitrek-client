@@ -32,18 +32,18 @@ const Controls: React.FC<ControlsProps> = ({
   return (
     <div
       className={classNames(
-        "controls-container w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300",
+        "controls-container w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-280",
         !videoState.seeking && !isInteracting && !videoState.buffering
           ? "opacity-0 invisible"
           : "opacity-100 visible"
       )}
     >
-      <div className="mb-4">
+      <div className="mb-4 mx-4">
         <ProgressSlider />
       </div>
 
       <div className="w-full flex justify-between items-center text-white">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 ml-4">
           <PlayPauseButton />
           <BackwardButton />
           <ForwardButton />
@@ -51,12 +51,12 @@ const Controls: React.FC<ControlsProps> = ({
           <TimeIndicator />
           {leftControlsSlot}
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 mr-4">
           {rightControlsSlot}
          {/*  <TimestampsButton />
           <SkipButton /> */}
           <SubtitleButton />
-          <ScreenshotButton />
+          {/* <ScreenshotButton /> */}
           <SettingsButton />
           <FullscreenButton />
         </div>

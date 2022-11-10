@@ -86,7 +86,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
         <motion.div
           ref={containerRef}
           variants={containerVariants}
-          whileHover={isDesktop ? "animate" : ""}
+          /*  whileHover={isDesktop ? "animate" : ""} */
           animate="exit"
           initial="exit"
         >
@@ -154,7 +154,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                       className="text-gray-300 hover:text-gray-100 transition duration-300 line-clamp-5 mb-2"
                     />
 
-                    <DotList className="mb-2">
+                    {/* <DotList className="mb-2">
                       {data.genres?.map((genre) => (
                         <span
                           className="text-sm font-semibold"
@@ -184,7 +184,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                       >
                         <p>{numberWithCommas(data.favourites)}</p>
                       </TextIcon>
-                    </motion.div>
+                    </motion.div> */}
 
                     <motion.div
                       className="mt-4"
@@ -199,6 +199,13 @@ const Card: React.FC<AnimeCardProps> = (props) => {
             </AnimatePresence>
           </motion.div>
 
+          <motion.div
+            className="mt-4"
+            transition={{ duration: 0.1 }}
+            variants={slotVariants}
+          >
+            {containerEndSlot}
+          </motion.div>
           <p
             className="mt-2 text-base font-semibold line-clamp-2"
             style={{ color: primaryColor }}

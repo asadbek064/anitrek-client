@@ -9,11 +9,11 @@ const ProgressSlider = () => {
       hideDot
       className={classNames(
         isDesktop ? "!h-1 hover:!h-3" : "!h-3",
-        "transition-all duration-300"
+        "transition-all duration-250"
       )}
       innerClassName={classNames(
         isDesktop ? "!h-1 hover:!h-3" : "!h-3",
-        "transition-all duration-300"
+        "transition-all duration-250"
       )}
     />
   );

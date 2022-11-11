@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 
-export const endModes = ["repeat", "refresh"] as const;
+export const endModes = ["refresh", "repeat"] as const;
 
 interface Settings {
   endMode: typeof endModes[number];

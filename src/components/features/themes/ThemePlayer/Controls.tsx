@@ -7,12 +7,14 @@ import {
   SettingsButton,
   useInteract,
   useVideo,
+  VolumeButton,
 } from "netplayer";
 import * as React from "react";
 import LoopToggle from "./LoopToggle";
 import RefreshButton from "./RefreshButton";
 import { useThemePlayer } from "@/contexts/ThemePlayerContext";
 import DotList from "@/components/shared/DotList";
+import { isMobile } from "react-device-detect";
 
 const Controls: React.FC = () => {
   const { isInteracting } = useInteract();
@@ -30,7 +32,7 @@ const Controls: React.FC = () => {
     >
       <div className="w-full flex justify-between items-center text-white">
         <div className="flex items-center space-x-4">
-          <RefreshButton />
+          {/* <RefreshButton /> */}
           <LoopToggle />
 
           {theme && (
@@ -46,11 +48,14 @@ const Controls: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-4">
+          <VolumeButton />
           <PlayPauseButton />
           <BackwardButton />
           <ForwardButton />
           <SettingsButton />
-          <FullscreenButton />
+            <div className={(isMobile ? "hidden": '')}>
+              <FullscreenButton />
+            </div>
         </div>
       </div>
     </div>

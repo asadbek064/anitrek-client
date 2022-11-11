@@ -11,6 +11,8 @@ import { AiOutlineDownload, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import ThemeSearch from "../ThemeSearch";
 import ProgressSlider from "./ProgressSlider";
+import RefreshButton from "./RefreshButton";
+import { isMobile } from "react-device-detect";
 
 const Overlay = () => {
   const { isLoading, theme } = useThemePlayer();
@@ -67,7 +69,13 @@ const Overlay = () => {
         )}
       />
 
-      <div className="w-full absolute top-0 z-50">
+      <div 
+        className={classNames("w-8 h-8 absolute transition-all duration-300 cursor-pointer top-4 right-40 hover:text-gray-200", 
+          isInteracting ? "opacity-100 visible" : "opacity-0 invisible")}>
+        <RefreshButton />
+      </div>
+      
+      <div className={classNames(isMobile ?  "w-full absolute bottom-20 px-5 z-50" : "w-full absolute bottom-16 px-40 z-50")}>
         <ProgressSlider />
       </div>
 

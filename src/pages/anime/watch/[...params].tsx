@@ -312,8 +312,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title} (${currentEpisode.name}) - AnimeOnline`}
-        description={`Watch ${title} (${currentEpisode.name}) at AnimeOnline. Completely free, no ads`}
+        title={`${title} (${currentEpisode.name}) - AnimetTV`}
+        description={`Watch ${title} (${currentEpisode.name}) at AnimetTV. Completely free, no ads`}
         image={anime.bannerImage}
       />
 

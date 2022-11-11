@@ -5,8 +5,8 @@ const tos = () => {
   return (
     <div className="pt-20 px-4 md:px-12 space-y-4">
       <Head
-        title="Terms of Service - AnimeOnline"
-        description="Terms of Service at AnimeOnline"
+        title="Terms of Service - AnimetTV"
+        description="Terms of Service at AnimetTV"
       />
 
       <h1 className="text-2xl font-bold">Terms of Service</h1>
@@ -22,18 +22,18 @@ const tos = () => {
       </p>
       <h4 className="text-lg font-semibold">2. Modifications and printing and writing errors</h4>
       <p>
-        Materials appearing on AnimeOnline may include technical errors, typos,
-        camera or photography. AnimeOnline will not promise that any material in
-        This website is accurate, complete or current. AnimeOnline subject to change
+        Materials appearing on AnimetTV may include technical errors, typos,
+        camera or photography. AnimetTV will not promise that any material in
+        This website is accurate, complete or current. AnimetTV subject to change
         materials available on its website at any time without
-        notification. AnimeOnline does not make any commitment to update the resources
+        notification. AnimetTV does not make any commitment to update the resources
         Whether.
       </p>
       <h4 className="text-lg font-semibold">
         3. Amendment of website terms of use
       </h4>
       <p>
-        AnimeOnline may modify these Terms of Use for its website
+        AnimetTV may modify these Terms of Use for its website
         at any time without prior notice. By using the website
         herein, you agree to be bound by the current version of the Terms
         and these Conditions of Use.
@@ -42,7 +42,7 @@ const tos = () => {
       <p>Please read our privacy policy. </p>
       <h4 className="text-lg font-semibold">5. Management Law</h4>
       <p>
-      Any claim regarding AnimeOnline will be governed by law of the BQ without regard to the conflict of law provisions.
+      Any claim regarding AnimetTV will be governed by law of the BQ without regard to the conflict of law provisions.
       </p>
     </div>
   );

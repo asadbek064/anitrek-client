@@ -41,9 +41,9 @@ const Footer = () => {
         </Link>
       </div>
 
-      <p className="text-sm text-gray-300 text-center">AnimeOnline does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>
+      <p className="text-sm text-gray-300 text-center">AnimetTV does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>
 
-      <p className="text-sm text-gray-300 text-center">© AnimeOnline</p>
+      <p className="text-sm text-gray-300 text-center">© AnimetTV</p>
     </div>
   );
 };

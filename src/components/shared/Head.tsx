@@ -12,7 +12,7 @@ interface HeadProps {
 
 const Head: React.FC<HeadProps> = (props) => {
   const {
-    title = "AnimeOnline",
+    title = "AnimetTV",
     description = "Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration",
     image = "https://frosty-snyder-1df076.netlify.app/other/login-wp.jpg",
   } = props;

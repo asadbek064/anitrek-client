@@ -46,7 +46,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${t("login_heading")} - AnimeOnline`}
+        title={`${t("login_heading")} - AnimetTV`}
         description={t("login_description")}
       />
 

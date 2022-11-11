@@ -70,7 +70,7 @@ const ThemesPage = ({ slug, type }: ThemesPageProps) => {
     <React.Fragment>
       <Head
         title={
-          !data ? `Themes - AnimeOnline` : `${data.name} (${data.type}) - AnimeOnline`
+          !data ? `Themes - AnimetTV` : `${data.name} (${data.type}) - AnimetTV`
         }
         description="Watch OP/ED of your favorite Anime."
       />

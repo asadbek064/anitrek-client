@@ -48,7 +48,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ studio: initialStudio }) => {
 
   return (
     <>
-      <Head title={`${initialStudio.name} - AnimeOnline`} />
+      <Head title={`${initialStudio.name} - AnimetTV`} />
 
       <div className="pb-8">
         <Section className="pt-24 px-4 sm:px-12 z-10 pb-4 mb-8">

@@ -31,7 +31,7 @@ const Anime4K = () => {
   return (
     <React.Fragment>
       <Head
-        title="Watch Anime - AnimeOnline"
+        title="Watch Anime - AnimetTV"
         description="Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration"
       />
 

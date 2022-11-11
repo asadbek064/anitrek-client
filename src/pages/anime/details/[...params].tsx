@@ -88,7 +88,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
   return (
     <>
       <Head
-        title={`${title} - AnimeOnline`}
+        title={`${title} - AnimetTV`}
         description={description}
         image={anime.bannerImage}
       />

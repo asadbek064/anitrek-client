@@ -37,12 +37,15 @@ const Anime4K = () => {
 
       <ClientOnly>
         <div className="pb-8">
-          <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
-
+          {/* <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
+ */}
           <div className="space-y-8">
-
-
-            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
+            
+            <div className="grid place-content-center mt-40">
+              <h1>This page under constructions.</h1><br />
+              <h2>For 4K Anime use our old website in mean time: <a href="https://animet.tv/experiment">www.animet.tv</a></h2>
+            </div>
+            {/* <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
            
             </Section>
             {recentlyUpdatedLoading ? (
@@ -51,7 +54,7 @@ const Anime4K = () => {
               <Section title={t("newly_added", { ns: "common" })}>
                 <CardSwiper data={recentlyUpdated} />
               </Section>
-            )}
+            )} */}
 
             <div
               className={classNames(

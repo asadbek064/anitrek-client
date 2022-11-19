@@ -23,7 +23,7 @@ export interface PlayerProps extends NetPlayerProps {
   fonts?: Font[];
 }
 
-const corsServers = [config.proxyServerUrl, "https://corsproxy.io"];
+const corsServers = [config.proxyServerUrl, "https://cors-anywhere.demonking.workers.dev/?"];
 
 const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
   (

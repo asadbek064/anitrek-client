@@ -24,4 +24,4 @@ export const ThemePlayerContextProvider: React.FC<ThemePlayerContextProviderProp
 
 export const useThemePlayer = () => {
   return React.useContext(ThemePlayerContext);
-};
+}

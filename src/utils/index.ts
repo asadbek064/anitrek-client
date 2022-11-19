@@ -454,6 +454,15 @@ export const createAttachmentUrl = (url: string) => {
   return `${config.nodeServerUrl}/file/${url}`;
 };
 
+export const createMediaDetailsUrlAI = (title: string, type: string) => {
+  if (type === "4k") {
+    return `/anime/details/4k/${title}`;
+  } else if (type === "60fps") {
+    return `/anime/details/60fps/${title}`;
+  } else if (type === "hentai") {
+    return `/anime/details/hentai/${title}`;
+  }
+}
 export const createMediaDetailsUrl = (media: Media) => {
   if (media.type === MediaType.Anime) {
     return `/anime/details/${media.id}/${vietnameseSlug(

@@ -14,8 +14,10 @@ import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { isMobile } from "react-device-detect";
+import useAiTitles from "@/hooks/useAiTitles";
+import AiCardSwiper from "@/components/shared/AiCardSwiper";
 
-const Anime4K = () => {
+const AiUpscale = () => {
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
 
@@ -26,7 +28,7 @@ const Anime4K = () => {
   });
 
 
-  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
+  const { data: aiTitles, isLoading: aiTitlesLoading } = useAiTitles();
 
   return (
     <React.Fragment>
@@ -43,18 +45,18 @@ const Anime4K = () => {
             
             <div className="grid place-content-center mt-40">
               <h1>This page under constructions.</h1><br />
-              <h2>For 4K Anime use our old website in mean time: <a href="https://animet.tv/experiment">www.animet.tv</a></h2>
+              <h2>For 4K Anime use our old website in mean time: <a className="text-red-500" href="https://animet.tv/experiment">www.animet.tv</a></h2>
             </div>
-            {/* <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
+            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
            
             </Section>
-            {recentlyUpdatedLoading ? (
+            {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              <Section title={t("newly_added", { ns: "common" })}>
-                <CardSwiper data={recentlyUpdated} />
+              <Section title={t("4K Anime", { ns: "common" })}>
+                {/* <AiCardSwiper data={aiTitles} /> */}
               </Section>
-            )} */}
+            )}
 
             <div
               className={classNames(
@@ -71,4 +73,4 @@ const Anime4K = () => {
   );
 };
 
-export default Anime4K;
+export default AiUpscale;

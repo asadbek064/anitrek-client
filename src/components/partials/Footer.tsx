@@ -1,7 +1,6 @@
 import { DISCORD_URL, FACEBOOK_URL, KO_FI_URL } from "@/constants";
 import React from "react";
-import { AiFillFacebook } from "react-icons/ai";
-import { FaBtc, FaDiscord } from "react-icons/fa";
+import { FaDiscord, FaDonate } from "react-icons/fa";
 import Logo from "@/components/shared/Logo";
 import NextLink, { LinkProps } from "next/link";
 import { useTranslation } from "next-i18next";
@@ -20,11 +19,11 @@ const Footer = () => {
 
       <div className="flex items-center space-x-4">
         <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
-        <ContactItem href={KO_FI_URL} Icon={FaBtc}/>
+        <ContactItem href={KO_FI_URL} Icon={FaDonate}/>
       </div>
 
       <div className="flex items-center space-x-8 text-center">
-        <Link href="/tos">
+       {/*  <Link href="/tos">
           <p className="text-lg">{t("term_of_services")}</p>
         </Link>
 
@@ -38,7 +37,7 @@ const Footer = () => {
 
         <Link href="/deletion-privacy">
           <p className="text-lg">Deletion Privacy</p>
-        </Link>
+        </Link> */}
       </div>
 
       <p className="text-sm text-gray-300 text-center">AnimetTV does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>

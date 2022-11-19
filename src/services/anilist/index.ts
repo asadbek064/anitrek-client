@@ -31,7 +31,9 @@ import {
   studiosQuery,
 } from "./queries";
 
+
 const GRAPHQL_URL = "https://graphql.anilist.co";
+
 
 export const anilistFetcher = async <T>(query: string, variables: any) => {
   type Response = {

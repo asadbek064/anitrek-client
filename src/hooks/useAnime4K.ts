@@ -5,7 +5,6 @@ import { useMemo } from "react";
 
 const useAnime4K = () => {
   const { data, isLoading, ...res  } = useAiTitles();
-  let ultrahd_titles: ExperimentAnimeTitles[] = [];
 
   const mediaList = useMemo(() => {
     if (isLoading) return null;

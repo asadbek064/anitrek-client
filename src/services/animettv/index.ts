@@ -1,23 +1,17 @@
-import { ExperimentAnimeTitles } from "@/types";
+import { ExperimentAnimeTitles } from "../../types/index";
 import axios from "axios";
-import { AiAvailableQueryResponse } from "./queries";
 
 const ANIMETTV_SERVER_URL = "http://localhost:3011";
 
-export const animettvFetcher = async <T>(apiRoute:string) => {
-    type Response = {
-        data: T;
-    };
-
-    const { data } = await axios.get<Response>(ANIMETTV_SERVER_URL+apiRoute);
-
-    return data?.data;
+export const animettvFetcher = async(apiRoute:string) => {
+    const { data } = await axios.get<any[]>(ANIMETTV_SERVER_URL+apiRoute);
+    return data;
 };
 
 export const getAiTitles = async () => {
-    const response = await animettvFetcher<AiAvailableQueryResponse>(
+    const response = await animettvFetcher(
         "/api/watch-anime/anime60fps-available-titles",
     );
-
-    return response?.ExperimentAnimeTitles;
+        
+    return response;
 }

@@ -352,4 +352,6 @@ export interface ExperimentAnimeTitles {
   isRemastered?:boolean;
   isDownload: boolean;
   isNSFW: boolean;
+  score?: number;
+  type?: string;
 }

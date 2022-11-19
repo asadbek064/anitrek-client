@@ -120,7 +120,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     </a>
                   </Link>
 
-                  <Popup
+                 {/*  <Popup
                     reference={
                       <Button
                         className="!bg-[#393a3b]"
@@ -161,7 +161,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Button>
                       </a>
                     </Link>
-                  </Popup>
+                  </Popup> */}
                 </div>
 
                 <p className="mb-2 text-3xl font-semibold">{title}</p>

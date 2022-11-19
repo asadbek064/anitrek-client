@@ -106,13 +106,13 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
               />
-              <ColumnSection
+              {/* <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularAllTime}
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
-              />
+              /> */}
               <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}

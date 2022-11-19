@@ -43,21 +43,21 @@ const routes: _route[] = [
     href: "/scene-search",
     icon: RiFinderLine
   },
-  {
+/*   {
     title: "WatchList",
     href: "/scene-search",
     icon: AiOutlinePlus
-  },
+  }, */
   {
     title: "A.iUpscaled",
-    href: "/anime-4k",
+    href: "/ai-upscale",
     icon: RiVipDiamondFill,
   },
-  {
+/*   {
     title: "Watch2together",
     href: "/wwf",
     icon: MdOutlineLiveTv
-  },
+  }, */
   {
     title: "AniMusic",
     href: "/themes",
@@ -129,7 +129,7 @@ const Header = () => {
               </div>
             ))}
 
-            {user ? '': (
+            {/* {user ? '': (
               <Link href={`/login?redirectedFrom=${router.asPath}`}>
               <a>
                 
@@ -139,7 +139,7 @@ const Header = () => {
                 </Button>
               </a>
             </Link>
-            )}
+            )} */}
           </div>
         </div>
 
@@ -204,13 +204,13 @@ const Header = () => {
           <div>
               { !isMobile ? 
                 <div className="flex items-center space-x-2">
-                <Link href={`/login?redirectedFrom=${router.asPath}`}>
+                {/* <Link href={`/login?redirectedFrom=${router.asPath}`}>
                   <a>
                     <Button primary>
                       <p className="line-clamp-1">{t("login")}</p>
                     </Button>
                   </a>
-                </Link>
+                </Link> */}
               </div>
                : ''}
           </div>

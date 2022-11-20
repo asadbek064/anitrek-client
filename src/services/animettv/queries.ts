@@ -1,2 +1,2 @@
-import { ExperimentAnimeTitles } from "@/types"
+import { ExperimentAnimeTitles } from "@/types/animettv"
 

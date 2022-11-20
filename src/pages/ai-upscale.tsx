@@ -27,7 +27,6 @@ const AiUpscale = () => {
     perPage: isMobile ? 5 : 10,
   });
 
-
   const { data: aiTitles, isLoading: aiTitlesLoading } = useAiTitles();
 
   return (
@@ -40,21 +39,40 @@ const AiUpscale = () => {
       <ClientOnly>
         <div className="pb-8">
           {/* <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
- */}
+           */}
           <div className="space-y-8">
-            
             <div className="grid place-content-center mt-40">
-              <h1>This page under constructions.</h1><br />
-              <h2>For 4K Anime use our old website in mean time: <a className="text-red-500" href="https://animet.tv/experiment">www.animet.tv</a></h2>
+              <h1>This page under constructions.</h1>
+              <br />
+              <h2>
+                For 4K Anime use our old website in mean time:{" "}
+                <a className="text-red-500" href="https://animet.tv/experiment">
+                  www.animet.tv
+                </a>
+              </h2>
             </div>
-            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-           
-            </Section>
+            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4"></Section>
             {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("4K Anime", { ns: "common" })}>
-                {/* <AiCardSwiper data={aiTitles} /> */}
+                <AiCardSwiper data={aiTitles.Ai4k} />
+              </Section>
+            )}
+
+            {aiTitlesLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("60FPS Anime", { ns: "common" })}>
+                <AiCardSwiper data={aiTitles.Ai60fps} />
+              </Section>
+            )}
+
+          {aiTitlesLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("Remastered", { ns: "common" })}>
+                <AiCardSwiper data={aiTitles.AiRemastered} />
               </Section>
             )}
 
@@ -63,9 +81,7 @@ const AiUpscale = () => {
                 "flex gap-8",
                 isDesktop ? "flex-row" : "flex-col"
               )}
-            >
-            </div>
-
+            ></div>
           </div>
         </div>
       </ClientOnly>

@@ -15,7 +15,6 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 import { isMobile } from "react-device-detect";
 import useAiTitles from "@/hooks/useAiTitles";
-import AiCardSwiper from "@/components/shared/AiCardSwiper";
 
 const AiUpscale = () => {
   const { isDesktop } = useDevice();
@@ -56,7 +55,7 @@ const AiUpscale = () => {
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("4K Anime", { ns: "common" })}>
-                <AiCardSwiper data={aiTitles.Ai4k} />
+                <CardSwiper data={aiTitles.Ai4k} />
               </Section>
             )}
 
@@ -64,7 +63,7 @@ const AiUpscale = () => {
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("60FPS Anime", { ns: "common" })}>
-                <AiCardSwiper data={aiTitles.Ai60fps} />
+                <CardSwiper data={aiTitles.Ai60fps} />
               </Section>
             )}
 
@@ -72,7 +71,7 @@ const AiUpscale = () => {
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("Remastered", { ns: "common" })}>
-                <AiCardSwiper data={aiTitles.AiRemastered} />
+                <CardSwiper data={aiTitles.AiRemastered} />
               </Section>
             )}
 

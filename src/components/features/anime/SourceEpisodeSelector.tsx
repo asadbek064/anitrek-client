@@ -92,11 +92,11 @@ const SourceEpisodeSelector: React.FC<SourceEpisodeSelectorProps> = ({
         <Select
           options={[
             {
-              label: "Verified",
+              label: "",
               options: sourcesToOptions(Object.keys(verifiedSources)),
             },
             {
-              label: "Not verified",
+              label: "",
               options: sourcesToOptions(Object.keys(nonVerifiedSources)),
             },
           ]}

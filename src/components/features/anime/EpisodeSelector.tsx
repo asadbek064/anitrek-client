@@ -37,12 +37,12 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
       >
         <a
           className={classNames(
-            "rounded-md bg-background-800 col-span-1 aspect-w-2 aspect-h-1 group",
+            "rounded-md bg-[#424242] col-span-1 aspect-w-2 aspect-h-1 group",
             episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId &&
               "text-primary-300"
           )}
         >
-          <div className="flex items-center justify-center w-full h-full group-hover:bg-white/10 rounded-md transition duration-300">
+          <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">
             <p>{episode.name}</p>
           </div>
         </a>
@@ -84,9 +84,9 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
         {...chunkSwiperProps}
       >
         {chunks.map((chunk, i) => {
-          const firstEpisodeName = chunk[0].name.replace("Tập", "");
+          const firstEpisodeName = chunk[0].name.replace("Tap", "");
           const lastEpisodeName = chunk[chunk.length - 1].name.replace(
-            "Tập",
+            "Tap",
             ""
           );
 
@@ -99,10 +99,10 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
             <SwiperSlide onClick={() => setActiveTabIndex(i)} key={i}>
               <div
                 className={classNames(
-                  "text-gray-300 cursor-pointer mx-auto rounded-[18px] px-2 py-1 w-[max-content] duration-300 transition",
+                  "text-gray-300 cursor-pointer mx-auto rounded-[10px] px-2 py-1 w-[max-content] duration-250 transition",
                   realActiveTabIndex === i
-                    ? "bg-white text-black"
-                    : "hover:text-white"
+                    ? "bg-primary text-white"
+                    : "hover:text-white hover:bg-primary"
                 )}
               >
                 {title}

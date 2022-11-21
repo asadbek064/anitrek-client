@@ -10,6 +10,7 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import Section from "@/components/shared/Section";
+import Spinner from "@/components/shared/Spinner";
 
 const components = {
   anime: AnimeBrowseList,
@@ -115,7 +116,7 @@ const BrowsePage = ({ query: baseQuery }) => {
         <h1 className="text-4xl font-semibold text-center md:text-left">
           {t("common:search")}
         </h1>
-
+                
         <Select
           value={{ value: type, label: chosenType.label }}
           options={TYPES}

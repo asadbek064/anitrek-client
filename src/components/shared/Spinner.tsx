@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ImSpinner9 } from "react-icons/im";
 
 interface SpinnerProps {
   className?: string;
@@ -12,7 +12,7 @@ const Spinner: React.FC<SpinnerProps> = ({ className }) => {
       ? classNames("w-16 h-16 animate-spin text-primary-500", className)
       : className;
 
-  return <AiOutlineLoading3Quarters className={iconClass} />;
+  return <ImSpinner9 className={iconClass} />;
 };
 
 export default React.memo(Spinner);

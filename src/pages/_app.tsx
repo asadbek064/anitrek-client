@@ -60,11 +60,11 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
   return (
     <React.Fragment>
       {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
-      <script id="syncData" type="application/json"></script>
+      <script id="syncData" type="application/json"></script>``
 
       {/* umami tracking */}
       <Script async defer data-website-id="92986fe3-351c-4db9-9939-f47c3c09c7ff" src="https://umami-stat-77nehxshi-animettv.vercel.app/umami.js"></Script>
-      <Script
+      {/* <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
       />
@@ -78,7 +78,7 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
               page_path: window.location.pathname,
             });
         `}
-      </Script>
+      </Script> */}
 
       <ToastContainer
         position="bottom-left"

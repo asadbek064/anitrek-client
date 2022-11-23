@@ -57,8 +57,8 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
     // @ts-ignore
     Component.getLayout || ((page) => <BaseLayout>{page}</BaseLayout>);
 
-  return (
-    <React.Fragment>
+    return (
+      <React.Fragment>
       {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
       <script id="syncData" type="application/json"></script>
 
@@ -74,6 +74,21 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
       ChatbroLoader({encodedChatId: '18L5g'});`}
       </Script>
 
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+      />
+      
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+        `}
+      </Script>
 
       <ToastContainer
         position="bottom-left"
@@ -119,19 +134,3 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
 }
 
 export default appWithTranslation(App, nextI18nextConfig);
-
-{/* <Script
-  strategy="afterInteractive"
-  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-/>
-
-<Script id="google-analytics" strategy="afterInteractive">
-  {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_TRACKING_ID}', {
-        page_path: window.location.pathname,
-      });
-  `}
-</Script> */}

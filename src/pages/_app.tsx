@@ -64,21 +64,16 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
 
       {/* umami tracking */}
       <Script async defer data-website-id="92986fe3-351c-4db9-9939-f47c3c09c7ff" src="https://umami-stat-77nehxshi-animettv.vercel.app/umami.js"></Script>
-      {/* <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
 
-      <Script id="google-analytics" strategy="afterInteractive">
+      {/* ChatBro */}
+
+
+      <Script id="chatBroEmbedCode">
         {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-        `}
-      </Script> */}
+      function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
+      ChatbroLoader({encodedChatId: '18L5g'});`}
+      </Script>
+
 
       <ToastContainer
         position="bottom-left"
@@ -124,3 +119,19 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
 }
 
 export default appWithTranslation(App, nextI18nextConfig);
+
+{/* <Script
+  strategy="afterInteractive"
+  src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+/>
+
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_TRACKING_ID}', {
+        page_path: window.location.pathname,
+      });
+  `}
+</Script> */}

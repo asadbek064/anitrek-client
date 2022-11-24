@@ -55,7 +55,7 @@ const AiUpscale = () => {
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("4K Anime", { ns: "common" })}>
-                <CardSwiper data={aiTitles.Ai4k} />
+                <CardSwiper data={aiTitles?.Ai4k} />
               </Section>
             )}
 

@@ -2,7 +2,7 @@ import { AiTitles, ExperimentAnimeTitles } from "../../types/animettv";
 import axios from "axios";
 import { Media, MediaCoverImage, MediaTitle } from "@/types/anilist";
 
-const ANIMETTV_SERVER_URL = "http://localhost:3011";
+const ANIMETTV_SERVER_URL = process.env.NEXT_PUBLIC_NODE_SERVER_URL;
 
 export const animettvFetcher = async(apiRoute:string) => {
     const { data } = await axios.get<any[]>(ANIMETTV_SERVER_URL+apiRoute);

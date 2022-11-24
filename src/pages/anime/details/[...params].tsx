@@ -22,6 +22,8 @@ import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
+import { getMediaDetailsAI } from "@/services/animettv";
+
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
@@ -359,6 +361,7 @@ export const getStaticProps: GetStaticProps = async ({
   params: { params },
 }) => {
   try {
+    // default anime details
     const { data: isDMCA } = await supabaseClient
       .from("kaguya_dmca")
       .select("id")
@@ -386,6 +389,7 @@ export const getStaticProps: GetStaticProps = async ({
       },
       revalidate: REVALIDATE_TIME,
     };
+    
   } catch (err) {
     return { notFound: true, revalidate: REVALIDATE_TIME };
   }

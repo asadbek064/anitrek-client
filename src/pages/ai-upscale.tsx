@@ -20,12 +20,6 @@ const AiUpscale = () => {
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
 
-  const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
-    type: MediaType.Anime,
-    sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
-    perPage: isMobile ? 5 : 10,
-  });
-
   const { data: aiTitles, isLoading: aiTitlesLoading } = useAiTitles();
 
   return (

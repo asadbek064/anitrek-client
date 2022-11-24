@@ -79,14 +79,16 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
             <div className="justify-between text-center md:text-left flex flex-col items-center md:items-start py-4 mt-4 md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  <Link href={`/manga/read/${manga.id}`}>
+                  {/* <Link href={`/manga/read/${manga.id}`}>
                     <a>
                       <Button primary LeftIcon={BsFillPlayFill}>
                         <p>{t("read_now")}</p>
                       </Button>
                     </a>
-                  </Link>
-
+                  </Link> */}
+                  <Button secondary LeftIcon={BsFillPlayFill} className="cursor-not-allowed disabled">
+                    <p>{t("read_now")} (Not supported yet)</p>  
+                  </Button>
                   <Popup
                     reference={
                       <Button

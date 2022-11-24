@@ -23,3 +23,12 @@ export interface AiTitles {
     AiRemastered: Maybe<Media[]>;
     AiHentai: Maybe<Media[]>;
 }
+
+export interface anime60fps {
+  src: string;
+  iframe: boolean;
+  episode_number: number;
+}
+export interface AiSource {
+  sources?: anime60fps[]; 
+}

@@ -193,3 +193,12 @@ main {
   @apply w-8 h-8;
 }
 
+
+
+/* OVERLOADS CHATBRO */
+
+.chatbro_header .chatbro_minimized_header .chatbro_opacity {
+  height: 18px;
+  border-top-left-radius: 55px;
+  border-top-right-radius: 100px;
+}

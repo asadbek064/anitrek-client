@@ -65,7 +65,7 @@ const BannerSwiper: React.FC<BannerSwiperProps> = ({ data, ...props }) => {
                 animate={isActive ? "enter" : "exit"}
                 title={title}
               >
-                <PlainCard src={anime.coverImage.extraLarge} alt={title} />
+               {/*  <PlainCard src={anime.coverImage.extraLarge} alt={title} /> */}
               </motion.div>
             );
           }}

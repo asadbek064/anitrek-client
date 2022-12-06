@@ -44,6 +44,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
     );
 
     const handleHlsInit = useCallback((hls: Hls, source: VideoSource) => {
+
       // @ts-ignore
       hls.on("hlsManifestParsed", (_, info) => {
         info.levels.forEach((level) => {
@@ -63,6 +64,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
 
               return `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`;
             } else if (url.includes(config.proxyServerUrl)) {
+              
               const targetUrl = decodeURIComponent(
                 url.replace(config.proxyServerUrl + "/", "")
               );

@@ -424,6 +424,7 @@ export const createProxyUrl = (
   proxy: Proxy,
   isPublicProxy?: boolean
 ) => {
+  
   if (isPublicProxy) return `https://corsproxy.io/?${encodeURIComponent(url)}`;
 
   const composeHeaders = (

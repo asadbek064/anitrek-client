@@ -48,25 +48,19 @@ const AiUpscale = () => {
             {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              <Section title={t("4K Anime", { ns: "common" })}>
-                <CardSwiper data={aiTitles?.Ai4k} />
-              </Section>
+              ""
             )}
 
             {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              <Section title={t("60FPS Anime", { ns: "common" })}>
-                <CardSwiper data={aiTitles.Ai60fps} />
-              </Section>
+             ""
             )}
 
           {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              <Section title={t("Remastered", { ns: "common" })}>
-                <CardSwiper data={aiTitles.AiRemastered} />
-              </Section>
+             ""
             )}
 
             <div

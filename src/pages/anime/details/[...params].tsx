@@ -22,7 +22,6 @@ import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
-import { getMediaDetailsAI } from "@/services/animettv";
 
 import { Media, MediaType } from "@/types/anilist";
 import {

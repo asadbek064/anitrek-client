@@ -6,6 +6,7 @@ const config = {
   proxyServerUrl: process.env.NEXT_PUBLIC_PROXY_SERVER_URL,
   socketServerUrl: process.env.NEXT_PUBLIC_SOCKET_SERVER_URL,
   webPushPublicKey: process.env.NEXT_PUBLIC_WEB_PUSH,
+  animettvServer: process.env.NEXT_PUBLIC_ANIMETTV_SERVER_URL,
 };
 
 export default config;

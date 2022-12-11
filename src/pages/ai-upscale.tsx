@@ -1,5 +1,6 @@
 import CardSwiper from "@/components/shared/CardSwiper";
 import ClientOnly from "@/components/shared/ClientOnly";
+import AiGallery from "@/components/shared/AiGallery";
 import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
 import Section from "@/components/shared/Section";
@@ -12,11 +13,14 @@ import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
 import { MediaSort, MediaType } from "@/types/anilist";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useState } from "react";
 import { isMobile } from "react-device-detect";
 import useAiTitles from "@/hooks/useAiTitles";
 
+
 const AiUpscale = () => {
+  
+
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
 
@@ -30,7 +34,7 @@ const AiUpscale = () => {
       />
 
       <ClientOnly>
-        <div className="pb-8">
+        <div className="pb-8 mx-2">
           {/* <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
            */}
           <div className="space-y-8">
@@ -45,22 +49,29 @@ const AiUpscale = () => {
               </h2>
             </div>
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4"></Section>
+
             {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              ""
+              <Section title={t("4K Anime", { ns: "common" })}>
+                <AiGallery images={aiTitles.Ai4k}/>
+              </Section>
             )}
 
             {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-             ""
+              <Section title={t("60FPS Anime", { ns: "common" })}>
+              <AiGallery images={aiTitles.Ai60fps}/>
+            </Section>
             )}
 
           {aiTitlesLoading ? (
               <ListSwiperSkeleton />
             ) : (
-             ""
+              <Section title={t("Remastered Anime", { ns: "common" })}>
+              <AiGallery images={aiTitles.AiRemastered}/>
+            </Section>
             )}
 
             <div

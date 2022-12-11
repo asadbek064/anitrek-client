@@ -1,8 +1,9 @@
 import { AiTitles, ExperimentAnimeTitles } from "../../types/animettv";
 import axios from "axios";
 import { Media, MediaCoverImage, MediaTitle } from "@/types/anilist";
+import config from "next/config";
 
-const ANIMETTV_SERVER_URL = process.env.NEXT_PUBLIC_NODE_SERVER_URL;
+const ANIMETTV_SERVER_URL = process.env.NEXT_PUBLIC_ANIMETTV_SERVER_URL;
 
 export const animettvFetcher = async(apiRoute:string) => {
     const { data } = await axios.get<any[]>(ANIMETTV_SERVER_URL+apiRoute);
@@ -35,100 +36,16 @@ export const getAiTitles = async () => {
             _AiRemastered.push(el);
         }
     })
-    
-    // transpose data to media type
-    let _MediaAi4k: Media[] = [];
-    let _MediaAi60fps: Media[] = [];
-    let _MediaAiHentai: Media[] = [];
-    let _MediaAiRemastered: Media[] = [];
 
-    ExperimentToMedia(_Ai4k, _MediaAi4k);
-    ExperimentToMedia(_Ai60fps, _MediaAi60fps);
-    ExperimentToMedia(_AiHentai, _MediaAiHentai);
-    ExperimentToMedia(_AiRemastered, _MediaAiRemastered);
 
     let data: AiTitles = {
-        Ai4k : _MediaAi4k,
-        Ai60fps : _MediaAi60fps,
-        AiHentai : _MediaAiHentai,
-        AiRemastered : _MediaAiRemastered,
+        Ai4k : _Ai4k,
+        Ai60fps : _Ai60fps,
+        AiHentai : _AiHentai,
+        AiRemastered : _AiRemastered,
     }
 
+    console.log(data);
+    
     return data;
-}
-
-const ExperimentToMedia = (legacyArry:ExperimentAnimeTitles[], destinationArry: Media[]) => {
-    legacyArry.forEach(el => {
-        let _title: MediaTitle = {
-            romaji: el.title,
-            native: el.title,
-            userPreferred: el.title,
-            english: el.title
-        }
-
-        let _img: MediaCoverImage = {
-            color:null,
-            extraLarge: el.cover_img,
-            large: el.cover_img,
-            medium: el.cover_img
-        }
-        let mediaItem: Media = {
-             /** The id of the media*/
-            id: null,
-            idMal: null,
-            title: _title,
-            type: null,
-            format: null,
-            status: null,
-            description: null,
-            startDate: null,
-            endDate: null,
-            season: null,
-            seasonYear: null,
-            seasonInt: null,
-            episodes: null,
-            duration: null,
-            chapters: null,
-            volumes: null,
-            countryOfOrigin: null,
-            isLicensed: null,
-            source: null,
-            hashtag: null,
-            trailer: null,
-            updatedAt: null,
-            coverImage: _img,
-            bannerImage: _img.extraLarge,
-            genres: null,
-            synonyms: null,
-            averageScore: el.score,
-            meanScore: el.score,
-            popularity: null,
-            isLocked: false,
-            trending: null,
-            favourites: null,
-            tags: null,
-            relations: null,
-            characters: null,
-            staff: null,
-            studios: null,
-            isFavourite: false,
-            isFavouriteBlocked: null,
-            isAdult: false,
-            nextAiringEpisode: null,
-            airingSchedule: null,
-            trends: null,
-            externalLinks: null,
-            streamingEpisodes: null,
-            rankings: null,
-            mediaListEntry: null,
-            recommendations: null,
-            isReviewBlocked: false,
-            siteUrl: null,
-            autoCreateForumThread: null,
-            isRecommendationBlocked: false,
-            modNotes: null
-        }
-
-        destinationArry.push(mediaItem);
-    });
 }

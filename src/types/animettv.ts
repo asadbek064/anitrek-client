@@ -18,10 +18,10 @@ export interface ExperimentAnimeTitles {
 
 
 export interface AiTitles {
-    Ai4k: Maybe<Media[]>;
-    Ai60fps: Maybe<Media[]>;
-    AiRemastered: Maybe<Media[]>;
-    AiHentai: Maybe<Media[]>;
+    Ai4k: Maybe<ExperimentAnimeTitles[]>;
+    Ai60fps: Maybe<ExperimentAnimeTitles[]>;
+    AiRemastered: Maybe<ExperimentAnimeTitles[]>;
+    AiHentai: Maybe<ExperimentAnimeTitles[]>;
 }
 
 export interface anime60fps {

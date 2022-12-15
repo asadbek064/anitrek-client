@@ -53,6 +53,8 @@ interface WatchPageProps {
 }
 
 const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
+  console.log(episodes);
+  
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
   const { isMobile } = useDevice();
@@ -436,7 +438,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     const episodes = data
       .flatMap((connection) => connection.episodes)
       .filter((episode) => episode.published);
-
+    
     return {
       props: {
         episodes,

@@ -44,8 +44,6 @@ export const getAiTitles = async () => {
         AiHentai : _AiHentai,
         AiRemastered : _AiRemastered,
     }
-
-    console.log(data);
     
     return data;
 }

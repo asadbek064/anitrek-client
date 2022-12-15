@@ -10,7 +10,7 @@ import { GetStaticProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
-import { FaDiscord, FaFacebookF } from "react-icons/fa";
+import { FaDiscord } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 interface Quote {
@@ -57,8 +57,8 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
             <p className="text-3xl font-medium mb-8 bg-[#525252] p-2 rounded">Still under development there will be breaking changes in the future. Temporary registration / login are disabled.</p>
 
             <div className="space-y-4">
-              {/* <Button
-                className="shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
+              <Button
+                className="opacity-10 shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
                 LeftIcon={FcGoogle}
                 iconClassName="absolute left-6"
                 onClick={handleSignIn("google")}
@@ -66,21 +66,13 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
                 <p>{t("login_with_google")}</p>
               </Button>
               <Button
-                className="shadow-lg relative bg-[#2D88FF] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
-                LeftIcon={FaFacebookF}
-                iconClassName="absolute left-6"
-                onClick={handleSignIn("facebook")}
-              >
-                <p>{t("login_with_facebook")}</p>
-              </Button>
-              <Button
-                className="shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
+                className="opacity-10 shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
                 LeftIcon={FaDiscord}
                 iconClassName="absolute left-6"
                 onClick={handleSignIn("discord")}
               >
                 <p>{t("login_with_discord")}</p>
-              </Button> */}
+              </Button>
             </div>
           </div>
         </div>
@@ -95,7 +87,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
         >
           <div className="relative flex flex-col justify-center items-center w-full h-full z-20">
             <div className="w-full px-8">
-              <p className="text-4xl font-semibold text-white line-clamp-6">
+              <p className="text-3xl font-semibold text-white line-clamp-6">
                 &quot;{randomQuote.quote}&quot;
               </p>
               <p className="text-right text-xl italic mt-4 font-semibold">

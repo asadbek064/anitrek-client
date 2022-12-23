@@ -80,7 +80,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
         <div
           className="hidden md:block relative col-span-2 after:absolute after:inset-0 after:bg-background/80 after:z-10"
           style={{
-            backgroundImage: "url('/login-background.jpg')",
+            backgroundImage: "url('/atv_chibi_final-min.png')",
             backgroundPosition: "center center",
             backgroundSize: "cover",
           }}

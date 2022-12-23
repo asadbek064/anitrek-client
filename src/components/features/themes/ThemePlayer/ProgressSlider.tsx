@@ -7,13 +7,10 @@ const ProgressSlider = () => {
   return (
     <PlayerProgressSlider
       hideDot
-      className={classNames(
-        isDesktop ? "!h-1 hover:!h-3" : "!h-3",
-        "transition-all duration-250"
+      className={classNames("h-2 "
       )}
       innerClassName={classNames(
-        isDesktop ? "!h-1 hover:!h-3" : "!h-3",
-        "transition-all duration-250"
+        "h-2"
       )}
     />
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { ImSpinner9 } from "react-icons/im";
 
 interface LoadingProps {
   className?: string;
@@ -16,7 +16,7 @@ const Loading: React.FC<LoadingProps> = ({ className = "" }) => {
 
   return (
     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-      <AiOutlineLoading3Quarters className={loadingClassName} />
+      <ImSpinner9 className={loadingClassName} />
     </div>
   );
 };

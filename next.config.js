@@ -4,8 +4,8 @@ const { i18n } = require("./next-i18next.config");
 
 const envVars = {
   env: {
-    NEXT_PUBLIC_SUPABASE_URL:"https://ajaxillvjdoaympzpwif.supabase.co",
-    NEXT_PUBLIC_SUPABASE_ANON_KEY:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFqYXhpbGx2amRvYXltcHpwd2lmIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjQ5MDg4NTAsImV4cCI6MTk4MDQ4NDg1MH0.S93eQ_DlGl0KrywDA5v28QOal2_Vqg7JpYs09aLaNYo",
+    NEXT_PUBLIC_SUPABASE_URL:"https://ybqceoexfwjelfmcyvqv.supabase.co",
+    NEXT_PUBLIC_SUPABASE_ANON_KEY:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlicWNlb2V4ZndqZWxmbWN5dnF2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzE4MjM4NjAsImV4cCI6MTk4NzM5OTg2MH0.Wz4dz2b7m3GZzllP9L9FOU1G4B7VLjKRZdM_4xH_tvE",
     NEXT_PUBLIC_NODE_SERVER_URL:"http://localhost:3001",
     NEXT_PUBLIC_ANIMETTV_SERVER_URL:"http://localhost:3011",
     NEXT_PUBLIC_SOCKET_SERVER_URL:"",

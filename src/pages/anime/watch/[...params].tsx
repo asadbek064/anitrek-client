@@ -53,8 +53,6 @@ interface WatchPageProps {
 }
 
 const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
-  console.log(episodes);
-  
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
   const { isMobile } = useDevice();

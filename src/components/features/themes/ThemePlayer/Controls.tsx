@@ -50,8 +50,8 @@ const Controls: React.FC = () => {
         <div className="flex items-center space-x-4">
           <VolumeButton />
           <PlayPauseButton />
-          <BackwardButton />
-          <ForwardButton />
+          {/* <BackwardButton />
+          <ForwardButton /> */}
           <SettingsButton />
             <div className={(isMobile ? "hidden": '')}>
               <FullscreenButton />

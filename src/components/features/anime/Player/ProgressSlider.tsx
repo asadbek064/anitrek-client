@@ -125,7 +125,7 @@ const ProgressSlider: React.FC<ProgressSliderProps> = ({
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className={classNames("w-full h-4 relative", innerClassName)}>
+      <div className={classNames("w-full h-2 relative", innerClassName)}>
         <Slider.Bar className="bg-white/50" percent={hoverPercent} />
         <Slider.Bar className="bg-white/40" percent={bufferPercent} />
 
@@ -135,7 +135,7 @@ const ProgressSlider: React.FC<ProgressSliderProps> = ({
 
           return (
             <Slider.Bar
-              className="h-4 w-2 absolute bg-primary-700 rounded-full"
+              className="h-2 w-2 absolute bg-primary-700 rounded-full"
               style={{
                 left: `${startPercent}%`,
                 width: `${endPercent - startPercent}%`,
@@ -145,12 +145,12 @@ const ProgressSlider: React.FC<ProgressSliderProps> = ({
           );
         })}
 
-        <Slider.Bar className="bg-primary-500" percent={currentPercent} />
-        <Slider.Bar className="bg-white/20" />
+        <Slider.Bar className="bg-primary-600" percent={currentPercent} />
+        <Slider.Bar className="bg-white/10" />
 
         {!hideDot && (
           <Slider.Dot
-            className="h-4 w-4 absolute bg-primary-500 p-2 rounded-full"
+            className="h-3 w-2 absolute bg-slate-50 p-2 rounded-full"
             percent={currentPercent}
           />
         )}

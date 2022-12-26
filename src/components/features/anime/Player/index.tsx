@@ -114,6 +114,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
 
           frag.url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
         }
+        
       });
     }, []);
 
@@ -162,7 +163,7 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
 
       return requestUrl;
     }, []);
-
+    
     return (
       <CustomVideoStateContextProvider>
         <NetPlayer

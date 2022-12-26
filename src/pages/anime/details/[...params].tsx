@@ -110,7 +110,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               )}
             </div>
 
-            <div className="flex flex-col items-center justify-between py-4 mt-4 text-center md:text-left md:items-start md:-mt-16 space-y-4">
+            <div className="flex flex-col  justify-between py-4 mt-4  md:text-left md:items-start md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4 md:no-scrollbar">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
                   <Link href={`/anime/watch/${anime.id}`}>
@@ -185,7 +185,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <div id="mal-sync"></div>
               </div>
 
-              <div className="flex gap-x-8 overflow-x-auto md:gap-x-16 [&>*]:shrink-0">
+              <div className="flex flex-wrap text-xs md:text-base md:flex-row gap-x-6 gap-y-3 md:overflow-x-auto md:gap-x-16 [&>*]:shrink-0">
                 <InfoItem
                   title={t("common:country")}
                   value={convert(anime.countryOfOrigin, "country", { locale })}
@@ -226,54 +226,54 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
         </Section>
 
         <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
-          <div className="md:col-span-2 xl:h-[max-content] space-y-4">
+          <div className="hidden md:block md:col-span-2 xl:h-[max-content] space-y-4">
             <div className="flex flex-row md:flex-col overflow-x-auto bg-background-900 rounded-md p-4 gap-4 [&>*]:shrink-0 md:no-scrollbar">
-              <InfoItem
-                title={t("common:format")}
-                value={convert(anime.format, "format", { locale })}
-              />
-              <InfoItem title="English" value={anime.title.english} />
-              <InfoItem title="Native" value={anime.title.native} />
-              <InfoItem title="Romanji" value={anime.title.romaji} />
-              <InfoItem
-                title={t("common:popular")}
-                value={numberWithCommas(anime.popularity)}
-              />
-              <InfoItem
-                title={t("common:favourite")}
-                value={numberWithCommas(anime.favourites)}
-              />
-              <InfoItem
-                title={t("common:trending")}
-                value={numberWithCommas(anime.trending)}
-              />
+                <InfoItem
+                  title={t("common:format")}
+                  value={convert(anime.format, "format", { locale })}
+                />
+                <InfoItem title="English" value={anime.title.english} />
+                <InfoItem title="Native" value={anime.title.native} />
+                <InfoItem title="Romanji" value={anime.title.romaji} />
+                <InfoItem
+                  title={t("common:popular")}
+                  value={numberWithCommas(anime.popularity)}
+                />
+                <InfoItem
+                  title={t("common:favourite")}
+                  value={numberWithCommas(anime.favourites)}
+                />
+                <InfoItem
+                  title={t("common:trending")}
+                  value={numberWithCommas(anime.trending)}
+                />
 
-              <InfoItem
-                title="Studio"
-                value={anime.studios.nodes.map((studio) => (
-                  <p key={studio.id}>
-                    <Link href={createStudioDetailsUrl(studio)}>
-                      <a className="hover:text-primary-300 transition duration-300">
-                        {studio.name}
-                      </a>
-                    </Link>
-                  </p>
-                ))}
-              />
+                <InfoItem
+                  title="Studio"
+                  value={anime.studios.nodes.map((studio) => (
+                    <p key={studio.id}>
+                      <Link href={createStudioDetailsUrl(studio)}>
+                        <a className="hover:text-primary-300 transition duration-300">
+                          {studio.name}
+                        </a>
+                      </Link>
+                    </p>
+                  ))}
+                />
 
-              <InfoItem
-                title={t("common:season")}
-                value={`${convert(anime.season, "season", { locale })} ${
-                  anime.seasonYear
-                }`}
-              />
-              <InfoItem
-                title={t("common:synonyms")}
-                value={anime.synonyms.map((synomym) => (
-                  <p key={synomym}>{synomym}</p>
-                ))}
-              />
-            </div>
+                <InfoItem
+                  title={t("common:season")}
+                  value={`${convert(anime.season, "season", { locale })} ${
+                    anime.seasonYear
+                  }`}
+                />
+                <InfoItem
+                  title={t("common:synonyms")}
+                  value={anime.synonyms.map((synomym) => (
+                    <p key={synomym}>{synomym}</p>
+                  ))}
+                />
+              </div>
 
             <div className="space-y-2 text-gray-400">
               <h1 className="font-semibold">Tags</h1>

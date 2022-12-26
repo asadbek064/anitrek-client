@@ -118,7 +118,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
 
           return (
             <div className="space-y-1" key={section}>
-              {Object.keys(sections)?.length > 1 && (
+              {Object.keys(sections)?.length > 0 && (
                 <p className="font-semibold text-gray-300">{section}</p>
               )}
 

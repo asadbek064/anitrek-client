@@ -57,7 +57,7 @@ const PlayerControls = React.memo(() => {
 
           {anime?.id && (
             <EpisodesButton>
-              <div className="w-[70vw] overflow-hidden bg-background-900 p-4">
+              <div className="w-[65vw] overflow-hidden bg-background-900 p-4 rounded-md">
                 <LocaleEpisodeSelector
                   mediaId={anime.id}
                   episodes={episodes}

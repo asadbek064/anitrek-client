@@ -46,31 +46,36 @@ const AiUpscale = () => {
                 </a>
               </h2>
             </div>
-            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4"></Section>
-
-            {aiTitlesLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("4K Anime", { ns: "common" })}>
-                <AiGallery images={aiTitles.Ai4k}/>
+              <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
+                
               </Section>
-            )}
 
-            {aiTitlesLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("60FPS Anime", { ns: "common" })}>
-              <AiGallery images={aiTitles.Ai60fps}/>
-            </Section>
-            )}
+              <div className="flex flex-col items-center">
+                {aiTitlesLoading ? (
+                  <ListSwiperSkeleton />
+                ) : (
+                  <Section title={t("4K Anime", { ns: "common" })}>
+                    <AiGallery images={aiTitles.Ai4k}/>
+                  </Section>
+                )}
 
-          {aiTitlesLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("Remastered Anime", { ns: "common" })}>
-              <AiGallery images={aiTitles.AiRemastered}/>
-            </Section>
-            )}
+                {aiTitlesLoading ? (
+                  <ListSwiperSkeleton />
+                ) : (
+                  <Section title={t("60FPS Anime", { ns: "common" })}>
+                  <AiGallery images={aiTitles.Ai60fps}/>
+                </Section>
+                )}
+
+              {aiTitlesLoading ? (
+                  <ListSwiperSkeleton />
+                ) : (
+                  <Section title={t("Remastered Anime", { ns: "common" })}>
+                  <AiGallery images={aiTitles.AiRemastered}/>
+                </Section>
+                )}
+              </div>
+              
 
             <div
               className={classNames(

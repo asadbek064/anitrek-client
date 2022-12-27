@@ -27,7 +27,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
     activeEpisode,
     chunkSwiperProps,
     episodeLinkProps,
-    episodeChunk = isMobile ? 6 : 18,
+    episodeChunk = isMobile ? 12 : 24,
     onEachEpisode = (episode) => (
       <Link
         href={`/anime/watch/${props.mediaId}/${episode.sourceId}/${episode.sourceEpisodeId}`}
@@ -39,7 +39,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
           className={classNames(
             "rounded-md bg-[#424242] col-span-1 aspect-w-2 aspect-h-1 group",
             episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId &&
-              "text-primary-300"
+              "text-primary-500"
           )}
         >
           <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">
@@ -79,7 +79,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
     <React.Fragment>
       <ArrowSwiper
         isOverflowHidden={false}
-        className="w-11/12 mx-auto"
+        className="w-10/12 mx-auto"
         defaultActiveSlide={realActiveTabIndex}
         {...chunkSwiperProps}
       >

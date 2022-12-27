@@ -89,13 +89,13 @@ const MobileOverlay: React.FC<MobileOverlayProps> = ({ children }) => {
         </div>
 
         <div className="absolute top-4 right-4 flex items-center space-x-2">
-          <div className="w-8 h-8">
+          {/* <div className="w-8 h-8">
             <MobileTimestampsButton />
-          </div>
+          </div> */}
 
-          <div className="w-8 h-8">
+          {/* <div className="w-8 h-8">
             <ScreenshotButton />
-          </div>
+          </div> */}
 
           <div className="w-8 h-8">
             <SettingsButton />

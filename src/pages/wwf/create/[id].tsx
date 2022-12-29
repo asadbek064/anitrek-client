@@ -161,7 +161,7 @@ const CreateRoomPage: NextPage<CreateRoomPageProps> = ({ media, episodes }) => {
                   <button
                     key={episode.sourceEpisodeId}
                     className={classNames(
-                      "rounded-md bg-background-800 col-span-1 aspect-w-2 aspect-h-1 group",
+                      "rounded-md bg-background-600 col-span-1 aspect-w-2 aspect-h-1 group",
                       episode.sourceEpisodeId ===
                         chosenEpisode?.sourceEpisodeId && "text-primary-300"
                     )}

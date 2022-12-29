@@ -53,12 +53,55 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
       <div className="w-full h-screen grid grid-cols-1 md:grid-cols-5">
         <div className="col-span-3 bg-background flex items-center justify-center">
           <div className="w-full px-4 md:px-0 md:w-1/2">
-            <h1 className="text-5xl font-bold mb-8">{t("login_heading")}</h1>
-            <p className="text-3xl font-medium mb-8 bg-[#525252] p-2 rounded">Still under development there will be breaking changes in the future. Temporary registration / login are disabled.</p>
-
+            <h1 className="text-5xl font-bold mb-8">{t("login_heading")} TEST</h1>
             <div className="space-y-4">
+            <form>
+                  <div className="mb-6">
+                    <input
+                      type="text"
+                      className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      placeholder="Email address"
+                    />
+                  </div>
+
+                  <div className="mb-6">
+                    <input
+                      type="password"
+                      className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                      placeholder="Password"
+                    />
+                  </div>
+
+                  <div className="flex justify-between items-center mb-6">
+                    <a
+                      href="#!"
+                      className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                    >
+                      Forgot password?
+                    </a>
+                    <a
+                      href="#!"
+                      className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                    >
+                      Register
+                    </a>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                    data-mdb-ripple="true"
+                    data-mdb-ripple-color="light"
+                  >
+                    Sign in
+                  </button>
+
+                  <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                    <p className="text-center font-semibold mx-4 mb-0">OR</p>
+                  </div>
+                </form>
               <Button
-                className="opacity-10 shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
+                className="shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
                 LeftIcon={FcGoogle}
                 iconClassName="absolute left-6"
                 onClick={handleSignIn("google")}
@@ -66,7 +109,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
                 <p>{t("login_with_google")}</p>
               </Button>
               <Button
-                className="opacity-10 shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
+                className=" shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
                 LeftIcon={FaDiscord}
                 iconClassName="absolute left-6"
                 onClick={handleSignIn("discord")}
@@ -78,7 +121,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
         </div>
 
         <div
-          className="hidden md:block relative col-span-2 after:absolute after:inset-0 after:bg-background/80 after:z-10"
+          className="hidden md:block relative col-span-2 after:absolute after:inset-0 after:bg-background/70 after:z-10"
           style={{
             backgroundImage: "url('/login-background.jpg')",
             backgroundPosition: "center center",
@@ -87,13 +130,13 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
         >
           <div className="relative flex flex-col justify-center items-center w-full h-full z-20">
             <div className="w-full px-8">
-              <p className="text-3xl font-semibold text-white line-clamp-6">
+              <p className="text-xl font-semibold text-white line-clamp-6">
                 &quot;{randomQuote.quote}&quot;
               </p>
-              <p className="text-right text-xl italic mt-4 font-semibold">
+              <p className="text-right text-l italic mt-4 font-semibold">
                 {randomQuote.character}
               </p>
-              <p className="text-right font-medium text-gray-300">
+              <p className="text-right text-xs font-medium text-gray-300">
                 {randomQuote.anime}
               </p>
             </div>

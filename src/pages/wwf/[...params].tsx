@@ -283,12 +283,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     } = ctx;
 
     const { data: room, error } = await supabase
-      .from<Room>("AnimeTV_rooms")
+      .from<Room>("kaguya_roomss")
       .select(
         `
         *,
         episode:episodeId(*),
-        users:AnimeTV_room_users(*),
+        users:kaguya_rooms_users(*),
         hostUser:hostUserId(*)
       `
       )
@@ -299,10 +299,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     if (error) throw error;
 
     const sourceConnectionPromise = supabase
-      .from<AnimeSourceConnection>("AnimeTV_anime_source")
+      .from<AnimeSourceConnection>("kaguya_anime_source")
       .select(
         `
-          episodes:AnimeTV_episodes(*, source:AnimeTV_sources(*))
+          episodes:kaguya_episodes(*, source:kaguya_sources(*))
         `
       )
       .eq("mediaId", room.mediaId);

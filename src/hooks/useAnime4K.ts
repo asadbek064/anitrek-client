@@ -8,8 +8,7 @@ const useAnime4K = () => {
 
   const mediaList = useMemo(() => {
     if (isLoading) return null;
-    
-    console.log(data);
+
     return data;
   }, [data, isLoading]);
 

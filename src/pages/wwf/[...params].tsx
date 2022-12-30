@@ -224,7 +224,7 @@ const RoomPage: NextPage<RoomPageProps> = ({ room, user }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title || mediaTitle} - Kaguya`}
+        title={`${title || mediaTitle} - AnimeTV`}
         description={t("head_description", {
           mediaTitle,
           username:
@@ -283,12 +283,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     } = ctx;
 
     const { data: room, error } = await supabase
-      .from<Room>("kaguya_rooms")
+      .from<Room>("AnimeTV_rooms")
       .select(
         `
         *,
         episode:episodeId(*),
-        users:kaguya_room_users(*),
+        users:AnimeTV_room_users(*),
         hostUser:hostUserId(*)
       `
       )
@@ -299,10 +299,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     if (error) throw error;
 
     const sourceConnectionPromise = supabase
-      .from<AnimeSourceConnection>("kaguya_anime_source")
+      .from<AnimeSourceConnection>("AnimeTV_anime_source")
       .select(
         `
-          episodes:kaguya_episodes(*, source:kaguya_sources(*))
+          episodes:AnimeTV_episodes(*, source:AnimeTV_sources(*))
         `
       )
       .eq("mediaId", room.mediaId);

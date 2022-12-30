@@ -41,8 +41,8 @@ const Head: React.FC<HeadProps> = (props) => {
 
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="application-name" content="Kaguya" />
-      <meta name="apple-mobile-web-app-title" content="Kaguya" />
+      <meta name="application-name" content="AnimetTV" />
+      <meta name="apple-mobile-web-app-title" content="AnimetTV" />
       <meta name="theme-color" content="#EF4444" />
       <meta name="msapplication-navbutton-color" content="#EF4444" />
       <meta

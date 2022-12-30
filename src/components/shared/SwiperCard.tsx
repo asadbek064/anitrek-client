@@ -71,7 +71,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
     () => getTitle(data, router.locale),
     [data, router?.locale]
   );
-    console.log(data);
+
   useEffect(() => {
     if (!containerRef.current) return;
 

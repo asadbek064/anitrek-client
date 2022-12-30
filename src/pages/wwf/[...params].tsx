@@ -224,7 +224,7 @@ const RoomPage: NextPage<RoomPageProps> = ({ room, user }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title || mediaTitle} - AnimeTV`}
+        title={`${title || mediaTitle} - Kaguya`}
         description={t("head_description", {
           mediaTitle,
           username:
@@ -283,12 +283,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     } = ctx;
 
     const { data: room, error } = await supabase
-      .from<Room>("kaguya_roomss")
+      .from<Room>("kaguya_rooms")
       .select(
         `
         *,
         episode:episodeId(*),
-        users:kaguya_rooms_users(*),
+        users:kaguya_room_users(*),
         hostUser:hostUserId(*)
       `
       )

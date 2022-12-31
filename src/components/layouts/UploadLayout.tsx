@@ -81,19 +81,19 @@ const UploadLayout: React.FC = ({ children }) => {
                     primary
                     LeftIcon={AiOutlinePlus}
                   >
-                    Đăng tải
+                    Upload
                   </Button>
                 }
               >
                 <div className="space-y-1">
                   <Link href="/upload/anime/create">
                     <a>
-                      <Button secondary>Đăng anime</Button>
+                      <Button secondary>Post anime</Button>
                     </a>
                   </Link>
                   <Link href="/upload/manga/create">
                     <a>
-                      <Button secondary>Đăng manga</Button>
+                      <Button secondary>Post manga</Button>
                     </a>
                   </Link>
                 </div>
@@ -132,7 +132,7 @@ const UploadLayout: React.FC = ({ children }) => {
               >
                 <BiLogOutCircle className="w-6 h-6" />
 
-                <p>Quay về trang chủ</p>
+                <p>Back to home page</p>
               </li>
             </a>
           </Link>

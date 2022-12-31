@@ -16,16 +16,16 @@ const UploadContainer: React.FC<UploadContainerProps> = ({
       {!isVerified ? (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 space-y-2">
           <p className="text-center text-3xl">
-            Bạn cần phải{" "}
+          You need to{" "}
             <a
               href={DISCORD_REG_URL}
               className="hover:underline text-primary-300"
               target="_blank"
               rel="noreferrer"
             >
-              đăng ký
+              sign up to
             </a>{" "}
-            để được upload.
+            to be an uploader.
           </p>
         </div>
       ) : (

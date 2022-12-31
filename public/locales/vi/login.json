@@ -1,7 +1,7 @@
 {
-  "login_description": "Đăng nhập vào AnimeTV để xem anime và sử dụng nhiều tính năng hay.",
-  "login_heading": "Đăng nhập",
-  "login_with_facebook": "Đăng nhập với Facebook",
-  "login_with_google": "Đăng nhập với Google",
-  "login_with_discord": "Đăng nhập với Discord"
+  "login_description": "Sign in to AnimeTV to watch anime and use many cool features.",
+  "login_heading": "Log in",
+  "login_with_facebook": "Login with Facebook",
+  "login_with_google": "Login with  Google",
+  "login_with_discord": "Login with Discord"
 }

@@ -53,9 +53,9 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
       <div className="w-full h-screen grid grid-cols-1 md:grid-cols-5">
         <div className="col-span-3 bg-background flex items-center justify-center">
           <div className="w-full px-4 md:px-0 md:w-1/2">
-            <h1 className="text-5xl font-bold mb-8">{t("login_heading")} TEST</h1>
+            <h1 className="text-5xl font-bold mb-8">{t("login_heading")} BETA</h1>
             <div className="space-y-4">
-            <form>
+            <form className="opacity-5">
                   <div className="mb-6">
                     <input
                       type="text"

@@ -101,7 +101,7 @@ const UploadEpisodeEditPage: NextPage<UploadEpisodeEditPageProps> = ({
               <UploadSection.Right className="space-y-1">
                 <p>
                   Tình trạng video:{" "}
-                  {videoStatus.converted ? "Đã chuyển đổi" : "Đang chuyển đổi"}
+                  {videoStatus.converted ? "Converted" : "Converting"}
                 </p>
 
                 <VideoUpdate
@@ -155,24 +155,23 @@ const UploadEpisodeEditPage: NextPage<UploadEpisodeEditPageProps> = ({
             confirmString={data.name}
           >
             <h1 className="text-2xl font-semibold">
-              Bạn có chắc chắn xóa không?
+              Are you sure you want to delete?
             </h1>
 
             <p>
-              Một khi đã xóa, bạn sẽ không thể khôi phục lại. Điều này sẽ xóa
-              hoàn toàn bất kỳ dữ liệu nào liên quan đến tập này.
+              Once deleted, you cannot restore it. This will delete absolutely any data relating to this set.
             </p>
           </DeleteConfirmation>
 
           <div className="flex gap-2 items-center">
             <p>
-              Tình trạng tập phim: {data.published ? "Đã đăng" : "Chưa đăng"}
+            Episode Status: {data.published ? "Posted" : "Not posted yet"}
             </p>
 
             <Link href={`/upload/anime/${mediaId}/episodes/create`}>
               <a>
                 <Button className="!bg-gray-600 hover:!bg-opacity-80">
-                  Tạo tập mới
+                Create a new episode
                 </Button>
               </a>
             </Link>
@@ -180,7 +179,7 @@ const UploadEpisodeEditPage: NextPage<UploadEpisodeEditPageProps> = ({
             {data.published ? (
               <Link href={`/anime/watch/${mediaId}/${sourceId}/${episodeId}`}>
                 <a>
-                  <Button primary>Xem tập phim</Button>
+                  <Button primary>Watch the episode</Button>
                 </a>
               </Link>
             ) : (
@@ -190,7 +189,7 @@ const UploadEpisodeEditPage: NextPage<UploadEpisodeEditPageProps> = ({
                 disabled={!videoStatus.converted}
                 onClick={handlePublish}
               >
-                Đăng tập phim
+                Post episode
               </Button>
             )}
           </div>

@@ -21,9 +21,17 @@ const useRecentlyUpdated = () => {
       "id"
     );
   }, [data, isLoading]);
+  
+  
+  const mediaListFilterHentai = useMemo(() => {
+    if (isLoading) return null;
+    
+    return mediaList?.filter((media) => media?.genres?.indexOf("Hentai") === -1);
+  }, [mediaList, isLoading]);
 
+  
   return {
-    data: mediaList,
+    data: mediaListFilterHentai,
     isLoading,
     ...rest,
   };

@@ -382,6 +382,13 @@ export const getStaticProps: GetStaticProps = async ({
       id: Number(params[0]),
     });
 
+    // filter out each nodes in media.recommendations by isAdult = false and set it to new array
+    const filteredRecommendations = media.recommendations.nodes.filter(
+      (node) => node.mediaRecommendation.isAdult === false
+    );
+    // set media.recommendations.nodes to new array
+    media.recommendations.nodes = filteredRecommendations;
+
     return {
       props: {
         anime: media as Media,

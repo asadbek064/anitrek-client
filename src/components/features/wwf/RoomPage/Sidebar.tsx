@@ -52,9 +52,9 @@ const Sidebar = () => {
         <TabPanel className="hidden h-full p-2">
           <ChatBar />
         </TabPanel>
-        <TabPanel className="hidden h-full p-2">
+        {/* <TabPanel className="hidden h-full p-2">
           <AudioChat />
-        </TabPanel>
+        </TabPanel> */}
       </div>
     </Tabs>
   );

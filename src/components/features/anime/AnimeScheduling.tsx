@@ -22,6 +22,22 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
   const today = dayjs();
   const todayIndex = today.day();
 
+  // dayjs current date month
+  const currentMonth = today.format("MM/DD/YYYY");
+// dayjs get current time am pm
+  const currentAMPM = today.format("A");
+
+  // create nextjs current time counter
+  const [currentTime, setCurrentTime] = useState(dayjs().unix());
+  // set current time every second
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(dayjs().unix());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  
   const [selectedTab, setSelectedTab] = useState(todayIndex);
 
   const selectedDayOfWeek = dayjs().day(selectedTab);
@@ -43,6 +59,9 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
       defaultIndex={todayIndex}
       selectedTabClassName="bg-white !text-black"
     >
+      <div className="opacity-60 text-center text-md font-bold">
+        Now: {currentMonth} {dayjs.unix(currentTime).format("HH:mm:ss")} {currentAMPM}
+      </div>
       <TabList className="w-5/6 mx-auto flex items-center justify-center flex-wrap gap-x-4 lg:gap-x-8">
         {DAYSOFWEEK.map((day, index) => {
           const isToday = todayIndex === index;
@@ -51,8 +70,8 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
             <Tab
               key={day}
               className={classNames(
-                "px-3 py-2 rounded-[18px] cursor-pointer hover:bg-white hover:text-black transition duration-300",
-                isToday && "text-primary-400"
+                "px-4 py-2 rounded-[5px] cursor-pointer hover:bg-white hover:text-black transition duration-250",
+                isToday && "text-primary-500"
               )}
             >
               {day}
@@ -70,7 +89,7 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
                   <Loading />
                 </div>
               ) : !schedules?.length ? (
-                <p className="text-2xl text-center">Không có...</p>
+                <p className="text-2xl text-center">Not available...</p>
               ) : (
                 <CardSwiper
                   data={removeArrayOfObjectDup(
@@ -99,7 +118,7 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
                               {!isReleased
                                 ? dayjs
                                     .unix(cardWithSchedule.airingAt)
-                                    .format("HH:mm")
+                                    .format("hh:mm a")
                                 : t("airing_schedule_passed")}
                             </span>
                           </DotList>

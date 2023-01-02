@@ -2,12 +2,14 @@ import ArrowSwiper, {
   SwiperProps,
   SwiperSlide,
 } from "@/components/shared/ArrowSwiper";
+import { AiOutlineDown } from "react-icons/ai";
 import useDevice from "@/hooks/useDevice";
 import { Episode } from "@/types";
 import { chunk, groupBy } from "@/utils";
 import classNames from "classnames";
 import Link, { LinkProps } from "next/link";
 import React, { useMemo } from "react";
+import Select from 'react-select';
 
 export interface EpisodeSelectorProps {
   episodes: Episode[];
@@ -75,42 +77,67 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
     [chunks, realActiveTabIndex]
   );
 
+  const options = chunks.map((chunk, i) => {
+    const firstEpisodeName = chunk[0].name.replace("Tap", "");
+    const lastEpisodeName = chunk[chunk.length - 1].name.replace(
+      "Tap",
+      ""
+    );
+  
+    const title =
+      chunk.length === 1
+        ? `${firstEpisodeName}`
+        : `${firstEpisodeName} - ${lastEpisodeName}`;
+  
+    return { value: i, label: title };
+  });
+  
+
   return (
     <React.Fragment>
-      <ArrowSwiper
-        isOverflowHidden={false}
-        className="w-10/12 mx-auto"
-        defaultActiveSlide={realActiveTabIndex}
-        {...chunkSwiperProps}
-      >
-        {chunks.map((chunk, i) => {
-          const firstEpisodeName = chunk[0].name.replace("Tap", "");
-          const lastEpisodeName = chunk[chunk.length - 1].name.replace(
-            "Tap",
-            ""
-          );
-
-          const title =
-            chunk.length === 1
-              ? `${firstEpisodeName}`
-              : `${firstEpisodeName} - ${lastEpisodeName}`;
-
-          return (
-            <SwiperSlide onClick={() => setActiveTabIndex(i)} key={i}>
-              <div
-                className={classNames(
-                  "text-gray-300 cursor-pointer mx-auto rounded-[10px] px-2 py-1 w-[max-content] duration-250 transition",
-                  realActiveTabIndex === i
-                    ? "bg-primary text-white"
-                    : "hover:text-white hover:bg-primary"
-                )}
-              >
-                {title}
-              </div>
-            </SwiperSlide>
-          );
+      <div className="flex justify-start w-full mx-auto mb-8">
+        <Select
+        theme={(theme) => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary: "#ef4444",
+            primary75: "#f87171",
+            primary50: "#fca5a5",
+            primary20: "#fecaca",
+          },
         })}
-      </ArrowSwiper>
+        styles={{
+          control: (provided) => {
+            return {
+              ...provided,
+              backgroundColor: "#1a1a1a",
+            };
+          },
+          menu: (provided) => {
+            return { ...provided, backgroundColor: "#1a1a1a" };
+          },
+          menuPortal: (provided) => ({ ...provided, zIndex: 9999 }),
+          singleValue: (provided) => {
+            return { ...provided, color: "#fff" };
+          }, 
+          option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+            return {
+              ...styles,
+              backgroundColor: isFocused ? "#999999" : null,
+          
+            };
+          }
+        
+          
+
+        }}
+
+          value={options[realActiveTabIndex]}
+          onChange={(selectedOption) => setActiveTabIndex(selectedOption.value)}
+          options={options}
+        />
+      </div> 
 
       <div className="mt-10 space-y-4">
         {Object.keys(sections).map((section) => {
@@ -123,7 +150,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
               )}
 
               <div className="grid xl:grid-cols-8 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-4">
-                {episodes.map(onEachEpisode)}
+                {episodes.map(onEachEpisode)} 
               </div>
             </div>
           );

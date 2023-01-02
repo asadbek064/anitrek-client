@@ -106,20 +106,20 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
               />
-              {/* <ColumnSection
+              <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularAllTime}
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
-              /> */}
-              <ColumnSection
+              />
+              {/* <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={favouriteSeason}
                 viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={favouriteSeasonLoading}
-              />
+              /> */}
               <ColumnSection
                 title={t("most_favourite", { ns: "common" })}
                 type={MediaType.Anime}
@@ -139,6 +139,7 @@ const Home = () => {
               </Section>
             )}
 
+
             <div
               className={classNames(
                 "flex gap-8",
@@ -146,8 +147,8 @@ const Home = () => {
               )}
             >
               <Section
-                title={t("should watch today", { ns: "anime_home" })}
-                className="w-full md:w-[80%] md:!pr-0"
+                title={t("should_watch_today", { ns: "anime_home" })}
+                className="w-full md:w-[75%] md:!pr-0"
               >
                 {randomAnime && (
                   <ShouldWatch data={randomAnime} isLoading={!randomAnime} />
@@ -156,7 +157,7 @@ const Home = () => {
 
               <Section
                 title={t("genres", { ns: "common" })}
-                className="w-full md:w-[20%] md:!pl-0"
+                className="w-full md:w-[30%] md:!pl-0"
               >
                 <GenreSwiper className="md:h-[500px]" />
               </Section>

@@ -187,7 +187,7 @@ const Header = () => {
           {({ isActive }) => (
             <AiOutlineSearch
               className={classNames(
-                "w-7 h-7 font-semibold hover:text-primary-300 transition duration-300",
+                "w-7 h-7 font-semibold hover:text-primary-500 transition duration-300",
                 isActive && "text-primary-300"
               )}
             />
@@ -195,9 +195,7 @@ const Header = () => {
         </NavItem>
 
         <PWAInstallPrompt />
-        <LanguageSwitcher/>
-        
-
+        {isMobile ? '' : <LanguageSwitcher/>}
         {user ? (
           <HeaderProfile />
         ) : (

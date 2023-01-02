@@ -15,7 +15,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { AiFillHeart, AiFillLike } from "react-icons/ai";
-import { BsFillHeartFill } from "react-icons/bs";
+import { BsFillHeartFill, BsStarFill } from "react-icons/bs";
 import { MdTagFaces } from "react-icons/md";
 import Description from "./Description";
 
@@ -52,7 +52,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
     redirectUrl = createMediaDetailsUrl(data),
     isExpanded,
   } = props;
-
+  
   const containerRef = useRef<HTMLDivElement>(null);
   const [cardSize, setCardSize] = useState({ width: 0, height: 0 });
 
@@ -111,15 +111,19 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                   }}
                   className="absolute h-full w-full"
                 >
-                  <Image
-                    src={data.coverImage?.extraLarge}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-sm"
-                    alt={title}
-                  />
+                  
+                    <Image
+                      src={data.coverImage?.extraLarge}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-sm"
+                      alt={title}
+                    />      
                 </motion.div>
-              ) : (
+                
+              ) 
+              :
+               /* (
                 <motion.div
                   key={data.bannerImage || data.coverImage?.extraLarge}
                   initial={{ opacity: 0 }}
@@ -195,23 +199,34 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                     </motion.div>
                   </div>
                 </motion.div>
-              )}
+              ) */ ''}
             </AnimatePresence>
           </motion.div>
 
           <motion.div
-            className="mt-4"
+            className="mt-2"
             transition={{ duration: 0.1 }}
             variants={slotVariants}
           >
             {containerEndSlot}
           </motion.div>
-          <p
-            className="mt-2 text-base font-semibold line-clamp-2"
-            style={{ color: primaryColor }}
-          >
-            {title}
-          </p>
+          <div>
+            <div className="flex flex-row" style={{ color: primaryColor }}>
+              <div className="self-center	">
+                <BsStarFill /> 
+              </div>
+              <div className="px-1 ">
+                {data.averageScore != null && data.averageScore != 0 ? (data.averageScore/10) : ('N/A')} 
+              </div>
+            </div>
+            <p
+              className="mt-1 text-base font-semibold line-clamp-2"
+              style={{ color: primaryColor }}
+            >
+              {title}
+              
+            </p>
+          </div>
         </motion.div>
       </a>
     </Link>

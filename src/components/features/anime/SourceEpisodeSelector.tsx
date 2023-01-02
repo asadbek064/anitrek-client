@@ -110,11 +110,11 @@ const SourceEpisodeSelector: React.FC<SourceEpisodeSelectorProps> = ({
         />
       </div>
 
-      <EpisodeSelector
+      {<EpisodeSelector
         episodes={sourceEpisodes}
         activeEpisode={activeEpisode}
         {...episodeSelectorProps}
-      />
+      />}
     </React.Fragment>
   );
 };

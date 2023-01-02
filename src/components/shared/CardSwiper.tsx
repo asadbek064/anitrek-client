@@ -30,6 +30,7 @@ const getVisibleIndex = (swiper: SwiperInstance) => {
   };
 };
 
+
 const CardSwiper: React.FC<CardSwiperProps> = (props) => {
   const {
     data,
@@ -37,6 +38,7 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
       <SwiperCard isExpanded={isHover} data={data} />
     ),
   } = props;
+
 
   const [swiper, setSwiper] = useState<SwiperInstance>();
   const [activeIndex, setActiveIndex] = useState(null);

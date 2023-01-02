@@ -62,8 +62,8 @@ const NewestComments: React.FC<NewestCommentsProps> = (props) => {
 
           return (
             <SwiperSlide key={comment.id}>
-              <div className="aspect-w-1 aspect-h-1 w-full overflow-y-hidden rounded-lg bg-background-800">
-                <div className="flex h-full w-full flex-col justify-between space-y-2 p-4 md:space-y-4">
+              <div className="aspect-w-1 aspect-h-1 w-full overflow-y-hidden rounded-sm bg-background-800">
+                <div className="flex h-full w-full flex-col justify-between space-y-2 p-2 md:p-3 md:space-y-4">
                   <div className="space-y-4">
                     <div className="flex shrink-0 items-center space-x-2">
                       <Avatar src={user?.avatar} />
@@ -71,7 +71,7 @@ const NewestComments: React.FC<NewestCommentsProps> = (props) => {
                       <div className="space-y-1 text-sm">
                         <p className="line-clamp-1">{user?.name}</p>
 
-                        <p className="text-gray-300 line-clamp-1">
+                        <p className="text-gray-300 line-clamp-1 text-xs">
                           {dayjs(comment.created_at, { locale }).fromNow()}
                         </p>
                       </div>

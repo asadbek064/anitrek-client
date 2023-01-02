@@ -59,10 +59,13 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
       defaultIndex={todayIndex}
       selectedTabClassName="bg-white !text-black"
     >
-      <div className="opacity-60 text-center text-md font-bold">
-        Now: {currentMonth} {dayjs.unix(currentTime).format("HH:mm:ss")} {currentAMPM}
+      <div className="opacity-60 text-center text-md font-bold py-2 tracking-wide flex ">
+        Now: {currentMonth} 
+        <div>
+        {dayjs.unix(currentTime).format("HH:mm:ss")} {currentAMPM}
+        </div> 
       </div>
-      <TabList className="w-5/6 mx-auto flex items-center justify-center flex-wrap gap-x-4 lg:gap-x-8">
+      <TabList className="w-5/6 mx-auto flex items-center justify-center flex-wrap gap-x-4 lg:gap-x-8 ">
         {DAYSOFWEEK.map((day, index) => {
           const isToday = todayIndex === index;
 

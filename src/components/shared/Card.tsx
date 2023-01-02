@@ -10,11 +10,11 @@ import {
 import { convert, getDescription, getTitle } from "@/utils/data";
 import { Options } from "@popperjs/core";
 import classNames from "classnames";
-import { log } from "console";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import { AiFillHeart } from "react-icons/ai";
+import { BsStarFill } from "react-icons/bs";
 import { MdTagFaces } from "react-icons/md";
 import Description from "./Description";
 import Popup from "./Popup";
@@ -26,6 +26,7 @@ interface CardProps {
   imageEndSlot?: React.ReactNode;
   redirectUrl?: string;
 }
+
 
 const popupOptions: Partial<Options> = {
   strategy: "absolute",
@@ -78,7 +79,6 @@ const Card: React.FC<CardProps> = (props) => {
     () => getDescription(data, router.locale),
     [data, router.locale]
   );
-
   return (
     <Link href={redirectUrl}>
       <a>
@@ -102,12 +102,32 @@ const Card: React.FC<CardProps> = (props) => {
                 {imageEndSlot}
               </div>
 
-              <p
-                className="mt-2 text-base font-semibold line-clamp-2"
-                style={{ color: primaryColor }}
-              >
-                {title}
-              </p>
+              <div  className="text-sm md:text-base">
+                <div className="flex flex-row mt-2 px-2  opacity-90 " style={{ color: primaryColor }}>
+                  <div className="flex flex-row">
+                    <div className="self-center	">
+                      <BsStarFill /> 
+                    </div>
+                      <div className="px-1">
+                        {data.averageScore != null && data.averageScore != 0 ? (data.averageScore/10) : ('.')} 
+                      </div>
+                  </div>
+                  <div className="flex flex-row mx-auto pl-4">
+                    <div className="">
+                      EP {data.episodes != null && data.episodes != 0 ? ( (data.episodes)) : ('.')}
+                    </div>
+                    <div className="pl-2 ">
+                        {data.format != null ? ( (data.format)) : ('.')}
+                    </div>
+                  </div>
+              </div>
+                <p
+                  className="mt-1 font-semibold line-clamp-2"
+                  style={{ color: primaryColor }}
+                >
+                  {title}
+                </p>
+              </div>
             </React.Fragment>
           }
           options={popupOptions}

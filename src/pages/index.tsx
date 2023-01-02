@@ -99,13 +99,13 @@ const Home = () => {
             <RecommendedAnimeSection />
 
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-              <ColumnSection
+             { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularSeason}
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
-              />
+              />}
               <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
@@ -113,7 +113,7 @@ const Home = () => {
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
               />
-              {/* <ColumnSection
+            {/*   <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={favouriteSeason}

@@ -27,6 +27,7 @@ module.exports = {
           secondary: colors.stone["300"],
         },
       },
+     
     },
   },
 

@@ -195,7 +195,7 @@ const Header = () => {
         </NavItem>
 
         <PWAInstallPrompt />
-        {isMobile ? '' : <LanguageSwitcher/>}
+        {isMobile ? ('') : (<LanguageSwitcher/>)}
         {user ? (
           <HeaderProfile />
         ) : (

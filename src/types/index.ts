@@ -43,6 +43,13 @@ export type Source = {
   isCustomSource: boolean;
 };
 
+export type watchListSource = {
+  mediaId: number;
+  userId: string;
+  status: string;
+  created_at: string;
+}
+
 export type Video = {
   fonts: Attachment[];
   subtitles: Attachment[];
@@ -341,3 +348,13 @@ export type NotificationEntity = {
   redirectUrl: string;
 };
 
+
+export type KaguyaWatched = {
+  userId: string;
+  mediaId: number;
+  created_at: string;
+  id: string;
+  updated_at: string;
+  watchedTime: number;
+  episodeId: string;
+}

@@ -25,8 +25,8 @@ interface CardProps {
   containerEndSlot?: React.ReactNode;
   imageEndSlot?: React.ReactNode;
   redirectUrl?: string;
+  watchList?: boolean;
 }
-
 
 const popupOptions: Partial<Options> = {
   strategy: "absolute",
@@ -59,6 +59,7 @@ const Card: React.FC<CardProps> = (props) => {
     className,
     imageEndSlot,
     redirectUrl = createMediaDetailsUrl(data),
+    watchList,
   } = props;
 
   const router = useRouter();
@@ -79,6 +80,9 @@ const Card: React.FC<CardProps> = (props) => {
     () => getDescription(data, router.locale),
     [data, router.locale]
   );
+
+  const progressTitleCompletion = (Number(data.modNotes) / data.episodes) * 100;
+
   return (
     <Link href={redirectUrl}>
       <a>
@@ -102,25 +106,38 @@ const Card: React.FC<CardProps> = (props) => {
                 {imageEndSlot}
               </div>
 
-              <div  className="text-sm md:text-base">
-                <div className="flex flex-row mt-2 px-2  opacity-90 " style={{ color: primaryColor }}>
+              <div className="text-sm md:text-base">
+                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                  <div className={`bg-red-600 h-2.5 `}></div>
+                </div>
+
+                <div
+                  className="flex flex-row mt-2 px-2  opacity-90 "
+                  style={{ color: primaryColor }}
+                >
                   <div className="flex flex-row">
                     <div className="self-center	">
-                      <BsStarFill /> 
+                      <BsStarFill />
                     </div>
-                      <div className="px-1">
-                        {data.averageScore != null && data.averageScore != 0 ? (data.averageScore/10) : ('.')} 
-                      </div>
+                    <div className="px-1">
+                      {data.averageScore != null && data.averageScore != 0
+                        ? data.averageScore / 10
+                        : "."}
+                    </div>
                   </div>
                   <div className="flex flex-row mx-auto pl-4">
                     <div className="">
-                      EP {data.episodes != null && data.episodes != 0 ? ( (data.episodes)) : ('.')}
+                      EP{" "}
+                      {data.episodes != null && data.episodes != 0
+                        ? data.episodes
+                        : "."}
                     </div>
+
                     <div className="pl-2 ">
-                        {data.format != null ? ( (data.format)) : ('.')}
+                      {data.format != null ? data.format : "."}
                     </div>
                   </div>
-              </div>
+                </div>
                 <p
                   className="mt-1 font-semibold line-clamp-2"
                   style={{ color: primaryColor }}

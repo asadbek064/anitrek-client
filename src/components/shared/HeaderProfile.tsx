@@ -8,7 +8,7 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
-import { AiOutlineUpload } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHistory, AiOutlineUpload } from "react-icons/ai";
 
 const HeaderProfile = () => {
   const { user } = useUser();
@@ -36,6 +36,20 @@ const HeaderProfile = () => {
       </div>
 
       <div className="space-y-2">
+        <Link href="/watchlist">
+          <a>
+            <Button className="w-full" secondary>
+              <TextIcon LeftIcon={AiFillHeart}>Watch List</TextIcon>
+            </Button>
+          </a>
+        </Link>
+        <Link href="/upload">
+          <a>
+            <Button className="w-full" secondary>
+              <TextIcon LeftIcon={AiOutlineHistory}>Continue Watching</TextIcon>
+            </Button>
+          </a>
+        </Link>
         <Link href="/upload">
           <a>
             <Button className="w-full" secondary>

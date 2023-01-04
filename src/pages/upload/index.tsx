@@ -63,7 +63,7 @@ const UploadPage: NextPage<UploadPageProps> = ({
                 />
               ))
             ) : (
-              <p className="text-center text-gray-300">Không có dữ liệu</p>
+              <p className="text-center text-gray-300">No data</p>
             )}
           </div>
         </Section>
@@ -78,7 +78,7 @@ const UploadPage: NextPage<UploadPageProps> = ({
                 />
               ))
             ) : (
-              <p className="text-center text-gray-300">Không có dữ liệu</p>
+              <p className="text-center text-gray-300">No data</p>
             )}
           </div>
         </Section>

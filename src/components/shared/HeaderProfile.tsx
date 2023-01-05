@@ -43,13 +43,13 @@ const HeaderProfile = () => {
             </Button>
           </a>
         </Link>
-        <Link href="/upload">
+       {/*  <Link href="/upload">
           <a>
             <Button className="w-full" secondary>
               <TextIcon LeftIcon={AiOutlineHistory}>Continue Watching</TextIcon>
             </Button>
           </a>
-        </Link>
+        </Link> */}
         <Link href="/upload">
           <a>
             <Button className="w-full" secondary>

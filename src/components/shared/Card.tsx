@@ -57,7 +57,6 @@ const Card: React.FC<CardProps> = (props) => {
                   className
                 )}
               >
-                {/* title stat bar */}
                 <div
                   className="flex flex-row px-1 absolute bg-neutral-900 h-6 z-10 opacity-90 rounded-tl-md rounded-tr-md"
                   style={{ color: primaryColor }}
@@ -115,7 +114,6 @@ const Card: React.FC<CardProps> = (props) => {
                     ''
                   )}
                 </div>
-                
                 <Link href={redirectUrl}>
                   <a>
                     {<Image
@@ -128,6 +126,7 @@ const Card: React.FC<CardProps> = (props) => {
                     {imageEndSlot}
                   </a>
                 </Link>
+                
               </div>
 
               <div className="text-sm md:text-base">

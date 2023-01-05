@@ -100,6 +100,24 @@ export function roundToNearest5th(num: number) {
   return Math.round(num / 5) * 5;
 }
 
+export function sortByReleaseDate(medias: Media[]) {
+  return medias.sort((a, b) => {
+    if (a.startDate.year === b.startDate.year) {
+      if (a.startDate.month === b.startDate.month) {
+        return a.startDate.day - b.startDate.day;
+      }
+
+      return a.startDate.month - b.startDate.month;
+    }
+
+    return a.startDate.year - b.startDate.year;
+  });
+}
+
+export function filterOutMangaOvaSpecials(medias: Media[]) {
+  return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA");
+}
+
 export function getProgressCompletion(watched: number, total: number) {
   return roundToNearest5th((watched / total) * 100);
 }

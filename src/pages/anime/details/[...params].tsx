@@ -26,7 +26,9 @@ import { getMediaDetails } from "@/services/anilist";
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
+  filterOutMangaOvaSpecials,
   numberWithCommas,
+  sortByReleaseDate,
   vietnameseSlug,
 } from "@/utils";
 import { convert, getDescription, getTitle } from "@/utils/data";
@@ -85,7 +87,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       nextEpUrl: null,
     });
   }, [anime]);
-
   return (
     <>
       <Head
@@ -121,7 +122,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     </a>
                   </Link>
 
-                 {/*  <Popup
+                  <Popup
                     reference={
                       <Button
                         className="!bg-[#393a3b]"
@@ -144,12 +145,12 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                       </a>
                     </Link>
 
-                    <AddTranslationModal
+                   {/*  <AddTranslationModal
                       mediaId={anime.id}
                       mediaType={MediaType.Anime}
                       defaultDescription={description}
                       defaultTitle={title}
-                    />
+                    /> */}
 
                     <Link href={`/upload/anime/${anime.id}`}>
                       <a>
@@ -162,7 +163,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Button>
                       </a>
                     </Link>
-                  </Popup> */}
+                  </Popup>
                 </div>
 
                 <p className="mb-2 text-3xl font-semibold">{title}</p>
@@ -226,6 +227,60 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
         </Section>
 
         <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+          <div className="space-y-12 md:col-span-8">
+            <DetailsSection
+              title={t("episodes_section")}
+              className="overflow-hidden"
+            >
+              {isLoading ? (
+                <div className="h-full w-full flex items-center justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
+              )}
+            </DetailsSection>
+
+            {!!anime?.relations?.nodes?.length && (
+              <DetailsSection title={t("relations_section")}>
+                <List data={sortByReleaseDate(filterOutMangaOvaSpecials(anime.relations.nodes)).filter((x, i) => i < 8)}>{/* FILTER OUT MANGAO AND ONA and SPECIAL and sort it by release date */}
+                  {(node) => <Card data={node} />}
+                </List>
+              </DetailsSection>
+            )}
+
+            {!!anime?.recommendations?.nodes?.length && (
+              <DetailsSection title={t("recommendations_section")}>
+                <List
+                  data={anime.recommendations.nodes.map(
+                    (node) => node.mediaRecommendation
+                  ).filter((x, i) => i < 4)}
+                >
+                  {(node) => <Card data={node} />}
+                </List>
+              </DetailsSection>
+            )}
+
+            {/* {!!anime?.characters?.edges?.length && (
+              <DetailsSection
+                title={t("characters_section")}
+                className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
+              >
+                {anime.characters.edges.map((characterEdge, index) => (
+                  <CharacterConnectionCard
+                    characterEdge={characterEdge}
+                    key={index}
+                  />
+                ))}
+              </DetailsSection>
+            )} */}
+            
+            <DetailsSection title={t("comments_section")}>
+              <Comments topic={`anime-${anime.id}`} />
+            </DetailsSection>
+            
+          </div>
+
           <div className="hidden md:block md:col-span-2 xl:h-[max-content] space-y-4">
             <div className="flex flex-row md:flex-col overflow-x-auto bg-background-900 rounded-md p-4 gap-4 [&>*]:shrink-0 md:no-scrollbar">
                 <InfoItem
@@ -297,59 +352,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               </ul>
             </div>
           </div>
-          <div className="space-y-12 md:col-span-8">
-            <DetailsSection
-              title={t("episodes_section")}
-              className="overflow-hidden"
-            >
-              {isLoading ? (
-                <div className="h-full w-full flex items-center justify-center">
-                  <Spinner />
-                </div>
-              ) : (
-                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
-              )}
-            </DetailsSection>
 
-            {!!anime?.relations?.nodes?.length && (
-              <DetailsSection title={t("relations_section")}>
-                <List data={anime.relations.nodes}>
-                  {(node) => <Card data={node} />}
-                </List>
-              </DetailsSection>
-            )}
-
-            {!!anime?.recommendations?.nodes?.length && (
-              <DetailsSection title={t("recommendations_section")}>
-                <List
-                  data={anime.recommendations.nodes.map(
-                    (node) => node.mediaRecommendation
-                  )}
-                >
-                  {(node) => <Card data={node} />}
-                </List>
-              </DetailsSection>
-            )}
-
-            {!!anime?.characters?.edges?.length && (
-              <DetailsSection
-                title={t("characters_section")}
-                className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
-              >
-                {anime.characters.edges.map((characterEdge, index) => (
-                  <CharacterConnectionCard
-                    characterEdge={characterEdge}
-                    key={index}
-                  />
-                ))}
-              </DetailsSection>
-            )}
-            
-            <DetailsSection title={t("comments_section")}>
-              <Comments topic={`anime-${anime.id}`} />
-            </DetailsSection>
-            
-          </div>
         </Section>
       </div>
     </>

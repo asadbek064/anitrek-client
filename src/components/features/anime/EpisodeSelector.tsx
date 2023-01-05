@@ -45,7 +45,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
           )}
         >
           <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">
-            <p>{episode.name}</p>
+            <p>{episode.name.replace('EP', '')}</p>
           </div>
         </a>
       </Link>
@@ -78,9 +78,9 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
   );
 
   const options = chunks.map((chunk, i) => {
-    const firstEpisodeName = chunk[0].name.replace("Tap", "");
+    const firstEpisodeName = chunk[0].name.replace("EP", "");
     const lastEpisodeName = chunk[chunk.length - 1].name.replace(
-      "Tap",
+      "EP",
       ""
     );
   
@@ -95,8 +95,9 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="flex justify-start w-full mx-auto mb-8">
+      <div className="flex justify-start w-full mx-auto mb-8 absolute -mt-[4.25rem] ">
         <Select
+        isSearchable={false}
         theme={(theme) => ({
           ...theme,
           colors: {
@@ -139,7 +140,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
         />
       </div> 
 
-      <div className="mt-10 space-y-4">
+      <div className="mt-5 space-y-4">
         {Object.keys(sections).map((section) => {
           const episodes = sections[section];
 
@@ -149,7 +150,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
                 <p className="font-semibold text-gray-300">{section}</p>
               )}
 
-              <div className="grid xl:grid-cols-8 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-4">
+              <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2">
                 {episodes.map(onEachEpisode)} 
               </div>
             </div>

@@ -1,4 +1,4 @@
-const siteUrl = process.env.SITE_URL || "https://animettv-v3.netlify.app/";
+const siteUrl = process.env.SITE_URL || "https://v3.animet.tv";
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {

@@ -91,7 +91,7 @@ const Card: React.FC<CardProps> = (props) => {
                           <BsThreeDotsVertical />
                         </Popover.Button>
 
-                        <Popover.Panel className="absolute z-10 ">
+                        <Popover.Panel className="absolute z-10">
                           <div className="flex flex-col bg-neutral-700 rounded-md p-2">
                             <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
                               Watching

@@ -115,7 +115,7 @@ export function sortByReleaseDate(medias: Media[]) {
 }
 
 export function filterOutMangaOvaSpecials(medias: Media[]) {
-  return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA");
+  return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "NOVEL");
 }
 
 export function getProgressCompletion(watched: number, total: number) {

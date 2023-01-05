@@ -12,6 +12,7 @@ interface WatchedSwiperProps extends SwiperProps {
 
 const WatchedSwiper: React.FC<WatchedSwiperProps> = ({ data, ...props }) => {
   const { locale } = useRouter();
+  console.log(data);
 
   return (
     <Swiper speed={500} {...props}>

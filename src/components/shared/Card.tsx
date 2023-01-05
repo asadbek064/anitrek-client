@@ -1,11 +1,9 @@
-import DotList from "@/components/shared/DotList";
 import Image from "@/components/shared/Image";
-import TextIcon from "@/components/shared/TextIcon";
 import { Media } from "@/types/anilist";
 import {
   createMediaDetailsUrl,
+  getProgressCompletion,
   isColorVisible,
-  numberWithCommas,
   parseTime,
 } from "@/utils";
 import { convert, getDescription, getTitle } from "@/utils/data";
@@ -14,11 +12,9 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { BsStarFill } from "react-icons/bs";
-import { MdTagFaces } from "react-icons/md";
-import Description from "./Description";
-import Popup from "./Popup";
+
+import { BsStarFill, BsThreeDotsVertical } from "react-icons/bs";
+import { Popover } from '@headlessui/react'
 
 interface CardProps {
   data: Media;
@@ -28,31 +24,6 @@ interface CardProps {
   redirectUrl?: string;
   watchList?: boolean;
 }
-
-const popupOptions: Partial<Options> = {
-  strategy: "absolute",
-
-  modifiers: [
-    {
-      name: "sameWidth",
-      enabled: true,
-      fn: ({ state }) => {
-        state.styles.popper.height = `${state.rects.reference.height}px`;
-        state.styles.popper.width = `${state.rects.reference.width * 3}px`;
-      },
-      phase: "beforeWrite",
-      requires: ["computeStyles"],
-      effect({ state }) {
-        const { width, height } =
-          state.elements.reference.getBoundingClientRect();
-
-        state.elements.popper.style.width = `${width * 3}px`;
-
-        state.elements.popper.style.height = `${height}px`;
-      },
-    },
-  ],
-};
 
 const Card: React.FC<CardProps> = (props) => {
   const {
@@ -77,16 +48,8 @@ const Card: React.FC<CardProps> = (props) => {
     [data, router?.locale]
   );
 
-  const description = useMemo(
-    () => getDescription(data, router.locale),
-    [data, router.locale]
-  );  
-  
   return (
-    <Link href={redirectUrl}>
-      <a>
-        <Popup
-          reference={
+
             <React.Fragment>
               <div
                 className={classNames(
@@ -94,57 +57,98 @@ const Card: React.FC<CardProps> = (props) => {
                   className
                 )}
               >
-                <Image
-                  src={data.coverImage?.extraLarge}
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-sm"
-                  alt={title}
-                />
+                {/* title stat bar */}
+                <div
+                  className="flex flex-row px-1 absolute bg-neutral-900 h-6 z-10 opacity-90 rounded-tl-md rounded-tr-md"
+                  style={{ color: primaryColor }}
+                >
+                  <div className="flex flex-row">
+                    <div className="flex">
+                    <BsStarFill className="mt-0.5"/> &nbsp;
+                      {data.averageScore != null && data.averageScore != 0
+                        ? data.averageScore / 10
+                        : "."}
+                    </div>
+                  </div>
+                  <div className="flex flex-row mx-auto pl-0.5">
+                    <div className="">
+                      EP{" "}
+                      {data.episodes != null && data.episodes != 0
+                        ? data.episodes
+                        : "."}
+                    </div>
+                    <div className="pl-1 ">
+                      {data.format != null ? data.format : "."}
+                    </div>
+                  </div>
 
-                {imageEndSlot}
+                  {/* drop title button */}
+                  {watchList ? (
+                    <div className="absolute right-0 z-10">
+                    <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-tr-md">
+                      <Popover className="relative rounded-md  md:py-0 md:px-0.5">
+                        <Popover.Button>
+                          <BsThreeDotsVertical />
+                        </Popover.Button>
+
+                        <Popover.Panel className="absolute z-10 ">
+                          <div className="flex flex-col bg-neutral-700 rounded-md p-2">
+                            <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
+                              Watching
+                            </button>
+                            <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
+                              Planning
+                            </button>
+                            <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
+                              Completed
+                            </button>
+                            <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
+                              Dropped
+                            </button>
+                          </div>
+                        </Popover.Panel>
+                      </Popover>
+                      
+                    </button>
+                  </div>
+                  ) : (
+                    ''
+                  )}
+                </div>
+                
+                <Link href={redirectUrl}>
+                  <a>
+                    {<Image
+                      src={data.coverImage?.extraLarge}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-tl-md rounded-tr-md"
+                      alt={title}
+                    />}
+                    {imageEndSlot}
+                  </a>
+                </Link>
               </div>
 
               <div className="text-sm md:text-base">
                 {watchList ? (
-                  <div className="w-full bg-neutral-700 h-4 md:h-5 dark:bg-gray-700">
-                    <div className={`${(
-                      (Number(data.modNotes) / data.episodes) * 100) !== 0 
-                    && !isNaN((Number(data.modNotes) / data.episodes) * 100) ? `bg-red-600 h-4 md:h-5 w-[${((Number(data.modNotes) / data.episodes) * 100)}%]` : ''}`}>
-                        <div className="absolute pl-1">
-                            EP {data.modNotes != null ? data.modNotes : ""} &nbsp;
-                            {data.duration != null ?  parseTime(data.duration/2) : ""}
-                          </div>
+                  <div className="w-full bg-neutral-900 h-5 md:h-6 dark:bg-gray-900 rounded-bl-md rounded-br-md">
+                    <div
+                      className={`${(Number(data.modNotes) / data.episodes) * 100 !== 0 && !isNaN((Number(data.modNotes) / data.episodes) * 100) ? `bg-red-600 h-5 md:h-6 w-[${getProgressCompletion(Number(data.modNotes),data.episodes)}%]` : `h-5 md:h-6 rounded-bl-md rounded-br-md`}`}
+                    >
+                      {" "}
+                      {/* if progress 100% round the corners && show progress if at least one ep watched */}
+                      <div className="absolute pl-1 pt-0.5">
+                        EP {data.modNotes != null ? data.modNotes : ""}{" "}
+                        &nbsp;&nbsp;&nbsp;
+                        {data.duration != null
+                          ? parseTime(data.duration / 2)
+                          : ""}
+                      </div>
                     </div>
-                   
                   </div>
                 ) : (
-                  <div
-                    className="flex flex-row mt-2 px-2  opacity-90 "
-                    style={{ color: primaryColor }}
-                  >
-                    <div className="flex flex-row">
-                      <div className="self-center	">
-                        <BsStarFill />
-                      </div>
-                      <div className="px-1">
-                        {data.averageScore != null && data.averageScore != 0
-                          ? data.averageScore / 10
-                          : "."}
-                      </div>
-                    </div>
-                    <div className="flex flex-row mx-auto pl-4">
-                      <div className="">
-                        EP{" "}
-                        {data.episodes != null && data.episodes != 0
-                          ? data.episodes
-                          : "."}
-                      </div>
-                      <div className="pl-2 ">
-                        {data.format != null ? data.format : "."}
-                      </div>
-                    </div>
-                  </div>
+                  ""
                 )}
                 <p
                   className="mt-1 font-semibold line-clamp-2"
@@ -152,65 +156,10 @@ const Card: React.FC<CardProps> = (props) => {
                 >
                   {title}
                 </p>
+                
               </div>
             </React.Fragment>
-          }
-          options={popupOptions}
-          offset={[0, 10]}
-          className="z-10 relative p-4 rounded-md shadow-[rgba(0,0,0,0.25)_0px_54px_55px,rgba(0,0,0,0.12)_0px_-12px_30px,rgba(0,0,0,0.12)_0px_4px_6px,rgba(0,0,0,0.17)_0px_12px_13px,rgba(0,0,0,0.09)_0px_-3px_5px]"
-        >
-          <Image
-            src={data.bannerImage || data.coverImage?.extraLarge}
-            layout="fill"
-            objectFit="cover"
-            className="rounded-sm shadow-2xl"
-            alt={title}
-          />
-
-          <div className="absolute inset-0 bg-black/70"></div>
-
-          <div className="absolute inset-0 p-6 flex flex-col justify-end">
-            <p
-              className="text-2xl mb-3 font-semibold line-clamp-1"
-              style={{ color: primaryColor }}
-            >
-              {title}
-            </p>
-
-            <Description
-              description={description}
-              className="text-gray-300 hover:text-gray-100 transition duration-300 line-clamp-3 mb-2"
-            />
-
-            <DotList className="mb-2">
-              {data.genres?.map((genre) => (
-                <span
-                  className="text-sm font-semibold"
-                  style={{
-                    color: primaryColor,
-                  }}
-                  key={genre}
-                >
-                  {convert(genre, "genre", { locale: router.locale })}
-                </span>
-              ))}
-            </DotList>
-
-            <div className="relative z-50 flex items-center space-x-2">
-              {data.averageScore && (
-                <TextIcon LeftIcon={MdTagFaces} iconClassName="text-green-300">
-                  <p>{data.averageScore}%</p>
-                </TextIcon>
-              )}
-
-              <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
-                <p>{numberWithCommas(data.favourites)}</p>
-              </TextIcon>
-            </div>
-          </div>
-        </Popup>
-      </a>
-    </Link>
+      
   );
 };
 

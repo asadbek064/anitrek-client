@@ -164,17 +164,24 @@ export const getServerSideProps = withAdditionalUser({
         )
         .eq("userId", user.id)
         .order("updated_at", { ascending: false });
-
+          
+        // for each item in anime and watched, if anime.id === watched.mediaId
+        
+        // loop each watched item and find the anime item with the same id
+        watched.forEach((item) => {
+            anime.forEach((animeItem) => {
+                if (animeItem.id === item.mediaId) {
+                    animeItem.modNotes = item.episode.name.replace('EP', '');
+                    animeItem.duration = item.watchedTime;
+                }
+            });
+        });
         
         anime.forEach((item) => {
-            if (item.id === watched[0].mediaId) {
-                item.modNotes = watched[0].episode.name;
-                item.duration = watched[0].watchedTime;
-            } else {
+            if (item.modNotes === undefined) {
               item.modNotes = '0';
               item.duration = 0;
-
-            }
+            } 
         });
 
     return {

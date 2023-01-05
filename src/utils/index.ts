@@ -96,6 +96,13 @@ export function parseTime(seconds: string | number) {
   return `${minutes}:${seconds}`;
 }
 
+export function roundToNearest5th(num: number) {
+  return Math.round(num / 5) * 5;
+}
+
+export function getProgressCompletion(watched: number, total: number) {
+  return roundToNearest5th((watched / total) * 100);
+}
 export function serialize(obj: any) {
   return Object.keys(obj)
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`)

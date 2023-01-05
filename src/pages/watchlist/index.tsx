@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import List from "@/components/shared/List";
 import Card from "@/components/shared/Card";
-import useWatched from "@/hooks/useWatched";
+
 interface WatchListProps {
   user: AdditionalUser;
   watchListAnime: watchListSource[];
@@ -62,8 +62,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "all"
-                ? "bg-red-500 text-white font-bold py-2 px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded}`
+                ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("all")}
           >
@@ -74,8 +74,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "watching"
-                ? "bg-red-500 text-white font-bold py-2 px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded}`
+               ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("watching")}
           >
@@ -86,8 +86,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "planning"
-                ? "bg-red-500 text-white font-bold py-2 px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded}`
+              ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+              : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("planning")}
           >
@@ -98,8 +98,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "completed"
-                ? "bg-red-500 text-white font-bold py-2 px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-4 rounded}`
+              ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+              : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("completed")}
           >
@@ -109,7 +109,7 @@ const WatchListPage: NextPage<WatchListProps> = ({
       </div>
 
         <div className="mt-8">
-            <List data={media}>{(data) => <Card data={data} />}</List>
+            <List data={media}>{(data) => <Card data={data} watchList={true} />}</List>
        
       </div>
                         
@@ -170,6 +170,10 @@ export const getServerSideProps = withAdditionalUser({
             if (item.id === watched[0].mediaId) {
                 item.modNotes = watched[0].episode.name;
                 item.duration = watched[0].watchedTime;
+            } else {
+              item.modNotes = '0';
+              item.duration = 0;
+
             }
         });
 

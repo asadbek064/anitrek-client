@@ -6,6 +6,7 @@ import {
   createMediaDetailsUrl,
   isColorVisible,
   numberWithCommas,
+  parseTime,
 } from "@/utils";
 import { convert, getDescription, getTitle } from "@/utils/data";
 import { Options } from "@popperjs/core";
@@ -79,10 +80,8 @@ const Card: React.FC<CardProps> = (props) => {
   const description = useMemo(
     () => getDescription(data, router.locale),
     [data, router.locale]
-  );
-
-  const progressTitleCompletion = (Number(data.modNotes) / data.episodes) * 100;
-
+  );  
+  
   return (
     <Link href={redirectUrl}>
       <a>
@@ -107,37 +106,46 @@ const Card: React.FC<CardProps> = (props) => {
               </div>
 
               <div className="text-sm md:text-base">
-                <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                  <div className={`bg-red-600 h-2.5 `}></div>
-                </div>
-
-                <div
-                  className="flex flex-row mt-2 px-2  opacity-90 "
-                  style={{ color: primaryColor }}
-                >
-                  <div className="flex flex-row">
-                    <div className="self-center	">
-                      <BsStarFill />
+                {watchList ? (
+                  <div className="w-full bg-neutral-700 h-4 md:h-5 dark:bg-gray-700">
+                    <div className={`${(
+                      (Number(data.modNotes) / data.episodes) * 100) !== 0 
+                    && !isNaN((Number(data.modNotes) / data.episodes) * 100) ? `bg-red-600 h-4 md:h-5 w-[${((Number(data.modNotes) / data.episodes) * 100)}%]` : ''}`}>
+                        <div className="absolute pl-1">
+                            EP {data.modNotes != null ? data.modNotes : ""} &nbsp;
+                            {data.duration != null ?  parseTime(data.duration/2) : ""}
+                          </div>
                     </div>
-                    <div className="px-1">
-                      {data.averageScore != null && data.averageScore != 0
-                        ? data.averageScore / 10
-                        : "."}
+                   
+                  </div>
+                ) : (
+                  <div
+                    className="flex flex-row mt-2 px-2  opacity-90 "
+                    style={{ color: primaryColor }}
+                  >
+                    <div className="flex flex-row">
+                      <div className="self-center	">
+                        <BsStarFill />
+                      </div>
+                      <div className="px-1">
+                        {data.averageScore != null && data.averageScore != 0
+                          ? data.averageScore / 10
+                          : "."}
+                      </div>
+                    </div>
+                    <div className="flex flex-row mx-auto pl-4">
+                      <div className="">
+                        EP{" "}
+                        {data.episodes != null && data.episodes != 0
+                          ? data.episodes
+                          : "."}
+                      </div>
+                      <div className="pl-2 ">
+                        {data.format != null ? data.format : "."}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex flex-row mx-auto pl-4">
-                    <div className="">
-                      EP{" "}
-                      {data.episodes != null && data.episodes != 0
-                        ? data.episodes
-                        : "."}
-                    </div>
-
-                    <div className="pl-2 ">
-                      {data.format != null ? data.format : "."}
-                    </div>
-                  </div>
-                </div>
+                )}
                 <p
                   className="mt-1 font-semibold line-clamp-2"
                   style={{ color: primaryColor }}

@@ -79,6 +79,7 @@ export type Episode = {
   published: boolean;
   section: string;
   title?: string;
+  watchedTime?: number;
 };
 
 export type Chapter = {

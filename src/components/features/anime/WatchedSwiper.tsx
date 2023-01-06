@@ -12,8 +12,7 @@ interface WatchedSwiperProps extends SwiperProps {
 
 const WatchedSwiper: React.FC<WatchedSwiperProps> = ({ data, ...props }) => {
   const { locale } = useRouter();
-  console.log(data);
-
+  
   return (
     <Swiper speed={500} {...props}>
       {data.map(({ media, episode }, index) => {
@@ -27,6 +26,7 @@ const WatchedSwiper: React.FC<WatchedSwiperProps> = ({ data, ...props }) => {
                   episode={{
                     ...episode,
                     thumbnail: media.bannerImage || media.coverImage.extraLarge,
+                    watchedTime: data[index].watchedTime,
                   }}
                   title={getTitle(media, locale)}
                 />

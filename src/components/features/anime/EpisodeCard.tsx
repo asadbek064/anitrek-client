@@ -1,6 +1,7 @@
 import { Episode } from "@/types";
 import React from "react";
 import Image from "@/components/shared/Image";
+import { parseTime } from "@/utils";
 
 interface EpisodeCardProps {
   episode: Episode;
@@ -14,6 +15,7 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
   title,
   ...props
 }) => {
+
   return (
     <div
       className="relative h-40 w-full hover:bg-white/20 cursor-pointer"
@@ -29,8 +31,8 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>
 
-      <div className="w-full absolute bottom-0 p-2 space-y-1">
-        <p className="text-lg font-semibold">{episode.name}</p>
+      <div className="w-full absolute bottom-0 p-2 space-y-1.5 ">
+        <p className="text-lg font-semibold">EP {episode.name.replace('EP', '')} &nbsp; <i>{parseTime(episode.watchedTime / 2)}</i></p>
         {title && (
           <p className="text-base line-clamp-1 font-semibold text-gray-300">
             {title}

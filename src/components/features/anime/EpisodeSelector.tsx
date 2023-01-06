@@ -95,7 +95,7 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
 
   return (
     <React.Fragment>
-      <div className="flex justify-start w-full mx-auto mb-8 absolute -mt-[4.25rem] ">
+      <div className="flex justify-start w-full mx-auto mb-8 absolute -mt-[4.50rem] ">
         <Select
         isSearchable={false}
         theme={(theme) => ({

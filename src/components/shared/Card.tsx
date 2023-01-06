@@ -133,7 +133,7 @@ const Card: React.FC<CardProps> = (props) => {
                 {watchList ? (
                   <div className="w-full bg-neutral-900 h-5 md:h-6 dark:bg-gray-900 rounded-bl-md rounded-br-md">
                     <div
-                      className={`${(Number(data.modNotes) / data.episodes) * 100 !== 0 && !isNaN((Number(data.modNotes) / data.episodes) * 100) ? `bg-red-600 h-5 md:h-6 w-[${getProgressCompletion(Number(data.modNotes),data.episodes)}%]` : `h-5 md:h-6 rounded-bl-md rounded-br-md`}`}
+                      className={`${(Number(data.modNotes) / data.episodes) * 100 !== 0 ? `w-[${getProgressCompletion(Number(data.modNotes),data.episodes)}%] bg-red-600 h-5 md:h-6` : `h-5 md:h-6 rounded-bl-md rounded-br-md`}`}
                     >
                       {" "}
                       {/* if progress 100% round the corners && show progress if at least one ep watched */}

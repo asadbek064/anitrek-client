@@ -103,7 +103,7 @@ const Header = () => {
         <div>
           <Logo />
 
-          <div className="space-y-2">
+          <div className="space-y-3">
             {routes.map((route) => (
               <div onClick={drawerRef.current?.close} key={route.href}>
                 <NavItem className="block" href={route.href}>
@@ -115,7 +115,7 @@ const Header = () => {
                     ></TextIcon>
                       <p
                         className={classNames(
-                          "pl-3 border-l-4 font-semibold text-3xl",
+                          "pl-3 border-l-4 font-semibold text-2xl",
                           isActive
                             ? "border-primary-500 text-white"
                             : "border-background-900 text-typography-secondary"

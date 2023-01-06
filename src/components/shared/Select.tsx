@@ -113,7 +113,7 @@ const Select = React.forwardRef<any, Props>(
                 backgroundColor: "transparent",
                 color: "white",
               },
-              transition: "all 300ms",
+              transition: "all 250ms",
             };
           },
 

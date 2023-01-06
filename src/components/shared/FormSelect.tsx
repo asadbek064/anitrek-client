@@ -2,13 +2,16 @@ import React from "react";
 import { Controller, ControllerProps } from "react-hook-form";
 import { Props } from "react-select";
 import Select from "@/components/shared/Select";
+import classNames from "classnames";
 
 interface FormSelectProps extends Omit<ControllerProps, "render"> {
   selectProps?: Props;
   label?: string;
+  containerClassName?: string;
 }
 
 const FormSelect: React.FC<FormSelectProps> = ({
+  containerClassName,
   selectProps,
   label,
   ...props
@@ -24,7 +27,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
           : options.find((c: any) => value === c.value);
 
         return (
-          <div className="space-y-2">
+          <div className={classNames(containerClassName, "space-y-2")}>
             {label && <p className="font-semibold">{label}</p>}
 
             <Select

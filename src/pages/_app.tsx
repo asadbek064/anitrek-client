@@ -65,9 +65,6 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
       {/* umami tracking */}
       <Script async defer data-website-id="92986fe3-351c-4db9-9939-f47c3c09c7ff" src="https://umami-stat-77nehxshi-animettv.vercel.app/umami.js"></Script>
 
-      {/* ChatBro */}
-
-
       <Script id="chatBroEmbedCode">
         {`
       function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}

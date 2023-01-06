@@ -116,7 +116,7 @@ const BrowsePage = ({ query: baseQuery }) => {
         <h1 className="text-4xl font-semibold text-center md:text-left">
           {t("common:search")}
         </h1>
-                
+
         <Select
           value={{ value: type, label: chosenType.label }}
           options={TYPES}

@@ -57,32 +57,18 @@ const Card: React.FC<CardProps> = (props) => {
     <React.Fragment>
       <div
         className={classNames(
-          "relative aspect-w-2 aspect-h-3 img-wrapper",
+          "relative aspect-w-2 aspect-h-3",
           className
         )}
       >
-        <Link href={redirectUrl}>
-          <a>
-            {
-              <Image
-                src={data.coverImage?.extraLarge}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-tl-md rounded-tr-md"
-                alt={title}
-              />
-            }
-            {imageEndSlot}
-          </a>
-        </Link>
-        <div
-          className="h-6 z-10 rounded-tl-md rounded-tr-md text-xs"
+          <div
+          className="h-6 rounded-tl-md rounded-tr-md text-xs h-[100%]"
           style={{ color: primaryColor }}
         >
           {watchList ? (
             ''
             ): (
-              <div className="absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
+              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;
@@ -96,15 +82,32 @@ const Card: React.FC<CardProps> = (props) => {
                   EP{" "}
                   {data.episodes != null && data.episodes != 0
                     ? data.episodes
-                    : ""}
+                    : "."}
                 </div>
                 <div className="pl-1 ">
-                  {data.format != null ? data.format : ""}
+                  {data.format != null ? data.format : "."}
                 </div>
               </div>
             </div>
             )}
         </div>
+        <Link href={redirectUrl} >
+          <a>
+            {
+              <Image
+                src={data.coverImage?.extraLarge}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-tl-md rounded-tr-md"
+                alt={title}
+              />
+            }
+            {imageEndSlot}
+          </a>
+            
+        </Link>
+
+        
       </div>
 
    {/*   

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import List from "@/components/shared/List";
 import Card from "@/components/shared/Card";
+import AnimeWatchList from "@/components/features/anime/AnimeWatchList";
 
 interface WatchListProps {
   user: AdditionalUser;
@@ -108,11 +109,9 @@ const WatchListPage: NextPage<WatchListProps> = ({
         </div>
       </div>
 
-        <div className="mt-8">
-            <List data={media}>{(data) => <Card data={data} watchList={true} />}</List>
-       
-      </div>
-                        
+      <div className="pt-4">
+            <AnimeWatchList data={media} />
+      </div>               
     </Section>
   );
 };

@@ -119,6 +119,10 @@ export function filterOutMangaOvaSpecials(medias: Media[]) {
 }
 
 export function getProgressCompletion(watched: number, total: number) {
+  // ignore if watched or total is infinity or NaN or 0 or null
+  if (!watched || !total || watched === Infinity || total === Infinity) {
+    return 0;
+  }
   return roundToNearest5th((watched / total) * 100);
 }
 export function serialize(obj: any) {

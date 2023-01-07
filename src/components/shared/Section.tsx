@@ -20,7 +20,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(
         )}
       >
         {title && (
-          <h1 className="uppercase text-2xl font-semibold mb-4">{title}</h1>
+          <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">{title}</h1>
         )}
 
         {children}

@@ -216,3 +216,8 @@ main {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* card Img full page bug fix */
+.img-wrapper > div {
+  height: 100%;
+}

@@ -118,7 +118,29 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                       objectFit="cover"
                       className="rounded-sm"
                       alt={title}
-                    />      
+                    /> 
+
+                    <div className="absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
+                      <div className="flex flex-row">
+                        <div className="flex">
+                          <BsStarFill className="mt-0.5" /> &nbsp;
+                          {data.averageScore != null && data.averageScore != 0
+                            ? data.averageScore / 10
+                            : ""}
+                        </div>
+                      </div>
+                      <div className="flex flex-row mx-auto pl-0.5">
+                        <div className="">
+                          EP{" "}
+                          {data.episodes != null && data.episodes != 0
+                            ? data.episodes
+                            : ""}
+                        </div>
+                        <div className="pl-1 ">
+                          {data.format != null ? data.format : ""}
+                        </div>
+                      </div>
+                    </div>     
                 </motion.div>
                 
               ) 
@@ -211,14 +233,6 @@ const Card: React.FC<AnimeCardProps> = (props) => {
             {containerEndSlot}
           </motion.div>
           <div>
-            <div className="flex flex-row" style={{ color: primaryColor }}>
-              <div className="self-center	">
-                <BsStarFill /> 
-              </div>
-              <div className="px-1 ">
-                {data.averageScore != null && data.averageScore != 0 ? (data.averageScore/10) : ('N/A')} 
-              </div>
-            </div>
             <p
               className="mt-1 text-base font-semibold line-clamp-2"
               style={{ color: primaryColor }}

@@ -96,10 +96,10 @@ const Card: React.FC<CardProps> = (props) => {
                   EP{" "}
                   {data.episodes != null && data.episodes != 0
                     ? data.episodes
-                    : "."}
+                    : ""}
                 </div>
                 <div className="pl-1 ">
-                  {data.format != null ? data.format : "."}
+                  {data.format != null ? data.format : ""}
                 </div>
               </div>
             </div>

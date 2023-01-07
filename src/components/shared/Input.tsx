@@ -52,7 +52,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         <input
           ref={ref}
           className={classNames(
-            "bg-transparent appearance-none w-full text-gray-300 focus:outline-none leading-tight text-lg",
+            "bg-transparent appearance-none w-full text-gray-300 focus:outline-none leading-tight text-lg md:text-3xl",
             className
           )}
           {...inputProps}
@@ -60,8 +60,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
         <div  onClick={handleSettingsToggle} 
         className={isSettingsOpen
-                  ? "text-red-500 text-white font-bold rounded m-auto"
-                  : `text-neutral-300 font-bold  rounded m-auto`}>
+                  ? "text-red-500 text-white font-bold rounded m-auto cursor-pointer"
+                  : `text-neutral-300 font-bold  rounded m-auto cursor-pointer`}>
           {RightIcon && <RightIcon className="w-6 h-6" />}
         </div>
       </div>

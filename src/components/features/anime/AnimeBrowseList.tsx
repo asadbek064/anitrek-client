@@ -128,7 +128,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
             onChange={handleInputChange}
             defaultValue={defaultValues.keyword}
             label={t("search")}
-            containerClassName="md:hidden shrink-0"
+            containerClassName="w-full shrink-0 md:px-64"
             RightIcon={FaSlidersH}
             isSettingsOpen={isSettingsOpen}
             setSettingsOpen={seSettingsOpen}
@@ -137,7 +137,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
 
       
           <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
-            <Input
+       {/*      <Input
               {...register("keyword")}
               containerInputClassName="border border-white/80"
               LeftIcon={AiOutlineSearch}
@@ -145,7 +145,10 @@ const BrowseList: React.FC<BrowseListProps> = ({
               defaultValue={defaultValues.keyword}
               label={t("search")}
               containerClassName="hidden md:block shrink-0"
-            />
+              RightIcon={FaSlidersH}
+              isSettingsOpen={isSettingsOpen}
+              setSettingsOpen={seSettingsOpen}
+            /> */}
             
                         
               <GenresFormSelect

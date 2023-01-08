@@ -79,7 +79,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
 
     setCardSize({ width, height: width * (3 / 2) });
   }, []);
-
+  
   return (
     <Link href={redirectUrl}>
       <a>
@@ -130,12 +130,14 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                         </div>
                       </div>
                       <div className="flex flex-row mx-auto pl-0.5">
-                        <div className="">
-                          EP{" "}
-                          {data.episodes != null && data.episodes != 0
-                            ? data.episodes
-                            : ""}
-                        </div>
+                        {data.episodes != null && data.episodes != 0 ? (
+                          <div className="flex">
+                           EP&nbsp;{data.episodes}
+                          </div>    
+                        ) : (
+                          ""
+                        )}
+
                         <div className="pl-1 ">
                           {data.format != null ? data.format : ""}
                         </div>

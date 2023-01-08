@@ -52,6 +52,7 @@ const Card: React.FC<CardProps> = (props) => {
     () => getProgressCompletion(Number(data.modNotes), data.episodes),
     [data]
   );
+console.log(progress);
 
   return (
     <React.Fragment>
@@ -62,13 +63,10 @@ const Card: React.FC<CardProps> = (props) => {
         )}
       >
           <div
-          className="h-6 rounded-tl-md rounded-tr-md text-xs h-[100%]"
+          className="h-6 rounded-tl-md rounded-tr-md text-sm h-[100%]"
           style={{ color: primaryColor }}
         >
-          {watchList ? (
-            ''
-            ): (
-              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
+          {/* <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;
@@ -78,17 +76,22 @@ const Card: React.FC<CardProps> = (props) => {
                 </div>
               </div>
               <div className="flex flex-row mx-auto pl-0.5">
-                <div className="">
-                  EP{" "}
-                  {data.episodes != null && data.episodes != 0
-                    ? data.episodes
-                    : "."}
-                </div>
-                <div className="pl-1 ">
+                {data.episodes != null && data.episodes != 0 && data.format !== "MOVIE" ? (
+                    <div className="flex">
+                      EP &nbsp;{data.episodes}
+                    </div>    
+                  ) : (
+                    ""
+                  )}
+                <div className="absolute right-0 pr-2">
                   {data.format != null ? data.format : "."}
                 </div>
               </div>
-            </div>
+            </div> */}
+          {watchList ? (
+            ''
+            ): (
+              ''
             )}
         </div>
         <Link href={redirectUrl} >
@@ -144,16 +147,17 @@ const Card: React.FC<CardProps> = (props) => {
       */}
 
         {watchList ? (
-          <div className="bg-neutral-900 h-2 md:h-4 dark:bg-gray-900 rounded-bl-md rounded-br-md ">
+          <div className="bg-neutral-900 h-2 dark:bg-gray-900">
             <div
+            style={{ width: `${progress}%` }}
               className={`${
-                progress != 0 ? `w-[${progress}%] bg-red-600 h-2 md:h-4` : ""
+                progress !== 0 ? `bg-red-600 h-2 ` : ""
               }`}
             >
               {/* if progress 100% round the corners && show progress if at least one ep watched */}
-              <div className="pl-1 pt-0.5 text-xs -mt-5 md:mt-0 absolute bg-gradient-to-r md:bg-none from-neutral-900 to-neutral-700 pr-1 md:pr-0 rounded-tr-md opacity-90 md:opacity-100">
-                EP {data.modNotes != null ? data.modNotes : ""}{" "}
-                &nbsp;&nbsp;&nbsp;
+              <div className="pl-1 pt-0.5 text-xs -mt-5 absolute bg-gradient-to-r from-neutral-900 to-neutral-700 pr-1 rounded-tr-md opacity-90">
+                EP {data.modNotes != null ? data.modNotes : ""}{" / "}{ data.episodes}
+                &nbsp;&nbsp;
                 {data.duration != null ? parseTime(data.duration / 2) : ""}
               </div>
             </div>

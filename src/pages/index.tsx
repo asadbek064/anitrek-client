@@ -47,7 +47,7 @@ const Home = () => {
     perPage: 5,
   });
 
-  const { data: favouriteSeason, isLoading: favouriteSeasonLoading } = useMedia(
+  /* const { data: favouriteSeason, isLoading: favouriteSeasonLoading } = useMedia(
     {
       type: MediaType.Anime,
       sort: [MediaSort.Favourites_desc],
@@ -55,7 +55,7 @@ const Home = () => {
       seasonYear: currentSeason.year,
       perPage: 5,
     }
-  );
+  ); */
 
   const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
     useMedia({
@@ -148,7 +148,7 @@ const Home = () => {
             >
               <Section
                 title={t("should_watch_today", { ns: "anime_home" })}
-                className="w-full md:w-[75%] md:!pr-0"
+                className="w-full md:w-[75%] md:!pr-0 md:block hidden"
               >
                 {randomAnime && (
                   <ShouldWatch data={randomAnime} isLoading={!randomAnime} />

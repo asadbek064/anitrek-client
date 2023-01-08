@@ -11,10 +11,9 @@ import { Options } from "@popperjs/core";
 import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
-
+import React, { useMemo, useState } from "react";
+import SourceStatus from "@/components/shared/SourceStatus";
 import { BsStarFill, BsThreeDotsVertical } from "react-icons/bs";
-import { Popover } from "@headlessui/react";
 
 interface CardProps {
   data: Media;
@@ -52,7 +51,15 @@ const Card: React.FC<CardProps> = (props) => {
     () => getProgressCompletion(Number(data.modNotes), data.episodes),
     [data]
   );
-console.log(progress);
+  
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  
+  // handle dropdown click close and open
+  const handleDropdownClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  
+
 
   return (
     <React.Fragment>
@@ -66,12 +73,16 @@ console.log(progress);
           className="h-6 rounded-tl-md rounded-tr-md text-sm h-[100%]"
           style={{ color: primaryColor }}
         >
-          {/* <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
+          
+          {watchList ? (
+            ''
+            ): (
+              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row " style={{color: primaryColor}}>
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;
                   {data.averageScore != null && data.averageScore != 0
-                    ? data.averageScore / 10
+                    ? (data.averageScore / 10).toFixed(1)
                     : "."}
                 </div>
               </div>
@@ -87,11 +98,7 @@ console.log(progress);
                   {data.format != null ? data.format : "."}
                 </div>
               </div>
-            </div> */}
-          {watchList ? (
-            ''
-            ): (
-              ''
+            </div>
             )}
         </div>
         <Link href={redirectUrl} >
@@ -110,41 +117,19 @@ console.log(progress);
             
         </Link>
 
-        
-      </div>
-
-   {/*   
         {watchList ? (
           <div>
-            <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md mt-1 mr-2 absolute right-0">
-              <Popover className="relative rounded-md md:py-0 md:px-0.5 bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md">
-                <Popover.Button>
-                  <BsThreeDotsVertical className="pt-1" />
-                </Popover.Button>
+              <SourceStatus type="anime" source={data} />
 
-                <Popover.Panel className="absolute z-10">
-                  <div className="flex flex-col bg-neutral-700 rounded-md p-2">
-                    <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
-                      Watching
-                    </button>
-                    <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
-                      Planning
-                    </button>
-                    <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
-                      Completed
-                    </button>
-                    <button className="bg-neutral-700 hover:bg-red-500 text-white font-bold rounded-md px-2 py-1">
-                      Dropped
-                    </button>
-                    </div>
-                  </Popover.Panel>
-                </Popover>
-              </button>
             </div>
           ) : (
             ""
           )}
-      */}
+        
+      </div>
+
+     
+     
 
         {watchList ? (
           <div className="bg-neutral-900 h-2 dark:bg-gray-900">

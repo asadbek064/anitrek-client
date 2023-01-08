@@ -28,7 +28,7 @@ const HorizontalCard = ({
       className={classNames("flex h-24 items-center space-x-2 py-2", className)}
       {...props}
     >
-      <div className="w-12 shrink-0">
+      <div className="w-14 md:w-12 shrink-0">
         <Link href={redirectUrl}>
           <a>
             <PlainCard src={data.coverImage.extraLarge} alt={title} />

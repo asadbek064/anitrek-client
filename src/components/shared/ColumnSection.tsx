@@ -41,7 +41,7 @@ const ColumnSection: React.FC<ColumnSectionProps> = ({
       {viewMoreHref && (
         <Link href={viewMoreHref}>
           <a className="flex w-full items-center justify-center space-x-2 p-5 transition duration-300 hover:bg-white/10">
-            <p>See more</p>
+            <p>View more</p>
             <MdArrowForwardIos className="h-4 w-4" />
           </a>
         </Link>

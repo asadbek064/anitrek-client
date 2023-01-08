@@ -120,12 +120,12 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                       alt={title}
                     /> 
 
-                    <div className="absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row ">
+                    <div className="absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row "  style={{color: primaryColor}}>
                       <div className="flex flex-row">
                         <div className="flex">
                           <BsStarFill className="mt-0.5" /> &nbsp;
                           {data.averageScore != null && data.averageScore != 0
-                            ? data.averageScore / 10
+                            ? (data.averageScore / 10).toFixed(1)
                             : ""}
                         </div>
                       </div>
@@ -138,7 +138,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
                           ""
                         )}
 
-                        <div className="pl-1 ">
+                        <div className="absolute right-0 pr-2">
                           {data.format != null ? data.format : ""}
                         </div>
                       </div>

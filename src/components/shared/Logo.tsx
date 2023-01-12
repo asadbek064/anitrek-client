@@ -1,7 +1,5 @@
 import classNames from "classnames";
 import React from "react";
-import Image from "@/components/shared/Image";
-import { isMobile } from "react-device-detect";
 const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
   ...props

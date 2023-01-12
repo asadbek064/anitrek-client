@@ -8,7 +8,7 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
-import { AiFillHeart, AiOutlineHistory, AiOutlineUpload } from "react-icons/ai";
+import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 
 const HeaderProfile = () => {
   const { user } = useUser();

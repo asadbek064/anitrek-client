@@ -83,7 +83,7 @@ const Header = () => {
   return (
     <Section
       className={classNames(
-        "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-500",
+        "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-200",
         !isTop
           ? "bg-background"
           : "bg-gradient-to-b from-black/88 via-black/30 to-transparent"
@@ -164,7 +164,7 @@ const Header = () => {
                 ></TextIcon>
                 <p
                   className={classNames(
-                    "hover:text-white transition duration-300",
+                    "hover:text-white transition duration-200",
                     isActive && "text-primary-300"
                   )}
                 >
@@ -183,7 +183,7 @@ const Header = () => {
           {({ isActive }) => (
             <AiOutlineSearch
               className={classNames(
-                "w-7 h-7 font-semibold hover:text-primary-500 transition duration-300",
+                "w-7 h-7 font-semibold hover:text-primary-500 transition duration-200",
                 isActive && "text-primary-300"
               )}
             />
@@ -194,7 +194,6 @@ const Header = () => {
         <div className="hidden 2xl:block">
           <LanguageSwitcher/>
         </div>
-        {/* {isMobile ? ('') : (<LanguageSwitcher/>)} */}
         {user ? (
           <HeaderProfile />
         ) : (
@@ -223,7 +222,7 @@ const ContactItem: React.FC<{
 }> = ({ Icon, href }) => {
   return (
     <a href={href} target="_blank" rel="noreferrer">
-      <Icon className="w-6 h-6 hover:text-primary-300 transition duration-300" />
+      <Icon className="w-6 h-6 hover:text-primary-300 transition duration-200" />
     </a>
   );
 };

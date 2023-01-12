@@ -172,10 +172,10 @@ export const TYPES = [
     value: "anime",
     label: "Anime",
   },
- /*  {
+  {
     value: "manga",
     label: "Manga",
-  }, */
+  },
   {
     value: "characters",
     label: "Characters",

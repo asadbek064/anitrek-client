@@ -15,16 +15,16 @@ const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="205"
-        height="32.5"
+        width="160"
+        height="40"
         x="0"
         y="0"
         version="1.1"
-        viewBox="0 0 205 32.5"
+        viewBox="0 0 204 32"
         xmlSpace="preserve"
       >
         <defs>
-          <path id="SVGID_1_" d="M0 0H205V32.5H0z"></path>
+          <path id="SVGID_1_"></path>
         </defs>
         <clipPath>
           <use overflow="visible" xlinkHref="#SVGID_1_"></use>

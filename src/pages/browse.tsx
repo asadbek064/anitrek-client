@@ -14,7 +14,7 @@ import Spinner from "@/components/shared/Spinner";
 
 const components = {
   anime: AnimeBrowseList,
-  /* manga: MangaBrowseList, */
+  manga: MangaBrowseList,
   characters: CharacterBrowseList,
   voice_actors: VABrowseList,
 };

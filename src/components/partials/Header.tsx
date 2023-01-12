@@ -13,10 +13,10 @@ import React, { ComponentType, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { AiFillHome, AiOutlinePlus, AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
+import { CgSmartphoneChip } from "react-icons/cg";
 import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { MdOutlineLiveTv } from "react-icons/md";
-import { RiFinderLine, RiVipDiamondFill } from "react-icons/ri";
+import { MdFindInPage, MdOutlineLiveTv } from "react-icons/md";
 import Notifications from "../features/notifications/Notifications";
 import PWAInstallPrompt from "../features/pwa/PWAInstallPrompt";
 import LanguageSwitcher from "../shared/LanguageSwitcher";
@@ -30,7 +30,7 @@ interface _route {
 }
 const routes: _route[] = [
   {
-    title: "Home",
+    title: "Anime",
     href: "/",
     icon: AiFillHome
   },
@@ -42,17 +42,12 @@ const routes: _route[] = [
   {
     title: "SceneFinder",
     href: "/scene-search",
-    icon: RiFinderLine
+    icon: MdFindInPage
   },
-/*   {
-    title: "WatchList",
-    href: "/scene-search",
-    icon: AiOutlinePlus
-  }, */
   {
-    title: "A.iUpscaled",
+    title: "4k60fps",
     href: "/ai-upscale",
-    icon: RiVipDiamondFill,
+    icon: CgSmartphoneChip,
   },
   {
     title: "Watch2together",
@@ -96,7 +91,7 @@ const Header = () => {
     >
       <Drawer
         ref={drawerRef}
-        containerClassName="sm:hidden mr-4"
+        containerClassName="md:hidden mr-4"
         className="flex justify-between flex-col py-8"
         aria-label="Menu lable"
         button={<GiHamburgerMenu className="w-6 h-6" />}
@@ -158,13 +153,13 @@ const Header = () => {
         <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
       </div>
 
-      <div className="hidden sm:flex items-center space-x-6 font-semibold text-typography-secondary">
+      <div className="hidden md:flex items-center md:space-x-4 xl:space-x-8 md:text-sm lg:text-lg font-semibold text-typography-secondary">
         {routes.map((route) => (
           <NavItem href={route.href} key={route.href}>
             {({ isActive }) => (
               <div className="flex flex-row gap-x-2 place-items-center">
                 <TextIcon
-                  iconClassName="py-0.5"
+                  iconClassName="py-0.5 hidden lg:block"
                   LeftIcon={route.icon}
                 ></TextIcon>
                 <p
@@ -182,7 +177,7 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4 ml-auto">
-        {/* <Notifications /> */}
+        <Notifications />
 
         <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
@@ -196,7 +191,10 @@ const Header = () => {
         </NavItem>
 
         <PWAInstallPrompt />
-        {isMobile ? ('') : (<LanguageSwitcher/>)}
+        <div className="hidden 2xl:block">
+          <LanguageSwitcher/>
+        </div>
+        {/* {isMobile ? ('') : (<LanguageSwitcher/>)} */}
         {user ? (
           <HeaderProfile />
         ) : (

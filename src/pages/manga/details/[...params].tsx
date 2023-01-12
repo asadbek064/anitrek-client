@@ -23,7 +23,7 @@ import useChapters from "@/hooks/useChapters";
 import { getMediaDetails } from "@/services/anilist";
 import { Translation } from "@/types";
 import { Media, MediaType } from "@/types/anilist";
-import { numberWithCommas, vietnameseSlug } from "@/utils";
+import { filterOutAnimeOvaSpecials, numberWithCommas, sortByReleaseDate, vietnameseSlug } from "@/utils";
 import { convert, getDescription, getTitle } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useUser } from "@supabase/auth-helpers-react";
@@ -79,16 +79,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
             <div className="justify-between text-center md:text-left flex flex-col items-center md:items-start py-4 mt-4 md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  {/* <Link href={`/manga/read/${manga.id}`}>
+                  <Link href={`/manga/read/${manga.id}`}>
                     <a>
                       <Button primary LeftIcon={BsFillPlayFill}>
                         <p>{t("read_now")}</p>
                       </Button>
                     </a>
-                  </Link> */}
-                  <Button secondary LeftIcon={BsFillPlayFill} className="cursor-not-allowed disabled">
-                    <p>{t("read_now")} (Not supported yet)</p>  
-                  </Button>
+                  </Link>
                   <Popup
                     reference={
                       <Button
@@ -112,12 +109,12 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                       </a>
                     </Link>
 
-                    <AddTranslationModal
+{/*                     <AddTranslationModal
                       mediaId={manga.id}
                       mediaType={MediaType.Manga}
                       defaultDescription={description}
                       defaultTitle={title}
-                    />
+                    /> */}
                   </Popup>
                 </div>
 
@@ -159,6 +156,58 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
         </Section>
 
         <Section className="space-y-8 md:space-y-0 md:grid md:grid-cols-10 w-full min-h-screen mt-8 sm:px-12 gap-8">
+         
+
+          <div className="md:col-span-8 space-y-12">
+            <DetailsSection title={t("chapters_section")} className="relative">
+              {isLoading ? (
+                <div className="h-full w-full flex items-center justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
+              )}
+            </DetailsSection>
+
+            {/* {!!manga?.characters?.edges.length && (
+              <DetailsSection
+                title={t("characters_section")}
+                className="w-full grid md:grid-cols-2 grid-cols-1 gap-4"
+              >
+                {manga.characters.edges.map((characterEdge, index) => (
+                  <CharacterConnectionCard
+                    characterEdge={characterEdge}
+                    key={index}
+                  />
+                ))}
+              </DetailsSection>
+            )} */}
+
+            {!!manga?.relations?.nodes?.length && (
+              <DetailsSection title={t("relations_section")}>
+                <List  data={sortByReleaseDate(filterOutAnimeOvaSpecials(manga.relations.nodes)).filter((x, i) => i < 8)}>
+                  {(node) => <Card data={node} />}
+                </List>
+              </DetailsSection>
+            )}
+
+            {!!manga?.recommendations?.nodes.length && (
+              <DetailsSection title={t("recommendations_section")}>
+                <List
+                  data={manga.recommendations.nodes.map(
+                    (node) => node.mediaRecommendation
+                  ).filter((x, i) => i < 16)}
+                >
+                  {(node) => <Card data={node} />}
+                </List>
+              </DetailsSection>
+            )}
+
+            <DetailsSection title={t("comments_section")}>
+              <Comments topic={`manga-${manga.id}`} />
+            </DetailsSection>
+          </div>
+
           <div className="md:col-span-2 h-[max-content] space-y-4">
             <div className="flex flex-row md:flex-col overflow-x-auto bg-background-900 rounded-md p-4 gap-4 [&>*]:shrink-0 md:no-scrollbar">
               <InfoItem title="English" value={manga.title.english} />
@@ -206,55 +255,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
             </div>
           </div>
 
-          <div className="md:col-span-8 space-y-12">
-            <DetailsSection title={t("chapters_section")} className="relative">
-              {isLoading ? (
-                <div className="h-full w-full flex items-center justify-center">
-                  <Spinner />
-                </div>
-              ) : (
-                <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
-              )}
-            </DetailsSection>
-
-            {!!manga?.characters?.edges.length && (
-              <DetailsSection
-                title={t("characters_section")}
-                className="w-full grid md:grid-cols-2 grid-cols-1 gap-4"
-              >
-                {manga.characters.edges.map((characterEdge, index) => (
-                  <CharacterConnectionCard
-                    characterEdge={characterEdge}
-                    key={index}
-                  />
-                ))}
-              </DetailsSection>
-            )}
-
-            {!!manga?.relations?.nodes?.length && (
-              <DetailsSection title={t("relations_section")}>
-                <List data={manga.relations.nodes}>
-                  {(node) => <Card data={node} />}
-                </List>
-              </DetailsSection>
-            )}
-
-            {!!manga?.recommendations?.nodes.length && (
-              <DetailsSection title={t("recommendations_section")}>
-                <List
-                  data={manga.recommendations.nodes.map(
-                    (node) => node.mediaRecommendation
-                  )}
-                >
-                  {(node) => <Card data={node} />}
-                </List>
-              </DetailsSection>
-            )}
-
-            <DetailsSection title={t("comments_section")}>
-              <Comments topic={`manga-${manga.id}`} />
-            </DetailsSection>
-          </div>
         </Section>
       </div>
     </>

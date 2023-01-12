@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ComponentType, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import { AiFillHome, AiOutlinePlus, AiOutlineSearch } from "react-icons/ai";
+import { AiFillHome, AiOutlinePlus, AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -34,10 +34,11 @@ const routes: _route[] = [
     href: "/",
     icon: AiFillHome
   },
-  /* {
+  {
     title: "Manga",
     href: "/manga",
-  }, */
+    icon: AiOutlineRead
+  },
   {
     title: "SceneFinder",
     href: "/scene-search",

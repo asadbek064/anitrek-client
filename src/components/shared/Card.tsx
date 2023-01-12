@@ -12,7 +12,6 @@ import classNames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useMemo, useState } from "react";
-import SourceStatus from "@/components/shared/SourceStatus";
 import { BsStarFill, BsThreeDotsVertical } from "react-icons/bs";
 
 interface CardProps {
@@ -116,16 +115,7 @@ const Card: React.FC<CardProps> = (props) => {
           </a>
             
         </Link>
-
-        {watchList ? (
-          <div>
-              <SourceStatus type="anime" source={data} />
-
-            </div>
-          ) : (
-            ""
-          )}
-        
+       
       </div>
 
      

@@ -118,6 +118,10 @@ export function filterOutMangaOvaSpecials(medias: Media[]) {
   return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "NOVEL");
 }
 
+export function filterOutAnimeOvaSpecials(medias: Media[]) {
+  return  medias.filter((item) => item.format !== "TV" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "MUSIC" && item.format !== "MOVIE" && item.format !== "TV_SHORT" && item.format !== "ONE_SHOT" && item.format !== "NOVEL");
+}
+
 export function getProgressCompletion(watched: number, total: number) {
   // ignore if watched or total is infinity or NaN or 0 or null
   if (!watched || !total || watched === Infinity || total === Infinity) {

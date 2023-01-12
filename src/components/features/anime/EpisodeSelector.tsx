@@ -96,49 +96,49 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
   return (
     <React.Fragment>
       <div className="flex justify-start  mx-auto mb-8 absolute -mt-[4.50rem] ">
-        <Select
-        isSearchable={false}
-        theme={(theme) => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary: "#ef4444",
-            primary75: "#f87171",
-            primary50: "#fca5a5",
-            primary20: "#fecaca",
-          },
-        })}
-        styles={{
-          control: (provided) => {
-            return {
-              ...provided,
-              backgroundColor: "#1a1a1a",
-            };
-          },
-          menu: (provided) => {
-            return { ...provided, backgroundColor: "#1a1a1a" };
-          },
-          menuPortal: (provided) => ({ ...provided, zIndex: 9999 }),
-          singleValue: (provided) => {
-            return { ...provided, color: "#fff" };
-          }, 
-          option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-            return {
-              ...styles,
-              backgroundColor: isFocused ? "#999999" : null,
-          
-            };
-          }
-        
-          
+          <Select
+            isSearchable={false}
+            theme={(theme) => ({
+              ...theme,
+              colors: {
+                ...theme.colors,
+                primary: "#ef4444",
+                primary75: "#f87171",
+                primary50: "#fca5a5",
+                primary20: "#fecaca",
+              },
+            })}
+            styles={{
+              control: (provided) => {
+                return {
+                  ...provided,
+                  backgroundColor: "#1a1a1a",
+                };
+              },
+              menu: (provided) => {
+                return { ...provided, backgroundColor: "#1a1a1a" };
+              },
+              menuPortal: (provided) => ({ ...provided, zIndex: 9999 }),
+              singleValue: (provided) => {
+                return { ...provided, color: "#fff" };
+              }, 
+              option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+                return {
+                  ...styles,
+                  backgroundColor: isFocused ? "#999999" : null,
+              
+                };
+              }
+            
+              
 
-        }}
+            }}
 
-          value={options[realActiveTabIndex]}
-          onChange={(selectedOption) => setActiveTabIndex(selectedOption.value)}
-          options={options}
-        />
-      </div> 
+              value={options[realActiveTabIndex]}
+              onChange={(selectedOption) => setActiveTabIndex(selectedOption.value)}
+              options={options}
+            />
+        </div> 
 
       <div className="mt-5 space-y-4">
         {Object.keys(sections).map((section) => {

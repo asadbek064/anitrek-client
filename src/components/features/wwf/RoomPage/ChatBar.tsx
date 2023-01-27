@@ -84,7 +84,7 @@ const ChatBar = () => {
         <code>audio</code> element.
       </audio>
 
-      <div className="relative flex h-full flex-col">
+      <div className="relative flex h-full flex-col border-l-2 border-neutral-800">
         <div className="no-scrollbar grow space-y-2 overflow-y-auto pb-4">
           {chats.map((chat, index) => (
             <Chat chat={chat} key={index} />
@@ -96,7 +96,7 @@ const ChatBar = () => {
         <div className="sticky bottom-0 w-full bg-background-900">
           <Input
             value={message}
-            placeholder="Aa"
+            placeholder="Send a message"
             className="bg-background-800 px-3 py-2"
             onChange={(e) => {
               const target = e.target as HTMLInputElement;

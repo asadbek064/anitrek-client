@@ -65,7 +65,7 @@ const ReadImage: React.FC<ReadImageProps> = ({
         >
           <BsFillImageFill className="w-8 h-8 animate-pulse" />
 
-          <p>Vui lòng chờ...</p>
+          <p>Please wait...</p>
         </div>
       )}
 

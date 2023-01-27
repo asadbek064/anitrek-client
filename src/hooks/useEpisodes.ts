@@ -27,42 +27,10 @@ const useEpisodes = (mediaId: number) => {
     let sortedEpisodes = sortMediaUnit(
       episodes.filter((episode) => episode.published)
     );
-    
-    // CR detection 
-   /*  let CR_ID = await getCRavilable(sortedEpisodes[0].sourceMediaId);
-    
-    if (CR_ID !== null) {
-      localStorage.setItem('CR_ID', JSON.stringify(CR_ID));
-    } else {
-      if (localStorage.get('CR_ID') !== undefined) {
-        localStorage.removeItem('CR_ID');
-      }
-    } */
 
     return sortedEpisodes;
   });
 };
 
-// check CR available
-async function getCRavilable(sourceMediaId:string){
-  let BASE_URL = `http://localhost:8080/`;
-
-  let animeTitle = sourceMediaId.replaceAll('-', ' ');
-
-  const response = await fetch(`${BASE_URL}api/watching/available-sources?animeTitle=${encodeURIComponent(animeTitle)}`);
-
-  if (!response.ok) {
-    const message = `An error has occured: ${response.status}`;
-    throw new Error(message);
-  }
-  const responseData = await response.json();
-  // check if cr status exist
-  if (responseData.length > 1) {
-    return responseData[1].id;
-  } else {
-    return null;
-  }
-  
-}
 
 export default useEpisodes;

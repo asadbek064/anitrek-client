@@ -33,28 +33,28 @@ const Sidebar = () => {
             className="flex items-center gap-2 overflow-x-scroll no-scrollbar"
           >
             <Tab className="px-3 py-2 cursor-pointer">
-              {t("sideBar.introduction")}
-            </Tab>
-            <Tab className="px-3 py-2 cursor-pointer">
               {t("sideBar.textChat")}
             </Tab>
             <Tab className="px-3 py-2 cursor-pointer">
-              {t("sideBar.voiceChat")}
+              {t("sideBar.introduction")}
             </Tab>
+            {/* <Tab className="px-3 py-2 cursor-pointer">
+              {t("sideBar.voiceChat")}
+            </Tab> */}
           </div>
         </TabList>
       </div>
 
       <div className="py-4 grow overflow-x-hidden no-scrollbar">
-        <TabPanel className="hidden p-2">
-          <MediaBar />
-        </TabPanel>
         <TabPanel className="hidden h-full p-2">
           <ChatBar />
         </TabPanel>
-        <TabPanel className="hidden h-full p-2">
-          <AudioChat />
+        <TabPanel className="hidden p-2">
+          <MediaBar />
         </TabPanel>
+        {/* <TabPanel className="hidden h-full p-2">
+          <AudioChat />
+        </TabPanel> */}
       </div>
     </Tabs>
   );

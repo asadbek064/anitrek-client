@@ -23,7 +23,7 @@
   "guest_register.register": "Start watching",
   "guest_register.name_placeholder": "Peter Parker",
   "guest_register.name_required": "Name is required",
-  "sideBar.introduction": "Introduction",
+  "sideBar.introduction": "Detail",
   "sideBar.textChat": "Text chat",
   "sideBar.voiceChat": "Voice chat",
   "mediaBar.roomDetails": "Room details",

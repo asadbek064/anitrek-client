@@ -2,9 +2,10 @@ import { useGlobalPlayer } from "@/contexts/GlobalPlayerContext";
 import { parseNumberFromString } from "@/utils";
 import classNames from "classnames";
 import { ControlButton, TimeIndicator, useInteract } from "netplayer";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
-import { AiOutlineClose, AiOutlineExpandAlt } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineExpandAlt, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import Player, { PlayerProps } from "./Player";
 import Controls from "./Player/Controls";
@@ -202,6 +203,23 @@ const PlayerOverlay = React.memo(() => {
             onClick={router.back}
           />
 
+      <div className="w-10 h-10 absolute top-4 right-8" >
+        {anime?.id && (
+          <Link href={`/anime/details/${anime.id}`}>
+          <a
+          data-tip="React-tooltip"
+            target="_blank"
+            className={classNames(
+              "absolute transition-all duration-300 cursor-pointer top-4 right-8 hover:text-gray-200",
+              isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
+            )}
+          >
+            <AiOutlineInfoCircle className={classNames("w-10 h-10")} />
+          </a>
+        </Link>
+        )}
+      </div>
+        
           {anime?.idMal && (
             <TimestampSkipButton
               className="absolute right-4 bottom-20"

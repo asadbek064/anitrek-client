@@ -50,9 +50,16 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
         description={t("login_description")}
       />
 
-      <div className="w-full h-screen grid grid-cols-1 md:grid-cols-5">
-        <div className="col-span-3 bg-background flex items-center justify-center">
-          <div className="w-full px-4 md:px-0 md:w-1/2">
+      <div className="w-full h-screen grid grid-cols-1"
+      style={{
+        backgroundImage: "url('/login-background.jpg')",
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        opacity: "0.9",
+      }}
+      >
+        <div className="col-span-3 xl:col-span-2 bg-background flex items-center justify-center bg-transparent">
+          <div className="w-full px-4 md:px-0 md:w-1/3">
             <h1 className="text-5xl font-bold mb-8">{t("login_heading")} BETA</h1>
             <div className="space-y-4">
               <Button
@@ -71,29 +78,6 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes }) => {
               >
                 <p>{t("login_with_discord")}</p>
               </Button>
-            </div>
-          </div>
-        </div>
-
-        <div
-          className="hidden md:block relative col-span-2 after:absolute after:inset-0 after:bg-background/70 after:z-10"
-          style={{
-            backgroundImage: "url('/login-background.jpg')",
-            backgroundPosition: "center center",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="relative flex flex-col justify-center items-center w-full h-full z-20">
-            <div className="w-full px-8">
-              <p className="text-xl font-semibold text-white line-clamp-6">
-                &quot;{randomQuote.quote}&quot;
-              </p>
-              <p className="text-right text-l italic mt-4 font-semibold">
-                {randomQuote.character}
-              </p>
-              <p className="text-right text-xs font-medium text-gray-300">
-                {randomQuote.anime}
-              </p>
             </div>
           </div>
         </div>

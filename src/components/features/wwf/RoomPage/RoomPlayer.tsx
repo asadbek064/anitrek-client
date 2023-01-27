@@ -19,6 +19,7 @@ import Overlay from "../../anime/Player/Overlay";
 import TimestampSkipButton from "../../anime/Player/TimestampSkipButton";
 import RoomPlayerControls from "./RoomPlayerControls";
 import RoomPlayerMobileControls from "./RoomPlayerMobileControls";
+import ShortMediaBar from "./ShortMediaBar";
 
 const blankVideo = [
   {
@@ -183,6 +184,7 @@ const RoomPlayer = () => {
           />
         </div>
       </div>
+      <ShortMediaBar />
     </RoomPlayerContextProvider>
   );
 };

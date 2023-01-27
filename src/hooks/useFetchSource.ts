@@ -40,6 +40,7 @@ export const useFetchSource = (
         params: {
           episode_id: episode.sourceEpisodeId,
           source_media_id: episode.sourceMediaId,
+          section: episode.section,
           source_id: episode.sourceId,
         },
       })

@@ -1,6 +1,7 @@
 
 import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Head from "@/components/shared/Head";
+import Iframe from "@/components/shared/Iframe";
 
 import useDevice from "@/hooks/useDevice";
 import anime from "@/pages/upload/anime";
@@ -40,7 +41,7 @@ const ForwardRefPlayer = React.memo(
 
 ForwardRefPlayer.displayName = "ForwardRefPlayer";
 
-interface AiEpisode {
+export interface AiEpisode {
     src: string;
     iframe: boolean;
     episode_number: number;
@@ -48,18 +49,33 @@ interface AiEpisode {
 
 interface WatchPageProps {
     cover_img: string ;
+    internal: boolean;
     title: string;
     episodes: AiEpisode[];
 }
 
-const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, cover_img }) => {
-
-  const videoRef = useRef<HTMLVideoElement>(null);
+const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, cover_img, internal }) => {
   const router = useRouter();
   const { isMobile } = useDevice();
 
-  const showInfoTimeout = useRef<NodeJS.Timeout>(null);
   const { t } = useTranslation("anime_watch");
+  
+  const [selectedSource, setSelectedSource] = useState(null);
+
+
+  const handleEpisodeChange = (episode: number) => {
+    const selectedEpisode: AiEpisode = episodes[episode];
+    const externalPlayerDomain = "https://internal.animet.site/";
+    const useHLS = selectedEpisode.src.includes("m3u8");
+    const source =`${externalPlayerDomain}/plyr.html?source=${encodeURIComponent(selectedEpisode.src)}&useHLS=${useHLS}`;
+    setSelectedSource(source);
+    
+  }
+   // load the first episode always
+   useEffect(() => {
+    handleEpisodeChange(0);
+  }, []);
+
 
   return (
     <React.Fragment>
@@ -69,7 +85,57 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, cover_img }) => 
         image={cover_img}
       />
     <div>
+      <div className="flex items-center justify-start m-2">
+        <button
+          className=" flex items-center justify-center w-8 h-8 rounded-full bg-neutral-800 hover:bg-white/20"
+          onClick={() => router.back()}
+        >
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+                             strokeLinejoin="round"
+              strokeWidth={2}
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+        </button>
+      </div>
       
+
+      <div className="container mx-auto">
+        {internal ? (
+        
+              <div className="relative ">
+                <Iframe src={selectedSource} />
+              </div>
+          ) : (
+            ''
+          )}
+
+      <div className="mt-4 px-4">
+          <div className="text-lg font-medium tracking-wide">{title}</div>
+          <div className="mt-4">
+            
+            <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2">
+                {episodes.map(episode => (
+                    <div key={episode.episode_number} className="bg-neutral-800 hover:bg-white/20 cursor-pointer  rounded-lg p-4">
+                        <div className="text-lg font-medium">{episode.episode_number}</div>
+                    </div>
+                ))}
+            </div>
+              
+          </div>
+        </div>
+    </div>
+
+
+  
     </div>
     </React.Fragment>
   );
@@ -99,12 +165,14 @@ export const getServerSideProps: GetServerSideProps = async ({
           }
     
     ];
+
+    const internal = episodes[0].iframe ? false : true;
     return {
       props: {
         cover_img,
         title,
         episodes,
-
+        internal
       },
     };
   } catch (err) {

@@ -88,9 +88,9 @@ const Comments: React.FC<CommentsProps> = ({ parentId = null, topic }) => {
               href={`/login?redirectedFrom=${asPath}`}
               className="text-primary-300 hover:underline"
             >
-              đăng nhập
+              log in
             </TransLink>{" "}
-            dể bình luận.
+            to comment.
           </Trans>
         </p>
       )}

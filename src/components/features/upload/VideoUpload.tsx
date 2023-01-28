@@ -66,7 +66,7 @@ const VideoUpload: React.FC<VideoUploadProps> = ({ onChange }) => {
             className="mt-2 p-2 w-full h-36 bg-background-900 text-white border-gray-300 border"
             placeholder={
               selectedHosting?.supportedUrlFormats?.join("\n") ||
-              "Nhập url video ở đây."
+              "Enter video url here."
             }
           />
         </React.Fragment>

@@ -85,9 +85,11 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, cover_img, inter
         image={cover_img}
       />
     <div>
+
+      <div className="container mx-auto">
       <div className="flex items-center justify-start m-2">
         <button
-          className=" flex items-center justify-center w-8 h-8 rounded-full bg-neutral-800 hover:bg-white/20"
+          className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-800 hover:bg-white/20"
           onClick={() => router.back()}
         >
           <svg
@@ -107,8 +109,6 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, cover_img, inter
         </button>
       </div>
       
-
-      <div className="container mx-auto">
         {internal ? (
         
               <div className="relative ">

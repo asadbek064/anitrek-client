@@ -1,5 +1,5 @@
 import { getAiTitles } from "@/services/animettv";
-import { AiTitles, ExperimentAnimeTitles } from "@/types/animettv";
+import { AiTitles } from "@/types/animettv";
 import axios, { AxiosError } from "axios";
 import { useQuery, UseQueryOptions } from "react-query";
 

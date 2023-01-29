@@ -1,6 +1,4 @@
-import { Media } from "./anilist";
-
-export type Maybe<T> = T | null;
+export type Maybe<T> = T | null ;
 
 export interface ExperimentAnimeTitles {
     title: string;
@@ -27,8 +25,9 @@ export interface AiTitles {
 export interface anime60fps {
   src: string;
   iframe: boolean;
+  download?: string;
   episode_number: number;
 }
 export interface AiSource {
-  sources?: anime60fps[]; 
+  anime60fps: Maybe<anime60fps[]>;
 }

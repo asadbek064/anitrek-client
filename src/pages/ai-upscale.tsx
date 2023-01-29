@@ -50,7 +50,7 @@ const AiUpscale = () => {
         <div className="pb-8">
           {/* <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
            */}
-          <div className="space-y-8">
+          <div className="space-y-8 mt-14 md:mt-24">
 
               <div className="flex flex-col items-center mt-6">
                 <Tabs 

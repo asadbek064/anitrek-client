@@ -1,8 +1,6 @@
-import useDevice from "@/hooks/useDevice";
 import React from "react";
 
 const Iframe = ({ src }) => {
-  const { isMobile } = useDevice();
 
   const isValidUrl = (str) => {
     try {
@@ -17,20 +15,11 @@ const Iframe = ({ src }) => {
   }
 
   return (
-        isMobile ? ( 
-            <iframe
-            title="iframe boy"
-            src={src}
-            className="inline-block min-h-[30vh] w-full aspect-video "
-            />
-        ) : (
-            
-            <iframe
-            title="iframe boy"
-            src={src}
-            className="inline-block min-h-[40rem] w-full aspect-video"
-            />
-        )
+    <iframe
+    title="iframe boy"
+    src={src}
+    allowFullScreen
+    ></iframe>
   );
 };
 

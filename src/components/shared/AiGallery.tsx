@@ -2,21 +2,22 @@ import Image from 'next/image';
 import { ExperimentAnimeTitles } from "@/types/animettv";
 import { useState } from 'react';
 import React from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
-const createMediaDetailsUrl = (aiTitle: ExperimentAnimeTitles) => {
+/* const createMediaDetailsUrl = (aiTitle: ExperimentAnimeTitles) => {
       return `http://animet.tv/experiment/anime-60fps/${aiTitle.title}`;
-  }
-
+}
+ */
 function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
+  const router = useRouter();
   const [isLoading, setLoading] = useState(true)
 
   return (
     <div>
-      <a href={createMediaDetailsUrl(image)}>
+      <div onClick={() => router.push(`/anime/ai-watch/${image.title}`)} className="cursor-pointer">
         <div className="aspect-w-6 aspect-h-3 w-full overflow-hidden rounded-sm bg-gray-600">
           <Image
             alt=""
@@ -40,7 +41,7 @@ function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
             )}
         </div>
 
-      </a>
+      </div>
 
     </div>
   );

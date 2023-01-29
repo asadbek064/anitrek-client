@@ -1,4 +1,4 @@
-import { AiTitles, ExperimentAnimeTitles } from "../../types/animettv";
+import { AiSource, AiTitles, ExperimentAnimeTitles } from "../../types/animettv";
 import axios from "axios";
 import { Media, MediaCoverImage, MediaTitle } from "@/types/anilist";
 import config from "next/config";
@@ -46,4 +46,13 @@ export const getAiTitles = async () => {
     }
     
     return data;
+}
+
+
+export const getAiTitle = async(title: string) => {
+    const response = await animettvFetcher(
+        `/api/watch-anime/anime60fps?title=${encodeURIComponent(title)}`
+    );
+
+    return response['anime60fps'];
 }

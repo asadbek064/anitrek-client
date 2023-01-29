@@ -18,7 +18,7 @@ function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
   return (
     <div>
       <div onClick={() => router.push(`/anime/ai-watch/${image.title}`)} className="cursor-pointer">
-        <div className="aspect-w-6 aspect-h-3 w-full overflow-hidden rounded-sm bg-gray-600">
+        <div className="aspect-w-6 aspect-h-3 w-full overflow-hidden rounded-sm bg-neutral-600 ">
           <Image
             alt=""
             src={image.cover_img}
@@ -33,12 +33,13 @@ function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
               onLoadingComplete={() => setLoading(false)}
           />
         </div>
-        <div className="mt-2 text-md text-white-700">{image.title} | 
+        <div className="mt-2 text-white-900">{image.title} | 
         {image.isDub ? (
           ' DUB'
           ) : (
             ' SUB'
             )}
+            
         </div>
 
       </div>
@@ -51,7 +52,7 @@ function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
 function Gallery({ images }: { images: ExperimentAnimeTitles[] }) {
     return (
       <div className="py-0 md:py-2 px-6 lg:max-w-7xl">
-        <div className="grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-6">
+        <div className="grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-6 min-w-full">
           {images.map((image) => (
             <BlurImage key={image.title} image={image} />
           ))}

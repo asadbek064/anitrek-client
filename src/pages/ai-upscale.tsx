@@ -1,9 +1,8 @@
-import CardSwiper from "@/components/shared/CardSwiper";
+
 import ClientOnly from "@/components/shared/ClientOnly";
 import AiGallery from "@/components/shared/AiGallery";
 import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
-import Section from "@/components/shared/Section";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
@@ -11,11 +10,14 @@ import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
 import { MediaSort, MediaType } from "@/types/anilist";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
+import React from "react";
 import { isMobile } from "react-device-detect";
 import useAiTitles from "@/hooks/useAiTitles";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import useHorizontalScroll from "@/hooks/useHorizontalScroll";
+import TextIcon from "@/components/shared/TextIcon";
+import { AiFillHeart,  } from "react-icons/ai";
+import { BsFillInfoCircleFill,  } from "react-icons/bs";
 
 const AiUpscale = () => {
   
@@ -52,6 +54,7 @@ const AiUpscale = () => {
            */}
           <div className="space-y-8 mt-14 md:mt-24">
 
+
               <div className="flex flex-col items-center mt-6">
                 <Tabs 
                   domRef={(node) => (tabContainerRef.current = node)}
@@ -60,6 +63,30 @@ const AiUpscale = () => {
                   selectedTabClassName="bg-background-700 border-b border-primary-500"
                   selectedTabPanelClassName="!block"
                 >
+                <div className="flex items-center bg-neutral-900 text-white text-sm font-bold px-4 py-3 opacity-80" role="alert">
+                    <div className="flex flex-col">
+                      <TextIcon
+                                LeftIcon={BsFillInfoCircleFill}
+                                iconClassName="text-white-900"
+                              >
+                        <p>If episode doesn't play please let us know in our &nbsp;
+                          <a className="text-blue-500" href="https://discord.gg/nNY94AqFtK">Discord Server.&nbsp;</a>
+                        </p>
+                      </TextIcon>
+                      <div className="ml-7 mt-2 md:mt-0">
+                          <TextIcon
+                              LeftIcon={AiFillHeart}
+                              iconClassName="text-red-500"
+                            >
+                              <a className="text-blue-500" href="https://ko-fi.com/animettv" target="_blank">
+                                Support
+                              </a>
+                              Anime A.I movement with us.
+                            </TextIcon>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="p-2 bg-background-800">
                     <TabList className="">
                       <div

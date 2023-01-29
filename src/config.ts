@@ -7,6 +7,7 @@ const config = {
   socketServerUrl: process.env.NEXT_PUBLIC_SOCKET_SERVER_URL,
   webPushPublicKey: process.env.NEXT_PUBLIC_WEB_PUSH,
   animettvServer: process.env.NEXT_PUBLIC_ANIMETTV_SERVER_URL,
+  externalPlayerDomain: process.env.EXTERNAL_PLAYER_DOMAIN,
 };
 
 export default config;

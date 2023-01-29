@@ -2,24 +2,14 @@
 import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Head from "@/components/shared/Head";
 import Iframe from "@/components/shared/Iframe";
-
 import useDevice from "@/hooks/useDevice";
-import anime from "@/pages/upload/anime";
 import { getAiTitle } from "@/services/animettv";
-import { AiSource } from "@/types/animettv";
-import { getTitle } from "@/utils/data";
-import NetPlayer from "netplayer";
-
-
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, {
-  useCallback,
   useEffect,
-  useMemo,
-  useRef,
   useState,
 } from "react";
 
@@ -69,7 +59,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
     setSelectedEpisodeNumber(episode);
     
     const selectedEpisode: AiEpisode = episodes[episode-1];
-    const externalPlayerDomain = "http://127.0.0.1:5500/";
+    const externalPlayerDomain = "https://internal.animet.site/"; //dev http://127.0.0.1:5500
+    
     const useHLS = selectedEpisode.src.includes("m3u8");
 
     let source = '';

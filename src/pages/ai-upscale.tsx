@@ -69,7 +69,7 @@ const AiUpscale = () => {
                                 LeftIcon={BsFillInfoCircleFill}
                                 iconClassName="text-white-900"
                               >
-                        <p>If episode doesn't play please let us know in our &nbsp;
+                        <p>{`If episode doesn't play please let us know in our`} &nbsp;
                           <a className="text-blue-500" href="https://discord.gg/nNY94AqFtK">Discord Server.&nbsp;</a>
                         </p>
                       </TextIcon>
@@ -78,7 +78,7 @@ const AiUpscale = () => {
                               LeftIcon={AiFillHeart}
                               iconClassName="text-red-500"
                             >
-                              <a className="text-blue-500" href="https://ko-fi.com/animettv" target="_blank">
+                              <a className="text-blue-500" href="https://ko-fi.com/animettv" target="_blank" rel="noreferrer">
                                 Support
                               </a>
                               Anime A.I movement with us.

@@ -63,17 +63,17 @@ const AiUpscale = () => {
                   selectedTabClassName="bg-background-700 border-b border-primary-500"
                   selectedTabPanelClassName="!block"
                 >
-                <div className="flex items-center bg-neutral-900 text-white text-sm font-bold px-4 py-3 opacity-80" role="alert">
+                <div className="flex items-center bg-neutral-900 text-white text-sm md:text-xs md:font-bold px-4 py-3 opacity-80" role="alert">
                     <div className="flex flex-col">
                       <TextIcon
                                 LeftIcon={BsFillInfoCircleFill}
                                 iconClassName="text-white-900"
                               >
-                        <p>{`If episode doesn't play please let us know in our`} &nbsp;
+                        <p>{`If videos doesn't play please let us know in our`} &nbsp;
                           <a className="text-blue-500" href="https://discord.gg/nNY94AqFtK">Discord Server.&nbsp;</a>
                         </p>
                       </TextIcon>
-                      <div className="ml-7 mt-2 md:mt-0">
+                      <div className="ml-7 mt-2 md:mt-0 hidden md:block">
                           <TextIcon
                               LeftIcon={AiFillHeart}
                               iconClassName="text-red-500"

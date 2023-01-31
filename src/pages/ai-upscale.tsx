@@ -73,17 +73,6 @@ const AiUpscale = () => {
                           <a className="text-blue-500" href="https://discord.gg/nNY94AqFtK">Discord Server.&nbsp;</a>
                         </p>
                       </TextIcon>
-                      <div className="ml-7 mt-2 md:mt-0 hidden md:block">
-                          <TextIcon
-                              LeftIcon={AiFillHeart}
-                              iconClassName="text-red-500"
-                            >
-                              <a className="text-blue-500" href="https://ko-fi.com/animettv" target="_blank" rel="noreferrer">
-                                Support
-                              </a>
-                              Anime A.I movement with us.
-                            </TextIcon>
-                      </div>
                     </div>
                   </div>
 

@@ -142,6 +142,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   try {
     const title = params[0];
+    
     const episodes: AiEpisode[] = await getAiTitle(title);
     const internal = !episodes[0].iframe;
   

@@ -128,6 +128,8 @@ export const getServerSideProps = withAdditionalUser({
         .eq("addedUserId", user.id)
         .single();
 
+        console.log(sourceAddedByUser);
+        
       if (error || !sourceAddedByUser?.id) {
         throw error;
       }

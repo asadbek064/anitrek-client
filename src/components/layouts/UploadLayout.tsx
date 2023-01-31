@@ -27,11 +27,11 @@ const routes = [
     href: "/upload/anime",
     icon: AiOutlineVideoCameraAdd,
   },
-  {
+  /* {
     title: "Manga",
     href: "/upload/manga",
     icon: BiImageAdd,
-  },
+  }, */
 ];
 
 const variants: Variants = {
@@ -91,11 +91,11 @@ const UploadLayout: React.FC = ({ children }) => {
                       <Button secondary>Post anime</Button>
                     </a>
                   </Link>
-                  <Link href="/upload/manga/create">
+                  {/* <Link href="/upload/manga/create">
                     <a>
                       <Button secondary>Post manga</Button>
                     </a>
-                  </Link>
+                  </Link> */}
                 </div>
               </Popup>
 

@@ -142,12 +142,12 @@ const UploadAnimePage: NextPage<UploadAnimePageProps> = ({
 
   return (
     <UploadContainer
-      title="Danh sách Manga đã upload"
+      title="List of Manga Uploaded"
       isVerified={user.isVerified}
     >
       <Button primary className="absolute -top-2 right-4 md:right-12">
         <Link href="/upload/manga/create">
-          <a>Tìm manga</a>
+          <a>Find manga</a>
         </Link>
       </Button>
 
@@ -164,7 +164,7 @@ const UploadAnimePage: NextPage<UploadAnimePageProps> = ({
           onPageIndexChange={handlePageIndexChange}
         />
       ) : (
-        <h1 className="text-3xl text-center">Bạn chưa đăng Manga nào</h1>
+        <h1 className="text-3xl text-center">You have not posted any Manga yet</h1>
       )}
     </UploadContainer>
   );

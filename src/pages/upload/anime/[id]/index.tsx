@@ -92,7 +92,7 @@ const UploadAnimePage: NextPage<UploadAnimePageProps> = ({
                   <Link href={`/upload/anime/${mediaId}/episodes/create`}>
                     <a>
                       <Button LeftIcon={IoIosAddCircleOutline} primary>
-                        Tập mới
+                        New episode
                       </Button>
                     </a>
                   </Link>
@@ -118,7 +118,7 @@ const UploadAnimePage: NextPage<UploadAnimePageProps> = ({
 
                         {!episode.published && (
                           <span className="rounded-md top-1/2 -translate-y-1/2 px-2 py-1 bg-primary-700 absolute right-5">
-                            Chưa đăng tải
+                            Not posted yet
                           </span>
                         )}
                       </a>
@@ -140,12 +140,12 @@ const UploadAnimePage: NextPage<UploadAnimePageProps> = ({
             isLoading={deleteLoading}
           >
             <h1 className="text-2xl font-semibold">
-              Bạn có chắc chắn xóa không?
+              Are you sure delete?
             </h1>
 
             <p>
-              Một khi đã xóa, bạn sẽ không thể khôi phục lại. Điều này sẽ xóa
-              hoàn toàn bất kỳ dữ liệu nào liên quan đến anime này.
+              Once deleted, you cannot restore it. This will delete
+              absolutely any data related to this anime.
             </p>
           </DeleteConfirmation>
         </Section>
@@ -165,6 +165,8 @@ export const getServerSideProps = withAdditionalUser({
         .eq("addedUserId", user.id)
         .single();
 
+        console.log(sourceAddedByUser);
+        
       if (error || !sourceAddedByUser?.id) {
         throw error;
       }

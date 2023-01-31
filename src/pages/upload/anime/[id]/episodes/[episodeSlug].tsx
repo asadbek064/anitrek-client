@@ -79,7 +79,7 @@ const UploadEpisodeEditPage: NextPage<UploadEpisodeEditPageProps> = ({
           <div className="space-y-16">
             <UploadSection>
               <UploadSection.Left>
-                <label className="font-semibold text-2xl">Tập phim</label>
+                <label className="font-semibold text-2xl">Episode</label>
               </UploadSection.Left>
 
               <UploadSection.Right>

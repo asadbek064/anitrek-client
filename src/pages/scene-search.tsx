@@ -47,7 +47,7 @@ const TracePage = () => {
 
         {/*   <h3 className="text-lg mb-2">{t("description")}</h3> */}
 
-          <p className="italic text-xs mb-1">
+          {/* <p className="italic text-xs mb-1">
             {t("made_by")}{" "}
             <a
               className="text-primary-300 hover:underline"
@@ -55,7 +55,7 @@ const TracePage = () => {
             >
               trace.moe
             </a>
-          </p>
+          </p> */}
 
           <p className="italic text-xs">{t("note")}</p>
         </div>

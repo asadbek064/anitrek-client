@@ -8,12 +8,12 @@ export interface CircleButtonProps extends BaseButtonProps {
 
 const CircleButton = React.forwardRef<HTMLButtonElement, CircleButtonProps>(
   (props, ref) => {
-    const { children, className, secondary, ...rest } = props;
+    const { children, className, secondary,  ...rest } = props;
 
     return (
       <BaseButton
         className={classNames(
-          "p-2 rounded-full",
+          "p-2 rounded-md",
           className,
           props.primary
             ? "hover:bg-primary-500"

@@ -7,10 +7,7 @@ import { useRouter } from 'next/router';
 function cn(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
-/* const createMediaDetailsUrl = (aiTitle: ExperimentAnimeTitles) => {
-      return `http://animet.tv/experiment/anime-60fps/${aiTitle.title}`;
-}
- */
+
 function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(true)

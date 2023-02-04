@@ -98,6 +98,13 @@ const Home = () => {
             <WatchedSection />
             <RecommendedAnimeSection />
 
+            {recentlyUpdatedLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("newly_added", { ns: "common" })}>
+                <CardSwiper data={recentlyUpdated} />
+              </Section>
+            )}
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
@@ -131,13 +138,6 @@ const Home = () => {
 
             <NewestComments type={MediaType.Anime} />
 
-            {recentlyUpdatedLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("newly_added", { ns: "common" })}>
-                <CardSwiper data={recentlyUpdated} />
-              </Section>
-            )}
 
 
             <div

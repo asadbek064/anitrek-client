@@ -36,6 +36,7 @@ ForwardRefPlayer.displayName = "ForwardRefPlayer";
 
 export interface AiEpisode {
     src: string;
+    vtt?: string;
     iframe: boolean;
     episode_number: number;
 }
@@ -59,13 +60,18 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
     setSelectedEpisodeNumber(episode);
     
     const selectedEpisode: AiEpisode = episodes[episode-1];
-    const externalPlayerDomain = "https://internal.animet.site/"; //dev http://127.0.0.1:5500
+    const externalPlayerDomain = "https://internal.animet.site/"; //dev http://127.0.0.1:5500 
     
     const useHLS = selectedEpisode.src.includes("m3u8");
 
     let source = '';
     if (internal) {
-      source = `${externalPlayerDomain}/plyr.html?source=${encodeURIComponent(selectedEpisode.src)}&useHLS=${useHLS}`;
+      // if vtt is present, use it
+      if (selectedEpisode.vtt) {
+        source = `${externalPlayerDomain}/plyr.html?source=${encodeURIComponent(selectedEpisode.src)}&useHLS=${useHLS}&useVTT=${encodeURIComponent(selectedEpisode.vtt)}`;
+      } else {
+        source = `${externalPlayerDomain}/plyr.html?source=${encodeURIComponent(selectedEpisode.src)}&useHLS=${useHLS}`;
+      }
     } else {
       source = selectedEpisode.src;
     }

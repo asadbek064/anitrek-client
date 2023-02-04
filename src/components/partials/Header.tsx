@@ -49,11 +49,11 @@ const routes: _route[] = [
     href: "/ai-upscale",
     icon: CgSmartphoneChip,
   },
-  {
+  /* {
     title: "Watch2together",
     href: "/wwf",
     icon: MdOutlineLiveTv
-  },
+  }, */
   {
     title: "AniMusic",
     href: "/themes",

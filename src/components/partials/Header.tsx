@@ -40,11 +40,11 @@ const routes: _route[] = [
     href: "/manga",
     icon: AiOutlineRead
   },
-  {
+  /* {
     title: "Scene Finder",
     href: "/scene-search",
     icon: MdFindInPage
-  },
+  }, */
   {
     title: "A.I Upscaled",
     href: "/ai-upscale",

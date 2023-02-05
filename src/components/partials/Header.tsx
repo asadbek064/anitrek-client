@@ -16,7 +16,8 @@ import { BiLogIn } from "react-icons/bi";
 import { CgSmartphoneChip } from "react-icons/cg";
 import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { MdFindInPage, MdOutlineLiveTv } from "react-icons/md";
+import { MdFindInPage, MdHighQuality, MdOutlineLiveTv } from "react-icons/md";
+import { RiMovie2Line } from "react-icons/ri";
 import Notifications from "../features/notifications/Notifications";
 import PWAInstallPrompt from "../features/pwa/PWAInstallPrompt";
 import LanguageSwitcher from "../shared/LanguageSwitcher";
@@ -30,24 +31,24 @@ interface _route {
 }
 const routes: _route[] = [
   {
-    title: "Anime",
+    title: "Watch",
     href: "/",
     icon: AiFillHome
   },
   {
-    title: "Manga",
+    title: "Read",
     href: "/manga",
     icon: AiOutlineRead
   },
   {
-    title: "SceneFinder",
+    title: "Scene Finder",
     href: "/scene-search",
     icon: MdFindInPage
   },
   {
-    title: "4k60fps",
+    title: "A.I Upscaled",
     href: "/ai-upscale",
-    icon: CgSmartphoneChip,
+    icon: MdHighQuality,
   },
   /* {
     title: "Watch2together",
@@ -55,9 +56,9 @@ const routes: _route[] = [
     icon: MdOutlineLiveTv
   }, */
   {
-    title: "AniMusic",
+    title: "Clips",
     href: "/themes",
-    icon: FaMusic
+    icon: RiMovie2Line
   },
 ];
 

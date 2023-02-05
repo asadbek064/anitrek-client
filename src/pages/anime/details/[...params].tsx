@@ -241,6 +241,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               )}
             </DetailsSection>
 
+            <DetailsSection title={t("comments_section")}>
+              <Comments topic={`anime-${anime.id}`} />
+            </DetailsSection>
+
             {!!anime?.relations?.nodes?.length && (
               <DetailsSection title={t("relations_section")}>
                 <List data={sortByReleaseDate(filterOutMangaOvaSpecials(anime.relations.nodes)).filter((x, i) => i < 8)}>{/* FILTER OUT MANGAO AND ONA and SPECIAL and sort it by release date */}
@@ -274,10 +278,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 ))}
               </DetailsSection>
             )} */}
-            
-            <DetailsSection title={t("comments_section")}>
-              <Comments topic={`anime-${anime.id}`} />
-            </DetailsSection>
+          
             
           </div>
 

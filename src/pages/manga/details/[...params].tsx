@@ -169,6 +169,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
               )}
             </DetailsSection>
 
+            <DetailsSection title={t("comments_section")}>
+              <Comments topic={`manga-${manga.id}`} />
+            </DetailsSection>
+
             {/* {!!manga?.characters?.edges.length && (
               <DetailsSection
                 title={t("characters_section")}
@@ -202,10 +206,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                 </List>
               </DetailsSection>
             )}
-
-            <DetailsSection title={t("comments_section")}>
-              <Comments topic={`manga-${manga.id}`} />
-            </DetailsSection>
           </div>
 
           <div className="md:col-span-2 h-[max-content] space-y-4">

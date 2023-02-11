@@ -97,7 +97,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
       <div className="flex items-center justify-start mt-2 mb-2 ml-2 md:ml-0">
         <button
           className="flex items-center justify-center w-8 h-8 rounded-full bg-neutral-800 hover:bg-white/20"
-          onClick={() => router.back()}
+          onClick={() => router.push('/ai-upscale')}
         >
           <svg
             className="w-6 h-6 text-white"

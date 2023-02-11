@@ -87,7 +87,7 @@ const Home = () => {
     <React.Fragment>
       <Head
         title="Watch Anime - AnimetTV"
-        description="Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration"
+        description="4K A.I upscaled anime, Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration"
       />
 
       <ClientOnly>

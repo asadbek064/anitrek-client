@@ -60,7 +60,7 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
       selectedTabClassName="bg-white !text-black"
     >
       <div className="opacity-60 text-center text-md font-bold py-2 tracking-wide flex ">
-        Now: {currentMonth} 
+        Now: {currentMonth}&nbsp;
         <div>
         {dayjs.unix(currentTime).format("HH:mm:ss")} {currentAMPM}
         </div> 

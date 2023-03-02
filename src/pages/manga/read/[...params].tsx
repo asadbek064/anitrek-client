@@ -3,6 +3,7 @@ import Button from "@/components/shared/Button";
 import Head from "@/components/shared/Head";
 import Loading from "@/components/shared/Loading";
 import Portal from "@/components/shared/Portal";
+import TextIcon from "@/components/shared/TextIcon";
 import { ReadContextProvider } from "@/contexts/ReadContext";
 import { ReadSettingsContextProvider } from "@/contexts/ReadSettingsContext";
 import useFetchImages from "@/hooks/useFetchImages";
@@ -18,6 +19,7 @@ import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { BiError } from "react-icons/bi";
 
 const ReadPanel = dynamic(
   () => import("@/components/features/manga/Reader/ReadPanel"),
@@ -195,7 +197,9 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
           {isError ? (
             <div className="w-full h-full flex flex-col items-center justify-center space-y-8">
               <div className="space-y-4">
-                <p className="text-4xl font-semibold">｡゜(｀Д´)゜｡</p>
+                <div className="flex justify-center">
+                  <TextIcon LeftIcon={BiError}></TextIcon>
+                </div>
                 <p className="text-xl">
                   {t("error_message", { error: error?.response?.data?.error })}
                 </p>

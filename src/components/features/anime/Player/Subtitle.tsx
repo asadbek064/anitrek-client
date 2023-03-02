@@ -52,7 +52,6 @@ const Subtitle = () => {
   const { state } = useVideoState();
   const { state: subtitleSettings } = useSubtitleSettings();
   const { moderateScale, update } = useTextScaling();
-  const { isBackground } = useGlobalPlayer();
   const { videoEl } = useVideo();
   const { isInteracting } = useInteract();
   const [currentText, setCurrentText] = useState<string>("");
@@ -87,7 +86,7 @@ const Subtitle = () => {
     setTimeout(() => {
       update();
     }, 500);
-  }, [isBackground, update]);
+  }, [ update]);
 
   useEffect(() => {
     if (!subtitleText) return;
@@ -119,7 +118,7 @@ const Subtitle = () => {
     <div
       className={classNames(
         "netplayer-subtitle absolute left-1/2 -translate-x-1/2 w-[80%] flex items-center justify-evenly transition-all duration-300",
-        isInteracting && isDesktop && !isBackground ? "bottom-24" : "bottom-4"
+        isInteracting && isDesktop ? "bottom-24" : "bottom-4"
       )}
     >
       <p

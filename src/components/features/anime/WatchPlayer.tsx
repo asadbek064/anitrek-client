@@ -33,8 +33,7 @@ const PlayerControls = React.memo(() => {
       sourceId,
       anime,
       currentEpisode,
-    },
-    isBackground,
+    }
   } = useGlobalPlayer();
   const { isInteracting } = useInteract();
 
@@ -48,7 +47,7 @@ const PlayerControls = React.memo(() => {
     [currentEpisodeIndex, sourceEpisodes]
   );
 
-  return !isBackground ? (
+  return (
     <Controls
       rightControlsSlot={
         <React.Fragment>
@@ -71,17 +70,7 @@ const PlayerControls = React.memo(() => {
         </React.Fragment>
       }
     />
-  ) : (
-    <div className="space-y-2">
-      {isInteracting && (
-        <div className="px-4">
-          <TimeIndicator />
-        </div>
-      )}
-
-      <ProgressSlider />
-    </div>
-  );
+  )
 });
 
 PlayerControls.displayName = "PlayerControls";
@@ -158,77 +147,43 @@ const PlayerOverlay = React.memo(() => {
     playerProps: { currentEpisode, anime },
     setPlayerState,
   } = useGlobalPlayer();
-  const { isBackground } = useGlobalPlayer();
 
   return (
     <Overlay>
-      {isBackground ? (
-        <MobileOverlay>
-          <div className="flex items-center gap-2 absolute top-4 left-4">
-            <div className="w-8 h-8">
-              <ControlButton
-                className={classNames(
-                  isInteracting ? "visible opacity-100" : "invisible opacity-0"
-                )}
-                onClick={() =>
-                  router.push(
-                    `/anime/watch/${anime?.id}/${currentEpisode?.sourceId}/${currentEpisode.sourceEpisodeId}`
-                  )
-                }
-                tooltip="Expand"
-              >
-                <AiOutlineExpandAlt />
-              </ControlButton>
-            </div>
-            <div className="w-8 h-8">
-              <ControlButton
-                className={classNames(
-                  isInteracting ? "visible opacity-100" : "invisible opacity-0"
-                )}
-                onClick={() => setPlayerState(null)}
-                tooltip="Exit"
-              >
-                <AiOutlineClose />
-              </ControlButton>
-            </div>
-          </div>
-        </MobileOverlay>
-      ) : (
-        <React.Fragment>
-          <BsArrowLeft
-            className={classNames(
-              "transition-al absolute top-10 left-10 h-10 w-10 cursor-pointer duration-300 hover:text-gray-200",
-              isInteracting ? "visible opacity-100" : "invisible opacity-0"
-            )}
-            onClick={router.back}
-          />
-
-      <div className="w-10 h-10 absolute top-4 right-8" >
-        {anime?.id && (
-          <Link href={`/anime/details/${anime.id}`}>
-          <a
-          data-tip="React-tooltip"
-            target="_blank"
-            className={classNames(
-              "absolute transition-all duration-300 cursor-pointer top-4 right-8 hover:text-gray-200",
-              isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
-            )}
-          >
-            <AiOutlineInfoCircle className={classNames("w-10 h-10")} />
-          </a>
-        </Link>
-        )}
-      </div>
-        
-          {anime?.idMal && (
-            <TimestampSkipButton
-              className="absolute right-4 bottom-20"
-              episode={parseNumberFromString(currentEpisode.name)}
-              malId={anime.idMal}
-            />
+      <React.Fragment>
+        <BsArrowLeft
+          className={classNames(
+            "transition-al absolute top-10 left-10 h-10 w-10 cursor-pointer duration-300 hover:text-gray-200",
+            isInteracting ? "visible opacity-100" : "invisible opacity-0"
           )}
-        </React.Fragment>
-      )}
+          onClick={router.back}
+        />
+
+        <div className="w-10 h-10 absolute top-4 right-8" >
+          {anime?.id && (
+            <Link href={`/anime/details/${anime.id}`}>
+              <a
+                data-tip="React-tooltip"
+                target="_blank"
+                className={classNames(
+                  "absolute transition-all duration-300 cursor-pointer top-4 right-8 hover:text-gray-200",
+                  isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
+                )}
+              >
+                <AiOutlineInfoCircle className={classNames("w-10 h-10")} />
+              </a>
+            </Link>
+          )}
+        </div>
+
+        {anime?.idMal && (
+          <TimestampSkipButton
+            className="absolute right-4 bottom-20"
+            episode={parseNumberFromString(currentEpisode.name)}
+            malId={anime.idMal}
+          />
+        )}
+      </React.Fragment>
     </Overlay>
   );
 });
@@ -307,13 +262,19 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
   );
 
   return (
-    <Player
-      ref={videoRef}
-      components={components}
-      hotkeys={hotkeys}
-      autoPlay
-      {...props}
-    />
+    <div className="
+      xl:mt-6 xl:mx-36
+      lg:mt-4 lg:mx-20
+
+      h-[56.25vw] transform-none" style={{maxHeight: `calc(100vh - 170px)`}}>
+      <Player
+        ref={videoRef}
+        components={components}
+        hotkeys={hotkeys}
+        autoPlay
+        {...props}
+      />
+    </div>
   );
 };
 

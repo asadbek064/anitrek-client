@@ -30,19 +30,7 @@ interface ContextProps {
   setPlayerState: React.Dispatch<React.SetStateAction<PlayerProps>>;
   setPlayerProps: React.Dispatch<React.SetStateAction<WatchPlayerContextProps>>;
   playerProps: WatchPlayerContextProps;
-  isBackground: boolean;
 }
-
-const playerVariants: Variants = {
-  watch: {
-    width: "100vw",
-    height: "100vh",
-  },
-  background: {
-    width: 400,
-    height: 225,
-  },
-};
 
 const PlayerContext = createContext<ContextProps>(null);
 
@@ -50,17 +38,10 @@ const GlobalPlayerContextProvider: React.FC = ({ children }) => {
   const [playerState, setPlayerState] = useState<PlayerProps>(null);
   const [playerProps, setPlayerProps] = useState<WatchPlayerContextProps>(null);
 
-  const router = useRouter();
-
-  const shouldPlayInBackground = useMemo(() => {
-    return !router?.pathname.includes("watch") && !isMobile;
-  }, [router?.pathname]);
-
   return (
     <PlayerContext.Provider
       value={{
         setPlayerState,
-        isBackground: shouldPlayInBackground && !!playerState?.sources,
         playerProps,
         setPlayerProps,
       }}
@@ -71,19 +52,11 @@ const GlobalPlayerContextProvider: React.FC = ({ children }) => {
         <AnimatePresence initial={false}>
           <div
             className={classNames(
-              "fixed shadow-2xl",
-              shouldPlayInBackground && "bottom-4 right-4 z-[9999]"
+              "shadow-2xl",
             )}
           >
-            <motion.div
-              layout
-              dragElastic={0}
-              variants={playerVariants}
-              animate={shouldPlayInBackground ? "background" : "watch"}
-              transition={{ duration: 0.5, type: "tween" }}
-            >
-              <ForwardRefPlayer {...playerState} />
-            </motion.div>
+
+            <ForwardRefPlayer {...playerState} />
           </div>
         </AnimatePresence>
       ) : null}

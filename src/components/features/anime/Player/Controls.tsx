@@ -17,6 +17,7 @@ import ScreenshotButton from "./ScreenshotButton";
 import SkipButton from "./SkipButton";
 import TimestampsButton from "./TimestampsButton";
 
+
 interface ControlsProps {
   rightControlsSlot?: React.ReactNode;
   leftControlsSlot?: React.ReactNode;

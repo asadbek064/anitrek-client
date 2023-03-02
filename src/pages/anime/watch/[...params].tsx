@@ -1,9 +1,14 @@
+import LocaleEpisodeSelector from "@/components/features/anime/Player/LocaleEpisodeSelector";
 import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Button from "@/components/shared/Button";
 import Description from "@/components/shared/Description";
+import DetailsSection from "@/components/shared/DetailsSection";
 import Head from "@/components/shared/Head";
 import Loading from "@/components/shared/Loading";
 import Portal from "@/components/shared/Portal";
+import Section from "@/components/shared/Section";
+import Spinner from "@/components/shared/Spinner";
+import TextIcon from "@/components/shared/TextIcon";
 import { useGlobalPlayer } from "@/contexts/GlobalPlayerContext";
 import useDevice from "@/hooks/useDevice";
 import useEventListener from "@/hooks/useEventListener";
@@ -26,6 +31,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { BiError } from "react-icons/bi";
 
 const WatchPlayer = dynamic(
   () => import("@/components/features/anime/WatchPlayer"),
@@ -204,7 +210,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
           episode_id: `${currentEpisode.sourceId}-${currentEpisode.sourceEpisodeId}`,
           watched_time: videoRef.current?.currentTime,
         });
-      }, 30000);
+      }, 20000);
     };
 
     videoEl.addEventListener("canplay", handleSaveTime);
@@ -326,9 +332,11 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
       {isError ? (
         <Portal selector=".netplayer-container">
           <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-4">
-            <p className="text-4xl font-semibold text-center">｡゜(｀Д´)゜｡</p>
+            <div className="flex justify-center">
+                <TextIcon LeftIcon={BiError}></TextIcon>
+            </div>
             <p className="text-xl text-center">
-                An error has occurred ({error?.response?.data?.error})
+                Error ({error?.response?.data?.error})
             </p>
             <p className="text-lg text-center">
               You can choose another source or try again later.
@@ -340,12 +348,14 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
         !data?.sources?.length && (
           <Portal selector=".netplayer-container">
             <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 space-y-4">
-              <p className="text-4xl font-semibold text-center">｡゜(｀Д´)゜｡</p>
+              <div className="flex justify-center">
+                <TextIcon LeftIcon={BiError}></TextIcon>
+              </div>
               <p className="text-xl text-center">
-                An error has occurred (No sources found)
+                Error (No sources found)
               </p>
               <p className="text-lg text-center">
-                You can choose another source or try again later.
+                You can choose another source or try again later. 
               </p>
             </div>
           </Portal>
@@ -373,47 +383,24 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
         </Portal>
       )}
 
-      {showWatchedOverlay && !declinedRewatch && (
-        <Portal selector=".netplayer-container">
-          <div
-            className="fixed inset-0 z-40 bg-black/70"
-            onClick={() => {
-              setShowWatchedOverlay(false);
-              setDeclinedRewatch(true);
-            }}
-          />
-
-          <div className="fixed left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-50 w-2/3 p-8 rounded-md bg-background-900">
-            <h1 className="text-4xl font-bold mb-4">
-              {t("rewatch_heading", { episodeName: watchedEpisode.name })}
-            </h1>
-            <p className="">
-              {t("rewatch_description", { episodeName: watchedEpisode.name })}
-            </p>
-            <p className="mb-4">
-              {t("rewatch_question", { episodeName: watchedEpisode.name })}
-            </p>
-            <div className="flex items-center justify-end space-x-4">
-              <Button
-                onClick={() => {
-                  setShowWatchedOverlay(false), setDeclinedRewatch(true);
-                }}
-                className="!bg-transparent hover:!bg-white/20 transition duration-300"
-              >
-                <p>{t("rewatch_no")}</p>
-              </Button>
-              <Button
-                onClick={() =>
-                  handleNavigateEpisode(watchedEpisodeData?.episode)
-                }
-                primary
-              >
-                <p>{t("rewatch_yes")}</p>
-              </Button>
-            </div>
+      <Portal>
+        <Section className="w-full gap-8 mt-8 mb-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+          <div className="space-y-12 md:col-span-8">
+            <DetailsSection
+              title={"Episodes"}
+              className="overflow-hidden"
+            >
+              {isLoading ? (
+                <div className="h-full w-full flex items-center justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
+              )}
+          </DetailsSection>
           </div>
-        </Portal>
-      )}
+        </Section>
+      </Portal>
     </React.Fragment>
   );
 };

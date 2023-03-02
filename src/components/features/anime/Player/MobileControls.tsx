@@ -27,19 +27,20 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
       )}
     >
       <div className="px-4 flex w-full items-center justify-between">
-        <TimeIndicator />
+         <TimeIndicator />
 
         <div className="w-4 h-4">
-          <FullscreenButton />
+          <FullscreenButton  />
         </div>
       </div>
       <div className="px-4 w-full mt-2">
         <ProgressSlider />
       </div>
-      <div className="flex justify-evenly items-center py-6">
-        <SkipButton />
+      <div className="flex justify-evenly items-center py-2">
+        {/* show these componesnt when video is full screen mode and add py-6 */}
+        {/* <SkipButton /> */}
 
-        {controlsSlot}
+       {/*  {controlsSlot} */}
       </div>{" "}
     </div>
   );

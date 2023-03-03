@@ -1,10 +1,15 @@
 import LocaleEpisodeSelector from "@/components/features/anime/Player/LocaleEpisodeSelector";
 import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
+import Comments from "@/components/features/comment/Comments";
 import Button from "@/components/shared/Button";
 import Description from "@/components/shared/Description";
 import DetailsSection from "@/components/shared/DetailsSection";
+import DotList from "@/components/shared/DotList";
 import Head from "@/components/shared/Head";
+import InfoItem from "@/components/shared/InfoItem";
 import Loading from "@/components/shared/Loading";
+import MediaDescription from "@/components/shared/MediaDescription";
+import PlainCard from "@/components/shared/PlainCard";
 import Portal from "@/components/shared/Portal";
 import Section from "@/components/shared/Section";
 import Spinner from "@/components/shared/Spinner";
@@ -18,7 +23,7 @@ import useSavedWatched from "@/hooks/useSavedWatched";
 import useSaveWatched from "@/hooks/useSaveWatched";
 import { AnimeSourceConnection, Episode } from "@/types";
 import { parseNumberFromString } from "@/utils";
-import { getDescription, getTitle, sortMediaUnit } from "@/utils/data";
+import { convert, getDescription, getTitle, sortMediaUnit } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -61,6 +66,8 @@ interface WatchPageProps {
 const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
+  const { locale } = useRouter();
+
   const { isMobile } = useDevice();
   const [showInfoOverlay, setShowInfoOverlay] = useState(false);
   const [showWatchedOverlay, setShowWatchedOverlay] = useState(false);
@@ -382,24 +389,98 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
           </div>
         </Portal>
       )}
-
+  
       <Portal>
-        <Section className="w-full gap-8 mt-8 mb-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
-          <div className="space-y-12 md:col-span-8">
-            <DetailsSection
-              title={"Episodes"}
-              className="overflow-hidden"
-            >
-              {isLoading ? (
-                <div className="h-full w-full flex items-center justify-center">
-                  <Spinner />
+        <div className="flex flex-col">
+          <Section className="gap-8 mt-8 mb-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+            <div className="space-y-12 md:col-span-8">
+              <DetailsSection
+                title={"Episodes"}
+                className="overflow-hidden"
+              >
+                {isLoading ? (
+                  <div className="h-full w-full flex items-center justify-center">
+                    <Spinner />
+                  </div>
+                ) : (
+                  <LocaleEpisodeSelector
+                    mediaId={anime.id}
+                    episodes={episodes}
+                    activeEpisode={currentEpisode}
+                    episodeLinkProps={{ shallow: true, replace: true }}
+                  />
+                )}
+            </DetailsSection>
+            </div>
+          </Section>
+          
+          {/* Details */}
+          <Section className="mt-32 pb-4 bg-background-900">
+            <div className="flex flex-col md:flex-row md:space-x-8">
+              <div className="flex flex-col  justify-between py-4 mt-4  md:text-left md:items-start md:-mt-16 space-y-4">
+                
+                <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 md:w-[186px] lg:w- w-[126px] -mt-12 space-y-6">
+                    <PlainCard src={anime.coverImage.extraLarge} alt={title} />
                 </div>
-              ) : (
-                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
-              )}
-          </DetailsSection>
-          </div>
-        </Section>
+
+                <div className="flex flex-col md:items-start items-center space-y-4 md:no-scrollbar">
+                  <p className="mb-2 text-2xl md:text-4xl font-semibold">{title}</p>
+
+                  <DotList>
+                    {anime.genres.map((genre) => (
+                      <span key={genre}>
+                        {convert(genre, "genre", { locale })}
+                      </span>
+                    ))}
+                  </DotList>
+
+                  <MediaDescription
+                    description={description}
+                    containerClassName="mt-4 mb-8 md:w-4/6"
+                    className="text-gray-300 hover:text-gray-100 transition duration-200"
+                  />
+
+                  <div className="flex flex-wrap text-xs md:text-base md:flex-row gap-x-6 gap-y-3 md:overflow-x-auto md:gap-x-16 [&>*]:shrink-0">
+                    <InfoItem
+                      title={t("common:country")}
+                      value={convert(anime.countryOfOrigin, "country", { locale })}
+                    />
+                    <InfoItem
+                      title={t("common:total_episodes")}
+                      value={anime.episodes}
+                    />
+
+                    {anime.duration && (
+                      <InfoItem
+                        title={t("common:duration")}
+                        value={`${anime.duration} ${t("common:minutes")}`}
+                      />
+                    )}
+
+                    <InfoItem
+                      title={t("common:status")}
+                      value={convert(anime.status, "status", { locale })}
+                    />
+                    <InfoItem
+                      title={t("common:age_rated")}
+                      value={anime.isAdult ? "18+" : ""}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          {/* Comments */}
+          <Section className="gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+            <div className="space-y-12 md:col-span-8">
+              <DetailsSection title={"Comments"}>
+                <Comments topic={`anime-${anime.id}`} />
+              </DetailsSection>
+            </div>
+          </Section>
+
+        </div>
       </Portal>
     </React.Fragment>
   );

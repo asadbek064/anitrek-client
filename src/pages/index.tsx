@@ -105,19 +105,21 @@ const Home = () => {
                 <CardSwiper data={recentlyUpdated} />
               </Section>
             )}
-            
-             {/* Ad Start */}
-             <ins className="adsbygoogle"
-                  style={{ display: "block"}}
-                  data-ad-client="ca-pub-6890066986315850"
-                  data-ad-slot="3265263871"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true"
-              ></ins>
-              <script>
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-              </script>
-             {/* Ad End */}
+            <div className="m-h-[40px] flex justify-center">
+              <h1>Ad placement</h1>
+               {/* Ad Start */}
+              <ins className="adsbygoogle"
+                    style={{ display: "block"}}
+                    data-ad-client="ca-pub-6890066986315850"
+                    data-ad-slot="3265263871"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                ></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+              {/* Ad End */}
+            </div>
 
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              { <ColumnSection

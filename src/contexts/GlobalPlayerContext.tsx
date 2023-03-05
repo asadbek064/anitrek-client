@@ -30,6 +30,7 @@ interface ContextProps {
   setPlayerState: React.Dispatch<React.SetStateAction<PlayerProps>>;
   setPlayerProps: React.Dispatch<React.SetStateAction<WatchPlayerContextProps>>;
   playerProps: WatchPlayerContextProps;
+  isClose: boolean;
 }
 
 const PlayerContext = createContext<ContextProps>(null);
@@ -38,12 +39,28 @@ const GlobalPlayerContextProvider: React.FC = ({ children }) => {
   const [playerState, setPlayerState] = useState<PlayerProps>(null);
   const [playerProps, setPlayerProps] = useState<WatchPlayerContextProps>(null);
 
+  const router = useRouter();
+
+  const shoulBeClosed = useMemo(() => {
+    return !router?.pathname.includes("watch");
+  }, [router?.pathname]);
+
+  // close the player if its anywhere besides /watch
+  useEffect(() => {
+    if (shoulBeClosed){
+      setPlayerState(null);
+    };
+
+  }, [shoulBeClosed,]);
+
+
   return (
     <PlayerContext.Provider
       value={{
         setPlayerState,
         playerProps,
         setPlayerProps,
+        isClose : shoulBeClosed
       }}
     >
       {children}

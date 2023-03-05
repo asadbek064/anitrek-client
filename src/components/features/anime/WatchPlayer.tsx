@@ -194,8 +194,9 @@ const PlayerMobileOverlay = React.memo(() => {
   const router = useRouter();
   const { isInteracting } = useInteract();
   const {
-    playerProps: { currentEpisode, anime },
+    playerProps: { currentEpisode, anime }, setPlayerState
   } = useGlobalPlayer();
+
 
   return (
     <React.Fragment>

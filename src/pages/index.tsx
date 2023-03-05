@@ -106,6 +106,18 @@ const Home = () => {
               </Section>
             )}
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
+             {/* Ad Start */}
+              <ins className="adsbygoogle"
+                  style={{ display: "block"}}
+                  data-ad-client="ca-pub-6890066986315850"
+                  data-ad-slot="3265263871"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+              ></ins>
+              <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+             {/* Ad End */}
              { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
                 type={MediaType.Anime}

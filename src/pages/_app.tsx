@@ -59,73 +59,82 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
 
     return (
       <React.Fragment>
-      {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
-      <script id="syncData" type="application/json"></script>
+        {/* Google AdS */}
+        <Script  
+          id="Adsense-id"  async
+          onError={(e) => { console.error("GAds script failed to load", e); }}
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890066986315850"
+          crossOrigin="anonymous"
+        />
 
-      {/* umami tracking */}
-      <Script async defer data-website-id="92986fe3-351c-4db9-9939-f47c3c09c7ff" src="https://umami-stat-77nehxshi-animettv.vercel.app/umami.js"></Script>
+        {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
+        <script id="syncData" type="application/json"></script>
 
-      <Script id="chatBroEmbedCode">
-        {`
-      function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
-      ChatbroLoader({encodedChatId: '18L5g'});`}
-      </Script>
+        {/* umami tracking */}
+        <Script async defer data-website-id="92986fe3-351c-4db9-9939-f47c3c09c7ff" src="https://umami-stat-77nehxshi-animettv.vercel.app/umami.js"></Script>
 
-      <Script
-        strategy="afterInteractive"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
-      />
-      
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_TRACKING_ID}', {
-              page_path: window.location.pathname,
-            });
-        `}
-      </Script>
+        <Script id="chatBroEmbedCode">
+          {`
+        function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
+        ChatbroLoader({encodedChatId: '18L5g'});`}
+        </Script>
 
-      <ToastContainer
-        position="bottom-left"
-        autoClose={5000}
-        hideProgressBar={true}
-        newestOnTop={true}
-        closeOnClick
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+          `}
+        </Script>
 
-      <QueryClientProvider client={queryClient}>
-        <UserProvider supabaseClient={supabaseClient}>
-          <SubscriptionContextProvider>
-            <GlobalPlayerContextProvider>
-              <ErrorBoundary
-                onError={(error, info) => {
-                  if (process.env.NODE_ENV === "production") {
-                    console.log(error);
-                  }
-                  setErrorInfo(info);
-                }}
-                fallbackRender={(fallbackProps) => {
-                  return (
-                    <AppErrorFallback
-                      {...fallbackProps}
-                      errorInfo={errorInfo}
-                    />
-                  );
-                }}
-              >
-                {getLayout(<Component {...pageProps} err={err} />)}
-              </ErrorBoundary>
-            </GlobalPlayerContextProvider>
-          </SubscriptionContextProvider>
-        </UserProvider>
-        {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
-      </QueryClientProvider>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={true}
+          newestOnTop={true}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+
+        <QueryClientProvider client={queryClient}>
+          <UserProvider supabaseClient={supabaseClient}>
+            <SubscriptionContextProvider>
+              <GlobalPlayerContextProvider>
+                <ErrorBoundary
+                  onError={(error, info) => {
+                    if (process.env.NODE_ENV === "production") {
+                      console.log(error);
+                    }
+                    setErrorInfo(info);
+                  }}
+                  fallbackRender={(fallbackProps) => {
+                    return (
+                      <AppErrorFallback
+                        {...fallbackProps}
+                        errorInfo={errorInfo}
+                      />
+                    );
+                  }}
+                >
+                  {getLayout(<Component {...pageProps} err={err} />)}
+                </ErrorBoundary>
+              </GlobalPlayerContextProvider>
+            </SubscriptionContextProvider>
+          </UserProvider>
+          {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
+        </QueryClientProvider>
     </React.Fragment>
   );
 }

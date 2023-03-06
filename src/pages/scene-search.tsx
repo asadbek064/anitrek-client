@@ -23,7 +23,15 @@ const TracePage = () => {
       setImage(image);
 
       const result = await mutateAsync(image);
-
+    
+      // filter out all adult titles from result
+      const cleanResult = result.result.filter(title => {
+        if (!title.anime.isAdult)
+            return title;
+      });
+      
+      result.result = cleanResult;
+      
       setTraceResult(result);
     },
     [mutateAsync]

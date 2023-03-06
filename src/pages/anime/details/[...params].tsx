@@ -17,7 +17,7 @@ import Popup from "@/components/shared/Popup";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
-import { REVALIDATE_TIME } from "@/constants";
+import { DISCORD_URL, REVALIDATE_TIME } from "@/constants";
 import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
@@ -42,6 +42,7 @@ import { useEffect, useMemo } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill } from "react-icons/bs";
+import { FaDiscord } from "react-icons/fa";
 
 interface DetailsPageProps {
   anime: Media;
@@ -114,15 +115,25 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
             <div className="flex flex-col  justify-between py-4 mt-4  md:text-left md:items-start md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4 md:no-scrollbar">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  <Link href={`/anime/watch/${anime.id}`}>
-                    <a>
-                      <Button primary LeftIcon={BsFillPlayFill}>
-                        <p>{t("common:watch_now")}</p>
-                      </Button>
-                    </a>
-                  </Link>
+                  {(episodes && episodes.length > 0) ? (
+                   <Link href={`/anime/watch/${anime.id}`}>
+                   <a>
+                     <Button primary LeftIcon={BsFillPlayFill}>
+                       <p>{t("common:watch_now")}</p>
+                     </Button>
+                   </a>
+                 </Link>
+                  ): (
+                    <Link href={DISCORD_URL}>
+                      <a target={'_blank'}>
+                        <Button primary LeftIcon={FaDiscord}>
+                          <p>Request Index</p>
+                        </Button>
+                      </a>
+                    </Link>
+                  )}
 
-                  <Popup
+                  {/* <Popup
                     reference={
                       <Button
                         className="!bg-[#393a3b]"
@@ -145,12 +156,12 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                       </a>
                     </Link>
 
-                   {/*  <AddTranslationModal
+                    <AddTranslationModal
                       mediaId={anime.id}
                       mediaType={MediaType.Anime}
                       defaultDescription={description}
                       defaultTitle={title}
-                    /> */}
+                    />
 
                     <Link href={`/upload/anime/${anime.id}`}>
                       <a>
@@ -163,7 +174,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Button>
                       </a>
                     </Link>
-                  </Popup>
+                  </Popup> */}
                 </div>
 
                 <p className="mb-2 text-3xl font-semibold">{title}</p>

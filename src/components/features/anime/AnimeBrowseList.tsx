@@ -247,6 +247,22 @@ const BrowseList: React.FC<BrowseListProps> = ({
                 label={t("status")}
               />
             </div>
+
+            <div className="flex items-center">
+              <input
+                className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                type="checkbox"
+                id="adultCheckbox"
+                {...register("isAdult")}
+              />
+              <label
+                className="inline-block text-white"
+                htmlFor="adultCheckbox"
+              >
+                18+
+              </label>
+            </div>
+            
           </AdvancedSettings>
         </div>
 

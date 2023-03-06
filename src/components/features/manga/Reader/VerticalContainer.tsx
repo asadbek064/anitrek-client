@@ -62,7 +62,7 @@ const VerticalContainer: React.FC = () => {
             onClick={handleChangeChapter(currentChapterIndex + 1)}
             className="w-full h-full border-2 border-dashed border-gray-600 text-gray-600 hover:border-white hover:text-white transition duration-300 flex items-center justify-center"
           >
-            <p className="text-2xl">Chapter tiếp theo</p>
+            <p className="text-2xl">Next Chapter</p>
           </button>
         </div>
       )}

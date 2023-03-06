@@ -328,6 +328,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
         title={`${title} (${currentEpisode.name}) - AnimetTV`}
         description={`Watch ${title} (${currentEpisode.name}) at AnimetTV. Completely free, no ads`}
         image={anime.bannerImage}
+        
       />
 
       {isLoading && (

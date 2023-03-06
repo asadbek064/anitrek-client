@@ -36,7 +36,7 @@ const sidebarVariants: Variants = {
     width: 0,
     opacity: 0,
   },
-  animate: { width: "25%", opacity: 1 },
+  animate: { width: "20%", opacity: 1 },
 };
 
 const mobileSidebarVarants: Variants = {
@@ -268,7 +268,7 @@ const Sidebar = () => {
 
         {/* Desktop chapter selector */}
         <BrowserView className="grow space-y-2">
-          <Input
+          {/* <Input
             LeftIcon={AiOutlineSearch}
             className="w-full h-6 !bg-background-700"
             containerClassName="!bg-background-700"
@@ -277,7 +277,7 @@ const Sidebar = () => {
             onChange={(e) =>
               setFilterText((e.target as HTMLInputElement).value)
             }
-          />
+          /> */}
 
           <div
             ref={horizontalScrollRef}

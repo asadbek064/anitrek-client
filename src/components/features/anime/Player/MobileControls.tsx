@@ -4,6 +4,7 @@ import {
   TimeIndicator,
   useInteract,
   useVideo,
+  useDoubleTap
 } from "netplayer";
 import * as React from "react";
 import ProgressSlider from "./ProgressSlider";
@@ -28,19 +29,18 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
     >
       <div className="px-4 flex w-full items-center justify-between">
          <TimeIndicator />
-
-        <div className="w-6 h-6">
+         <div className="w-6 h-6">
           <FullscreenButton  />
         </div>
       </div>
-      <div className="px-4 w-full mt-2">
+      <div className="px-4 w-full mt-2 mb-4">
         <ProgressSlider />
       </div>
-      <div className="flex justify-evenly items-center py-2">
+      <div className="flex justify-evenly items-center ">
         {/* show these componesnt when video is full screen mode and add py-6 */}
         {/* <SkipButton /> */}
 
-       {/*  {controlsSlot} */}
+        {/* {controlsSlot} */}
       </div>{" "}
     </div>
   );

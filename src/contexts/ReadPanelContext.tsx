@@ -13,7 +13,7 @@ interface ContextProviderValue {
 const ReadPanelContext = React.createContext<ContextProviderValue>(null);
 
 const defaultState: State = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
   activeImageIndex: 0,
 };
 

@@ -81,7 +81,7 @@ export declare module TMDBTranlations {
   }
 }
 
-const TMDB_KEY = "e8d53ad78d99a4722c3f0f0f6a5c9014";
+const TMDB_KEY = "eec5310a93f4ed5ba78175354e22f18c";
 
 const client = axios.create({
   baseURL: "https://api.themoviedb.org/3",

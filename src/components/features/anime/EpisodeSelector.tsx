@@ -39,9 +39,8 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
       >
         <a
           className={classNames(
-            "rounded-md bg-[#424242] col-span-1 aspect-w-2 aspect-h-1 group",
-            episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId &&
-              "text-primary-500"
+            "rounded-md col-span-1 aspect-w-2 aspect-h-1 group font-bold",
+            episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId ? "bg-rose-600" : "bg-[#424242]"
           )}
         >
           <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">

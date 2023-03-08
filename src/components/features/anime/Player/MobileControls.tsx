@@ -33,7 +33,7 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
           <FullscreenButton  />
         </div>
       </div>
-      <div className="px-4 w-full mt-2 mb-4">
+      <div className="px-4 w-full mt-2 mb-42">
         <ProgressSlider />
       </div>
       <div className="flex justify-evenly items-center ">

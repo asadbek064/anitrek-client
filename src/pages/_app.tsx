@@ -59,6 +59,9 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
 
     return (
       <React.Fragment>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890066986315850"
+        crossOrigin="anonymous"></script>
+        
         {/* Google AdS */}
         <Script  
           id="Adsense-id"  async

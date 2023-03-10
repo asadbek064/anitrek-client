@@ -97,17 +97,9 @@ const Home = () => {
           <div className="space-y-8">
             <WatchedSection />
             <RecommendedAnimeSection />
-
-            {recentlyUpdatedLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("newly_added", { ns: "common" })}>
-                <CardSwiper data={recentlyUpdated} />
-              </Section>
-            )}
-            <div className="m-h-[40px] flex justify-center">
-              <h1>Ad placement</h1>
-               {/* Ad Start */}
+            
+            <div>
+              {/* Ad Start */}
               <ins className="adsbygoogle"
                     style={{ display: "block"}}
                     data-ad-client="ca-pub-6890066986315850"
@@ -120,7 +112,15 @@ const Home = () => {
                 </script>
               {/* Ad End */}
             </div>
-
+            
+            {recentlyUpdatedLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("newly_added", { ns: "common" })}>
+                <CardSwiper data={recentlyUpdated} />
+              </Section>
+            )}
+           
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}

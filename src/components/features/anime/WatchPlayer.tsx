@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { ControlButton, TimeIndicator, useInteract } from "netplayer";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import { AiOutlineClose, AiOutlineExpandAlt, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import Player, { PlayerProps } from "./Player";
@@ -237,6 +237,19 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
     [currentEpisodeIndex, sourceEpisodes]
   );
 
+  const isMobileLandscape = () => {
+    return window.matchMedia("(orientation: landscape)").matches;
+  };
+
+  let playerHeight = "h-[56.25vw]";
+
+  function handleResize(orientation){
+    console.log(orientation);
+    
+  }
+
+  window.addEventListener('orientationchange', handleResize);
+
   const hotkeys = useMemo(
     () => [
       {
@@ -263,11 +276,10 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
   );
 
   return (
-    <div className="
-      xl:mt-6 xl:mx-36
-      lg:mt-4 lg:mx-20
-
-      h-[56.25vw] transform-none" style={{maxHeight: `calc(100vh - 170px)`}}>
+    <div className={`xl:mt-6 xl:mx-36 lg:mt-4 lg:mx-20 
+      ${playerHeight} transform-none`}
+      style={{maxHeight: `calc(100vh - 170px)`}}
+      >
       <Player
         ref={videoRef}
         components={components}

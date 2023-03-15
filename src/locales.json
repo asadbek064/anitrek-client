@@ -1,5 +1,3 @@
 [
-  { "locale": "en", "name": "English" },
-  { "locale": "ru", "name": "Русский" },
-  { "locale": "es", "name": "Español" }
+  { "locale": "en", "name": "English" }
 ]

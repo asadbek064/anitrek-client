@@ -45,8 +45,6 @@ const GlobalPlayerContextProvider: React.FC = ({ children }) => {
     return !router?.pathname.includes("watch");
   }, [router?.pathname]);
 
- 
-
   // close the player if its anywhere besides /watch
   useEffect(() => {
     if (shoulBeClosed){
@@ -90,7 +88,7 @@ export const useGlobalPlayer = (
 ) => {
   const { setPlayerState, setPlayerProps, ...rest } =
     React.useContext(PlayerContext);
-
+    
   useEffect(() => {
     if (state?.playerState) {
       setPlayerState(state.playerState);

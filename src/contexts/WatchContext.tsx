@@ -1,6 +1,6 @@
 import { Episode, VideoSource } from "@/types";
 import { Media } from "@/types/anilist";
-import React from "react";
+import React, { useState } from "react";
 
 export interface WatchPlayerContextProps {
   anime: Media;
@@ -12,6 +12,7 @@ export interface WatchPlayerContextProps {
   sources: VideoSource[];
 }
 
+  
 interface WatchContextProviderProps {
   value: WatchPlayerContextProps;
 }

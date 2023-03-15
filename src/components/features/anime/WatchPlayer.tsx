@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { ControlButton, TimeIndicator, useInteract } from "netplayer";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { AiOutlineClose, AiOutlineExpandAlt, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import Player, { PlayerProps } from "./Player";
@@ -200,7 +200,7 @@ const PlayerMobileOverlay = React.memo(() => {
 
   return (
     <React.Fragment>
-      <MobileOverlay>
+      <MobileOverlay >
         <BsArrowLeft
           className={classNames(
             "absolute top-4 left-4 h-8 w-8 cursor-pointer transition-all duration-300 hover:text-gray-200",
@@ -227,6 +227,7 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
   const {
     playerProps: { episodes, currentEpisodeIndex, setEpisode, sourceId },
   } = useGlobalPlayer();
+
   const sourceEpisodes = useMemo(
     () => episodes.filter((episode) => episode.sourceId === sourceId),
     [episodes, sourceId]
@@ -236,19 +237,6 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
     () => sourceEpisodes[currentEpisodeIndex + 1],
     [currentEpisodeIndex, sourceEpisodes]
   );
-
-  const isMobileLandscape = () => {
-    return window.matchMedia("(orientation: landscape)").matches;
-  };
-
-  let playerHeight = "h-[56.25vw]";
-
-  function handleResize(orientation){
-    console.log(orientation);
-    
-  }
-
-  window.addEventListener('orientationchange', handleResize);
 
   const hotkeys = useMemo(
     () => [
@@ -274,12 +262,33 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
     }),
     []
   );
+  
+   // check device screen orientation landscape/portrait
+   const [isLandscape, setIsLandscape] = useState(screen.orientation.type === "landscape-primary");
+
+   function handleResize(){
+     switch (screen.orientation.type) {
+       case "landscape-primary":
+         setIsLandscape(true);
+         break;
+       case "portrait-primary":
+         setIsLandscape(false);
+         break;
+       default:
+         // The orientation API isn't supported in this browser :(
+         setIsLandscape(true);
+         break;
+     }
+   }
+
+    // Orientation detection 
+  useEffect(() => {
+    window.addEventListener('orientationchange', handleResize);
+  })
 
   return (
-    <div className={`xl:mt-6 xl:mx-36 lg:mt-4 lg:mx-20 
-      ${playerHeight} transform-none`}
-      style={{maxHeight: `calc(100vh - 170px)`}}
-      >
+    
+    <div className={isLandscape ? `h-screen` : `xl:mt-12 xl:mx-36 lg:mt-4 lg:mx-20`}>
       <Player
         ref={videoRef}
         components={components}

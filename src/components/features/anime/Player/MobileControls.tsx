@@ -14,14 +14,38 @@ interface MobileControlsProps {
   controlsSlot?: React.ReactNode;
 }
 
+
 const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
   const { isInteracting } = useInteract();
   const { videoState } = useVideo();
 
+   // check device screen orientation landscape/portrait
+   const [isLandscape, setIsLandscape] = React.useState(screen.orientation.type === "landscape-primary");
+
+   function handleResize(){
+     switch (screen.orientation.type) {
+       case "landscape-primary":
+         setIsLandscape(true);
+         break;
+       case "portrait-primary":
+         setIsLandscape(false);
+         break;
+       default:
+         // The orientation API isn't supported in this browser :(
+         setIsLandscape(true);
+         break;
+     }
+   }
+
+    // Orientation detection 
+  React.useEffect(() => {
+    window.addEventListener('orientationchange', handleResize);
+  })
+  
   return (
     <div
       className={classNames(
-        "mobile-controls-container w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300",
+        "mobile-controls-container w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-150",
         !videoState.seeking && !isInteracting && !videoState.buffering
           ? "opacity-0 invisible"
           : "opacity-100 visible"
@@ -36,12 +60,14 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
       <div className="px-4 w-full mt-2 mb-42">
         <ProgressSlider />
       </div>
-      <div className="flex justify-evenly items-center ">
-        {/* show these componesnt when video is full screen mode and add py-6 */}
-        {/* <SkipButton /> */}
 
-        {/* {controlsSlot} */}
-      </div>{" "}
+      {isLandscape ? (
+        <div className="flex justify-evenly items-center py-6">
+        <SkipButton />
+
+        {controlsSlot}
+      </div>
+      ): ('')}
     </div>
   );
 };

@@ -50,7 +50,7 @@ const Footer = () => {
 const Link: React.FC<LinkProps> = (props) => {
   return (
     <NextLink {...props}>
-      <a className="hover:text-primary-300 transition duration-300">
+      <a className="hover:text-primary-300 transition duration-200">
         {props.children}
       </a>
     </NextLink>
@@ -60,7 +60,7 @@ const Link: React.FC<LinkProps> = (props) => {
 const ContactItem: React.FC<FooterItemProps> = ({ Icon, href }) => {
   return (
     <a href={href} target="_blank" rel="noreferrer">
-      <Icon className="w-6 h-6 hover:text-primary-500 transition duration-300" />
+      <Icon className="w-6 h-6 hover:text-primary-500 transition duration-200" />
     </a>
   );
 };

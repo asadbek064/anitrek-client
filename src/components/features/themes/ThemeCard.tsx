@@ -13,7 +13,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({ anime }) => {
   return (
     <div>
       <div
-        className="flex items-center justify-between cursor-pointer bg-background-800 w-full hover:bg-white/20 transition duration-300 px-3 py-2 space-y-1"
+        className="flex items-center justify-between cursor-pointer bg-background-800 w-full hover:bg-white/20 transition duration-200 px-3 py-2 space-y-1"
         onClick={() => setShow(!show)}
       >
         <div>
@@ -38,7 +38,7 @@ const ThemeCard: React.FC<ThemeCardProps> = ({ anime }) => {
             key={theme.id}
           >
             <a>
-              <p className="cursor-pointer bg-background-700 w-full hover:bg-white/20 transition duration-300 px-3 py-2 space-y-1">
+              <p className="cursor-pointer bg-background-700 w-full hover:bg-white/20 transition duration-200 px-3 py-2 space-y-1">
                 {theme.song.title} - {theme.type}
               </p>
             </a>

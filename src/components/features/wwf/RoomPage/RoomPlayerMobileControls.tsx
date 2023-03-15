@@ -18,7 +18,7 @@ const RoomPlayerMobileControls: React.FC = () => {
   return (
     <div
       className={classNames(
-        "mobile-controls-container pb-2 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300",
+        "mobile-controls-container pb-2 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-200",
         !videoState.seeking && !isInteracting && !videoState.buffering
           ? "opacity-0 invisible"
           : "opacity-100 visible"

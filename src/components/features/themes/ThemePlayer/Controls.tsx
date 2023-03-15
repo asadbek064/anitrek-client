@@ -24,7 +24,7 @@ const Controls: React.FC = () => {
   return (
     <div
       className={classNames(
-        "controls-container w-full p-4 bg-gradient-to-t from-black via-black/80 to-transparent transition-all duration-150",
+        "controls-container w-full p-4 bg-gradient-to-t from-red via-black/80 to-transparent transition-all duration-150",
         !videoState.seeking && !isInteracting && !videoState.buffering
           ? "opacity-0 invisible"
           : "opacity-100 visible"

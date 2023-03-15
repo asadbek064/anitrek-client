@@ -129,7 +129,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                 <MediaDescription
                   description={description}
                   containerClassName="mt-4 mb-8"
-                  className="text-gray-300 hover:text-gray-100 transition duration-300"
+                  className="text-gray-300 hover:text-gray-100 transition duration-200"
                 />
               </div>
 
@@ -245,7 +245,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                     key={tag.id}
                   >
                     <a className="block">
-                      <li className="p-2 rounded-md bg-background-900 hover:text-primary-300 transition duration-300">
+                      <li className="p-2 rounded-md bg-background-900 hover:text-primary-300 transition duration-200">
                         {tag.name}
                       </li>
                     </a>

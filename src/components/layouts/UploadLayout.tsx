@@ -108,7 +108,7 @@ const UploadLayout: React.FC = ({ children }) => {
                   {({ isActive }) => (
                     <li
                       className={classNames(
-                        "flex items-center space-x-2 transition duration-300 font-semibold px-3 py-2 cursor-pointer rounded-md",
+                        "flex items-center space-x-2 transition duration-200 font-semibold px-3 py-2 cursor-pointer rounded-md",
                         isActive ? "bg-white/20" : "hover:bg-white/20"
                       )}
                       onClick={() => setIsMenuOpen(false)}
@@ -127,7 +127,7 @@ const UploadLayout: React.FC = ({ children }) => {
             <a className="w-full">
               <li
                 className={classNames(
-                  "flex items-center space-x-2 hover:bg-white/20 transition duration-300 font-semibold px-3 py-2 cursor-pointer rounded-md"
+                  "flex items-center space-x-2 hover:bg-white/20 transition duration-200 font-semibold px-3 py-2 cursor-pointer rounded-md"
                 )}
               >
                 <BiLogOutCircle className="w-6 h-6" />

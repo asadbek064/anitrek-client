@@ -33,7 +33,7 @@ const LanguageSwitcher = () => {
       showArrow
       reference={
         <div className="lg:bg-background-900 rounded-3xl p-2 flex items-center gap-x-2">
-          <MdOutlineLanguage className="w-6 h-6 hover:text-primary-300 transition duration-300" />
+          <MdOutlineLanguage className="w-6 h-6 hover:text-primary-300 transition duration-200" />
 
           <p className="hidden lg:block text-white text-base">
             {currentLocale.name}
@@ -44,7 +44,7 @@ const LanguageSwitcher = () => {
       <ul className="space-y-1">
         {locales.map(({ locale, name }) => (
           <li
-            className="cursor-pointer transition duration-300 hover:text-primary-300"
+            className="cursor-pointer transition duration-200 hover:text-primary-300"
             onClick={handleChangeLanguage(locale)}
             key={locale}
             title={locale}

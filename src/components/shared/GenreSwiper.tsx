@@ -63,11 +63,11 @@ const GenreSwiper: React.FC<GenresSwiperProps> = ({
                   alt={genre.value}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-md group-hover:scale-105 transition duration-300"
+                  className="rounded-md group-hover:scale-105 transition duration-200"
                 />
 
                 <div className="h-full w-full flex items-center justify-center absolute inset-0 bg-black/60">
-                  <p className="text-center uppercase text-xl font-bold tracking-widest text-gray-300 group-hover:text-white transition duration-300">
+                  <p className="text-center uppercase text-xl font-bold tracking-widest text-gray-300 group-hover:text-white transition duration-200">
                     {genre.value}
                   </p>
                 </div>

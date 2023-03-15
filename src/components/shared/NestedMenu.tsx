@@ -52,7 +52,7 @@ const NestedMenu = ({
           <TextIcon
             onClick={handleGoBack}
             LeftIcon={MdKeyboardArrowLeft}
-            className="mb-4 hover:bg-white/20 transition duration-300 p-1 cursor-pointer"
+            className="mb-4 hover:bg-white/20 transition duration-200 p-1 cursor-pointer"
           >
             <p>Trở về</p>
           </TextIcon>
@@ -91,7 +91,7 @@ const BaseItem: React.FC<BaseItemProps> = ({
   return isShown ? (
     <li
       className={classNames(
-        "relative hover:bg-white/20 transition duration-300 p-2 cursor-pointer rounded-sm",
+        "relative hover:bg-white/20 transition duration-200 p-2 cursor-pointer rounded-sm",
         className
       )}
       {...props}

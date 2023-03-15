@@ -74,7 +74,7 @@ const PWAInstallPrompt = () => {
             <div className="flex items-center justify-end space-x-4">
               <Button
                 onClick={handleClosePrompt}
-                className="!bg-transparent hover:!bg-white/20 transition duration-300"
+                className="!bg-transparent hover:!bg-white/20 transition duration-200"
               >
                 <p>{t("prompt_no")}</p>
               </Button>

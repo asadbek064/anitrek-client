@@ -243,7 +243,7 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
                     onClick={() => {
                       setShowReadOverlay(false), setDeclinedReread(true);
                     }}
-                    className="!bg-transparent hover:!bg-white/20 transition duration-300"
+                    className="!bg-transparent hover:!bg-white/20 transition duration-200"
                   >
                     <p>{t("reread_no")}</p>
                   </Button>

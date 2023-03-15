@@ -75,7 +75,7 @@ const BaseButton = React.forwardRef<HTMLButtonElement, BaseButtonProps>(
       <button
         type="button"
         className={classNames(
-          "transition duration-300",
+          "transition duration-200",
           (isLoading || disabled) && "text-gray-300 cursor-not-allowed",
           className,
           buttonClassName,

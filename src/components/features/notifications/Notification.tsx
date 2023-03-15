@@ -32,7 +32,7 @@ const Notification: React.FC<NotificationProps> = ({ notification }) => {
   return (
     <Link href={notificationEntity.redirectUrl}>
       <a>
-        <div className="flex items-center justify-between p-2 hover:bg-white/10 transition duration-300">
+        <div className="flex items-center justify-between p-2 hover:bg-white/10 transition duration-200">
           <div className="rounded-md flex gap-2">
             <Avatar
               src={notification.sender?.user_metadata?.avatar_url}

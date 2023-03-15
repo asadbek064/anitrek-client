@@ -23,7 +23,7 @@ const TraceCard: React.FC<TraceCardProps> = ({
   return (
     <div
       className={classNames(
-        "space-y-2 bg-background-900 p-4 hover:bg-white/20 transition duration-300 cursor-pointer",
+        "space-y-2 bg-background-900 p-4 hover:bg-white/20 transition duration-200 cursor-pointer",
         isActive && "bg-white/20",
         className
       )}

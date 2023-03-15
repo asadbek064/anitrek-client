@@ -144,7 +144,7 @@ const Sidebar = () => {
             {Object.keys(sources).map((source) => (
               <div
                 className={classNames(
-                  "text-gray-300 cursor-pointer rounded-[18px] px-2 py-1 w-[max-content] duration-300 transition",
+                  "text-gray-300 cursor-pointer rounded-[18px] px-2 py-1 w-[max-content] duration-200 transition",
                   activeSource === source
                     ? "bg-white text-black"
                     : "hover:text-white"
@@ -286,7 +286,7 @@ const Sidebar = () => {
             {Object.keys(sources).map((source) => (
               <div
                 className={classNames(
-                  "text-gray-300 cursor-pointer rounded-[18px] px-2 py-1 w-[max-content] duration-300 transition",
+                  "text-gray-300 cursor-pointer rounded-[18px] px-2 py-1 w-[max-content] duration-200 transition",
                   activeSource === source
                     ? "bg-white text-black"
                     : "hover:text-white"
@@ -309,7 +309,7 @@ const Sidebar = () => {
               return (
                 <li
                   className={classNames(
-                    "relative px-4 py-2 cursor-pointer hover:bg-white/20 transition duration-300",
+                    "relative px-4 py-2 cursor-pointer hover:bg-white/20 transition duration-200",
                     isActive && "active-chapter"
                   )}
                   key={chapter.sourceChapterId}

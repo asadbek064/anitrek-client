@@ -30,14 +30,14 @@ const MobileOverlay: React.FC<MobileOverlayProps> = ({ children }) => {
     <div
       className={classNames(
         "mobile-overlay",
-        "z-40 w-full h-full bg-black/80 transition-all duration-300 relative",
+        "z-40 w-full h-full bg-black/80 transition-all duration-150 relative",
         !shouldOverlayVisible ? "invisible opacity-0" : "visible opacity-100"
       )}
     >
       <TextIcon
         LeftIcon={SliderIcon}
         className={classNames(
-          "absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-300",
+          "absolute left-1/2 -translate-x-1/2 mt-4 transition-all duration-150",
           !videoState.seeking ? "invisible opacity-0" : "visible opacity-100"
         )}
         iconClassName="!w-10 !h-10"
@@ -47,7 +47,7 @@ const MobileOverlay: React.FC<MobileOverlayProps> = ({ children }) => {
 
       <div
         className={classNames(
-          "transition-all duration-300",
+          "transition-all duration-150",
           videoState.seeking ? "opacity-0 invisible" : "opacity-100 visible"
         )}
       >

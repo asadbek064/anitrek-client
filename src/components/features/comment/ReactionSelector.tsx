@@ -29,7 +29,7 @@ const ReactionSelector: React.FC<ReactionSelectorProps> = ({
             placement="top-end"
             reference={
               <button
-                className="p-1 rounded-full hover:scale-105 transition duration-300"
+                className="p-1 rounded-full hover:scale-105 transition duration-200"
                 onClick={() => toggleReaction(reaction.type)}
               >
                 <Reaction type={reaction.type} />

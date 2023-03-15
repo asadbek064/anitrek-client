@@ -33,7 +33,7 @@ export const TabItem: React.FC<TabItemProps> = ({
           "relative flex items-center justify-center px-4 py-2 font-medium",
           active
             ? "text-primary-500"
-            : "text-gray-400 hover:bg-gray-600/20 transition duration-300",
+            : "text-gray-400 hover:bg-gray-600/20 transition duration-200",
           className
         )}
       >

@@ -39,7 +39,7 @@ const HorizontalCard = ({
       <div className="space-y-1 self-start">
         <Link href={redirectUrl}>
           <a>
-            <p className="font-semibold text-white transition duration-300 line-clamp-1 hover:text-primary-300">
+            <p className="font-semibold text-white transition duration-200 line-clamp-1 hover:text-primary-300">
               {title}
             </p>
           </a>

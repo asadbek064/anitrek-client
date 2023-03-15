@@ -42,7 +42,7 @@ const Accordion: React.FC<AccordionProps> = ({
 
         <FiChevronDown
           className={classNames(
-            "absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 transition duration-300",
+            "absolute right-4 top-1/2 -translate-y-1/2 w-6 h-6 transition duration-200",
             expanded ? "rotate-180" : "rotate-0"
           )}
         />

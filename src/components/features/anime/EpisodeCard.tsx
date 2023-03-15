@@ -26,7 +26,7 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({
         layout="fill"
         alt={episode.name}
         objectFit="cover"
-        className="hover:scale-105 transition duration-300"
+        className="hover:scale-105 transition duration-150"
       />
 
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60"></div>

@@ -167,7 +167,7 @@ const CreateRoomPage: NextPage<CreateRoomPageProps> = ({ media, episodes }) => {
                     )}
                     onClick={() => setChosenEpisode(episode)}
                   >
-                    <div className="flex items-center justify-center w-full h-full group-hover:bg-white/10 rounded-md transition duration-300">
+                    <div className="flex items-center justify-center w-full h-full group-hover:bg-white/10 rounded-md transition duration-200">
                       <p>{episode.name}</p>
                     </div>
                   </button>

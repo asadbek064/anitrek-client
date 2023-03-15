@@ -81,7 +81,7 @@ const TraceImageSearch: React.FC<TraceImageSearchProps> = ({
           ) : (
             <div
               className={classNames(
-                "mt-8 p-4 w-full rounded-md border border-dashed border-white/60 flex flex-col items-center justify-center transition duration-300",
+                "mt-8 p-4 w-full rounded-md border border-dashed border-white/60 flex flex-col items-center justify-center transition duration-200",
                 isDragging ? "bg-white/20" : "bg-background-800"
               )}
               {...dragProps}

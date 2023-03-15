@@ -59,7 +59,7 @@ const MediaDescription: React.FC<MediaDescriptionProps> = ({
       {!isDescriptionExpanded && !isMobile && (
         <button
           onClick={handleClick}
-          className="bg-gradient-to-t from-background-900 via-background-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 absolute bottom-0 w-full h-12 text-center"
+          className="bg-gradient-to-t from-background-900 via-background-900/80 to-transparent opacity-0 group-hover:opacity-100 transition  absolute bottom-0 w-full h-12 text-center"
         >
           {t("read_more")}
         </button>

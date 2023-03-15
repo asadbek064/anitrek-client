@@ -20,7 +20,7 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
   const { videoState } = useVideo();
 
    // check device screen orientation landscape/portrait
-   const [isLandscape, setIsLandscape] = React.useState(screen.orientation.type === "landscape-primary");
+   const [isLandscape, setIsLandscape] = React.useState(false);
 
    function handleResize(){
      switch (screen.orientation.type) {

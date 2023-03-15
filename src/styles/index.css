@@ -166,7 +166,7 @@ main {
 }
 
 .swiper-button {
-  @apply flex items-center justify-center p-2 text-white transition duration-300 border-2 border-white rounded-full cursor-pointer hover:bg-white hover:text-black;
+  @apply flex items-center justify-center p-2 text-white transition duration-200 border-2 border-white rounded-full cursor-pointer hover:bg-white hover:text-black;
 }
 
 .swiper-button-disabled {

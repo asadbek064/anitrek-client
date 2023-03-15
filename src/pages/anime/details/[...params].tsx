@@ -190,7 +190,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <MediaDescription
                   description={description}
                   containerClassName="mt-4 mb-8"
-                  className="text-gray-300 hover:text-gray-100 transition duration-300"
+                  className="text-gray-300 hover:text-gray-100 transition duration-200"
                 />
 
                 {/* MAL-Sync UI */}
@@ -320,7 +320,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   value={anime.studios.nodes.map((studio) => (
                     <p key={studio.id}>
                       <Link href={createStudioDetailsUrl(studio)}>
-                        <a className="hover:text-primary-300 transition duration-300">
+                        <a className="hover:text-primary-300 transition duration-200">
                           {studio.name}
                         </a>
                       </Link>
@@ -355,7 +355,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     key={tag.id}
                   >
                     <a className="md:block">
-                      <li className="p-2 rounded-md bg-background-900 hover:text-primary-300 transition duration-300">
+                      <li className="p-2 rounded-md bg-background-900 hover:text-primary-300 transition duration-200">
                         {tag.name}
                       </li>
                     </a>

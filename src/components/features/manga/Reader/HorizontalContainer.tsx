@@ -90,7 +90,7 @@ const HorizontalContainer: React.FC = () => {
         <div
           ref={containerRef}
           className={classNames(
-            "snap-x snap-mandatory overflow-x-auto flex items-center space-x-2 transition duration-300 no-scrollbar",
+            "snap-x snap-mandatory overflow-x-auto flex items-center space-x-2 transition duration-200 no-scrollbar",
             direction === "ltr" ? "flex-row" : "flex-row-reverse"
           )}
         >
@@ -99,7 +99,7 @@ const HorizontalContainer: React.FC = () => {
               containerClassName={"shrink-0 snap-center"}
               className={classNames(
                 state.activeImageIndex === index ? "opacity-100" : "opacity-10",
-                "transform duration-300"
+                "transform duration-200"
               )}
               image={image}
               key={image.image + index}

@@ -86,7 +86,7 @@ const TracePage = () => {
             <img
               src={image.dataURL}
               alt="searched image"
-              className="w-full object-fit blur-[2px] transition duration-300"
+              className="w-full object-fit blur-[2px] transition duration-200"
             />
 
             <div className="absolute inset-0 bg-black/30"></div>

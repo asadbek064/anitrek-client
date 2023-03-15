@@ -86,7 +86,7 @@ const NewestComments: React.FC<NewestCommentsProps> = (props) => {
 
                   <Link href={redirectUrl}>
                     <a
-                      className="block shrink-0 text-sm font-semibold text-primary-300 transition duration-300 line-clamp-1 hover:text-primary-400"
+                      className="block shrink-0 text-sm font-semibold text-primary-300 transition duration-200 line-clamp-1 hover:text-primary-400"
                       title={title}
                     >
                       {title}

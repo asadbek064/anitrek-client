@@ -53,7 +53,7 @@ const ShouldWatch: React.FC<ShouldWatchProps> = ({ data, isLoading }) => {
             />
           </div>
 
-          <div className="absolute inset-0 z-0 bg-black/60 opacity-0 transition duration-300 group-hover:opacity-100"></div>
+          <div className="absolute inset-0 z-0 bg-black/60 opacity-0 transition duration-200 group-hover:opacity-100"></div>
         </div>
 
         <div className="space-between !mt-8 flex flex-col gap-4 md:flex-row">

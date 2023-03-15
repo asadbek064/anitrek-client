@@ -132,7 +132,7 @@ const ChapterSelector: React.FC<ChapterSelectorProps> = ({
             key={chapter.sourceChapterId}
           >
             <a className="block">
-              <p className="line-clamp-1 bg-background-900 p-2 text-sm font-semibold hover:bg-white/20 duration-300 transition">
+              <p className="line-clamp-1 bg-background-900 p-2 text-sm font-semibold hover:bg-white/20 duration-200 transition">
                 {chapter.name}
               </p>
             </a>

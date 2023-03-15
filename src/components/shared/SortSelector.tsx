@@ -69,7 +69,7 @@ const SortSelector = <T extends "anime" | "manga">(
         {SORTS.map((sort, index) => (
           <p
             key={index}
-            className="cursor-pointer text-sm text-gray-300 hover:text-primary-300 transition duration-300"
+            className="cursor-pointer text-sm text-gray-300 hover:text-primary-300 transition duration-200"
             onClick={handleClick(sort.value)}
           >
             {sort.label}

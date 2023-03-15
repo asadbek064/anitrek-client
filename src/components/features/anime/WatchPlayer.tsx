@@ -110,7 +110,7 @@ const PlayerMobileControls = React.memo(() => {
                   )}
                 >
                   <BsArrowLeft
-                    className="absolute left-3 top-3 h-8 w-8 cursor-pointer transition duration-300 hover:text-gray-200"
+                    className="absolute left-3 top-3 h-8 w-8 cursor-pointer transition duration-200 hover:text-gray-200"
                     onClick={() => setIsOpen(false)}
                   />
 
@@ -153,7 +153,7 @@ const PlayerOverlay = React.memo(() => {
       <React.Fragment>
         <BsArrowLeft
           className={classNames(
-            "transition-al absolute top-10 left-10 h-10 w-10 cursor-pointer duration-300 hover:text-gray-200",
+            "transition-al absolute top-10 left-10 h-10 w-10 cursor-pointer duration-150 hover:text-gray-200",
             isInteracting ? "visible opacity-100" : "invisible opacity-0"
           )}
           onClick={router.back}
@@ -166,7 +166,7 @@ const PlayerOverlay = React.memo(() => {
                 data-tip="React-tooltip"
                 target="_blank"
                 className={classNames(
-                  "absolute transition-all duration-300 cursor-pointer top-4 right-8 hover:text-gray-200",
+                  "absolute transition-all duration-150 cursor-pointer top-4 right-8 hover:text-gray-200",
                   isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
                 )}
               >
@@ -203,7 +203,7 @@ const PlayerMobileOverlay = React.memo(() => {
       <MobileOverlay >
         <BsArrowLeft
           className={classNames(
-            "absolute top-4 left-4 h-8 w-8 cursor-pointer transition-all duration-300 hover:text-gray-200",
+            "absolute top-4 left-4 h-8 w-8 cursor-pointer transition-all duration-200 hover:text-gray-200",
             isInteracting ? "visible opacity-100" : "invisible opacity-0"
           )}
           onClick={router.back}
@@ -264,7 +264,7 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
   );
   
    // check device screen orientation landscape/portrait
-   const [isLandscape, setIsLandscape] = useState(screen.orientation.type === "landscape-primary");
+   const [isLandscape, setIsLandscape] = useState(false);
 
    function handleResize(){
      switch (screen.orientation.type) {

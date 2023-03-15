@@ -104,7 +104,7 @@ const MediaBar = () => {
                 )}
                 onClick={() => handleNavigateEpisode(episode)}
               >
-                <div className="flex h-full w-full items-center justify-center rounded-md transition duration-300 group-hover:bg-white/10">
+                <div className="flex h-full w-full items-center justify-center rounded-md transition duration-200 group-hover:bg-white/10">
                   <p>{episode.name}</p>
                 </div>
               </button>
@@ -120,7 +120,7 @@ const MediaBar = () => {
 
         <Link href={createMediaDetailsUrl(room.media)}>
           <a>
-            <h1 className="text-lg font-semibold transition duration-300 hover:text-primary-300">
+            <h1 className="text-lg font-semibold transition duration-200 hover:text-primary-300">
               [{room.episode.name}] - {mediaTitle}
             </h1>
           </a>

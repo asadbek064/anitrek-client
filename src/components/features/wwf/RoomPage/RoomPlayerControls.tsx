@@ -55,7 +55,7 @@ const RoomPlayerControls: React.FC<RoomPlayerControlsProps> = ({
   return (
     <div
       className={classNames(
-        "controls-container w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-300",
+        "controls-container w-full p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent transition-all duration-200",
         !videoState.seeking && !isInteracting && !videoState.buffering
           ? "opacity-0 invisible"
           : "opacity-100 visible"
@@ -107,7 +107,7 @@ const RoomPlayerControls: React.FC<RoomPlayerControlsProps> = ({
                         )}
                         onClick={() => setEpisode(episode)}
                       >
-                        <div className="flex items-center justify-center w-full h-full group-hover:bg-white/10 rounded-md transition duration-300">
+                        <div className="flex items-center justify-center w-full h-full group-hover:bg-white/10 rounded-md transition duration-200">
                           <p>{episode.name}</p>
                         </div>
                       </button>

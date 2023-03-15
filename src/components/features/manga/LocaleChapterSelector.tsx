@@ -31,7 +31,7 @@ const LocaleChapterSelector: React.FC<LocaleChapterSelectorProps> = ({
               <Tab
                 key={index}
                 className={classNames(
-                  "px-3 py-2 rounded-[6px] cursor-pointer hover:bg-white hover:text-black transition duration-300"
+                  "px-3 py-2 rounded-[6px] cursor-pointer hover:bg-white hover:text-black transition duration-150"
                 )}
               >
                 {locale.toUpperCase()}

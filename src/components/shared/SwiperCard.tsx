@@ -92,7 +92,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
         >
           <motion.div
             className={classNames(
-              "transition duration-300 w-full relative cursor-pointer bg-background-900",
+              "transition duration-200 w-full relative cursor-pointer bg-background-900",
               className
             )}
             style={{ height: cardSize.height }}
@@ -179,7 +179,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
 
                     <Description
                       description={data.description}
-                      className="text-gray-300 hover:text-gray-100 transition duration-300 line-clamp-5 mb-2"
+                      className="text-gray-300 hover:text-gray-100 transition duration-200 line-clamp-5 mb-2"
                     />
 
                     <DotList className="mb-2">

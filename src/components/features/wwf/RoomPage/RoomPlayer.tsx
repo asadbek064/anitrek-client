@@ -36,7 +36,7 @@ const PlayerOverlay = () => {
     <Overlay>
       <BsArrowLeft
         className={classNames(
-          "absolute w-10 h-10 transition-al duration-300 cursor-pointer top-10 left-10 hover:text-gray-200",
+          "absolute w-10 h-10 transition-al duration-200 cursor-pointer top-10 left-10 hover:text-gray-200",
           isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
         )}
         onClick={router.back}
@@ -63,7 +63,7 @@ const PlayerMobileOverlay = () => {
       <MobileOverlay>
         <BsArrowLeft
           className={classNames(
-            "absolute w-8 h-8 transition-all duration-300 cursor-pointer top-4 left-4 hover:text-gray-200",
+            "absolute w-8 h-8 transition-all duration-200 cursor-pointer top-4 left-4 hover:text-gray-200",
             isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
           )}
           onClick={router.back}

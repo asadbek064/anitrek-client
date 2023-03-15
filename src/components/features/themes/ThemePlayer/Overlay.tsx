@@ -25,7 +25,7 @@ const Overlay = () => {
 
       <BsArrowLeft
         className={classNames(
-          "absolute w-8 h-8 transition-all duration-300 cursor-pointer top-4 left-4 hover:text-gray-200",
+          "absolute w-8 h-8 transition-all duration-200 cursor-pointer top-4 left-4 hover:text-gray-200",
           isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
         )}
         onClick={router.back}
@@ -36,7 +36,7 @@ const Overlay = () => {
           <a
             target="_blank"
             className={classNames(
-              "absolute transition-all duration-300 cursor-pointer top-4 right-28 hover:text-gray-200",
+              "absolute transition-all duration-200 cursor-pointer top-4 right-28 hover:text-gray-200",
               isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
             )}
           >
@@ -48,7 +48,7 @@ const Overlay = () => {
       {theme?.sources?.length && (
         <AiOutlineDownload
           className={classNames(
-            "w-8 h-8 absolute transition-all duration-300 cursor-pointer top-4 right-16 hover:text-gray-200",
+            "w-8 h-8 absolute transition-all duration-200 cursor-pointer top-4 right-16 hover:text-gray-200",
             isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
           )}
           onClick={(e) => {
@@ -64,13 +64,13 @@ const Overlay = () => {
 
       <ThemeSearch
         className={classNames(
-          "w-8 h-8 absolute transition-all duration-300 cursor-pointer top-4 right-4 hover:text-gray-200",
+          "w-8 h-8 absolute transition-all duration-200 cursor-pointer top-4 right-4 hover:text-gray-200",
           isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
         )}
       />
 
       <div 
-        className={classNames("w-8 h-8 absolute transition-all duration-300 cursor-pointer top-4 right-40 hover:text-gray-200", 
+        className={classNames("w-8 h-8 absolute transition-all duration-200 cursor-pointer top-4 right-40 hover:text-gray-200", 
           isInteracting ? "opacity-100 visible" : "opacity-0 invisible")}>
         <RefreshButton />
       </div>

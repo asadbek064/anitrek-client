@@ -17,7 +17,7 @@ const CharacterConnectionCard: React.FC<CharacterCardProps> = ({
   return (
     <Link href={`/characters/details/${characterEdge.node.id}`}>
       <a>
-        <div className="text-gray-300 space-x-4 col-span-1 flex w-full h-24 bg-background-900 hover:bg-white/20 transtion duration-300">
+        <div className="text-gray-300 space-x-4 col-span-1 flex w-full h-24 bg-background-900 hover:bg-white/20 transtion duration-200">
           <div className="relative h-full w-16">
             <Image
               src={characterEdge.node.image.large}

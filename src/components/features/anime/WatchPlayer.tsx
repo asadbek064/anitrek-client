@@ -267,16 +267,13 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
    const [isLandscape, setIsLandscape] = useState(false);
 
    function handleResize(){
-     switch (screen.orientation.type) {
-       case "landscape-primary":
+     switch (window.orientation) {
+       case 90:
          setIsLandscape(true);
-         break;
-       case "portrait-primary":
-         setIsLandscape(false);
          break;
        default:
          // The orientation API isn't supported in this browser :(
-         setIsLandscape(true);
+         setIsLandscape(false);
          break;
      }
    }

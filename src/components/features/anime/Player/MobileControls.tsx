@@ -23,19 +23,16 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
    const [isLandscape, setIsLandscape] = React.useState(false);
 
    function handleResize(){
-     switch (screen.orientation.type) {
-       case "landscape-primary":
-         setIsLandscape(true);
-         break;
-       case "portrait-primary":
-         setIsLandscape(false);
-         break;
-       default:
-         // The orientation API isn't supported in this browser :(
-         setIsLandscape(true);
-         break;
-     }
-   }
+    switch (window.orientation) {
+      case 90:
+        setIsLandscape(true);
+        break;
+      default:
+        // The orientation API isn't supported in this browser :(
+        setIsLandscape(false);
+        break;
+    }
+  }
 
     // Orientation detection 
   React.useEffect(() => {

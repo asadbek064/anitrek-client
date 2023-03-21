@@ -3,7 +3,7 @@ import { convertTime } from "@/utils";
 import classNames from "classnames";
 import { Slider, ThumbnailHover, useVideo } from "netplayer";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { isDesktop } from "react-device-detect";
+import { isDesktop, isMobile } from "react-device-detect";
 
 interface ProgressSliderProps {
   className?: string;
@@ -125,7 +125,7 @@ const ProgressSlider: React.FC<ProgressSliderProps> = ({
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className={classNames("w-full h-2 relative", innerClassName)}>
+      <div className={classNames(`${isMobile ? 'w-full h-4 relative' : `w-full h-2 relative`}`, innerClassName)}>
         <Slider.Bar className="bg-white/50" percent={hoverPercent} />
         <Slider.Bar className="bg-white/40" percent={bufferPercent} />
 

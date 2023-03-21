@@ -184,6 +184,9 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
       case 90:
         setIsLandscape(true);
         break;
+      case -90:
+        setIsLandscape(true);
+        break;
       default:
         // The orientation API isn't supported in this browser :(
         setIsLandscape(false);

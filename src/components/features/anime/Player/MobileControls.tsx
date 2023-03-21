@@ -27,6 +27,9 @@ const MobileControls: React.FC<MobileControlsProps> = ({ controlsSlot }) => {
       case 90:
         setIsLandscape(true);
         break;
+      case -90:
+        setIsLandscape(true);
+        break;
       default:
         // The orientation API isn't supported in this browser :(
         setIsLandscape(false);

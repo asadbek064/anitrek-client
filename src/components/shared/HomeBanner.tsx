@@ -21,7 +21,7 @@ import React, {
 import { BrowserView, MobileView } from "react-device-detect";
 import { AiFillHeart, AiFillLike, AiFillPlayCircle } from "react-icons/ai";
 import { BsFillHeartFill, BsFillVolumeMuteFill, BsFillVolumeUpFill } from "react-icons/bs";
-import { FiPlay } from "react-icons/fi";
+import { BsPlayFill } from "react-icons/bs";
 import { MdTagFaces } from "react-icons/md";
 import YouTube from "react-youtube";
 import {} from "youtube-player/dist/types";
@@ -301,7 +301,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
         <Link href={createMediaDetailsUrl(activeSlide)}>
           <a>
             <CircleButton
-              LeftIcon={FiPlay}
+              LeftIcon={BsPlayFill}
               outline
               className="absolute left-2/3 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 md:block"
               iconClassName="w-16 h-16"

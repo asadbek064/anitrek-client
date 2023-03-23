@@ -118,9 +118,6 @@ const Card: React.FC<CardProps> = (props) => {
        
       </div>
 
-     
-     
-
         {watchList ? (
           <div className="bg-neutral-900 h-2 dark:bg-gray-900">
             <div

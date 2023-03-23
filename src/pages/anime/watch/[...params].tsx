@@ -3,11 +3,13 @@ import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Comments from "@/components/features/comment/Comments";
 import BaseLayout from "@/components/layouts/BaseLayout";
 import Button from "@/components/shared/Button";
+import Card from "@/components/shared/Card";
 import Description from "@/components/shared/Description";
 import DetailsSection from "@/components/shared/DetailsSection";
 import DotList from "@/components/shared/DotList";
 import Head from "@/components/shared/Head";
 import InfoItem from "@/components/shared/InfoItem";
+import List from "@/components/shared/List";
 import Loading from "@/components/shared/Loading";
 import MediaDescription from "@/components/shared/MediaDescription";
 import PlainCard from "@/components/shared/PlainCard";
@@ -23,7 +25,7 @@ import useMediaDetails from "@/hooks/useMediaDetails";
 import useSavedWatched from "@/hooks/useSavedWatched";
 import useSaveWatched from "@/hooks/useSaveWatched";
 import { AnimeSourceConnection, Episode } from "@/types";
-import { parseNumberFromString } from "@/utils";
+import { filterOutMangaOvaSpecials, getAllSeasons, parseNumberFromString, sortByReleaseDate } from "@/utils";
 import { convert, getDescription, getTitle, sortMediaUnit } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { GetServerSideProps, NextPage } from "next";
@@ -420,7 +422,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
           ): (
         <Portal>
           <div className="flex flex-col" >
-            <Section className="gap-8 mt-8 mb-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+            <Section className="gap-8 mt-8 mb-8 space-y-8 md:space-y-0 sm:px-12">
               <div className="space-y-12 md:col-span-8">
                 <DetailsSection
                   title={"Episodes"}
@@ -515,12 +517,6 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
     </React.Fragment>
   );
 };
-
-// @ts-ignore
-WatchPage.getLayout = (children) => (
-  <BaseLayout showHeader={true}>{children}</BaseLayout>
-);
-
 
 export const getServerSideProps: GetServerSideProps = async ({
   params: { params },

@@ -115,8 +115,29 @@ export function sortByReleaseDate(medias: Media[]) {
 }
 
 export function filterOutMangaOvaSpecials(medias: Media[]) {
-  return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "NOVEL");
+  return  medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "NOVEL" && item.format !== "MUSIC");
 }
+
+export function getAllSeasons(medias: Media[]) {
+  let selectedMedia = medias.filter((item) => item.format !== "MANGA" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "NOVEL" && item.format !== "MOVIE" && item.format !== "MUSIC");
+  
+  // sort by released date 
+  selectedMedia.sort((a,b) => {
+    const A = a.startDate.year + a.startDate.month + a.startDate.day;
+    const B = b.startDate.year + b.startDate.month + b.startDate.day;
+
+    if (A < B ) {
+      return -1;
+    }
+    if (A > B ) {
+      return 1;
+    }
+    return 0;
+
+  })
+  return selectedMedia;
+}
+
 
 export function filterOutAnimeOvaSpecials(medias: Media[]) {
   return  medias.filter((item) => item.format !== "TV" && item.format !== "ONA" && item.format !== "SPECIAL" && item.format !== "OVA" && item.format !== "MUSIC" && item.format !== "MOVIE" && item.format !== "TV_SHORT" && item.format !== "ONE_SHOT" && item.format !== "NOVEL");

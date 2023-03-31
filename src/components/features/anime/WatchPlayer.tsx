@@ -288,7 +288,7 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
 
   return (
     
-    <div className={isLandscape ? `h-screen` : `xl:mt-12 xl:mx-36 lg:mt-4 lg:mx-20`}>
+    <div className={isLandscape ? `h-screen ` : `h-[65vh] xl:mt-12 xl:mx-36 lg:mt-4 lg:mx-20`}>
       <Player
         ref={videoRef}
         components={components}

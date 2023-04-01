@@ -403,7 +403,9 @@ export const getStaticProps: GetStaticProps = async ({
     );
     // set media.recommendations.nodes to new array
     media.recommendations.nodes = filteredRecommendations;
-
+      
+    console.log(media?.streamingEpisodes);
+    
     return {
       props: {
         anime: media as Media,

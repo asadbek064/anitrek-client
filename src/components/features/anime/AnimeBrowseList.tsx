@@ -137,7 +137,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
 
       
           <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
-       {/*      <Input
+            {/*  <Input
               {...register("keyword")}
               containerInputClassName="border border-white/80"
               LeftIcon={AiOutlineSearch}

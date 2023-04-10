@@ -15,7 +15,6 @@ import { Media, MediaType } from "@/types/anilist";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { NextPage } from "next";
 import { AiOutlineVideoCamera } from "react-icons/ai";
-import { BiImage } from "react-icons/bi";
 
 interface UploadPageProps {
   user: AdditionalUser;

@@ -56,7 +56,7 @@ const Controls: React.FC<ControlsProps> = ({
           {rightControlsSlot}
          {/*  <TimestampsButton />
           <SkipButton /> */}
-          <SubtitleButton />
+          {/* <SubtitleButton /> */}
           {/* <ScreenshotButton /> */}
           <SettingsButton />
           <FullscreenButton />

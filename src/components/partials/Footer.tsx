@@ -23,13 +23,13 @@ const Footer = () => {
       </div>
 
       <div className="flex items-center space-x-8 text-center">
-       {/*  <Link href="/tos">
+        <Link href="/tos">
           <p className="text-lg">{t("term_of_services")}</p>
         </Link>
 
-        <Link href="/dmca">
+        {/* <Link href="/dmca">
           <p className="text-lg">{t("dmca")}</p>
-        </Link>
+        </Link> */}
 
         <Link href="/contact">
           <p className="text-lg">{t("contact")}</p>
@@ -37,7 +37,7 @@ const Footer = () => {
 
         <Link href="/deletion-privacy">
           <p className="text-lg">Deletion Privacy</p>
-        </Link> */}
+        </Link>
       </div>
 
       <p className="text-sm text-gray-300 text-center">AnimetTV does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>

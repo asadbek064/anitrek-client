@@ -4,6 +4,7 @@ import Head from "@/components/shared/Head";
 import Iframe from "@/components/shared/Iframe";
 import useDevice from "@/hooks/useDevice";
 import { getAiTitle } from "@/services/animettv";
+import { useUser } from "@supabase/auth-helpers-react";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -50,6 +51,7 @@ interface WatchPageProps {
 const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
   const router = useRouter();
   const { isMobile } = useDevice();
+  const { user } = useUser();
 
   const { t } = useTranslation("anime_watch");
   
@@ -117,7 +119,9 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
       </div>
       
       <div className="aspect-w-16 aspect-h-9">
-        <Iframe src={selectedSource} />
+        { user ? (
+          <Iframe src={selectedSource} />
+        ) : ('Sorry your are not a verified member')}
       </div>
 
       <div className="mt-4 px-4">

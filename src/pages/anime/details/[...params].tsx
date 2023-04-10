@@ -115,23 +115,27 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
             <div className="flex flex-col  justify-between py-4 mt-4  md:text-left md:items-start md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4 md:no-scrollbar">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  {(episodes && episodes.length > 0) ? (
-                   <Link href={`/anime/watch/${anime.id}`}>
-                   <a>
-                     <Button primary LeftIcon={BsFillPlayFill}>
-                       <p>{t("common:watch_now")}</p>
-                     </Button>
-                   </a>
-                 </Link>
-                  ): (
-                    <Link href={DISCORD_URL}>
-                      <a target={'_blank'}>
-                        <Button primary LeftIcon={FaDiscord}>
-                          <p>Request Index</p>
-                        </Button>
-                      </a>
-                    </Link>
-                  )}
+                  {user ? (
+                    <div>
+                      {(episodes && episodes.length > 0) ? (
+                        <Link href={`/anime/watch/${anime.id}`}>
+                        <a>
+                          <Button primary LeftIcon={BsFillPlayFill}>
+                            <p>{t("common:watch_now")}</p>
+                          </Button>
+                        </a>
+                      </Link>
+                        ): (
+                          <Link href={DISCORD_URL}>
+                            <a target={'_blank'}>
+                              <Button primary LeftIcon={FaDiscord}>
+                                <p>Request Index</p>
+                              </Button>
+                            </a>
+                          </Link>
+                        )}
+                    </div>
+                  ): ('')}
 
                   {/* <Popup
                     reference={
@@ -239,7 +243,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
           <div className="space-y-12 md:col-span-8">
-            <DetailsSection
+            {user ? (
+              <DetailsSection
               title={t("episodes_section")}
               className="overflow-hidden"
             >
@@ -251,6 +256,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
               )}
             </DetailsSection>
+            ): ('')}
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
@@ -376,7 +382,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   try {
     // default anime details
-    /* const { data: isDMCA } = await supabaseClient
+    const { data: isDMCA } = await supabaseClient
       .from("kaguya_dmca")
       .select("id")
       .eq("mediaId", params[0])
@@ -390,7 +396,7 @@ export const getStaticProps: GetStaticProps = async ({
           destination: "/got-dmca",
         },
       };
-    } */
+    }
 
     const media = await getMediaDetails({
       type: MediaType.Anime,

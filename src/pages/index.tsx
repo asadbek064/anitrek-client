@@ -30,7 +30,7 @@ const Home = () => {
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
-    perPage: isMobile ? 5 : 10,
+    perPage: isMobile ? 10 : 20,
   });
 
   const { data: popularSeason, isLoading: popularSeasonLoading } = useMedia({
@@ -47,7 +47,7 @@ const Home = () => {
     perPage: 5,
   });
 
-  /* const { data: favouriteSeason, isLoading: favouriteSeasonLoading } = useMedia(
+  const { data: favouriteSeason, isLoading: favouriteSeasonLoading } = useMedia(
     {
       type: MediaType.Anime,
       sort: [MediaSort.Favourites_desc],
@@ -55,7 +55,7 @@ const Home = () => {
       seasonYear: currentSeason.year,
       perPage: 5,
     }
-  ); */
+  );
 
   const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
     useMedia({
@@ -92,7 +92,7 @@ const Home = () => {
 
       <ClientOnly>
         <div className="pb-8">
-          <HomeBanner data={trendingAnime} isLoading={trendingLoading} />
+          <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
 
           <div className="space-y-8">
             <WatchedSection />
@@ -112,23 +112,31 @@ const Home = () => {
                 </script>
               {/* Ad End */}
             </div>
+
+            {trendingLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("most_popular_season", { ns: "common" })}>
+                <CardSwiper data={trendingAnime} />
+              </Section>
+            )}
             
-            {recentlyUpdatedLoading ? (
+            {/* {recentlyUpdatedLoading ? (
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("newly_added", { ns: "common" })}>
                 <CardSwiper data={recentlyUpdated} />
               </Section>
-            )}
+            )} */}
            
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-             { <ColumnSection
+             {/* { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularSeason}
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
-              />}
+              />} */}
               <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
@@ -136,13 +144,13 @@ const Home = () => {
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
               />
-            {/*   <ColumnSection
+              <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={favouriteSeason}
                 viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={favouriteSeasonLoading}
-              /> */}
+              />
               <ColumnSection
                 title={t("most_favourite", { ns: "common" })}
                 type={MediaType.Anime}
@@ -156,7 +164,7 @@ const Home = () => {
 
 
 
-            <div
+            {/* <div
               className={classNames(
                 "flex gap-8",
                 isDesktop ? "flex-row" : "flex-col"
@@ -171,13 +179,13 @@ const Home = () => {
                 )}
               </Section>
 
-              <Section
+              {<Section
                 title={t("genres", { ns: "common" })}
                 className="w-full md:w-[30%] md:!pl-0"
               >
                 <GenreSwiper className="md:h-[500px]" />
-              </Section>
-            </div>
+              </Section>}
+            </div> */}
 
             <Section title={t("airing_schedule", { ns: "anime_home" })}>
               <AnimeScheduling />

@@ -11,18 +11,19 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ComponentType, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import { AiFillHome, AiOutlinePlus, AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
-import { CgSmartphoneChip } from "react-icons/cg";
-import { FaDiscord, FaDonate, FaMusic } from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { MdFindInPage, MdHighQuality, MdOutlineLiveTv } from "react-icons/md";
+import { FaDiscord, FaDonate, FaGamepad, FaMusic } from "react-icons/fa";
+import { GiGamepad, GiHamburgerMenu } from "react-icons/gi";
+import { BsPlayFill } from "react-icons/bs";
+import { MdFindInPage, MdHighQuality, MdOutlineLiveTv, MdOutlineVideogameAsset } from "react-icons/md";
 import { RiMovie2Line } from "react-icons/ri";
 import Notifications from "../features/notifications/Notifications";
 import PWAInstallPrompt from "../features/pwa/PWAInstallPrompt";
 import LanguageSwitcher from "../shared/LanguageSwitcher";
 import Section from "../shared/Section";
 import TextIcon, { IconProps } from "../shared/TextIcon";
+
 
 interface _route {
   title: string;
@@ -33,7 +34,7 @@ const routes: _route[] = [
   {
     title: "Watch",
     href: "/",
-    icon: AiFillHome
+    icon: BsPlayFill
   },
   {
     title: "Read",
@@ -49,6 +50,11 @@ const routes: _route[] = [
     title: "A.I Upscaled",
     href: "/ai-upscale",
     icon: MdHighQuality,
+  },
+  {
+    title: "Trivia",
+    href: "/trivia",
+    icon: FaGamepad
   },
   /* {
     title: "Watch2together",
@@ -190,11 +196,10 @@ const Header = () => {
             />
           )}
         </NavItem>
-
-        <PWAInstallPrompt />
-        <div className="hidden 2xl:block">
+        {/* <div className="hidden 2xl:block">
           <LanguageSwitcher/>
-        </div>
+        </div> */}
+        
         {user ? (
           <HeaderProfile />
         ) : (

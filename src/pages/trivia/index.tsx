@@ -34,13 +34,16 @@ const TriviaWithFriendPage = () => {
                     other players or your friends.
                     </p>
                     
-                    <Link href="/trivia/create">
+                    <Button disabled={true} primary LeftIcon={AiOutlinePlus}>
+                        <p className="md:text-[2rem] m-2 font-bold">Coming soon</p>
+                    </Button>
+                    {/* <Link href="/trivia/create">
                         <a>
-                            <Button primary LeftIcon={AiOutlinePlus}>
+                            <Button disabled={true} primary LeftIcon={AiOutlinePlus}>
                                 <p className="md:text-[2rem] m-2 font-bold">{t("create_room")}</p>
                             </Button>
                         </a>
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
 

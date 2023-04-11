@@ -76,7 +76,7 @@ const Home = () => {
 
       <ClientOnly>
         <div className="pb-8">
-          <HomeBanner data={trendingManga} isLoading={trendingLoading} />
+          <HomeBanner data={trendingManga} isLoading={trendingLoading} isManga={true} />
 
           <div className="space-y-8">
             <ReadSection />

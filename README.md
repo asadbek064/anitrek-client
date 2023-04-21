@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-<h1>Kaguya</h1>
+<h1>AnimetTV</h1>
 
 ### AnimetTV is a multi-language website that provides you anime, manga and related resources.
 

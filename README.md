@@ -26,27 +26,24 @@ The official website is [animet.site](https://animet.site)
 
 ## Screenshots
 
-![Home page](https://user-images.githubusercontent.com/68330291/157863755-42d7cf8e-d300-43f5-beff-9e8f2e15de00.png)
+![Home page](https://cdn.discordapp.com/attachments/820893881980813314/1098770193020366898/animet.site__6.png)
 
-![Details page](https://user-images.githubusercontent.com/68330291/157862659-4ecbe0e7-9f5f-463e-80d0-d40828b28c77.png)
+![Details page](https://cdn.discordapp.com/attachments/820893881980813314/1098770192571568128/animet.site__7.png)
 
-![Search page](https://user-images.githubusercontent.com/68330291/157862791-811553da-b799-4629-addf-f3392dca8de4.png)
+![Search page](https://cdn.discordapp.com/attachments/820893881980813314/1098770191866933290/animet.site__8.png)
 
-![Watch page](https://user-images.githubusercontent.com/68330291/157862978-da411ae9-fefb-4c78-beb2-81c503f389d2.png)
+![Watch page](https://cdn.discordapp.com/attachments/820893881980813314/1098770191002902638/animet.site_anime_watch_101922_gogo_kimetsu-no-yaiba-dub-episode-1_1.png)
 
-![Read page](https://user-images.githubusercontent.com/68330291/157863159-08a1f117-e81f-4284-838f-2dc90e1b439f.png)
+![Read page](https://cdn.discordapp.com/attachments/820893881980813314/1098770190495395910/animet.site_anime_watch_101922_gogo_kimetsu-no-yaiba-dub-episode-1_2.png)
 
-![Character page](https://user-images.githubusercontent.com/68330291/157863295-d1f6e16b-3e4c-4435-87a3-9bd0ef1c74fb.png)
+![Character page](https://cdn.discordapp.com/attachments/820893881980813314/1098770189992071188/animet.site_characters_details_266041_ikuyo-kita.png)
 
-![Voice actor page](https://user-images.githubusercontent.com/68330291/157863365-59851e7e-0367-4c6c-b084-564fb8496f80.png)
+![Voice actor page](https://cdn.discordapp.com/attachments/820893881980813314/1098770189560062013/animet.site_characters_details_123285_asta.png)
 
-## Todo
+![Image search page](https://cdn.discordapp.com/attachments/820893881980813314/1098770189270659182/animet.site_characters_details_123285_asta_1.png)
 
-- <s>Comments</s> ✔
-- <s>Push Notifications</s> ✔
-- Notifications
-- Forum
-- User profile
+![Anime Trivia](https://cdn.discordapp.com/attachments/820893881980813314/1098770188679254096/animet.site_characters_details_123285_asta_2.png)
+
 
 ## Sources
 

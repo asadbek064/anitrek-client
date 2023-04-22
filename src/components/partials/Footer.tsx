@@ -38,6 +38,9 @@ const Footer = () => {
         <Link href="/deletion-privacy">
           <p className="text-lg">Deletion Privacy</p>
         </Link>
+        <Link href="/web-stats">
+          <p className="text-lg">Website Stats</p>
+        </Link>
       </div>
 
       <p className="text-sm text-gray-300 text-center">AnimetTV does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>

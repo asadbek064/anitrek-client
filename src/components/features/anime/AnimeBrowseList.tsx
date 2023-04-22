@@ -359,25 +359,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
             </div>
 
-<<<<<<< HEAD
-            <div className="flex items-center">
-              {user ? 
-                (
-                <div>
-                  <input
-                    className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                    type="checkbox"
-                    id="adultCheckbox"
-                    {...register("isAdult")}
-                  />
-                  <label
-                    className="inline-block text-white"
-                    htmlFor="adultCheckbox"
-                  >
-                    18+
-                  </label>  
-                </div>
-=======
             <div className="flex items-center justify-center">
               {user ? 
                 (
@@ -395,7 +376,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
                       18+
                     </label>
                   </div>
->>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
                 ) :
                 (
                   <div>
@@ -409,20 +389,11 @@ const BrowseList: React.FC<BrowseListProps> = ({
                       className="inline-block text-white"
                       htmlFor="adultCheckbox"
                     >
-<<<<<<< HEAD
-                      18+ (members only)
-                    </label>  
-                  </div>
-                )
-              }
-
-=======
                       18+ (Member only)
                     </label>
                   </div>
                 )  
               }
->>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
             </div>
           </AdvancedSettings>
         </div>

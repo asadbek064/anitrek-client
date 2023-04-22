@@ -7,7 +7,7 @@ import useBrowse, { UseBrowseOptions } from "@/hooks/useBrowseAnime";
 import useConstantTranslation from "@/hooks/useConstantTranslation";
 import { MediaSort } from "@/types/anilist";
 import { useTranslation } from "next-i18next";
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import { MobileView } from "react-device-detect";
 import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -89,11 +89,18 @@ const ChooseTriviaPage = () => {
         [setValue]
       );
 
-
+        
     const totalData = useMemo(
         () => data?.pages.flatMap((el) => el.media),
         [data?.pages]
-    );
+    )
+
+    useEffect(() => {
+        // limit # total data
+        if (totalData && totalData.length > 52) {
+            totalData.length = 52;
+        }
+    })
 
     return (
         <Section className="py-20">
@@ -226,9 +233,9 @@ const ChooseTriviaPage = () => {
                                         </div>
                                         )}
 
-                                        {((totalData.length && !isFetchingNextPage) || hasNextPage) && (
+                                        {/* {((totalData.length && !isFetchingNextPage) || hasNextPage) && (
                                             <InView onInView={handleFetch} />
-                                        )}
+                                        )} */}
 
                                         {!hasNextPage && !!totalData.length && (
                                         <p className="mt-8 text-2xl text-center">It&lsquo;s over...</p>

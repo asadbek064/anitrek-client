@@ -81,6 +81,13 @@ export declare module TMDBTranlations {
   }
 }
 
+export interface episodeDetail {
+  title: string;
+  description: string;
+  image: string;
+  episodeNumber: number;
+
+}
 const TMDB_KEY = "eec5310a93f4ed5ba78175354e22f18c";
 
 const client = axios.create({
@@ -100,6 +107,8 @@ export const search = async (keyword: string, type: "movie" | "tv") => {
   return data.results[0];
 };
 
+//https://api.themoviedb.org/3/tv/1399/season/1/episode/1/images?api_key=eec5310a93f4ed5ba78175354e22f18c
+
 export const getTranslations = async (media: Media): Promise<Translation[]> => {
   const type = media.format === MediaFormat.Movie ? "movie" : "tv";
 
@@ -113,6 +122,7 @@ export const getTranslations = async (media: Media): Promise<Translation[]> => {
   const { data } = await client.get<TMDBTranlations.Response>(
     `/${type}/${searchResult.id}/translations`
   );
+
 
   return data.translations.map((trans) => ({
     locale: trans.iso_639_1,

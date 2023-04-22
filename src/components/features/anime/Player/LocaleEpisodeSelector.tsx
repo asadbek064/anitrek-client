@@ -7,7 +7,6 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import Spinner from "@/components/shared/Spinner";
 
 const LocaleEpisodeSelector: React.FC<SourceEpisodeSelectorProps> = ({
   episodes,

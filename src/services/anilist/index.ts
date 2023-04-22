@@ -112,7 +112,7 @@ export const getMediaDetails = async (
   } else if (args?.type === MediaType.Manga) {
     translations = null;
   } else {
-    translations = await getTranslations(media);
+    translations = await getTranslations(media);    
   }
 
   return {

@@ -10,6 +10,7 @@ import classNames from "classnames";
 import Link, { LinkProps } from "next/link";
 import React, { useMemo } from "react";
 import Select from 'react-select';
+import { episodeDetail } from "@/services/tmdb";
 
 export interface EpisodeSelectorProps {
   episodes: Episode[];
@@ -37,16 +38,16 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
         shallow
         {...episodeLinkProps}
       >
-        <a
-          className={classNames(
-            "rounded-md col-span-1 aspect-w-2 aspect-h-1 group font-bold",
-            episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId ? "bg-rose-600" : "bg-[#424242]"
-          )}
-        >
-          <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">
-            <p>{episode.name.replace('EP', '')}</p>
-          </div>
-        </a>
+       <a 
+        className={classNames(
+          "rounded-md col-span-1 aspect-w-2 aspect-h-1 group font-bold",
+          episode.sourceEpisodeId === activeEpisode?.sourceEpisodeId ? "bg-rose-600" : "bg-[#424242]"
+        )}
+      >
+        <div className="flex items-center justify-center w-full h-full group-hover:bg-primary  rounded-md transition duration-250">
+          <p>{episode.name.replace('EP', '')}</p>
+        </div>
+      </a>
       </Link>
     ),
   } = props;
@@ -149,9 +150,9 @@ const EpisodeSelector: React.FC<EpisodeSelectorProps> = (props) => {
                 <p className="font-semibold text-gray-300">{section}</p>
               )}
 
-              <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2">
-                {episodes.map(onEachEpisode)} 
-              </div>
+                <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2">
+                  {episodes.map(onEachEpisode)} 
+                </div>
             </div>
           );
         })}

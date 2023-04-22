@@ -12,6 +12,7 @@ import useBrowse, { UseBrowseOptions } from "@/hooks/useBrowseAnime";
 import useConstantTranslation from "@/hooks/useConstantTranslation";
 import { MediaSort } from "@/types/anilist";
 import { debounce } from "@/utils";
+import { useUser } from "@supabase/auth-helpers-react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -115,8 +116,8 @@ const BrowseList: React.FC<BrowseListProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
 
-  const [isSettingsOpen, seSettingsOpen] = useState(false);
-
+  const [isSettingsOpen, seSettingsOpen] = useState(true);
+  const {user} =  useUser();
   return (
     <div className="min-h-screen">
       <form className="space-y-4">
@@ -194,29 +195,69 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
 
             <MobileView renderWithFragment>
-              <FormSelect
-              containerClassName={isSettingsOpen ? "block" : "hidden"}
-                control={control}
-                name="country"
-                defaultValue={defaultValues.country}
-                selectProps={{
-                  placeholder: t("country"),
-                  options: COUNTRIES,
-                }}
-                label={t("country")}
-              />
+              <div className={isSettingsOpen ? "block" : "hidden"}>
+                <div className="flex space-x-4">
+                  <FormSelect
+                    control={control}
+                    name="country"
+                    defaultValue={defaultValues.country}
+                    selectProps={{
+                      placeholder: t("country"),
+                      options: COUNTRIES,
+                    }}
+                    label={t("country")}
+                  />
 
-              <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
-                control={control}
-                name="status"
-                defaultValue={defaultValues.status}
-                selectProps={{
-                  placeholder: t("status"),
-                  options: STATUS,
-                }}
-                label={t("status")}
-              />
+                  <FormSelect
+                    control={control}
+                    name="status"
+                    defaultValue={defaultValues.status}
+                    selectProps={{
+                      placeholder: t("status"),
+                      options: STATUS,
+                    }}
+                    label={t("status")}
+                  />
+
+                    <div className="flex items-center justify-center pt-8">
+                    {user ? 
+                    (
+                      <div>
+                        <input
+                          className="appearance-none h-8 w-8  border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                          type="checkbox"
+                          id="adultCheckbox"
+                          {...register("isAdult")}
+                        />
+                        <label
+                          className="inline-block text-white"
+                          htmlFor="adultCheckbox"
+                        >
+                          18+
+                        </label>
+                      </div>
+                    ) :
+                    (
+                      <div>
+                        <input
+                          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                          type="checkbox"
+                          id="adultCheckbox"
+                          disabled
+                        />
+                        <label
+                          className="inline-block text-white"
+                          htmlFor="adultCheckbox"
+                        >
+                          18+ (Member only)
+                        </label>
+                      </div>
+                    )  
+                  }
+                  </div>
+                </div>
+
+              </div>
             </MobileView>
           </div>
 
@@ -248,19 +289,41 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
             </div>
 
-            <div className="flex items-center">
-              <input
-                className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                type="checkbox"
-                id="adultCheckbox"
-                {...register("isAdult")}
-              />
-              <label
-                className="inline-block text-white"
-                htmlFor="adultCheckbox"
-              >
-                18+
-              </label>
+            <div className="flex items-center justify-center">
+              {user ? 
+                (
+                  <div>
+                    <input
+                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                      type="checkbox"
+                      id="adultCheckbox"
+                      {...register("isAdult")}
+                    />
+                    <label
+                      className="inline-block text-white"
+                      htmlFor="adultCheckbox"
+                    >
+                      18+
+                    </label>
+                  </div>
+                ) :
+                (
+                  <div>
+                    <input
+                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                      type="checkbox"
+                      id="adultCheckbox"
+                      disabled
+                    />
+                    <label
+                      className="inline-block text-white"
+                      htmlFor="adultCheckbox"
+                    >
+                      18+ (Member only)
+                    </label>
+                  </div>
+                )  
+              }
             </div>
             
           </AdvancedSettings>

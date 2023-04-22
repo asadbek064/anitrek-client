@@ -103,7 +103,7 @@ export const getTitle = (data: Media, locale?: string) => {
   const translations = data?.translations || [];
 
   const translation = translations.find((trans) => trans.locale === locale);
-
+  
   if (!translation) {
     return data?.title?.userPreferred;
   }

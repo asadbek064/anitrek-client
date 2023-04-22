@@ -96,7 +96,7 @@ export const useGlobalPlayer = (
 
     if (state?.playerProps) {
       setPlayerProps(state.playerProps);
-    }
+    }    
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [

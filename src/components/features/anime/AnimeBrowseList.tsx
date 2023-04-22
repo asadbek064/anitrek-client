@@ -12,6 +12,7 @@ import useBrowse, { UseBrowseOptions } from "@/hooks/useBrowseAnime";
 import useConstantTranslation from "@/hooks/useConstantTranslation";
 import { MediaSort } from "@/types/anilist";
 import { debounce } from "@/utils";
+import { useUser } from "@supabase/auth-helpers-react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -56,10 +57,11 @@ const BrowseList: React.FC<BrowseListProps> = ({
     defaultValues,
   });
 
+  const { user } = useUser();
   const router = useRouter();
   const { FORMATS, SEASONS, STATUS, COUNTRIES } = useConstantTranslation();
   const query = watch();
-  
+
   const {
     data,
     isLoading,
@@ -115,27 +117,27 @@ const BrowseList: React.FC<BrowseListProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
 
-  const [isSettingsOpen, seSettingsOpen] = useState(false);
+  const [isSettingsOpen, seSettingsOpen] = useState(true);
 
   return (
     <div className="min-h-screen">
       <form className="space-y-4">
         <div className="flex flex-col md:flex-row md:items-end gap-6 lg:flex-wrap lg:justify-between lg:space-x-0">
-         { <Input
-            {...register("keyword")}
-            containerInputClassName="border border-white/80"
-            LeftIcon={AiOutlineSearch}
-            onChange={handleInputChange}
-            defaultValue={defaultValues.keyword}
-            label={t("search")}
-            containerClassName="w-full shrink-0 md:px-32 lg:px-64"
-            RightIcon={FaSlidersH}
-            isSettingsOpen={isSettingsOpen}
-            setSettingsOpen={seSettingsOpen}
-          />}
+          {
+            <Input
+              {...register("keyword")}
+              containerInputClassName="border border-white/80"
+              LeftIcon={AiOutlineSearch}
+              onChange={handleInputChange}
+              defaultValue={defaultValues.keyword}
+              label={t("search")}
+              containerClassName="w-full shrink-0 md:px-32 lg:px-64"
+              RightIcon={FaSlidersH}
+              isSettingsOpen={isSettingsOpen}
+              setSettingsOpen={seSettingsOpen}
+            />
+          }
 
-
-      
           <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
             {/*  <Input
               {...register("keyword")}
@@ -149,53 +151,52 @@ const BrowseList: React.FC<BrowseListProps> = ({
               isSettingsOpen={isSettingsOpen}
               setSettingsOpen={seSettingsOpen}
             /> */}
-            
-                        
-              <GenresFormSelect
-                className={isSettingsOpen ? "block" : "hidden"}
-                value={[...query.genres, ...query.tags]}
-                onChange={handleGenresChange}
-              />
 
-              <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
-                control={control}
-                name="seasonYear"
-                defaultValue={defaultValues.seasonYear}
-                selectProps={{
-                  placeholder: t("year"),
-                  options: seasonYears,
-                }}
-                label={t("year")}
-              />
+            <GenresFormSelect
+              className={isSettingsOpen ? "block" : "hidden"}
+              value={[...query.genres, ...query.tags]}
+              onChange={handleGenresChange}
+            />
 
-              <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
-                control={control}
-                name="season"
-                defaultValue={defaultValues.season}
-                selectProps={{
-                  placeholder: t("season"),
-                  options: SEASONS,
-                }}
-                label={t("season")}
-              />
+            <FormSelect
+              containerClassName={isSettingsOpen ? "block" : "hidden"}
+              control={control}
+              name="seasonYear"
+              defaultValue={defaultValues.seasonYear}
+              selectProps={{
+                placeholder: t("year"),
+                options: seasonYears,
+              }}
+              label={t("year")}
+            />
 
-              <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
-                control={control}
-                name="format"
-                defaultValue={defaultValues.format}
-                selectProps={{
-                  placeholder: t("format"),
-                  options: FORMATS,
-                }}
-                label={t("format")}
-              />
+            <FormSelect
+              containerClassName={isSettingsOpen ? "block" : "hidden"}
+              control={control}
+              name="season"
+              defaultValue={defaultValues.season}
+              selectProps={{
+                placeholder: t("season"),
+                options: SEASONS,
+              }}
+              label={t("season")}
+            />
+
+            <FormSelect
+              containerClassName={isSettingsOpen ? "block" : "hidden"}
+              control={control}
+              name="format"
+              defaultValue={defaultValues.format}
+              selectProps={{
+                placeholder: t("format"),
+                options: FORMATS,
+              }}
+              label={t("format")}
+            />
 
             <MobileView renderWithFragment>
               <FormSelect
-              containerClassName={isSettingsOpen ? "block" : "hidden"}
+                containerClassName={isSettingsOpen ? "block" : "hidden"}
                 control={control}
                 name="country"
                 defaultValue={defaultValues.country}
@@ -217,6 +218,46 @@ const BrowseList: React.FC<BrowseListProps> = ({
                 }}
                 label={t("status")}
               />
+              <div className="flex space-x-4 md:hidden">
+
+                <FormSelect
+                  control={control}
+                  name="country"
+                  defaultValue={defaultValues.country}
+                  selectProps={{
+                    placeholder: t("country"),
+                    options: COUNTRIES,
+                  }}
+                  label={t("country")}
+                />
+
+                <FormSelect
+                  control={control}
+                  name="status"
+                  defaultValue={defaultValues.status}
+                  selectProps={{
+                    placeholder: t("status"),
+                    options: STATUS,
+                  }}
+                  label={t("status")}
+                />
+            </div>
+
+            <div className="flex items-center justify-center md:hidden">
+              <input
+                className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                type="checkbox"
+                id="adultCheckbox"
+                {...register("isAdult")}
+              />
+              <label
+                className="inline-block text-white"
+                htmlFor="adultCheckbox"
+              >
+                18+
+              </label>
+            </div>
+
             </MobileView>
           </div>
 
@@ -249,24 +290,51 @@ const BrowseList: React.FC<BrowseListProps> = ({
             </div>
 
             <div className="flex items-center">
-              <input
-                className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                type="checkbox"
-                id="adultCheckbox"
-                {...register("isAdult")}
-              />
-              <label
-                className="inline-block text-white"
-                htmlFor="adultCheckbox"
-              >
-                18+
-              </label>
+              {user ? 
+                (
+                <div>
+                  <input
+                    className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                    type="checkbox"
+                    id="adultCheckbox"
+                    {...register("isAdult")}
+                  />
+                  <label
+                    className="inline-block text-white"
+                    htmlFor="adultCheckbox"
+                  >
+                    18+
+                  </label>  
+                </div>
+                ) :
+                (
+                  <div>
+                    <input
+                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                      type="checkbox"
+                      id="adultCheckbox"
+                      disabled
+                    />
+                    <label
+                      className="inline-block text-white"
+                      htmlFor="adultCheckbox"
+                    >
+                      18+ (members only)
+                    </label>  
+                  </div>
+                )
+              }
+
             </div>
-            
           </AdvancedSettings>
         </div>
 
-        <div className={classNames("flex items-end justify-end", isSettingsOpen ? "block" : "hidden")}>
+        <div
+          className={classNames(
+            "flex items-end justify-end",
+            isSettingsOpen ? "block" : "hidden"
+          )}
+        >
           <Controller
             name="sort"
             control={control}

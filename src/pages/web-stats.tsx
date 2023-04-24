@@ -8,7 +8,7 @@ import { FaDiscord } from "react-icons/fa";
 const webStats = () => {
   return (
     <div className="px-4 md:px-12 pt-20 space-y-4">
-      <Head title="Contact - AnimetTV" description="Contact us." />
+      <Head title="Stats - AnimetTV" description="Website Stats" />
 
       <h1 className="text-2xl font-bold">Website Statistics</h1>
 

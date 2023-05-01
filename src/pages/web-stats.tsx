@@ -1,9 +1,7 @@
 import Head from "@/components/shared/Head";
-import { DISCORD_URL, FACEBOOK_URL } from "@/constants";
 import classNames from "classnames";
 import React from "react";
-import { AiFillDatabase, AiFillFacebook } from "react-icons/ai";
-import { FaDiscord } from "react-icons/fa";
+import { AiFillDatabase } from "react-icons/ai";
 
 const webStats = () => {
   return (
@@ -15,25 +13,29 @@ const webStats = () => {
 
       <div className="flex items-center space-x-4">
        
-        <ContactItem
+        <Item
           Icon={AiFillDatabase}
-          name="Anime: 13,505"
+          name="Anime: "
+          value="13,505"
           iconContainerClassName="bg-[#F72953]"
         />
-        <ContactItem
+        <Item
           Icon={AiFillDatabase}
-          name="Episodes: 210,667"
+          name="Episodes: "
+          value="13,505"
           iconContainerClassName="bg-[#FFE66D]"
         />
 
-        <ContactItem
+        <Item
           Icon={AiFillDatabase}
-          name="Manga: 3,656"
+          name="Manga: "
+          value="13,505"
           iconContainerClassName="bg-[#49DCB1]"
         />
-        <ContactItem
+        <Item
           Icon={AiFillDatabase}
-          name="Chapters: 245,586"
+          name="Chapters: "
+          value="13,505"
           iconContainerClassName="bg-[#52DEE5]"
         />
       </div>
@@ -41,15 +43,17 @@ const webStats = () => {
   );
 };
 
-type ContactItemProps = {
+type ItemProps = {
   Icon: React.ComponentType<any>;
   name: string;
+  value: string;
   iconContainerClassName?: string;
 };
 
-const ContactItem: React.FC<ContactItemProps> = ({
+const Item: React.FC<ItemProps> = ({
   Icon,
   name,
+  value,
   iconContainerClassName,
 }) => {
   return (
@@ -58,10 +62,11 @@ const ContactItem: React.FC<ContactItemProps> = ({
         <div className={classNames("p-2 rounded-full", iconContainerClassName)}>
           <Icon className="w-6 h-6" />
         </div>
-        <p className="px-4">{name}</p>
+        <p className="px-4">{name}{value}</p>
       </div>
     
   );
 };
+
 
 export default webStats;

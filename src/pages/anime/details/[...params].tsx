@@ -117,14 +117,14 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <div className="flex items-center flex-wrap gap-2 mb-4">
                   {user ? (
                     <div>
-                      {(episodes && episodes.length > 0) ? (
-                        <Link href={`/anime/watch/${anime.id}`}>
+                      {(episodes && episodes.length > 0) ? (''
+                       /*  <Link href={`/anime/watch/${anime.id}`}>
                         <a>
                           <Button primary LeftIcon={BsFillPlayFill}>
                             <p>{t("common:watch_now")}</p>
                           </Button>
                         </a>
-                      </Link>
+                      </Link> */
                         ): (
                           <Link href={DISCORD_URL}>
                             <a target={'_blank'}>

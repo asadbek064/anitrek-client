@@ -93,16 +93,16 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
         {!readOnly && (
           <div className="p-2 flex flex-col md:flex-row justify-between border-t gap-2 border-gray-600">
             <div className="flex items-center md:gap-2 flex-wrap">
-              {/* <CircleButton
+             {/*  <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
                 LeftIcon={AiOutlineBold}
                 onClick={() => editor.chain().toggleBold().focus().run()}
                 title="Bold"
-              /> */}
+              />
 
-              {/* <CircleButton
+              <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
@@ -127,9 +127,9 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={AiOutlineUnorderedList}
                 onClick={() => editor.chain().toggleBulletList().focus().run()}
                 title="Unordered list"
-              /> */}
+              />
 
-              {/* <CircleButton
+              <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
@@ -154,7 +154,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={GrBlockQuote}
                 onClick={() => editor.chain().toggleBlockquote().focus().run()}
                 title="Blockquote"
-              /> */}
+              />
 
               <CircleButton
                 secondary
@@ -163,7 +163,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={AiOutlineEyeInvisible}
                 onClick={() => editor.chain().setSpoiler().focus().run()}
                 title="Spoil?"
-              />
+              /> */}
             </div>
 
             {onSubmit && (
@@ -187,6 +187,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
           </div>
         )}
       </div>
+      
     );
   }
 );

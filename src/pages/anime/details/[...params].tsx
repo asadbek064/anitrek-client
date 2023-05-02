@@ -17,6 +17,7 @@ import Popup from "@/components/shared/Popup";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
+import TextIcon from "@/components/shared/TextIcon";
 import { DISCORD_URL, REVALIDATE_TIME } from "@/constants";
 import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
@@ -43,6 +44,7 @@ import { AiOutlineUpload } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
+import { IoIosArrowForward } from "react-icons/io";
 
 interface DetailsPageProps {
   anime: Media;
@@ -51,6 +53,7 @@ interface DetailsPageProps {
 const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
   const { user } = useUser();
   const { locale } = useRouter();
+  const router = useRouter();
   const { t } = useTranslation("anime_details");
 
   const { data: episodes, isLoading } = useEpisodes(anime.id);
@@ -256,7 +259,23 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
               )}
             </DetailsSection>
-            ): ('')}
+            ): (
+              <div>
+
+                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
+                  <Link href={`/login?redirectedFrom=${router.asPath}`}>
+                    <a>
+                      <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                        <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
+                        <span className="font-semibold mr-2 text-left flex-auto">Memebers Only</span>
+                        <TextIcon LeftIcon={IoIosArrowForward}/>
+                      </div>
+                    </a>
+                  </Link>
+                </div>
+
+              </div>
+            )}
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />

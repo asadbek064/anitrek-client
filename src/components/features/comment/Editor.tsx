@@ -19,6 +19,7 @@ import {
 } from "react-icons/ai";
 import { GrBlockQuote } from "react-icons/gr";
 import { Editor as EditorType } from "@tiptap/react";
+import CharacterCount from "@tiptap/extension-character-count";
 
 export interface EditorProps extends Partial<EditorOptions> {
   defaultContent?: string;
@@ -30,6 +31,7 @@ export interface EditorProps extends Partial<EditorOptions> {
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
   editorClassName?: string;
 }
+
 
 const Editor = React.forwardRef<EditorType, EditorProps>(
   (
@@ -45,6 +47,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
     },
     ref
   ) => {
+    const limit = 300;
     const editor = useEditor(
       {
         extensions: [
@@ -62,6 +65,9 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
             },
           }),
           spoilerExtension(),
+          CharacterCount.configure({
+            limit
+          }),
         ],
         content: defaultContent,
         editorProps: {
@@ -75,11 +81,16 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
         },
         editable: !readOnly,
         ...editorOptions,
+
       },
       [placeholder, readOnly, defaultContent, editorClassName]
     );
 
     useImperativeHandle(ref, () => editor, [editor]);
+
+    if (!editor) {
+      return null
+    }
 
     return (
       <div
@@ -165,7 +176,11 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 title="Spoil?"
               /> */}
             </div>
-
+            
+           
+      <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-500" )}>
+        {editor.storage.characterCount.characters()}/{limit}
+      </div>
             {onSubmit && (
               <CircleButton
                 className="ml-auto max-w-min text-primary-300"

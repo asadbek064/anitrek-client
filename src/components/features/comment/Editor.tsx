@@ -178,9 +178,12 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
             </div>
             
            
-      <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-500" )}>
-        {editor.storage.characterCount.characters()}/{limit}
-      </div>
+           <div className="opacity-80 text-sm pt-2">
+            <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-300" )}>
+                {editor.storage.characterCount.characters()}/{limit}
+              </div>
+           </div>
+
             {onSubmit && (
               <CircleButton
                 className="ml-auto max-w-min text-primary-300"

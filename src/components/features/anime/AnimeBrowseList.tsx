@@ -118,11 +118,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
   }, [isDirty]);
 
   const [isSettingsOpen, seSettingsOpen] = useState(true);
-<<<<<<< HEAD
-
-=======
-  const {user} =  useUser();
->>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
   return (
     <div className="min-h-screen">
       <form className="space-y-4">

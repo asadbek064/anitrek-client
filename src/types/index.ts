@@ -189,6 +189,7 @@ export type Font = {
 
 export type VideoSource = {
   file: string;
+  type?: string;
   label?: string;
   useProxy?: boolean;
   usePublicProxy?: boolean;

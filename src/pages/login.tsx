@@ -89,7 +89,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ quotes, wallpapers }) => {
             <h1 className="text-5xl font-bold mb-8">{t("login_heading")}</h1>
             <div className="space-y-4">
               <Button
-                className="shadow-lg relative bg-white text-black font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
+                className="shadow-lg relative bg-[#fcfcff] !hover:bg-white/20 text-neutral-900 font-bold flex items-center justify-center w-full hover:!bg-opacity-90"
                 LeftIcon={FcGoogle}
                 iconClassName="absolute left-6"
                 onClick={handleSignIn("google")}

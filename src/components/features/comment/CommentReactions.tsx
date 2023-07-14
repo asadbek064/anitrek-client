@@ -20,7 +20,7 @@ export const CommentReactions: React.FC<CommentReactionsProps> = ({
           toggleReaction={toggleReaction}
         />
       ))}
-    </div>
+    </div> 
   );
 };
 

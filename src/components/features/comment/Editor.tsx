@@ -19,6 +19,7 @@ import {
 } from "react-icons/ai";
 import { GrBlockQuote } from "react-icons/gr";
 import { Editor as EditorType } from "@tiptap/react";
+import CharacterCount from "@tiptap/extension-character-count";
 
 export interface EditorProps extends Partial<EditorOptions> {
   defaultContent?: string;
@@ -30,6 +31,7 @@ export interface EditorProps extends Partial<EditorOptions> {
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
   editorClassName?: string;
 }
+
 
 const Editor = React.forwardRef<EditorType, EditorProps>(
   (
@@ -45,6 +47,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
     },
     ref
   ) => {
+    const limit = 300;
     const editor = useEditor(
       {
         extensions: [
@@ -62,6 +65,9 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
             },
           }),
           spoilerExtension(),
+          CharacterCount.configure({
+            limit
+          }),
         ],
         content: defaultContent,
         editorProps: {
@@ -75,11 +81,16 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
         },
         editable: !readOnly,
         ...editorOptions,
+
       },
       [placeholder, readOnly, defaultContent, editorClassName]
     );
 
     useImperativeHandle(ref, () => editor, [editor]);
+
+    if (!editor) {
+      return null
+    }
 
     return (
       <div
@@ -93,16 +104,16 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
         {!readOnly && (
           <div className="p-2 flex flex-col md:flex-row justify-between border-t gap-2 border-gray-600">
             <div className="flex items-center md:gap-2 flex-wrap">
-              {/* <CircleButton
+             {/*  <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
                 LeftIcon={AiOutlineBold}
                 onClick={() => editor.chain().toggleBold().focus().run()}
                 title="Bold"
-              /> */}
+              />
 
-              {/* <CircleButton
+              <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
@@ -127,9 +138,9 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={AiOutlineUnorderedList}
                 onClick={() => editor.chain().toggleBulletList().focus().run()}
                 title="Unordered list"
-              /> */}
+              />
 
-              {/* <CircleButton
+              <CircleButton
                 secondary
                 className="text-gray-300"
                 iconClassName="w-4 h-4"
@@ -154,7 +165,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={GrBlockQuote}
                 onClick={() => editor.chain().toggleBlockquote().focus().run()}
                 title="Blockquote"
-              /> */}
+              />
 
               <CircleButton
                 secondary
@@ -163,8 +174,15 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
                 LeftIcon={AiOutlineEyeInvisible}
                 onClick={() => editor.chain().setSpoiler().focus().run()}
                 title="Spoil?"
-              />
+              /> */}
             </div>
+            
+           
+           <div className="opacity-80 text-sm pt-2">
+            <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-300" )}>
+                {editor.storage.characterCount.characters()}/{limit}
+              </div>
+           </div>
 
             {onSubmit && (
               <CircleButton
@@ -187,6 +205,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
           </div>
         )}
       </div>
+      
     );
   }
 );

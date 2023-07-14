@@ -118,7 +118,11 @@ const BrowseList: React.FC<BrowseListProps> = ({
   }, [isDirty]);
 
   const [isSettingsOpen, seSettingsOpen] = useState(true);
+<<<<<<< HEAD
 
+=======
+  const {user} =  useUser();
+>>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
   return (
     <div className="min-h-screen">
       <form className="space-y-4">
@@ -195,6 +199,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
             />
 
             <MobileView renderWithFragment>
+<<<<<<< HEAD
               <FormSelect
                 containerClassName={isSettingsOpen ? "block" : "hidden"}
                 control={control}
@@ -258,6 +263,71 @@ const BrowseList: React.FC<BrowseListProps> = ({
               </label>
             </div>
 
+=======
+              <div className={isSettingsOpen ? "block" : "hidden"}>
+                <div className="flex space-x-4">
+                  <FormSelect
+                    control={control}
+                    name="country"
+                    defaultValue={defaultValues.country}
+                    selectProps={{
+                      placeholder: t("country"),
+                      options: COUNTRIES,
+                    }}
+                    label={t("country")}
+                  />
+
+                  <FormSelect
+                    control={control}
+                    name="status"
+                    defaultValue={defaultValues.status}
+                    selectProps={{
+                      placeholder: t("status"),
+                      options: STATUS,
+                    }}
+                    label={t("status")}
+                  />
+
+                    <div className="flex items-center justify-center pt-8">
+                    {user ? 
+                    (
+                      <div>
+                        <input
+                          className="appearance-none h-8 w-8  border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                          type="checkbox"
+                          id="adultCheckbox"
+                          {...register("isAdult")}
+                        />
+                        <label
+                          className="inline-block text-white"
+                          htmlFor="adultCheckbox"
+                        >
+                          18+
+                        </label>
+                      </div>
+                    ) :
+                    (
+                      <div>
+                        <input
+                          className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                          type="checkbox"
+                          id="adultCheckbox"
+                          disabled
+                        />
+                        <label
+                          className="inline-block text-white"
+                          htmlFor="adultCheckbox"
+                        >
+                          18+ (Member only)
+                        </label>
+                      </div>
+                    )  
+                  }
+                  </div>
+                </div>
+
+              </div>
+>>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
             </MobileView>
           </div>
 
@@ -289,6 +359,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
             </div>
 
+<<<<<<< HEAD
             <div className="flex items-center">
               {user ? 
                 (
@@ -306,6 +377,25 @@ const BrowseList: React.FC<BrowseListProps> = ({
                     18+
                   </label>  
                 </div>
+=======
+            <div className="flex items-center justify-center">
+              {user ? 
+                (
+                  <div>
+                    <input
+                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                      type="checkbox"
+                      id="adultCheckbox"
+                      {...register("isAdult")}
+                    />
+                    <label
+                      className="inline-block text-white"
+                      htmlFor="adultCheckbox"
+                    >
+                      18+
+                    </label>
+                  </div>
+>>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
                 ) :
                 (
                   <div>
@@ -319,12 +409,20 @@ const BrowseList: React.FC<BrowseListProps> = ({
                       className="inline-block text-white"
                       htmlFor="adultCheckbox"
                     >
+<<<<<<< HEAD
                       18+ (members only)
                     </label>  
                   </div>
                 )
               }
 
+=======
+                      18+ (Member only)
+                    </label>
+                  </div>
+                )  
+              }
+>>>>>>> 84482f3f367fbaa8677497f13ad070bd67b786e7
             </div>
           </AdvancedSettings>
         </div>

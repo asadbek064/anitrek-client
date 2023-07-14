@@ -24,7 +24,7 @@ const Footer = () => {
 
       <div className="flex items-center space-x-8 text-center">
         <Link href="/tos">
-          <p className="text-lg">{t("term_of_services")}</p>
+          <p className="text-md md:text-lg">{t("term_of_services")}</p>
         </Link>
 
         {/* <Link href="/dmca">
@@ -32,17 +32,20 @@ const Footer = () => {
         </Link> */}
 
         <Link href="/contact">
-          <p className="text-lg">{t("contact")}</p>
+          <p className="text-md md:text-lg">{t("contact")}</p>
         </Link>
 
         <Link href="/deletion-privacy">
-          <p className="text-lg">Deletion Privacy</p>
+          <p className="text-md md:text-lg">Deletion Privacy</p>
+        </Link>
+        <Link href="/web-stats">
+          <p className="text-md md:text-lg">Website Stats</p>
         </Link>
       </div>
 
-      <p className="text-sm text-gray-300 text-center">AnimetTV does not store any files on our server, we only linked to the media which is hosted on 3rd party services.</p>
-
-      <p className="text-sm text-gray-300 text-center">© AnimetTV</p>
+        <div className="flex flex-col justify-center items-center w-5/6 md:w-1/3 ">
+        <p className="text-xs text-gray-300">ANIMET.SITE is an independent website presenting anime from various sources across the internet. © ANIMET.SITE 2023 | Built with AnimetTV API.</p>
+        </div>
     </div>
   );
 };

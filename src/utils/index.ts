@@ -521,15 +521,19 @@ export const createMediaDetailsUrlAI = (title: string, type: string) => {
   }
 }
 export const createMediaDetailsUrl = (media: Media) => {
-  if (media.type === MediaType.Anime) {
-    return `/anime/details/${media.id}/${vietnameseSlug(
+  if (media !== undefined) {
+    if (media.type === MediaType.Anime) {
+      return `/anime/details/${media.id}/${vietnameseSlug(
+        media.title.userPreferred
+      )}`;
+    }
+  
+    return `/manga/details/${media.id}/${vietnameseSlug(
       media.title.userPreferred
     )}`;
-  }
+  } 
+  return '/';
 
-  return `/manga/details/${media.id}/${vietnameseSlug(
-    media.title.userPreferred
-  )}`;
 };
 
 export const createCharacterDetailsUrl = (character: Character) => {

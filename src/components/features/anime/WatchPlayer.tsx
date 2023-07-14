@@ -1,11 +1,11 @@
 import { useGlobalPlayer } from "@/contexts/GlobalPlayerContext";
 import { parseNumberFromString } from "@/utils";
 import classNames from "classnames";
-import { ControlButton, TimeIndicator, useInteract } from "netplayer";
+import { useInteract } from "netplayer";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
-import { AiOutlineClose, AiOutlineExpandAlt, AiOutlineInfoCircle } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import Player, { PlayerProps } from "./Player";
 import Controls from "./Player/Controls";
@@ -17,7 +17,6 @@ import MobileNextEpisode from "./Player/MobileNextEpisode";
 import MobileOverlay from "./Player/MobileOverlay";
 import NextEpisodeButton from "./Player/NextEpisodeButton";
 import Overlay from "./Player/Overlay";
-import ProgressSlider from "./Player/ProgressSlider";
 import TimestampSkipButton from "./Player/TimestampSkipButton";
 
 export interface WatchPlayerProps extends PlayerProps {
@@ -109,7 +108,7 @@ const PlayerMobileControls = React.memo(() => {
                     "fixed inset-0 z-[9999] flex w-full flex-col justify-center bg-background px-2"
                   )}
                 >
-                  <BsArrowLeft
+                  <AiOutlineClose
                     className="absolute left-3 top-3 h-8 w-8 cursor-pointer transition duration-200 hover:text-gray-200"
                     onClick={() => setIsOpen(false)}
                   />
@@ -120,8 +119,7 @@ const PlayerMobileControls = React.memo(() => {
                         mediaId={anime.id}
                         episodes={episodes}
                         activeEpisode={currentEpisode}
-                        episodeLinkProps={{ shallow: true, replace: true }}
-                      />
+                        episodeLinkProps={{ shallow: true, replace: true }} />
                     </div>
                   )}
                 </div>
@@ -196,7 +194,6 @@ const PlayerMobileOverlay = React.memo(() => {
   const {
     playerProps: { currentEpisode, anime }, setPlayerState
   } = useGlobalPlayer();
-
 
   return (
     <React.Fragment>
@@ -288,7 +285,7 @@ const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
 
   return (
     
-    <div className={isLandscape ? `h-screen ` : `h-[65vh] xl:mt-12 xl:mx-36 lg:mt-4 lg:mx-20`}>
+    <div className={isLandscape ? `h-screen ` : `h-[35vh] lg:h-[65vh] xl:mt-12 xl:mx-36 lg:mt-4 lg:mx-20`}>
       <Player
         ref={videoRef}
         components={components}

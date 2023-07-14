@@ -134,12 +134,12 @@ const UploadMangaPage: NextPage<UploadMangaPageProps> = ({
             confirmString={manga.title.userPreferred}
           >
             <h1 className="text-2xl font-semibold">
-              Bạn có chắc chắn xóa không?
+              Are you sure delete?
             </h1>
 
             <p>
-              Một khi đã xóa, bạn sẽ không thể khôi phục lại. Điều này sẽ xóa
-              hoàn toàn bất kỳ dữ liệu nào liên quan đến manga này.
+             Once deleted, you cannot restore it. This will delete
+              absolutely any data related to this manga.
             </p>
           </DeleteConfirmation>
         </Section>

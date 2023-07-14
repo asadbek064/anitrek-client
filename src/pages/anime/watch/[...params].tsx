@@ -24,10 +24,12 @@ import { useFetchSource } from "@/hooks/useFetchSource";
 import useMediaDetails from "@/hooks/useMediaDetails";
 import useSavedWatched from "@/hooks/useSavedWatched";
 import useSaveWatched from "@/hooks/useSaveWatched";
+import { episodeDetail } from "@/services/tmdb";
 import { AnimeSourceConnection, Episode } from "@/types";
 import { filterOutMangaOvaSpecials, getAllSeasons, parseNumberFromString, sortByReleaseDate } from "@/utils";
 import { convert, getDescription, getTitle, sortMediaUnit } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
+import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -521,6 +523,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   params: { params },
 }) => {
   try {
+ 
     const { data, error } = await supabaseClient
       .from<AnimeSourceConnection>("kaguya_anime_source")
       .select(
@@ -536,6 +539,12 @@ export const getServerSideProps: GetServerSideProps = async ({
       .flatMap((connection) => connection.episodes)
       .filter((episode) => episode.published);
     
+
+   /*  // get episode detail
+    const {data: episodesDetail} = await axios(`https://api.kaguya.app/server/episode-info/${Number(params[0])}`);
+    
+     */
+
     return {
       props: {
         episodes,

@@ -26,7 +26,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
   const [activeStatus, setActiveStatus] = useState("watching");
   const [media, setMedia] = useState(watchListAnimeMedia);
 
-  const handlerStatusClick = (button) => {
+  const handlerStatusClick = (button:string) => {
+    alert(button)
     setActiveStatus(button);
     
     let filterDataList = [];

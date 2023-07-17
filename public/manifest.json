@@ -6,22 +6,22 @@
   "start_url": "/",
   "name": "AnimetTV",
   "short_name": "ATV",
-  "description": "Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration",
+  "description": "Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads",
   "icons": [
     {
-      "src": "icons/icon-512.png",
+      "src": "icons/icon-512.jpg",
       "sizes": "512x512"
     },
     {
-      "src": "icons/icon-192.png",
+      "src": "icons/icon-192.jpg",
       "sizes": "192x192"
     },
     {
-      "src": "icons/icon-144.png",
+      "src": "icons/icon-144.jpg",
       "sizes": "144x144"
     },
     {
-      "src": "icons/icon-48.png",
+      "src": "icons/icon-48.jpg",
       "sizes": "48x48"
     }
   ]

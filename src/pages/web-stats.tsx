@@ -1,11 +1,28 @@
 import Head from "@/components/shared/Head";
+import { numberWithCommas } from "@/utils";
+import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import classNames from "classnames";
+import { error } from "console";
+import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 import { AiFillDatabase, AiFillRead } from "react-icons/ai";
 import { BiMoviePlay } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 
-const webStats = () => {
+interface Counts {
+  kaguya_episodes: number;
+  kaguya_anime_source: number;
+  kaguya_manga_source: number;
+  kaguya_chapters: number;
+}
+
+interface WebStatsProps {
+  counts: Counts;
+}
+
+const WebStatPage: NextPage<WebStatsProps> = ({ 
+  counts
+})  => {
   return (
     <div className="px-4 md:px-12 pt-20 space-y-4">
       <Head title="Stats - AnimetTV" description="Website Stats" />
@@ -13,40 +30,41 @@ const webStats = () => {
       <h1 className="text-2xl font-bold">AnimetTV Statistics</h1>
 
 
-      <div className="flex items-center space-x-4">
-       
-        <Item
-          Icon={BiMoviePlay}
-          name="Anime: "
-          value="13,651"
-          iconContainerClassName="bg-[#F72953]"
-        />
-        <Item
-          Icon={AiFillDatabase}
-          name="Episodes: "
-          value="212,560"
-          iconContainerClassName="bg-[#F72953]"
-        />
-
-        <Item
-          Icon={AiFillRead}
-          name="Manga: "
-          value="3,656"
-          iconContainerClassName="bg-[#84cc16]"
-        />
-        <Item
-          Icon={AiFillDatabase}
-          name="Chapters: "
-          value="245,586"
-          iconContainerClassName="bg-[#84cc16]"
-        />
-        <Item
-          Icon={FiUsers}
-          name="Members: "
-          value="731"
-          iconContainerClassName="bg-[#0369a1]"
-        />
+      <div className="flex justify-center mx-4 md:mx-12">
+        <div className="flex flex-wrap justify-center md:justify-start">
+          <Item
+            Icon={BiMoviePlay}
+            name="Anime: "
+            value={numberWithCommas(counts.kaguya_anime_source)}
+            iconContainerClassName="bg-[#F72953]"
+          />
+          <Item
+            Icon={AiFillDatabase}
+            name="Episodes: "
+            value={numberWithCommas(counts.kaguya_episodes)}
+            iconContainerClassName="bg-[#F72953]"
+          />
+          <Item
+            Icon={AiFillRead}
+            name="Manga: "
+            value={numberWithCommas(counts.kaguya_manga_source)}
+            iconContainerClassName="bg-[#84cc16]"
+          />
+          <Item
+            Icon={AiFillDatabase}
+            name="Chapters: "
+            value={numberWithCommas(counts.kaguya_chapters)}
+            iconContainerClassName="bg-[#84cc16]"
+          />
+          <Item
+            Icon={FiUsers}
+            name="Members: "
+            value="1,703"
+            iconContainerClassName="bg-[#0369a1]"
+          />
+        </div>
       </div>
+      
     </div>
   );
 };
@@ -66,15 +84,41 @@ const Item: React.FC<ItemProps> = ({
 }) => {
   return (
     
-      <div className="flex items-center rounded-full bg-background-800 p-2">
+      <div className="flex items-center rounded-full bg-background-800 p-2 m-2">
         <div className={classNames("p-2 rounded-full", iconContainerClassName)}>
           <Icon className="w-6 h-6" />
         </div>
-        <p className="px-4">{name}{value}</p>
+        <p className="px-4 text-xl">{name} <span style={{fontWeight: 'bold'}}>{value}</span></p>
       </div>
     
   );
 };
 
+export const getServerSideProps: GetServerSideProps = async () => {
+ try {
+   let tables = ['kaguya_episodes', 'kaguya_anime_source', 'kaguya_manga_source', 'kaguya_chapters'];
+   let counts = {};
+   for (let table of tables) {
+    let { data, error } = await supabaseClient.from(table).select('*', { count: 'exact' }); // use the count option
 
-export default webStats;
+    if (error) {
+      console.error(`Error counting rows in table ${table}:`, error);
+      // don't throw the error, instead return a default value
+      counts[table] = 0;
+    } else {
+      counts[table] = data.length; // data.length is the number of rows
+    }
+  }
+  
+  return {
+    props: { counts }, // will be passed to the page component as props
+  };
+ } catch (error) {
+    console.log(error);
+  
+    return  { notFound: true };
+ }
+}
+
+
+export default WebStatPage;

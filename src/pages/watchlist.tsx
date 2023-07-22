@@ -6,10 +6,7 @@ import { Media, MediaType } from "@/types/anilist";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import { NextPage } from "next";
 import Head from "@/components/shared/Head";
-import Link from "next/link";
 import { useMemo, useState } from "react";
-import List from "@/components/shared/List";
-import Card from "@/components/shared/Card";
 import AnimeWatchList from "@/components/features/anime/AnimeWatchList";
 
 interface WatchListProps {
@@ -27,7 +24,6 @@ const WatchListPage: NextPage<WatchListProps> = ({
   const [media, setMedia] = useState(watchListAnimeMedia);
 
   const handlerStatusClick = (button:string) => {
-    alert(button)
     setActiveStatus(button);
     
     let filterDataList = [];

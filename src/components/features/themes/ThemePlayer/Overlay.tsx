@@ -69,15 +69,15 @@ const Overlay = () => {
         )}
       />
 
-      <div 
+      {/* <div 
         className={classNames("w-8 h-8 absolute transition-all duration-200 cursor-pointer top-4 right-40 hover:text-gray-200", 
           isInteracting ? "opacity-100 visible" : "opacity-0 invisible")}>
         <RefreshButton />
-      </div>
+      </div> */}
       
-      <div className={classNames(isMobile ?  "w-full absolute bottom-20 px-5 z-50" : "w-full absolute bottom-16 px-40 z-50")}>
+     {/*  <div className={classNames(isMobile ?  "w-full absolute bottom-20 px-5 z-50" : "w-full absolute bottom-20 px-40 z-50")}>
         <ProgressSlider />
-      </div>
+      </div> */}
 
       {isLoading && <Loading />}
     </PlayerOverlay>

@@ -2,7 +2,6 @@ import TraceImageSearch from "@/components/features/trace/TraceImageSearch";
 import TracePanel from "@/components/features/trace/TracePanel";
 import Button from "@/components/shared/Button";
 import Head from "@/components/shared/Head";
-import Image from "@/components/shared/Image";
 import Loading from "@/components/shared/Loading";
 import useTraceImage, { TraceImageResponse } from "@/hooks/useTraceImage";
 import React, { useCallback, useState } from "react";

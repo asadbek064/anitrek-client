@@ -293,9 +293,11 @@ export interface SkipTimeStamp {
   episodeLength: number;
 }
 
+
 export interface AnimeSongTheme {
   title: string;
 }
+
 export interface AnimeTheme {
   slug: string;
   song: AnimeSongTheme;

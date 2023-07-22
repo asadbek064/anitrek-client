@@ -105,6 +105,8 @@ declare module AnimeThemeAPI {
   }
 }
 
+
+
 const composeTheme = (
   anime: AnimeThemeAPI.Anime,
   theme = randomElement(anime.animethemes)

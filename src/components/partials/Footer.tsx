@@ -38,9 +38,9 @@ const Footer = ({}) => {
         <Link href="/deletion-privacy">
           <p className="text-md md:text-lg">Deletion Privacy</p>
         </Link>
-        <Link href="/web-stats">
+        {/* <Link href="/web-stats">
           <p className="text-md md:text-lg">Website Stats</p>
-        </Link>
+        </Link> */}
       </div>
 
         <div className="flex flex-col justify-center items-center w-5/6 md:w-1/3 ">

@@ -1,4 +1,4 @@
-import Head from "@/components/shared/Head";
+/* import Head from "@/components/shared/Head";
 import { numberWithCommas } from "@/utils";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import classNames from "classnames";
@@ -122,3 +122,4 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 
 export default WebStatPage;
+ */

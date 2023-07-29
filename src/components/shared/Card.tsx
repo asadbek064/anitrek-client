@@ -85,7 +85,7 @@ const Card: React.FC<CardProps> = (props) => {
                     : "."}
                 </div>
               </div>
-              <div className="flex flex-row mx-auto pl-0.5">
+              <div className="flex flex-row mx-auto md:pl-0.5">
                 {data.episodes != null && data.episodes != 0 && data.format !== "MOVIE" ? (
                     <div className="flex">
                       EP &nbsp;{data.episodes}

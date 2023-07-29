@@ -8,6 +8,11 @@ import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
 import Image from 'next/image';
 import BaseLayout from "@/components/layouts/BaseLayout";
+import Link from "next/link";
+import { getMediaDetails } from "@/services/anilist";
+import { Media, MediaType } from "@/types/anilist";
+import Section from "@/components/shared/Section";
+import { useTranslation } from "next-i18next";
 
 const ThemePlayer = dynamic(
   () => import("@/components/features/themes/ThemePlayer"),
@@ -23,6 +28,7 @@ const blankVideo = [
 interface ThemesPageProps {
   slug: string;
   type: string;
+  media?: Media;
 }
 
 interface CardDetail {
@@ -31,35 +37,40 @@ interface CardDetail {
   detail: string;
 }
 
-const PlaceHolderData: CardDetail[] = [
-  {videoTitle: 'Yo mama', thumbnail: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx146065-1hTpwsW2fQIA.jpg', detail:'detaill..'},
-  {videoTitle: 'Yo mama', thumbnail: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx159831-TxAC0ujoLTK6.png', detail:'detaill..'},
-  {videoTitle: 'Yo mama', thumbnail: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx111322-2jQMDQva4YD7.png', detail:'detaill..'},
-  {videoTitle: 'Yo mama', thumbnail: 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx21459-DUKLgasrgeNO.jpg', detail:'detaill..'},
-];
+const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
 
-
-const Card = ({ cardDetail }) => {
   return (
-    <div className="flex border-y rounded-sm hover:bg-neutral-800 cursor-pointer">
-      <img
-        src={cardDetail.thumbnail}
-        alt={cardDetail.videoTitle}
-        className="w-32 h-24 rounded-tl-sm rounded-bl-sm object-cover"
-      />
-      <div className="ml-4">
-        <h2 className="text-lg font-medium text-gray-50">{cardDetail.videoTitle}</h2>
-        <p className="text-sm text-gray-400">{cardDetail.detail}</p>
+    <Link
+      href={{
+        pathname:"/themes",
+        query: { slug: animeSlug, type: cardDetail.slug, id: anilistId}
+      }}
+    >
+      <div className="flex border-y rounded-sm hover:bg-neutral-800 cursor-pointer">
+        {media ? (
+          <img
+            src={media.coverImage.extraLarge}
+            alt={media.title.userPreferred}
+            className="w-32 h-24 rounded-tl-sm rounded-bl-sm object-cover"
+          />
+        ): ('')}
+        <div className="ml-4 p-2">
+          <h2 className="text-lg font-medium text-gray-50">{cardDetail.song.title}</h2>
+          <p className="text-sm text-gray-400">{cardDetail.type}</p> 
+          {cardDetail?.animethemeentries[0]?.episodes ? (
+            <p className="text-xs">Episode {cardDetail?.animethemeentries[0].episodes}</p>
+          ): ('')} 
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 
-const ThemesPage = ({ slug, type }: ThemesPageProps) => {
+const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
   const router = useRouter();
   const { data, isLoading } = useAnimeTheme({ slug, type });
-
+  const { t } = useTranslation("themes");
   const handleNewTheme = useCallback(async () => {
     const { slug, type } = await fetchRandomTheme();
 
@@ -106,7 +117,7 @@ const ThemesPage = ({ slug, type }: ThemesPageProps) => {
         title={
           !data ? `Themes - AnimetTV` : `${data.name} (${data.type}) - AnimetTV`
         }
-        description="Watch OP/ED of your favorite Anime."
+        description="Watch Openings and Ending songs (OP/ED) of your favorite anime show."
       />
 
       <div className="space-y-8 mt-14 md:mt-24 flex justify-center">
@@ -114,15 +125,18 @@ const ThemesPage = ({ slug, type }: ThemesPageProps) => {
           value={{ theme: data, refresh: handleNewTheme, isLoading }}
         >
           <ThemeSettingsContextProvider>
-            <div className="flex flex-col lg:flex-row">
+            <div className="flex flex-col md:flex-row">
               <div className="p-4">
-                <ThemePlayer sources={sources} className="" />
+                <div>
+                  <ThemePlayer sources={sources} />
+                </div>
               </div>
 
-              <div className="w-full lg:w-1/4 p-4">
-                <ul className="space-y-4">
-                  {PlaceHolderData.map((card, index) => (
-                    <Card key={index} cardDetail={card} />
+              <div className="w-full lg:w-1/3 p-4">
+                <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">{t("related")}</h1>
+                <ul className="space-y-4 rela">
+                  {data?.related.map((card, index) => (
+                    <Card key={index} cardDetail={card} animeSlug={data?.slug} anilistId={data?.anilistId} media={media} />
                   ))}
                 </ul>
               </div>
@@ -143,12 +157,28 @@ ThemesPage.getLayout = (children) => (
 );
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  return {
-    props: {
-      slug: query.slug || null,
-      type: query.type || null,
-    },
-  };
+  if (query.id) {
+    const media = await getMediaDetails({
+      type: MediaType.Anime,
+      id: Number(query?.id),
+    });
+    return {
+      props: {
+        slug: query.slug || null,
+        type: query.type || null,
+        media: media
+      },
+    };
+  } else {
+    return {
+      props: {
+        slug: query.slug || null,
+        type: query.type || null,
+        media: null
+      },
+    };
+  }
+
 };
 
 export default ThemesPage;

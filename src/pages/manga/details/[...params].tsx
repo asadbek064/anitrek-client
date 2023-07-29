@@ -17,6 +17,7 @@ import Popup from "@/components/shared/Popup";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
+import TextIcon from "@/components/shared/TextIcon";
 import { REVALIDATE_TIME } from "@/constants";
 import withRedirect from "@/hocs/withRedirect";
 import useChapters from "@/hooks/useChapters";
@@ -35,6 +36,7 @@ import { useMemo } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill } from "react-icons/bs";
+import { IoIosArrowForward } from "react-icons/io";
 
 interface DetailsPageProps {
   manga: Media;
@@ -165,7 +167,15 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                   <Spinner />
                 </div>
               ) : (
-                <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
+                <>
+                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
+                  <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                    <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
+                    <span className="font-semibold mr-2 text-left flex-auto">Offline temporary</span>
+                  </div>
+                </div>
+                  {/* <LocaleChapterSelector mediaId={manga.id} chapters={chapters} /> */}
+                </>
               )}
             </DetailsSection>
 

@@ -41,7 +41,9 @@ const Controls: React.FC = () => {
         <div className="flex items-center space-x-4 ml-4">
           <RefreshButton />
           <PlayPauseButton />
-          <TimeIndicator />
+          {!isMobile ? (
+            <TimeIndicator />
+          ): ''}
 
         </div>
         <div className="flex items-center space-x-4 mr-4">

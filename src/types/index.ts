@@ -4,7 +4,8 @@ import { SupabaseQueryFunction, SupabaseQueryOptions } from "@/utils/supabase";
 import { User } from "@supabase/gotrue-js";
 import { QueryKey } from "react-query";
 import { Media, MediaTitle as ALMediaTitle } from "./anilist";
-
+import { AnimeThemeAPI } from "@/hooks/useAnimeTheme";
+ 
 export interface MediaTitle extends Partial<ALMediaTitle> {
   [key: string]: string;
 }
@@ -299,6 +300,7 @@ export interface AnimeSongTheme {
 }
 
 export interface AnimeTheme {
+  related: AnimeThemeAPI.Animetheme[];
   slug: string;
   song: AnimeSongTheme;
   name: string;

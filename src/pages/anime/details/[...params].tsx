@@ -40,9 +40,6 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
-import { AiOutlineUpload } from "react-icons/ai";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { BsFillPlayFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -453,7 +450,7 @@ export default withRedirect(DetailsPage, (router, props) => {
   if (slug) return null;
 
   return {
-    url: `/anime/details/${id}/${vietnameseSlug(title)}`,
+    url: `/anime/details/${id}/${title}`,
     options: {
       shallow: true,
     },

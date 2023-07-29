@@ -51,12 +51,12 @@ const routes: _route[] = [
     href: "/ai-upscale",
     icon: MdHighQuality,
   },
-  {
+  /* {
     title: "Trivia",
     href: "/trivia",
     icon: FaGamepad
-  },
-  /* {
+  }, */
+/*   {
     title: "Watch2together",
     href: "/wwf",
     icon: MdOutlineLiveTv

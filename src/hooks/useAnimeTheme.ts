@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 import { useRef } from "react";
 import { useQuery } from "react-query";
 
-declare module AnimeThemeAPI {
+export declare module AnimeThemeAPI {
   export interface Song {
     id: number;
     title: string;
@@ -107,6 +107,8 @@ declare module AnimeThemeAPI {
 
 
 
+
+
 const composeTheme = (
   anime: AnimeThemeAPI.Anime,
   theme = randomElement(anime.animethemes)
@@ -114,6 +116,7 @@ const composeTheme = (
   const entry = randomElement(theme.animethemeentries);
 
   return {
+    related: anime.animethemes,
     episode: entry.episodes,
     name: anime.name,
     sources: entry?.videos?.map((video) => ({

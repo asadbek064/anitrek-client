@@ -40,7 +40,7 @@ const tos = () => {
         </li>
         <li>
             <strong>Indemnification</strong>
-            <p>You agree to indemnify and hold harmless our website and its affiliates from any claim or demand, including reasonable attorneys' fees, made by any third party due to or arising out of your use of our website, your violation of these Terms of Service, or your violation of any rights of another.</p>
+            <p>You agree to indemnify and hold harmless our website and its affiliates from any claim or demand, including reasonable attorneys fees, made by any third party due to or arising out of your use of our website, your violation of these Terms of Service, or your violation of any rights of another.</p>
         </li>
         <li>
             <strong>Modification of Terms</strong>

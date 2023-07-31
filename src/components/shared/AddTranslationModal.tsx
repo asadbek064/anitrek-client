@@ -15,9 +15,11 @@ interface AddTranslationModalProps {
   mediaType: MediaType;
   defaultTitle?: string;
   defaultDescription?: string;
+  textLimit?: number;
 }
 
 const AddTranslationModal: React.FC<AddTranslationModalProps> = ({
+  textLimit,
   mediaId,
   mediaType,
   defaultTitle,
@@ -92,6 +94,7 @@ const AddTranslationModal: React.FC<AddTranslationModalProps> = ({
               ref={editorRef}
               editorClassName="text-base text-gray-300 hover:text-gray-100"
               defaultContent={defaultDescription}
+              textLimit={textLimit}
             />
           </div>
         </div>

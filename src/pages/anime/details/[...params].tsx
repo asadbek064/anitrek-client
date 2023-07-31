@@ -40,6 +40,9 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
+import { AiOutlineUpload } from "react-icons/ai";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { BsFillPlayFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -137,7 +140,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     </div>
                   ): ('')}
 
-                  {/* <Popup
+                  <Popup
                     reference={
                       <Button
                         className="!bg-[#393a3b]"
@@ -148,7 +151,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     type="click"
                     className="space-y-2"
                   >
-                    <Link href={`/wwf/create/${anime.id}`}>
+                   {/*  <Link href={`/wwf/create/${anime.id}`}>
                       <a>
                         <Button
                           secondary
@@ -158,16 +161,17 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                           <p>{t("watch_with_friends")}</p>
                         </Button>
                       </a>
-                    </Link>
+                    </Link> */}
 
                     <AddTranslationModal
                       mediaId={anime.id}
                       mediaType={MediaType.Anime}
                       defaultDescription={description}
                       defaultTitle={title}
+                      textLimit={2000}
                     />
 
-                    <Link href={`/upload/anime/${anime.id}`}>
+                    {/* <Link href={`/upload/anime/${anime.id}`}>
                       <a>
                         <Button
                           secondary
@@ -177,8 +181,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                           <p>Upload</p>
                         </Button>
                       </a>
-                    </Link>
-                  </Popup> */}
+                    </Link> */}
+                  </Popup>
                 </div>
 
                 <p className="mb-2 text-3xl font-semibold">{title}</p>

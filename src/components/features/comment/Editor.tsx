@@ -30,12 +30,13 @@ export interface EditorProps extends Partial<EditorOptions> {
   className?: string;
   containerProps?: React.HTMLAttributes<HTMLDivElement>;
   editorClassName?: string;
+  textLimit?: number;
 }
 
 
 const Editor = React.forwardRef<EditorType, EditorProps>(
   (
-    {
+    { textLimit,
       defaultContent,
       onSubmit,
       placeholder,
@@ -47,7 +48,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
     },
     ref
   ) => {
-    const limit = 300;
+    const limit = textLimit || 300;
     const editor = useEditor(
       {
         extensions: [

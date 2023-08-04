@@ -104,7 +104,7 @@ const Card: React.FC<CardProps> = (props) => {
           <a>
             {
               <Image
-                src={data.coverImage?.extraLarge}
+                src={data.coverImage?.extraLarge || 'icons/icon-512.jpg'}
                 layout="fill"
                 objectFit="cover"
                 className="rounded-tl-md rounded-tr-md"

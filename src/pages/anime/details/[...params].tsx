@@ -41,7 +41,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
-import { BiDotsHorizontalRounded } from "react-icons/bi";
+import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
@@ -138,7 +138,15 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                           </Link>
                         )}
                     </div>
-                  ): ('')}
+                  ): (
+                    <Link href={"/login"}>
+                      <a target={'_blank'}>
+                        <Button primary LeftIcon={BiBookAdd}>
+                          <p>Start Tracking</p>
+                        </Button>
+                      </a>
+                    </Link>
+                  )}
 
                   <Popup
                     reference={

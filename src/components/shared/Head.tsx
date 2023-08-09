@@ -13,7 +13,7 @@ interface HeadProps {
 const Head: React.FC<HeadProps> = (props) => {
   const {
     title = "AnimetTV",
-    description = "Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration",
+    description = "AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads",
     image = "https://frosty-snyder-1df076.netlify.app/other/login-wp.jpg",
   } = props;
 
@@ -50,6 +50,9 @@ const Head: React.FC<HeadProps> = (props) => {
         content="black-translucent"
       />
       <meta name="msapplication-starturl" content="/" />
+
+      {/* Coinzilla verification */}
+      <meta name="coinzilla" content="4d5ffcd0e145d79aba5351b805a99d89" />
     </NextHead>
   );
 };

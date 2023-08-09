@@ -86,8 +86,8 @@ const Home = () => {
   return (
     <React.Fragment>
       <Head
-        title="Watch Anime - AnimetTV"
-        description="4K A.I upscaled anime, Watch anime online in high quality for free. Watch anime subbed, anime dubbed online free. Update daily, fast streaming, no ads, no registration"
+        title="AnimetTV - Anime Hub"
+        description="AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads"
       />
 
       <ClientOnly>

@@ -30,10 +30,13 @@ const useSaveTranslation = (mediaId: number, mediaType: MediaType) => {
     },
     {
       onSuccess: () => {
-        toast.success("Translation saved");
+        toast.success("Translation saved", );
       },
       onError: (error) => {
-        toast.error(error.message);
+        toast.error(error.message, { 
+          position: "top-center",
+          toastId: "translation-error"
+        });
       },
     }
   );

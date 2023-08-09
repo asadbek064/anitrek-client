@@ -74,7 +74,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
         editorProps: {
           attributes: {
             class: classNames(
-              "!max-w-full prose prose-sm prose-invert focus:outline-none focus:border-none",
+              "!max-w-full prose prose-sm prose-invert focus:outline-none focus:border-none ",
               !readOnly && "min-h-[2rem]",
               editorClassName
             ),
@@ -181,8 +181,8 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
            
            <div className="opacity-80 text-sm pt-2">
             <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-300" )}>
-                {editor.storage.characterCount.characters()}/{limit}
-              </div>
+              {editor.storage.characterCount.characters()}/{limit}
+            </div>
            </div>
 
             {onSubmit && (

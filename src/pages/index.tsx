@@ -99,6 +99,8 @@ const Home = () => {
             <RecommendedAnimeSection />
             
             <div>
+              {/* Coinzilla verification */}
+            
               {/* Ad Start */}
               <ins className="adsbygoogle"
                     style={{ display: "block"}}

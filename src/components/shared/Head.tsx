@@ -51,8 +51,6 @@ const Head: React.FC<HeadProps> = (props) => {
       />
       <meta name="msapplication-starturl" content="/" />
 
-      {/* Coinzilla verification */}
-      <meta name="coinzilla" content="4d5ffcd0e145d79aba5351b805a99d89" />
     </NextHead>
   );
 };

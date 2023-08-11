@@ -75,6 +75,17 @@ const Header = () => {
   const router = useRouter();
   const { t } = useTranslation("header");
 
+  // rename header if not logged in
+  console.log(user);
+  
+  if (user === null) {
+    routes[0].title = "Anime";
+    routes[1].title=  "Manga";
+  } else {
+    routes[0].title = "Watch";
+    routes[1].title=  "Read";
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsTop(window.scrollY === 0);

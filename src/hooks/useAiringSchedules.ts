@@ -19,4 +19,4 @@ const useAiringSchedules = (
   );
 };
 
-export default useAiringSchedules;
+export default useAiringSchedules; 

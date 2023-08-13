@@ -246,7 +246,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
           episode_id: `${currentEpisode.sourceId}-${currentEpisode.sourceEpisodeId}`,
           watched_time: videoRef.current?.currentTime,
         });
-      }, 15000);
+      }, 45000);
     };
 
     videoEl.addEventListener("canplay", handleSaveTime);

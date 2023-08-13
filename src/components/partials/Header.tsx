@@ -30,7 +30,46 @@ interface _route {
   href: string;
   icon: ComponentType<IconProps>;
 }
-const routes: _route[] = [
+
+let routes: _route[] = [];
+const routes_guest: _route[] = [
+  {
+    title: "Anime",
+    href: "/",
+    icon: BsPlayFill
+  },
+  {
+    title: "Manga",
+    href: "/manga",
+    icon: AiOutlineRead
+  },
+  {
+    title: "Scene Finder",
+    href: "/scene-search",
+    icon: MdFindInPage
+  },
+  {
+    title: "A.I Upscaled",
+    href: "/ai-upscale",
+    icon: MdHighQuality,
+  },
+  {
+    title: "Trivia",
+    href: "/trivia",
+    icon: FaGamepad
+  },
+/*   {
+    title: "Watch2together",
+    href: "/wwf",
+    icon: MdOutlineLiveTv
+  }, */
+  {
+    title: "Clips",
+    href: "/themes",
+    icon: RiMovie2Line
+  },
+]
+const routes_verified: _route[] = [
   {
     title: "Watch",
     href: "/",
@@ -56,17 +95,17 @@ const routes: _route[] = [
     href: "/trivia",
     icon: FaGamepad
   }, */
-/*   {
+  {
     title: "Watch2together",
     href: "/wwf",
     icon: MdOutlineLiveTv
-  }, */
+  },
   {
     title: "Clips",
     href: "/themes",
     icon: RiMovie2Line
   },
-];
+]
 
 const Header = () => {
   const [isTop, setIsTop] = useState(true);
@@ -76,14 +115,10 @@ const Header = () => {
   const { t } = useTranslation("header");
 
   // rename header if not logged in
-  console.log(user);
-  
   if (user === null) {
-    routes[0].title = "Anime";
-    routes[1].title=  "Manga";
+    routes = routes_guest;
   } else {
-    routes[0].title = "Watch";
-    routes[1].title=  "Read";
+    routes = routes_verified;
   }
 
   useEffect(() => {

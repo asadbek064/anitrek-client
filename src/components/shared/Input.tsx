@@ -14,7 +14,6 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   label?: string;
   isSettingsOpen?: boolean;
   setSettingsOpen?: any;
-  maxCharacters?:
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -28,7 +27,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     className,
     isSettingsOpen,
     setSettingsOpen,
-    maxCharacters
     ...inputProps
   } = props;
 

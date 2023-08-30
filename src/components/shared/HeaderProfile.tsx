@@ -10,6 +10,7 @@ import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
 import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 
+
 const HeaderProfile = () => {
   const { user } = useUser();
   const { t } = useTranslation("header");

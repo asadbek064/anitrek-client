@@ -364,3 +364,16 @@ export type KaguyaWatched = {
   watchedTime: number;
   episodeId: string;
 }
+
+export interface Review {
+  id: string;
+  created_at: string;
+  topic: string;
+  title: string;
+  content: string;
+  user_id: string;
+  rating: number;
+  likes: number;
+  dislikes: number;
+  user?: DisplayUser;
+}

@@ -64,8 +64,7 @@ const Home = () => {
       perPage: 5,
     });
 
-  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } =
-    useRecentlyUpdated();
+  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
 
   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
@@ -123,14 +122,16 @@ const Home = () => {
               </Section>
             )}
             
-            {/* {recentlyUpdatedLoading ? (
+            <NewestComments type={MediaType.Anime} />
+
+           {/*  {recentlyUpdatedLoading ? (
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("newly_added", { ns: "common" })}>
                 <CardSwiper data={recentlyUpdated} />
               </Section>
-            )} */}
-           
+            )}
+            */}
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              {/* { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
@@ -162,9 +163,6 @@ const Home = () => {
               />
             </Section>
 
-            <NewestComments type={MediaType.Anime} />
-
-
 
             {/* <div
               className={classNames(
@@ -189,9 +187,9 @@ const Home = () => {
               </Section>}
             </div> */}
 
-            <Section title={t("airing_schedule", { ns: "anime_home" })}>
+           {/*  <Section title={t("airing_schedule", { ns: "anime_home" })}>
               <AnimeScheduling />
-            </Section>
+            </Section> */}
           </div>
         </div>
       </ClientOnly>

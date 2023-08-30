@@ -14,7 +14,7 @@ function BlurImage({ image }: { image: ExperimentAnimeTitles }) {
 
   return (
     <div>
-      <div onClick={() => router.push(`/anime/ai-watch/${encodeURIComponent(image.title)}`)} className="cursor-pointer">
+      <div onClick={() => router.push(`/anime/ai-watch/${encodeURIComponent(image.title)}`)} className="cursor-pointer md:w-11/12 md:h-42 hover:border hover:border-white border p-1 border-transparent ease-int transition rounded-sm duration-100">
         <div className="aspect-w-6 aspect-h-3 min-w-fit overflow-hidden rounded-sm bg-neutral-600 ">
           <Image
             alt=""

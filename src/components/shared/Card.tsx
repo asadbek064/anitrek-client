@@ -69,14 +69,14 @@ const Card: React.FC<CardProps> = (props) => {
         )}
       >
           <div
-          className="h-6 rounded-tl-md rounded-tr-md text-sm h-[100%]"
+          className="h-6 rounded-tl-md rounded-tr-md"
           style={{ color: primaryColor }}
         >
           
           {watchList ? (
             ''
             ): (
-              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row " style={{color: primaryColor}}>
+              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row [font-size:var(--step--1)] md:[font-size:var(--step-0)]" style={{color: primaryColor}}>
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;
@@ -138,7 +138,7 @@ const Card: React.FC<CardProps> = (props) => {
           ""
         )}
         <p
-          className="mt-2 font-semibold line-clamp-2"
+          className="mt-2 font-semibold [font-size:var(--step--1)] md:[font-size:var(--step-1)] line-clamp-2"
           style={{ color: primaryColor }}
         >
           {title}

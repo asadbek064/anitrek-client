@@ -23,7 +23,7 @@ const ColumnSection: React.FC<ColumnSectionProps> = ({
   return !isLoading ? (
     <div className="w-full grow-0 bg-background-800 pt-4">
       {title && (
-        <h2 className="mb-4 px-4 text-xl font-semibold line-clamp-1">
+        <h2 className="mb-4 px-4 [font-size:var(--step-1)] font-semibold line-clamp-1">
           {title}
         </h2>
       )}

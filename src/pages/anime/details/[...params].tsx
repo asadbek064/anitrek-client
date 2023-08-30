@@ -90,7 +90,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       id: anime.id,
       nextEpUrl: null,
     });
+
   }, [anime]);
+
   return (
     <>
       <Head
@@ -104,7 +106,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="relative pb-4 bg-background-900">
           <div className="flex flex-col md:flex-row md:space-x-8">
-            <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 w-[186px] -mt-20 space-y-6">
+            <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 w-[148px] md:w-[250px] -mt-20 space-y-6">
               <PlainCard src={anime.coverImage.extraLarge} alt={title} />
 
               {user && (
@@ -193,7 +195,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   </Popup>
                 </div>
 
-                <p className="mb-2 text-3xl font-semibold">{title}</p>
+                <p className="mb-2 [font-size:var(--step-2)] font-semibold">{title}</p>
 
                 <DotList>
                   {anime.genres.map((genre) => (
@@ -292,7 +294,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
             {!!anime?.relations?.nodes?.length && (
               <DetailsSection title={t("relations_section")}>
-                <List data={sortByReleaseDate(filterOutMangaOvaSpecials(anime.relations.nodes)).filter((x, i) => i < 8)}>{/* FILTER OUT MANGAO AND ONA and SPECIAL and sort it by release date */}
+                <List data={sortByReleaseDate(filterOutMangaOvaSpecials(anime.relations.nodes)).filter((x, i) => i < 8)}>
                   {(node) => <Card data={node} />}
                 </List>
               </DetailsSection>
@@ -303,7 +305,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <List
                   data={anime.recommendations.nodes.map(
                     (node) => node.mediaRecommendation
-                  ).filter((x, i) => i < 4)}
+                  ).filter((x, i) => i < 12)}
                 >
                   {(node) => <Card data={node} />}
                 </List>

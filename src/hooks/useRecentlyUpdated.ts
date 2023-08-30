@@ -26,7 +26,10 @@ const useRecentlyUpdated = () => {
   const mediaListFilterHentai = useMemo(() => {
     if (isLoading) return null;
     
-    return mediaList?.filter((media) => media?.genres?.indexOf("Hentai") === -1);
+    return mediaList?.filter((media) => (
+      media?.genres?.indexOf("Hentai") === -1 && 
+      (!media?.countryOfOrigin || media?.countryOfOrigin !== "China")
+    ));
   }, [mediaList, isLoading]);
 
   

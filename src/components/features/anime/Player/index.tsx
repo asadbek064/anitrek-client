@@ -48,21 +48,21 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
       // @ts-ignore
       hls.on("hlsManifestParsed", (_, info) => {
         info.levels.forEach((level) => {
-          if (!level?.url?.length) return;
+          if (!level?.url?.length) return;  
 
           level.url = level.url.map((url) => {
             if (!corsServers.some((server) => url.includes(server))) return url;
 
             if (url.includes("corsproxy")) {
               const targetUrl = decodeURIComponent(
-                url.replace("https://corsproxy.io/", "")
+                url.replace("https://cors-anywhere.demonking.workers.dev/?", "")
               );
 
               const finalUrl = buildAbsoluteURL(source.file, targetUrl, {
                 alwaysNormalize: true,
               });
 
-              return `https://corsproxy.io/?${encodeURIComponent(finalUrl)}`;
+              return `https://cors-anywhere.demonking.workers.dev/?${encodeURIComponent(finalUrl)}`;
             } else if (url.includes(config.proxyServerUrl)) {
               
               const targetUrl = decodeURIComponent(
@@ -105,14 +105,14 @@ const Player = React.forwardRef<HTMLVideoElement, PlayerProps>(
           // Free CORS server
         } else if (frag.url.includes("corsproxy")) {
           const targetUrl = decodeURIComponent(
-            frag.baseurl.replace("https://corsproxy.io/?", "")
+            frag.baseurl.replace("https://cors-anywhere.demonking.workers.dev/?", "")
           );
 
           const url = buildAbsoluteURL(targetUrl, frag.relurl, {
             alwaysNormalize: true,
           });
 
-          frag.url = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+          frag.url = `https://cors-anywhere.demonking.workers.dev/?${encodeURIComponent(url)}`;
         }
         
       });

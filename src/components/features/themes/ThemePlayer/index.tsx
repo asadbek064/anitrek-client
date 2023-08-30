@@ -74,7 +74,7 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
         // @ts-ignore
         crossOrigin={null}
         {...props}
-        className="aspect-video	min-h-[16rem] max-h-[16rem]  sm:min-h-[28rem] sm:max-h-[28rem]  md:min-h-[34rem] md:max-h-[34rem] md:min-w-[60rem] md:max-w-[60rem]"
+        className="aspect-video	min-h-[16rem] max-h-[16rem]  sm:min-h-[28rem] sm:max-h-[28rem]  md:min-h-[38rem] md:max-h-[38rem] md:min-w-[68rem] md:max-w-[68rem]"
       >
         {props.children}
       </NetPlayer>

@@ -221,6 +221,7 @@ const PlayerMobileOverlay = React.memo(() => {
 PlayerMobileOverlay.displayName = "PlayerMobileOverlay";
 
 const WatchPlayer: React.FC<WatchPlayerProps> = ({ videoRef, ...props }) => {
+
   const {
     playerProps: { episodes, currentEpisodeIndex, setEpisode, sourceId },
   } = useGlobalPlayer();

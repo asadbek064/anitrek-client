@@ -13,6 +13,19 @@ import { getMediaDetails } from "@/services/anilist";
 import { Media, MediaType } from "@/types/anilist";
 import Section from "@/components/shared/Section";
 import { useTranslation } from "next-i18next";
+import PlainCard from "@/components/shared/PlainCard";
+import TextIcon from "@/components/shared/TextIcon";
+import DotList from "@/components/shared/DotList";
+import InfoItem from "@/components/shared/InfoItem";
+import { AiFillHeart } from "react-icons/ai";
+import { MdDesktopAccessDisabled, MdTagFaces } from "react-icons/md";
+import { createMediaDetailsUrl, numberWithCommas } from "@/utils";
+import { convert } from "@/utils/data";
+import Description from "@/components/shared/Description";
+import Button from "@/components/shared/Button";
+import ThemeSearch from "@/components/features/themes/ThemeSearch";
+import classNames from "classnames";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const ThemePlayer = dynamic(
   () => import("@/components/features/themes/ThemePlayer"),
@@ -39,6 +52,10 @@ interface CardDetail {
 
 const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
 
+  useEffect(() => {
+
+  },[media]);
+
   return (
     <Link
       href={{
@@ -49,9 +66,9 @@ const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
       <div className="flex border-y rounded-sm hover:bg-neutral-800 cursor-pointer">
         {media ? (
           <img
-            src={media.coverImage.extraLarge}
-            alt={media.title.userPreferred}
-            className="w-32 h-24 rounded-tl-sm rounded-bl-sm object-cover"
+            src={media.coverImage?.extraLarge}
+            alt={media.title?.userPreferred}
+            className="min-w-32 min-h-24 w-32 h-24 rounded-tl-sm rounded-bl-sm object-cover"
           />
         ): ('')}
         <div className="ml-4 p-2">
@@ -71,8 +88,10 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
   const router = useRouter();
   const { data, isLoading } = useAnimeTheme({ slug, type });
   const { t } = useTranslation("themes");
+  const { locale } = useRouter();
+  const { user } = useUser();
   const handleNewTheme = useCallback(async () => {
-    const { slug, type } = await fetchRandomTheme();
+    const { slug, type, anilistId } = await fetchRandomTheme();
 
 
     router.replace({
@@ -80,6 +99,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
       query: {
         slug,
         type,
+        id: anilistId
       },
     });
   }, [router]);
@@ -98,6 +118,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
         query: {
           slug: data.slug,
           type: data.type,
+          id: data?.anilistId
         },
       },
       null
@@ -120,31 +141,124 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
         description="Watch Openings and Ending songs (OP/ED) of your favorite anime show."
       />
 
-      <div className="space-y-8 mt-14 md:mt-24 flex justify-center">
-        <ThemePlayerContextProvider
-          value={{ theme: data, refresh: handleNewTheme, isLoading }}
-        >
-          <ThemeSettingsContextProvider>
-            <div className="flex flex-col md:flex-row">
-              <div className="p-4">
-                <div>
-                  <ThemePlayer sources={sources} />
+    <div className="space-y-8 mt-14 md:mt-24 flex justify-center flex-col"> 
+ 
+      <div className="">
+          <ThemePlayerContextProvider
+            value={{ theme: data, refresh: handleNewTheme, isLoading }}
+          >
+            <ThemeSettingsContextProvider>
+              <div className="flex flex-col md:flex-row">             
+                <div className="p-4">
+                  <div>
+                    <ThemePlayer sources={sources} />
+                  </div>
+                </div>
+                
+                <div className="w-full lg:w-1/3 p-4">
+                <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">{t("related")}</h1>
+                <div className="overflow-y-auto min-h-[24rem] max-h-[24rem] md:min-h-[34rem] md:max-h-[34rem]">
+                  <ul className="space-y-4 relative">
+                    {data?.related.map((card, index) => (
+                      <Card key={index} cardDetail={card} animeSlug={data?.slug} anilistId={data?.anilistId} media={media} />
+                    ))}
+                  </ul>
+                </div>
                 </div>
               </div>
+            </ThemeSettingsContextProvider>
+          </ThemePlayerContextProvider>
+        </div>
 
-              <div className="w-full lg:w-1/3 p-4">
-                <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">{t("related")}</h1>
-                <ul className="space-y-4 rela">
-                  {data?.related.map((card, index) => (
-                    <Card key={index} cardDetail={card} animeSlug={data?.slug} anilistId={data?.anilistId} media={media} />
-                  ))}
-                </ul>
+        {media ? (
+          <div className="w-full md:w-3/5 mt-6">
+            <div className="space-y-8 p-8">
+              <div className="flex flex-col items-start gap-4 text-center md:flex-row md:text-left">
+                <div className="mx-auto w-[183px] shrink-0 md:mx-0">
+                  <PlainCard src={media.coverImage.extraLarge} alt={media.title.english} />
+                </div>
+
+                <div className="space-y-4">
+                  <h1 className="text-2xl font-semibold">{media.title.english}</h1>
+
+                  <p className="text-gray-300">{media.title.native}</p>
+
+                  <div className="flex flex-wrap items-center gap-x-8 text-lg">
+                    {media.averageScore && (
+                      <TextIcon
+                        LeftIcon={MdTagFaces}
+                        iconClassName="text-green-300"
+                      >
+                        <p>{media.averageScore}%</p>
+                      </TextIcon>
+                    )}
+
+                    <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+                      <p>{numberWithCommas(media.favourites)}</p>
+                    </TextIcon>
+
+                    <DotList>
+                      {media.genres.map((genre) => (
+                        <span key={genre}>{convert(genre, "genre")}</span>
+                      ))}
+                    </DotList>
+                  </div>
+
+                  <div className="flex snap-x snap-mandatory space-x-8 overflow-x-auto md:space-x-16">
+                    <InfoItem
+                      title={t("common:country")}
+                      value={media.countryOfOrigin}
+                    />
+                    <InfoItem
+                      title={t("common:total_episodes")}
+                      value={media.episodes}
+                    />
+
+                    {media.duration && (
+                      <InfoItem
+                        title={t("common:duration")}
+                        value={`${media.duration} ${t("common:minutes")}`}
+                      />
+                    )}
+
+                    <InfoItem
+                      title={t("common:status")}
+                      value={convert(media.status, "status", { locale })}
+                    />
+
+                    <InfoItem
+                      title={t("common:age_rated")}
+                      value={media.isAdult ? "18+" : ""}
+                    />
+                  </div>
+
+                  <Description
+                    description={media.description}
+                    className="text-gray-300 line-clamp-5"
+                  />
+
+                  <Link href={createMediaDetailsUrl(media)}>
+                    <a className="block">
+                      {user ? (
+                        <Button primary className="mx-auto md:mx-auto">
+                        <p>{t("common:watch_now")}</p>
+                      </Button>
+                      ): (
+                        <Button primary className="mx-auto md:mx-auto">
+                          <p>Add to watchlist</p>
+                        </Button>
+                      )}
+                    </a>
+                  </Link>
+                </div>
               </div>
             </div>
-
-          </ThemeSettingsContextProvider>
-        </ThemePlayerContextProvider>
-      </div>
+          </div>
+          
+        ) : ('')}        
+    </div>
+      
+   
     </React.Fragment>
   );
 };

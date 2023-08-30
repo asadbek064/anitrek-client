@@ -63,13 +63,13 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
         crossOrigin="anonymous"></script>
         
         {/* Google AdS */}
-        <Script  
+        {/* <Script  
           id="Adsense-id"  async
           onError={(e) => { console.error("GAds script failed to load", e); }}
           strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890066986315850"
           crossOrigin="anonymous"
-        />
+        /> */}
 
         {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
         <script id="syncData" type="application/json"></script>
@@ -128,7 +128,8 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
                     );
                   }}
                 >
-                  {getLayout(<Component {...pageProps} err={err} />)}
+                  {getLayout(<Component {...pageProps} err={err} />)
+                  }
                 </ErrorBoundary>
               </GlobalPlayerContextProvider>
             </SubscriptionContextProvider>

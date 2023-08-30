@@ -83,7 +83,7 @@ const Comments: React.FC<CommentsProps> = ({ parentId = null, topic }) => {
       ) : (
         <p className="p-2 bg-background-800 text-gray-300">
           <Trans i18nKey="comment:need_login_msg">
-            Bạn phải{" "}
+            You have to{" "}
             <TransLink
               href={`/login?redirectedFrom=${asPath}`}
               className="text-primary-300 hover:underline"

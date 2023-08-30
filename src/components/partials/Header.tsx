@@ -48,11 +48,11 @@ const routes_guest: _route[] = [
     href: "/scene-search",
     icon: MdFindInPage
   },
-  {
+ /*  {
     title: "A.I Upscaled",
     href: "/ai-upscale",
     icon: MdHighQuality,
-  },
+  }, */
   {
     title: "Trivia",
     href: "/trivia",
@@ -139,7 +139,7 @@ const Header = () => {
         "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-200",
         !isTop
           ? "bg-background"
-          : "bg-gradient-to-b from-black/88 via-black/30 to-transparent"
+          : "bg-gradient-to-b from-neutral-900/100 via-neutral-900/70 to-transparent"
       )}
     >
       <Drawer
@@ -206,7 +206,7 @@ const Header = () => {
         <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
       </div>
 
-      <div className="hidden md:flex items-center md:space-x-4 xl:space-x-8 md:text-sm lg:text-lg font-semibold text-typography-secondary">
+      <div className="hidden md:flex items-center md:space-x-4 xl:space-x-8 [font-size:var(--step-0)] font-semibold text-typography-secondary">
         {routes.map((route) => (
           <NavItem href={route.href} key={route.href}>
             {({ isActive }) => (
@@ -217,8 +217,8 @@ const Header = () => {
                 ></TextIcon>
                 <p
                   className={classNames(
-                    "hover:text-white transition duration-200",
-                    isActive && "text-primary-300"
+                    "hover:text-white transition duration-75",
+                    isActive && "text-primary-500"
                   )}
                 >
                   {t(route.title)}
@@ -230,13 +230,13 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4 ml-auto">
-        <Notifications />
+        {user ? (<Notifications />): ''}
 
         <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
             <AiOutlineSearch
               className={classNames(
-                "w-7 h-7 font-semibold hover:text-primary-500 transition duration-200",
+                "w-7 h-7   hover:text-primary-500 transition duration-75",
                 isActive && "text-primary-300"
               )}
             />
@@ -255,7 +255,7 @@ const Header = () => {
                 <Link href={`/login?redirectedFrom=${router.asPath}`}>
                   <a>
                     <Button primary>
-                      <p className="line-clamp-1">{t("login")}</p>
+                      <p className="line-clamp-1 [font-size:var(--step-0)]">{t("login")}</p>
                     </Button>
                   </a>
                 </Link>

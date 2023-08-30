@@ -20,7 +20,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(
         )}
       >
         {title && (
-          <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">{title}</h1>
+          <h1 className="uppercase [font-size:var(--step-2)] font-semibold mb-4">{title}</h1>
         )}
 
         {children}
@@ -32,3 +32,4 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(
 Section.displayName = "Section";
 
 export default React.memo(Section);
+

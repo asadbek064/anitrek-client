@@ -14,6 +14,7 @@ export interface InputProps extends React.HTMLProps<HTMLInputElement> {
   label?: string;
   isSettingsOpen?: boolean;
   setSettingsOpen?: any;
+  maxCharacters?:
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
@@ -27,6 +28,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     className,
     isSettingsOpen,
     setSettingsOpen,
+    maxCharacters
     ...inputProps
   } = props;
 
@@ -60,7 +62,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
         <div  onClick={handleSettingsToggle} 
         className={isSettingsOpen
-                  ? "text-red-500 text-white font-bold rounded m-auto cursor-pointer"
+                  ? "text-red-500 font-bold rounded m-auto cursor-pointer"
                   : `text-neutral-300 font-bold  rounded m-auto cursor-pointer`}>
           {RightIcon && <RightIcon className="w-6 h-6" />}
         </div>

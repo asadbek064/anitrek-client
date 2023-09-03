@@ -2,11 +2,9 @@ import Button from "@/components/shared/Button";
 import Head from "@/components/shared/Head";
 import { REVALIDATE_TIME } from "@/constants";
 import useSignIn from "@/hooks/useSignIn";
-/* import quotes from "@/quotes.json"; */
 import wallpapers from "@/wallpapers.json";
 import { randomElement } from "@/utils";
 import { Provider } from "@supabase/gotrue-js";
-import axios from "axios";
 import { GetStaticProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
@@ -15,7 +13,6 @@ import { FaDiscord } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { isMobile } from "react-device-detect";
 import BaseLayout from "@/components/layouts/BaseLayout";
-import { supabaseClient as supabase } from "@supabase/auth-helpers-nextjs";
 import useSignInWithEmail from "@/hooks/useSignInEmail";
 import Link from "next/link";
 interface Quote {
@@ -30,13 +27,12 @@ interface Wallpaper {
 }
 
 interface LoginPageProps {
-  quotes: Quote[];
   wallpapers: Wallpaper[];
 }
 
 const isDev = process.env.NODE_ENV === "development";
 
-const LoginPage: NextPage<LoginPageProps> = ({ quotes, wallpapers }) => {
+const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
   /* const randomQuote = useMemo(() => randomElement(quotes), [quotes]); */
   const randomLiveWallpaper = useMemo(() => randomElement(wallpapers), [wallpapers]);
 
@@ -186,11 +182,9 @@ LoginPage.getLayout = (children) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    /* const { data } = await axios.get("https://animechan.vercel.app/api/quotes"); */
 
     return {
       props: {
-        /* quotes: data, */
         wallpapers: wallpapers
       },
       revalidate: REVALIDATE_TIME,
@@ -206,7 +200,5 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default LoginPage;
-function useRegister() {
-  throw new Error("Function not implemented.");
-}
+
 

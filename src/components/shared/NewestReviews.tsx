@@ -109,11 +109,6 @@ const NewestReviews: React.FC<NewestReviewsProps> = (props) => {
                           </div>
                         </div>
 
-                        <Editor
-                          className="line-clamp-1 md:line-clamp-2"
-                          readOnly
-                          defaultContent={review.content}
-                        />
                       </div>
                         <a
                           className="block shrink-0 text-xs font-semibold text-primary-300 transition duration-100 line-clamp-1 hover:text-primary-400"

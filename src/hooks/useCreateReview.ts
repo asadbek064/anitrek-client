@@ -42,8 +42,6 @@ const useCreateReview = () => {
               content: content,
               user_id: user?.id,
               rating: rating,
-              likes: 0, // Initial likes count
-              dislikes: 0, // Initial dislikes count
           })
           .single();
 

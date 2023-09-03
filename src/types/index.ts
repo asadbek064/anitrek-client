@@ -373,7 +373,12 @@ export interface Review {
   content: string;
   user_id: string;
   rating: number;
-  likes: number;
-  dislikes: number;
   user?: DisplayUser;
+}
+
+export interface ReviewLikes {
+  user_id: string;
+  review_id: string;
+  action_type: boolean;
+  created_at: string;
 }

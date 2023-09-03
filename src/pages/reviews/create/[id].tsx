@@ -124,7 +124,7 @@ const CreateRoomPage: NextPage<CreateReviewPageProps> = ({ media }) => {
                 defaultContent={reviewState.defaultContent}
                 onSubmit={handleEditorSubmit}
                 isLoading={createReviewLoading}
-                textLimit={500}
+                textLimit={3000}
               />
               </>
             ) : (

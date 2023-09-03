@@ -1,8 +1,5 @@
 import Head from "@/components/shared/Head";
 import { useTranslation } from "next-i18next";
-import Link from "next/link";
-import Button from "@/components/shared/Button";
-import { AiOutlinePlus } from "react-icons/ai";
 import Section from "@/components/shared/Section";
 import { GetStaticProps } from "next";
 import { REVALIDATE_TIME } from "@/constants";
@@ -15,7 +12,7 @@ interface ReviewBrowseProps {
     reviews: Review[];
 }
 
-const ReviewPage: React.FC<ReviewBrowseProps> = ({ reviews }) => {
+const ReviewPage: React.FC<ReviewBrowseProps> = ({ }) => {
     const { t } = useTranslation("review");
 
     return (
@@ -30,7 +27,7 @@ const ReviewPage: React.FC<ReviewBrowseProps> = ({ reviews }) => {
                 <Section
                     title="Reviews"
                 >
-                   <NewestReviews  type={MediaType.Anime} />
+                   <NewestReviews  type={MediaType.Anime} homeView={false} />
                     
                 </Section>
             </ClientOnly>
@@ -41,10 +38,9 @@ const ReviewPage: React.FC<ReviewBrowseProps> = ({ reviews }) => {
 
 export const getStaticProps: GetStaticProps = async ({}) => {
     try {
-        let reviews: Review[]= [];
         return {
             props: {
-                reviews: reviews as Review[],
+               
             },
             revalidate: REVALIDATE_TIME,
         };

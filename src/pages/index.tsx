@@ -8,6 +8,7 @@ import GenreSwiper from "@/components/shared/GenreSwiper";
 import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
 import NewestComments from "@/components/shared/NewestComments";
+import NewestReviews from "@/components/shared/NewestReviews";
 import Section from "@/components/shared/Section";
 import ShouldWatch from "@/components/shared/ShouldWatch";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
@@ -64,8 +65,8 @@ const Home = () => {
       perPage: 5,
     });
 
-  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
-
+/*   const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
+ */
   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
   }, [trendingAnime]);
@@ -77,10 +78,10 @@ const Home = () => {
     { enabled: !!randomTrendingAnime }
   );
 
-  const randomAnime = useMemo(
+ /*  const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,
     [recommendationsAnime]
-  );
+  ); */
 
   return (
     <React.Fragment>
@@ -98,7 +99,6 @@ const Home = () => {
             <RecommendedAnimeSection />
             
             <div>
-              {/* Coinzilla verification */}
             
               {/* Ad Start */}
               <ins className="adsbygoogle"
@@ -161,6 +161,15 @@ const Home = () => {
                 viewMoreHref="/browse?sort=favourites&type=anime"
                 isLoading={favouriteAllTimeLoading}
               />
+            </Section>
+
+            <Section
+              isTitleLink={true}
+              titleLink={'/reviews'}
+              title={t("recent_reviews", { ns: "common" })}
+            >
+              <NewestReviews  type={MediaType.Anime} homeView={true} />
+
             </Section>
 
 

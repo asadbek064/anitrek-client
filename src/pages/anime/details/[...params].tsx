@@ -42,7 +42,7 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
 import { AiOutlineUpload } from "react-icons/ai";
 import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -172,6 +172,18 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Button>
                       </a>
                     </Link> */}
+
+                  <Link href={`/reviews/create/${anime.id}`}>
+                      <a>
+                        <Button
+                          secondary
+                          className="w-full"
+                          LeftIcon={BsPencilFill}
+                        >
+                          <p>Write a Review</p>
+                        </Button>
+                      </a>
+                    </Link>
 
                     <AddTranslationModal
                       mediaId={anime.id}

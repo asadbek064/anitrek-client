@@ -7,7 +7,7 @@ import {
   supabaseClient as supabase,
   withPageAuth,
 } from "@supabase/auth-helpers-nextjs";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import React, {  useCallback, useMemo, useState } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -165,93 +165,90 @@ const ViewReviewPage: NextPage<ViewReviewPageProps> = ({ media, review, likeCoun
 
 export default ViewReviewPage;
 
-export const getServerSideProps = withPageAuth({
-  redirectTo: "/login",
-  async getServerSideProps({ params }) {
-    try {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  try {
 
-      const { data:ReviewData, error:ReviewError } = await supabase
-        .from<Review>("animettv_reviews ")
-        .select("*,user:sce_display_users!user_id(*)")
-        .eq("id", String(params.id));
+    const { data:ReviewData, error:ReviewError } = await supabase
+      .from<Review>("animettv_reviews ")
+      .select("*,user:sce_display_users!user_id(*)")
+      .eq("id", String(params.id));
 
-      if (ReviewError) throw ReviewError;
+    if (ReviewError) throw ReviewError;
 
-      const [_, mediId]= ReviewData[0].topic.split('-');
-      const review:Review = ReviewData[0];
+    const [_, mediId]= ReviewData[0].topic.split('-');
+    const review:Review = ReviewData[0];
 
-      const sourcePromise = supabase
-        .from<AnimeSourceConnection>("kaguya_anime_source")
-        .select(
-          `
-            *,
-            episodes:kaguya_episodes(*, source:kaguya_sources(*))
-          `
-        )
-        .eq("mediaId", Number(mediId));
+    const sourcePromise = supabase
+      .from<AnimeSourceConnection>("kaguya_anime_source")
+      .select(
+        `
+          *,
+          episodes:kaguya_episodes(*, source:kaguya_sources(*))
+        `
+      )
+      .eq("mediaId", Number(mediId));
 
-      const fields = `
-          id
-          idMal
-          title {
-            userPreferred
-            romaji
-            native
-            english
-          }
-          description
-          bannerImage
-          coverImage {
-            extraLarge
-            large
-            medium
-            color
-          }
-          genres
-        `;
+    const fields = `
+        id
+        idMal
+        title {
+          userPreferred
+          romaji
+          native
+          english
+        }
+        description
+        bannerImage
+        coverImage {
+          extraLarge
+          large
+          medium
+          color
+        }
+        genres
+      `;
 
-      const mediaPromise = getMediaDetails(
-        {
-          type: MediaType.Anime,
-          id: Number(mediId),
-        },
-        fields
-      );
+    const mediaPromise = getMediaDetails(
+      {
+        type: MediaType.Anime,
+        id: Number(mediId),
+      },
+      fields
+    );
 
-  
-      const [{ data, error }, media] = await Promise.all([
-        sourcePromise,
-        mediaPromise
-      ]);
-      
-      if (error) {
-        throw error;
-      }
 
-      const { data: likesData, error: likesError } = await supabase
-      .from<ReviewLikes>("animettv_reviews_likes")
-      .select("action_type")
-      .eq('review_id', review.id);
+    const [{ data, error }, media] = await Promise.all([
+      sourcePromise,
+      mediaPromise
+    ]);
     
-    if (likesError) {
-      throw likesError;
+    if (error) {
+      throw error;
     }
 
-    const likeCount = likesData.filter((like) => like.action_type === true).length;
-    const dislikeCount = likesData.filter((like) => like.action_type === false).length;
+    const { data: likesData, error: likesError } = await supabase
+    .from<ReviewLikes>("animettv_reviews_likes")
+    .select("action_type")
+    .eq('review_id', review.id);
+  
+  if (likesError) {
+    throw likesError;
+  }
 
-      return {
-        props: {
-          media,
-          review,
-          likeCount,
-          dislikeCount
-        },
-      };
-    } catch (error) {
-      console.log("error", error);
+  const likeCount = likesData.filter((like) => like.action_type === true).length;
+  const dislikeCount = likesData.filter((like) => like.action_type === false).length;
 
-      return { notFound: true };
-    }
-  },
-});
+    return {
+      props: {
+        media,
+        review,
+        likeCount,
+        dislikeCount
+      },
+    };
+  } catch (error) {
+    console.log("error", error);
+
+    return { notFound: true };
+  }
+}

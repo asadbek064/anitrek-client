@@ -111,7 +111,7 @@ main {
   left: 0;
 
   width: 100%;
-  height: 2px;
+  height: 4px;
 }
 
 /* Fancy blur effect */
@@ -253,3 +253,4 @@ main {
 .img-xl {
   width: 600px!important;
 }
+

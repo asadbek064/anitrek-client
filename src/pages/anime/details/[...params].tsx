@@ -424,7 +424,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   try {
     // default anime details
-    const { data: isDMCA } = await supabaseClient
+   /*  const { data: isDMCA } = await supabaseClient
       .from("kaguya_dmca")
       .select("id")
       .eq("mediaId", params[0])
@@ -438,7 +438,7 @@ export const getStaticProps: GetStaticProps = async ({
           destination: "/got-dmca",
         },
       };
-    }
+    } */
 
     const media = await getMediaDetails({
       type: MediaType.Anime,

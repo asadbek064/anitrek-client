@@ -73,14 +73,17 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
         description={t("login_description")}
       />
 
-      <div className="w-full h-screen grid grid-cols-1"
-      style={{
-        backgroundImage: isMobile ? "url('/login-background.jpg')" : "none",
-        backgroundPosition: "center center",
-        backgroundSize: "cover",
-        opacity: "0.9",
-      }}
+      <div className="w-full h-screen grid grid-cols-1">
+
+      <div
+        style={{
+          backgroundImage: isMobile  ? "url('/login-background.jpg')" : "none",
+          backgroundPosition: "center center",
+          backgroundSize: "cover"
+        }}
+        className="absolute w-full h-screen"
       >
+      </div>
 
       {isMobile ? ('') :
         (
@@ -89,22 +92,22 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
           autoPlay
           loop
           muted
-          style={{opacity: '0.40'}}
+          style={{opacity: '0.50'}}
           >
             <source src={randomLiveWallpaper.url} type="video/mp4" />
           </video>
         )}
 
 
-        <div className="relative col-span-3 xl:col-span-2 bg-background flex items-center justify-center bg-transparent">
-          <div className="w-full px-4 md:px-0 md:w-10/12 lg:w-1/2">
-            <h1 className="text-5xl font-bold mb-8">{t("login_heading")}</h1>
-              <div className="flex items-center justify-centerrounded-sm py-4 md:flex-row-reverse flex-col">
-                <div className="py-5 md:py-0 md:px-6 w-full md:w-1/2 space-y-4 flex flex-col ease-in-out transition-all duration-75">
+        <div className="relative col-span-3 xl:col-span-2 bg-background-900/60 flex items-center justify-center">
+          <div className="w-full px-4 md:px-0 md:w-full lg:w-1/2 mx-2">
+            <h1 className="[font-size:var(--step-3)] font-bold mb-8">{t("login_heading")}</h1>
+              <div className="flex items-center justify-center rounded-sm py-4 md:flex-row-reverse flex-col">
+                <div className="py-5 md:py-0 md:px-4 w-full md:w-1/2 space-y-4 flex flex-col ease-in-out transition-all duration-75">
                     <Button
                       className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#fcfcff] !hover:bg-white/20 text-neutral-800 font-bold flex items-center justify-center w-full py-4 hover:!bg-opacity-90"
                       LeftIcon={FcGoogle}
-                      iconClassName="absolute left-6"
+                      iconClassName=""
                       onClick={handleSignIn("google")}
                     >
                       <p className="tracking-wide">{t("login_with_google")}</p>
@@ -112,14 +115,14 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                     <Button
                       className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full py-4  hover:!bg-opacity-90"
                       LeftIcon={FaDiscord}
-                      iconClassName="absolute left-6"
+                      iconClassName=""
                       onClick={handleSignIn("discord")}
                     >
                       <p className="tracking-wide ">{t("login_with_discord")}</p>
                     </Button>
                   </div>      
 
-                <div className="hidden bg-neutral-800/40 hover:bg-neutral-800/90 p-8 shadow-md w-full sm:w-96 ease-in-out transition-all duration-100">
+                <div className="bg-neutral-900/70 hover:bg-neutral-900/95 p-8 shadow-md w-full ease-in-out transition-all duration-100">
                   <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-white-100">
@@ -145,25 +148,27 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                         onChange={(e) => setPassword(e.target.value)}
                       />
                     </div>
-                    <div className="flex flex-row justify-between my-2 py-2">
+                    <button
+                      type="submit"
+                      className="ease-in duration-100 w-full bg-red-600 hover:bg-red-700 py-3 text-white rounded-sm"
+                      disabled={signInWithEmailMutation.isLoading}
+                    >
+                      {signInWithEmailMutation.isLoading ? "Logging in..." : "Login In"}
+                    </button>
+
+                    <div className="flex flex-row justify-between my-2 py-2 [font-size:var(--step--1)]">
                         <Link
                           href={"/forgot-password"}
                         >
-                        <a className="text-white text-lg hover:text-red-500 ease-in transition-all duration-75">Forgot password?</a>
+                        <a className="text-white hover:text-red-500 ease-in transition-all duration-75">Forgot password?</a>
                         </Link>
                       <Link
                           href={"/register"}
                         >
-                          <a className="text-white text-lg hover:text-red-500 ease-in transition-all duration-75">Register</a>
+                          <a className="text-white hover:text-red-500 ease-in transition-all duration-75">Register</a>
                         </Link>
                     </div>
-                    <button
-                      type="submit"
-                      className="ease-in duration-100 w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-sm"
-                      disabled={signInWithEmailMutation.isLoading}
-                    >
-                      {signInWithEmailMutation.isLoading ? "Signing in..." : "Sign In"}
-                    </button>
+
                   </form>
                 </div>
               </div>

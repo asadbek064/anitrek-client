@@ -113,6 +113,7 @@ const CreateRoomPage: NextPage<CreateReviewPageProps> = ({ media }) => {
                 className="pl-2 py-2"
                 placeholder="Title"
                 onChange={handleInputChange}
+                required
               />
 
             <div className="">

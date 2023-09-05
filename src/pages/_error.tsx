@@ -46,7 +46,7 @@ const ErrorPage: NextPage<CustomErrorProps, CustomErrorProps> = ({
           <span className="text-lg">
             <Trans i18nKey="_error_page:error_welcome" statusCode={statusCode}>
               Chào mừng đến với{" "}
-              <span className="text-red-300">chiều không gian 404</span>
+              <span className="text-red-300">404 . dimension</span>
             </Trans>
           </span>
         </div>

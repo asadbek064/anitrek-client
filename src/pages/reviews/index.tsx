@@ -39,9 +39,7 @@ const ReviewPage: React.FC<ReviewBrowseProps> = ({ }) => {
 export const getStaticProps: GetStaticProps = async ({}) => {
     try {
         return {
-            props: {
-               
-            },
+            props: { },
             revalidate: REVALIDATE_TIME,
         };
     } catch (error) {

@@ -56,7 +56,7 @@ const SortSelector = <T extends "anime" | "manga">(
       type="click"
       reference={
         <TextIcon
-          className="cursor-pointer text-gray-300 text-sm"
+          className="cursor-pointer text-gray-300 [font-size:var(--step-0)]"
           LeftIcon={RiArrowUpDownFill}
           iconClassName="w-5 h-5"
         >
@@ -69,7 +69,7 @@ const SortSelector = <T extends "anime" | "manga">(
         {SORTS.map((sort, index) => (
           <p
             key={index}
-            className="cursor-pointer text-sm text-gray-300 hover:text-primary-300 transition duration-200"
+            className="cursor-pointer [font-size:var(--step-0)] text-gray-300 hover:text-primary-300 transition duration-200"
             onClick={handleClick(sort.value)}
           >
             {sort.label}

@@ -76,7 +76,7 @@ const Card: React.FC<CardProps> = (props) => {
           {watchList ? (
             ''
             ): (
-              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row [font-size:var(--step--1)] md:[font-size:var(--step-0)]" style={{color: primaryColor}}>
+              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row [font-size:var(--step--1)]" style={{color: primaryColor}}>
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;

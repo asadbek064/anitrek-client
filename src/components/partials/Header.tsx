@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import React, { ComponentType, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiSearchAlt } from "react-icons/bi";
 import { FaDiscord, FaDonate, FaGamepad, FaMusic } from "react-icons/fa";
 import { GiGamepad, GiHamburgerMenu } from "react-icons/gi";
 import { BsPlayFill } from "react-icons/bs";
@@ -136,7 +136,7 @@ const Header = () => {
   return (
     <Section
       className={classNames(
-        "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-200",
+        "px-4 md:px-12 flex items-center h-16 fixed top w-full z-50 transition duration-150",
         !isTop
           ? "bg-background"
           : "bg-gradient-to-b from-neutral-900/100 via-neutral-900/70 to-transparent"
@@ -164,7 +164,7 @@ const Header = () => {
                     ></TextIcon>
                       <p
                         className={classNames(
-                          "pl-3 border-l-4 font-semibold text-2xl",
+                          "pl-3 border-l-4 font-semibold [font-size:var(--step-1)]",
                           isActive
                             ? "border-primary-500 text-white"
                             : "border-background-900 text-typography-secondary"
@@ -179,12 +179,11 @@ const Header = () => {
             ))}
 
             {user ? '': (
-              <Link href={`/login?redirectedFrom=${router.asPath}`}>
-              <a>
-                
-                <Button secondary className="mt-10">
+              <Link  href={`/login?redirectedFrom=${router.asPath}`}>
+              <a onClick={drawerRef.current?.close}>
+                <Button  secondary className="mt-16 ml-1 [font-size:var(--step-1)]">
                   <TextIcon  LeftIcon={BiLogIn}></TextIcon>
-                  <p className="line-clamp-1 text-3xl font-semibold">{t("login")}</p>
+                  <p className="line-clamp-1 font-semibold">{t("login")}</p>
                 </Button>
               </a>
             </Link>
@@ -234,9 +233,9 @@ const Header = () => {
 
         <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
-            <AiOutlineSearch
+            <BiSearchAlt
               className={classNames(
-                "w-7 h-7   hover:text-primary-500 transition duration-75",
+                "w-8 h-8   hover:text-primary-500 transition duration-75",
                 isActive && "text-primary-300"
               )}
             />
@@ -254,8 +253,8 @@ const Header = () => {
                 <div className="flex items-center space-x-2">
                 <Link href={`/login?redirectedFrom=${router.asPath}`}>
                   <a>
-                    <Button primary>
-                      <p className="line-clamp-1 [font-size:var(--step-0)]">{t("login")}</p>
+                    <Button secondary>
+                      <p className="line-clamp-1 font-semibold [font-size:var(--step-0)]">{t("login")}</p>
                     </Button>
                   </a>
                 </Link>

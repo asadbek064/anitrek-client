@@ -1,4 +1,3 @@
-import AdvancedSettings from "@/components/shared/AdvancedSettings";
 import Card from "@/components/shared/Card";
 import FormSelect from "@/components/shared/FormSelect";
 import GenresFormSelect from "@/components/shared/GenresFormSelect";
@@ -131,20 +130,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
 
       
           <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
-       {/*      <Input
-              {...register("keyword")}
-              containerInputClassName="border border-white/80"
-              LeftIcon={AiOutlineSearch}
-              onChange={handleInputChange}
-              defaultValue={defaultValues.keyword}
-              label={t("search")}
-              containerClassName="hidden md:block shrink-0"
-              RightIcon={FaSlidersH}
-              isSettingsOpen={isSettingsOpen}
-              setSettingsOpen={seSettingsOpen}
-            /> */}
-            
-                        
               <GenresFormSelect
                 className={isSettingsOpen ? "block" : "hidden"}
                 value={[...query.genres, ...query.tags]}
@@ -186,35 +171,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
               label={t("country")}
             />
           </div>
-
-          <AdvancedSettings
-            referenceClassName="hidden md:flex"
-            className="space-y-4"
-          >
-            <div className="flex space-x-4">
-              <FormSelect
-                control={control}
-                name="country"
-                defaultValue={defaultValues.country}
-                selectProps={{
-                  placeholder: t("country"),
-                  options: COUNTRIES,
-                }}
-                label={t("country")}
-              />
-
-              <FormSelect
-                control={control}
-                name="status"
-                defaultValue={defaultValues.status}
-                selectProps={{
-                  placeholder: t("status"),
-                  options: STATUS,
-                }}
-                label={t("status")}
-              />
-            </div>
-          </AdvancedSettings>
         </div>
 
         <div className={classNames("flex items-end justify-end", isSettingsOpen ? "block" : "hidden")}>

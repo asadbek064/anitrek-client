@@ -16,12 +16,13 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
   const [password, setPassword] = useState("");
   const registerMutation = useEmailRegister();
   const { t } = useTranslation("register");
-  const randomLiveWallpaper = useMemo(() => randomElement(wallpapers), [wallpapers]);
+  const randomLiveWallpaper = useMemo(() => randomElement(wallpapers), []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await registerMutation.mutateAsync({ email, password });
+
     } catch (error) {}
   };
 
@@ -99,11 +100,11 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
                   </button>
 
                   <div className="flex flex-row justify-between my-2 py-2 [font-size:var(--step--1)]">
-                    <Link href={"/forgot-password"}>
+                    {/* <Link href={"/forgot-password"}>
                       <a className="text-white  hover:text-red-500 ease-in transition-all duration-75">
                         Forgot password?
                       </a>
-                    </Link>
+                    </Link> */}
                     <Link href={"/login"}>
                       <a className="text-white  hover:text-red-500 ease-in transition-all duration-75">
                         Login

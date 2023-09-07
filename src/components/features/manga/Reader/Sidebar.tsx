@@ -3,7 +3,6 @@ import CircleButton from "@/components/shared/CircleButton";
 import Kbd from "@/components/shared/Kbd";
 import { useReadInfo } from "@/contexts/ReadContext";
 import { useReadPanel } from "@/contexts/ReadPanelContext";
-import Input from "@/components/shared/Input";
 import {
   fitModes,
   directions,

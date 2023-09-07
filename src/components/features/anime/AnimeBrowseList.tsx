@@ -1,4 +1,3 @@
-import AdvancedSettings from "@/components/shared/AdvancedSettings";
 import Card from "@/components/shared/Card";
 import FormSelect from "@/components/shared/FormSelect";
 import GenresFormSelect from "@/components/shared/GenresFormSelect";
@@ -117,11 +116,11 @@ const BrowseList: React.FC<BrowseListProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
 
-  const [isSettingsOpen, seSettingsOpen] = useState(true);
+  const [isSettingsOpen, seSettingsOpen] = useState(false);
   return (
     <div className="min-h-screen">
       <form className="space-y-4">
-        <div className="flex flex-col md:flex-row md:items-end gap-6 lg:flex-wrap lg:justify-between lg:space-x-0">
+        <div className="flex flex-col items-start  gap-6 md:flex-wrap lg:justify-between lg:space-x-0">
           {
             <Input
               {...register("keyword")}
@@ -137,28 +136,15 @@ const BrowseList: React.FC<BrowseListProps> = ({
             />
           }
 
-          <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
-            {/*  <Input
-              {...register("keyword")}
-              containerInputClassName="border border-white/80"
-              LeftIcon={AiOutlineSearch}
-              onChange={handleInputChange}
-              defaultValue={defaultValues.keyword}
-              label={t("search")}
-              containerClassName="hidden md:block shrink-0"
-              RightIcon={FaSlidersH}
-              isSettingsOpen={isSettingsOpen}
-              setSettingsOpen={seSettingsOpen}
-            /> */}
+          {isSettingsOpen ? (
+            <div className="snap-x overflow-x-auto flex sm:flex-wrap items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
 
             <GenresFormSelect
-              className={isSettingsOpen ? "block" : "hidden"}
               value={[...query.genres, ...query.tags]}
               onChange={handleGenresChange}
             />
 
             <FormSelect
-              containerClassName={isSettingsOpen ? "block" : "hidden"}
               control={control}
               name="seasonYear"
               defaultValue={defaultValues.seasonYear}
@@ -170,7 +156,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
             />
 
             <FormSelect
-              containerClassName={isSettingsOpen ? "block" : "hidden"}
               control={control}
               name="season"
               defaultValue={defaultValues.season}
@@ -182,7 +167,6 @@ const BrowseList: React.FC<BrowseListProps> = ({
             />
 
             <FormSelect
-              containerClassName={isSettingsOpen ? "block" : "hidden"}
               control={control}
               name="format"
               defaultValue={defaultValues.format}
@@ -193,9 +177,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
               label={t("format")}
             />
 
-            <MobileView renderWithFragment>
               <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
                 control={control}
                 name="country"
                 defaultValue={defaultValues.country}
@@ -207,7 +189,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
 
               <FormSelect
-                containerClassName={isSettingsOpen ? "block" : "hidden"}
+
                 control={control}
                 name="status"
                 defaultValue={defaultValues.status}
@@ -217,120 +199,49 @@ const BrowseList: React.FC<BrowseListProps> = ({
                 }}
                 label={t("status")}
               />
-              <div className="flex space-x-4 md:hidden">
 
-                <FormSelect
-                  control={control}
-                  name="country"
-                  defaultValue={defaultValues.country}
-                  selectProps={{
-                    placeholder: t("country"),
-                    options: COUNTRIES,
-                  }}
-                  label={t("country")}
-                />
-
-                <FormSelect
-                  control={control}
-                  name="status"
-                  defaultValue={defaultValues.status}
-                  selectProps={{
-                    placeholder: t("status"),
-                    options: STATUS,
-                  }}
-                  label={t("status")}
-                />
-            </div>
-
-            <div className="flex items-center justify-center md:hidden">
-              <input
-                className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                type="checkbox"
-                id="adultCheckbox"
-                {...register("isAdult")}
-              />
-              <label
-                className="inline-block text-white"
+            <div className=" mt-7">
+             {user ? (
+              <div className="flex items-center justify-center">
+                 <label
+                className="inline-block text-white font-semibold"
                 htmlFor="adultCheckbox"
               >
                 18+
               </label>
+              <input
+                className="ml-1 h-8 w-8 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                type="checkbox"
+                id="adultCheckbox"
+                {...register("isAdult")}
+              />
+              </div>
+             ): (
+              <div className="opacity-20 flex items-center justify-center">
+               <label
+                className="inline-block text-white font-semibold"
+                htmlFor="adultCheckbox"
+              >
+                18+
+              </label>
+              <input
+                className="ml-1 h-8 w-8 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                type="checkbox"
+                id="adultCheckbox"
+                disabled
+              />
+              </div>
+             )}
             </div>
 
-            </MobileView>
           </div>
+          ): ''}
 
-          <AdvancedSettings
-            referenceClassName="hidden md:flex"
-            className="space-y-4"
-          >
-            <div className="flex space-x-4">
-              <FormSelect
-                control={control}
-                name="country"
-                defaultValue={defaultValues.country}
-                selectProps={{
-                  placeholder: t("country"),
-                  options: COUNTRIES,
-                }}
-                label={t("country")}
-              />
-
-              <FormSelect
-                control={control}
-                name="status"
-                defaultValue={defaultValues.status}
-                selectProps={{
-                  placeholder: t("status"),
-                  options: STATUS,
-                }}
-                label={t("status")}
-              />
-            </div>
-
-            <div className="flex items-center justify-center">
-              {user ? 
-                (
-                  <div>
-                    <input
-                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                      type="checkbox"
-                      id="adultCheckbox"
-                      {...register("isAdult")}
-                    />
-                    <label
-                      className="inline-block text-white"
-                      htmlFor="adultCheckbox"
-                    >
-                      18+
-                    </label>
-                  </div>
-                ) :
-                (
-                  <div>
-                    <input
-                      className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                      type="checkbox"
-                      id="adultCheckbox"
-                      disabled
-                    />
-                    <label
-                      className="inline-block text-white"
-                      htmlFor="adultCheckbox"
-                    >
-                      18+ (Member only)
-                    </label>
-                  </div>
-                )  
-              }
-            </div>
-          </AdvancedSettings>
         </div>
 
         <div
           className={classNames(
             "flex items-end justify-end",
-            isSettingsOpen ? "block" : "hidden"
           )}
         >
           <Controller

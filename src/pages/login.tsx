@@ -45,7 +45,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const signInWithEmailMutation = useSignInWithEmail();
+  const signInWithEmailMutation = useSignInWithEmail({ redirectTo: redirectedFrom });
   
   const signInMutation = useSignIn({
     redirectTo: isDev
@@ -157,11 +157,11 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                     </button>
 
                     <div className="flex flex-row justify-between my-2 py-2 [font-size:var(--step--1)]">
-                        <Link
+                       {/*  <Link
                           href={"/forgot-password"}
                         >
                         <a className="text-white hover:text-red-500 ease-in transition-all duration-75">Forgot password?</a>
-                        </Link>
+                        </Link> */}
                       <Link
                           href={"/register"}
                         >

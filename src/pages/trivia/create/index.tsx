@@ -12,7 +12,6 @@ import { MobileView } from "react-device-detect";
 import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { SEASON_YEARS } from "@/constants";
-import AdvancedSettings from "@/components/shared/AdvancedSettings";
 import List from "@/components/shared/List";
 import Card from "@/components/shared/Card";
 import ListSkeleton from "@/components/skeletons/ListSkeleton";

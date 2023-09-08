@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ExperimentAnimeTitles } from "@/types/AniTrek";
+import { ExperimentAnimeTitles } from "@/types/animettv";
 import { useState } from 'react';
 import React from 'react';
 import { useRouter } from 'next/router';

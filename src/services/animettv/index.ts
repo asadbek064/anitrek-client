@@ -1,4 +1,4 @@
-import { AiSource, AiTitles, ExperimentAnimeTitles } from "../../types/AniTrek";
+import { AiSource, AiTitles, ExperimentAnimeTitles } from "../../types/animettv";
 import axios from "axios";
 import { Media, MediaCoverImage, MediaTitle } from "@/types/anilist";
 import config from "next/config";

@@ -27,7 +27,7 @@ const useCreateReview = () => {
       if (!user) throw new Error("Please login to review a title!");
 
       const { count, error: countError } = await supabaseClient
-      .from("AniTrek_reviews")
+      .from("animettv_reviews")
       .select('*', { count: 'exact', head: true })
       .eq("user_id", user?.id);
       
@@ -35,7 +35,7 @@ const useCreateReview = () => {
 
       if (count <= 25) { // allow 50 reviews per user
           const { data, error } = await supabaseClient
-          .from<Review>("AniTrek_reviews")
+          .from<Review>("animettv_reviews")
           .upsert({
               topic: topic,
               title: title,

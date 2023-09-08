@@ -20,7 +20,7 @@ const useLikeDislike = () => {
       if (!user) throw new Error("Please login to comment");
 
       const { data, error } = await supabaseClient
-        .from<ReviewLikes>("AniTrek_reviews_likes")
+        .from<ReviewLikes>("animettv_reviews_likes")
         .upsert([
           {
             user_id: review.user_id,

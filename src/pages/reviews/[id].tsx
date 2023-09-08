@@ -169,7 +169,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
 
     const { data:ReviewData, error:ReviewError } = await supabase
-      .from<Review>("AniTrek_reviews ")
+      .from<Review>("animettv_reviews ")
       .select("*,user:sce_display_users!user_id(*)")
       .eq("id", String(params.id));
 

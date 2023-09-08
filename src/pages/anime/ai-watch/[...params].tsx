@@ -3,7 +3,7 @@ import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Head from "@/components/shared/Head";
 import Iframe from "@/components/shared/Iframe";
 import useDevice from "@/hooks/useDevice";
-import { getAiTitle } from "@/services/AniTrek";
+import { getAiTitle } from "@/services/animettv";
 import { useUser } from "@supabase/auth-helpers-react";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";

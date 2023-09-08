@@ -44,7 +44,7 @@ const TracePage = () => {
   return (
     <React.Fragment>
       <Head
-        title={`${t("tab_title")} - AnimetTV`}
+        title={`${t("tab_title")} - AniTrek`}
         description="Anime Scene Search Engine. Lookup the exact moment and the episode."
       />
 

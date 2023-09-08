@@ -96,7 +96,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
   return (
     <>
       <Head
-        title={`${title} - AnimetTV`}
+        title={`${title} - AniTrek`}
         description={description}
         image={anime.bannerImage}
       />
@@ -283,21 +283,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               )}
             </DetailsSection>
             ): (
-              <div>
-
-                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
-                  <Link href={`/login?redirectedFrom=${router.asPath}`}>
-                    <a>
-                      <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                        <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
-                        <span className="font-semibold mr-2 text-left flex-auto">Members Only</span>
-                        <TextIcon LeftIcon={IoIosArrowForward}/>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-
-              </div>
+              ''
             )}
 
             <DetailsSection title={t("comments_section")}>

@@ -63,11 +63,11 @@ const routes_guest: _route[] = [
     href: "/wwf",
     icon: MdOutlineLiveTv
   }, */
-  {
+/*   {
     title: "Clips",
     href: "/themes",
     icon: RiMovie2Line
-  },
+  }, */
 ]
 const routes_verified: _route[] = [
   {

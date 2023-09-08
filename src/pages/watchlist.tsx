@@ -47,8 +47,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
   return (
     <Section className="py-20">
       <Head
-        title={`WatchList ${user.user_metadata.full_name} - AnimetTV`}
-        description={`Watch list of ${user.user_metadata.full_name} - AnimetTV`}
+        title={`WatchList ${user.user_metadata.full_name} - AniTrek`}
+        description={`Watch list of ${user.user_metadata.full_name} - AniTrek`}
       />
       <div className="mb-8 flex items-center space-x-2">
         <div className="text-2xl font-semibold text-center md:text-left">

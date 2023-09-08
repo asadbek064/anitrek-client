@@ -60,7 +60,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 
         <div  onClick={handleSettingsToggle} 
         className={isSettingsOpen
-                  ? "text-red-500 font-bold rounded m-auto cursor-pointer"
+                  ? "text-sky-500 font-bold rounded m-auto cursor-pointer"
                   : `text-neutral-300 font-bold  rounded m-auto cursor-pointer`}>
           {RightIcon && <RightIcon className="w-6 h-6" />}
         </div>

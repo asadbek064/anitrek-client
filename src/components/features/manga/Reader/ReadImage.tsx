@@ -88,7 +88,7 @@ const ReadImage: React.FC<ReadImageProps> = ({
             fitMode === "height" && "w-auto h-screen",
             className
           )}
-          alt="Read stories at AnimetTV"
+          alt="Read stories at AniTrek"
           src={src}
           onLoad={(e) => {
             setLoaded(true);

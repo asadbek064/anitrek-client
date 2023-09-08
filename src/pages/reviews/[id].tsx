@@ -169,7 +169,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   try {
 
     const { data:ReviewData, error:ReviewError } = await supabase
-      .from<Review>("animettv_reviews ")
+      .from<Review>("AniTrek_reviews ")
       .select("*,user:sce_display_users!user_id(*)")
       .eq("id", String(params.id));
 
@@ -227,7 +227,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
 
     const { data: likesData, error: likesError } = await supabase
-    .from<ReviewLikes>("animettv_reviews_likes")
+    .from<ReviewLikes>("AniTrek_reviews_likes")
     .select("action_type")
     .eq('review_id', review.id);
   

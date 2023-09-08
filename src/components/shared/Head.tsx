@@ -12,8 +12,8 @@ interface HeadProps {
 
 const Head: React.FC<HeadProps> = (props) => {
   const {
-    title = "AnimetTV",
-    description = "AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads",
+    title = "AniTrek",
+    description = "AniTrek: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AniTrek. With cutting-edge features like AI-enhanced scene search and community engagement, no ads",
     image = "https://frosty-snyder-1df076.netlify.app/other/login-wp.jpg",
   } = props;
 
@@ -41,8 +41,8 @@ const Head: React.FC<HeadProps> = (props) => {
 
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="application-name" content="AnimetTV" />
-      <meta name="apple-mobile-web-app-title" content="AnimetTV" />
+      <meta name="application-name" content="AniTrek" />
+      <meta name="apple-mobile-web-app-title" content="AniTrek" />
       <meta name="theme-color" content="#EF4444" />
       <meta name="msapplication-navbutton-color" content="#EF4444" />
       <meta

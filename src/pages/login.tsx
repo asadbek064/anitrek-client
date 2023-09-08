@@ -69,7 +69,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${t("login_heading")} - AnimetTV`}
+        title={`${t("login_heading")} - AniTrek`}
         description={t("login_description")}
       />
 
@@ -150,7 +150,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                     </div>
                     <button
                       type="submit"
-                      className="ease-in duration-100 w-full bg-red-600 hover:bg-red-700 py-3 text-white rounded-sm"
+                      className="ease-in duration-100 w-full bg-sky-600 hover:bg-sky-700 py-3 text-white rounded-sm"
                       disabled={signInWithEmailMutation.isLoading}
                     >
                       {signInWithEmailMutation.isLoading ? "Logging in..." : "Login In"}
@@ -160,12 +160,12 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                        {/*  <Link
                           href={"/forgot-password"}
                         >
-                        <a className="text-white hover:text-red-500 ease-in transition-all duration-75">Forgot password?</a>
+                        <a className="text-white hover:text-sky-500 ease-in transition-all duration-75">Forgot password?</a>
                         </Link> */}
                       <Link
                           href={"/register"}
                         >
-                          <a className="text-white hover:text-red-500 ease-in transition-all duration-75">Register</a>
+                          <a className="text-white hover:text-sky-500 ease-in transition-all duration-75">Register</a>
                         </Link>
                     </div>
 

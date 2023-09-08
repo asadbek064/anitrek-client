@@ -208,7 +208,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
 
                       <TextIcon
                         LeftIcon={BsFillHeartFill}
-                        iconClassName="text-red-400"
+                        iconClassName="text-sky-400"
                       >
                         <p>{numberWithCommas(data.favourites)}</p>
                       </TextIcon>

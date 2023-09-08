@@ -33,7 +33,7 @@ const ErrorPage: NextPage<CustomErrorProps, CustomErrorProps> = ({
 
   return (
     <div className="relative w-full min-h-screen flex items-center">
-      <Head title={`${t("error_title", { statusCode })} - AnimetTV`} />
+      <Head title={`${t("error_title", { statusCode })} - AniTrek`} />
 
       <div className="fixed z-0 w-full h-full flex items-center justify-center">
         <h1 className="font-bold text-[30vw] text-gray-500">{statusCode}</h1>
@@ -46,7 +46,7 @@ const ErrorPage: NextPage<CustomErrorProps, CustomErrorProps> = ({
           <span className="text-lg">
             <Trans i18nKey="_error_page:error_welcome" statusCode={statusCode}>
               Chào mừng đến với{" "}
-              <span className="text-red-300">404 . dimension</span>
+              <span className="text-sky-300">404 . dimension</span>
             </Trans>
           </span>
         </div>

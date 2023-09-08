@@ -27,7 +27,7 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = (props) => {
       <Button
         LeftIcon={AiFillDelete}
         isLoading={isLoading}
-        className="text-red-500 bg-red-500/20 hover:text-white hover:bg-red-500/80"
+        className="text-sky-500 bg-red-500/20 hover:text-white hover:bg-red-500/80"
       >
         To clear
       </Button>
@@ -77,7 +77,7 @@ const DeleteConfirmation: React.FC<DeleteConfirmationProps> = (props) => {
 
         <Button
           className={classNames(
-            "w-full text-red-500 bg-red-500/20 flex items-center justify-center",
+            "w-full text-sky-500 bg-red-500/20 flex items-center justify-center",
             !isButtonDisable && "hover:text-white hover:bg-red-500/80",
             isButtonDisable && "opacity-60"
           )}

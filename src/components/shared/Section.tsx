@@ -26,7 +26,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(
           isTitleLink ? (
           <div className="cursor-pointer">
             <Link href={titleLink} passHref>
-              <h1 className="uppercase [font-size:var(--step-2)] font-semibold mb-4">{title} <span className="hover:text-red-600 ease-in-out duration-100 transition lowercase [font-size:var(--step--2)]">view all</span></h1> 
+              <h1 className="uppercase [font-size:var(--step-2)] font-semibold mb-4">{title} <span className="hover:text-sky-600 ease-in-out duration-100 transition lowercase [font-size:var(--step--2)]">view all</span></h1> 
             </Link>
           </div>
           ) : (

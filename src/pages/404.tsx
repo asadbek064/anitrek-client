@@ -9,7 +9,7 @@ function ErrorPage() {
 
   return (
     <div className="relative w-full min-h-screen flex items-center">
-      <Head title={`${t("error_title")} - AnimetTV`} />
+      <Head title={`${t("error_title")} - AniTrek`} />
 
       <div className="fixed z-0 w-full h-full flex items-center justify-center">
         <h1 className="font-bold text-[30vw] text-gray-500">404</h1>
@@ -22,7 +22,7 @@ function ErrorPage() {
           <span className="text-lg">
             <Trans i18nKey="404_page:error_welcome">
             Welcome to{" "}
-              <span className="text-red-300">space dimension 404</span>
+              <span className="text-sky-300">space dimension 404</span>
             </Trans>
           </span>
         </div>

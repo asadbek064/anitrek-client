@@ -107,8 +107,8 @@ const BrowsePage = ({ query: baseQuery }) => {
   return (
     <Section className="py-20">
       <Head
-        title={`Search ${chosenType.label} - AnimetTV`}
-        description={`Search ${chosenType.label} AnimetTV`}
+        title={`Search ${chosenType.label} - AniTrek`}
+        description={`Search ${chosenType.label} AniTrek`}
       />
 
       <div className="mb-8 flex items-center space-x-2">

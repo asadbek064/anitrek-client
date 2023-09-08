@@ -3,7 +3,7 @@ import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Head from "@/components/shared/Head";
 import Iframe from "@/components/shared/Iframe";
 import useDevice from "@/hooks/useDevice";
-import { getAiTitle } from "@/services/animettv";
+import { getAiTitle } from "@/services/AniTrek";
 import { useUser } from "@supabase/auth-helpers-react";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -90,8 +90,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title} A.I Upscaled - AnimetTV`}
-        description={`Watch ${title} A.I Upscaled at AnimetTV. Completely free, no ads`}
+        title={`${title} A.I Upscaled - AniTrek`}
+        description={`Watch ${title} A.I Upscaled at AniTrek. Completely free, no ads`}
       />
     <div>
 

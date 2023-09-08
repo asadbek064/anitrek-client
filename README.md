@@ -1,7 +1,7 @@
 <div style="text-align: center;">
-<h1>AnimetTV</h1>
+<h1>AniTrek</h1>
 
-### AnimetTV is a multi-language website that provides you anime, manga and related resources.
+### AniTrek is a multi-language website that provides you anime, manga and related resources.
 
 Since it is an open-source project, there won't be any ads in this website.
 

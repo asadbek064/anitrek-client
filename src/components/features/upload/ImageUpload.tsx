@@ -60,7 +60,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, ...props }) => {
                       secondary
                       onClick={() => props.onFileRemove(index)}
                       LeftIcon={AiOutlineDelete}
-                      iconClassName="text-red-500 w-6 h-6"
+                      iconClassName="text-sky-500 w-6 h-6"
                       className="!p-1"
                     />
                   </div>

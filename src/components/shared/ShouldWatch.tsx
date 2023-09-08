@@ -69,7 +69,7 @@ const ShouldWatch: React.FC<ShouldWatchProps> = ({ data, isLoading }) => {
                 </TextIcon>
               )}
 
-              <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+              <TextIcon LeftIcon={AiFillHeart} iconClassName="text-sky-400">
                 <p>{numberWithCommas(data.favourites)}</p>
               </TextIcon>
 

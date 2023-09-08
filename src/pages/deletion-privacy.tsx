@@ -5,14 +5,14 @@ import React from "react";
 const DeletionPrivacy = () => {
   return (
     <Section className="space-y-8 pt-20">
-      <Head title="Privacy - AnimetTV" />
+      <Head title="Privacy - AniTrek" />
 
-      <h1>Privacy Policy for AnimetTV</h1>
+      <h1>Privacy Policy for AniTrek</h1>
 
       <p>
-        At AnimetTV, accessible from https://animet.tv, one of our main
+        At AniTrek, accessible from https://animet.tv, one of our main
         priorities is the privacy of our visitors. This Privacy Policy document
-        contains types of information that is collected and recorded by AnimetTV
+        contains types of information that is collected and recorded by AniTrek
         and how we use it.
       </p>
 
@@ -29,21 +29,21 @@ const DeletionPrivacy = () => {
       <p>We are a Data Controller of your information.</p>
 
       <p>
-        AnimetTV legal basis for collecting and using the personal information
+        AniTrek legal basis for collecting and using the personal information
         described in this Privacy Policy depends on the Personal Information we
         collect and the specific context in which we collect the information:
       </p>
       <ul>
-        <li>AnimetTV needs to perform a contract with you</li>
-        <li>You have given AnimetTV permission to do so</li>
+        <li>AniTrek needs to perform a contract with you</li>
+        <li>You have given AniTrek permission to do so</li>
         <li>
-          Processing your personal information is in AnimetTV legitimate interests
+          Processing your personal information is in AniTrek legitimate interests
         </li>
-        <li>AnimetTV needs to comply with the law</li>
+        <li>AniTrek needs to comply with the law</li>
       </ul>
 
       <p>
-        AnimetTV will retain your personal information only for as long as is
+        AniTrek will retain your personal information only for as long as is
         necessary for the purposes set out in this Privacy Policy. We will
         retain and use your information to the extent necessary to comply with
         our legal obligations, resolve disputes, and enforce our policies.
@@ -73,7 +73,7 @@ const DeletionPrivacy = () => {
       <h2>Log Files</h2>
 
       <p>
-        AnimetTV follows a standard procedure of using log files. These files log
+        AniTrek follows a standard procedure of using log files. These files log
         visitors when they visit websites. All hosting companies do this and a
         part of hosting services&apos; analytics. The information collected by
         log files include internet protocol (IP) addresses, browser type,
@@ -88,7 +88,7 @@ const DeletionPrivacy = () => {
       <h2>Cookies and Web Beacons</h2>
 
       <p>
-        Like any other website, AnimetTV uses &apos;cookies&apos;. These cookies
+        Like any other website, AniTrek uses &apos;cookies&apos;. These cookies
         are used to store information including visitors&apos; preferences, and
         the pages on the website that the visitor accessed or visited. The
         information is used to optimize the users&apos; experience by
@@ -100,13 +100,13 @@ const DeletionPrivacy = () => {
 
       <p>
         You may consult this list to find the Privacy Policy for each of the
-        advertising partners of AnimetTV.
+        advertising partners of AniTrek.
       </p>
 
       <p>
         Third-party ad servers or ad networks uses technologies like cookies,
         JavaScript, or Web Beacons that are used in their respective
-        advertisements and links that appear on AnimetTV, which are sent directly
+        advertisements and links that appear on AniTrek, which are sent directly
         to users&apos; browser. They automatically receive your IP address when
         this occurs. These technologies are used to measure the effectiveness of
         their advertising campaigns and/or to personalize the advertising
@@ -114,14 +114,14 @@ const DeletionPrivacy = () => {
       </p>
 
       <p>
-        Note that AnimetTV has no access to or control over these cookies that are
+        Note that AniTrek has no access to or control over these cookies that are
         used by third-party advertisers.
       </p>
 
       <h2>Third Party Privacy Policies</h2>
 
       <p>
-        AnimetTV&apos;s Privacy Policy does not apply to other advertisers or
+        AniTrek&apos;s Privacy Policy does not apply to other advertisers or
         websites. Thus, we are advising you to consult the respective Privacy
         Policies of these third-party ad servers for more detailed information.
         It may include their practices and instructions about how to opt-out of
@@ -144,7 +144,7 @@ const DeletionPrivacy = () => {
       </p>
 
       <p>
-        AnimetTV does not knowingly collect any Personal Identifiable Information
+        AniTrek does not knowingly collect any Personal Identifiable Information
         from children under the age of 13. If you think that your child provided
         this kind of information on our website, we strongly encourage you to
         contact us immediately and we will do our best efforts to promptly
@@ -156,7 +156,7 @@ const DeletionPrivacy = () => {
       <p>
         Our Privacy Policy applies only to our online activities and is valid
         for visitors to our website with regards to the information that they
-        shared and/or collect in AnimetTV. This policy is not applicable to any
+        shared and/or collect in AniTrek. This policy is not applicable to any
         information collected offline or via channels other than this website.
       </p>
 

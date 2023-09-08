@@ -1,6 +1,6 @@
 import { isMobile } from "react-device-detect";
 import useAiTitles from "./useAiTitles";
-import {ExperimentAnimeTitles} from '@/types/animettv';
+import {ExperimentAnimeTitles} from '@/types/AniTrek';
 import { useMemo } from "react";
 
 const useAnime4K = () => {

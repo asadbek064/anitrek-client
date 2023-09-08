@@ -136,7 +136,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
     <React.Fragment>
       <Head
         title={
-          !data ? `Themes - AnimetTV` : `${data.name} (${data.type}) - AnimetTV`
+          !data ? `Themes - AniTrek` : `${data.name} (${data.type}) - AniTrek`
         }
         description="Watch Openings and Ending songs (OP/ED) of your favorite anime show."
       />
@@ -193,7 +193,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
                       </TextIcon>
                     )}
 
-                    <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+                    <TextIcon LeftIcon={AiFillHeart} iconClassName="text-sky-400">
                       <p>{numberWithCommas(media.favourites)}</p>
                     </TextIcon>
 

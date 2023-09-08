@@ -30,7 +30,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
 
     <React.Fragment>
       <Head 
-        title={`${t("register_heading")} - AnimetTV`}
+        title={`${t("register_heading")} - AniTrek`}
       />
 
       <div className="w-full h-screen grid grid-cols-1">
@@ -93,7 +93,7 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
                   </div>
                   <button
                     type="submit"
-                    className="ease-in duration-100 w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-sm"
+                    className="ease-in duration-100 w-full bg-sky-600 hover:bg-sky-700 text-white py-3 rounded-sm"
                     disabled={registerMutation.isLoading}
                   >
                     {registerMutation.isLoading ? "Registering..." : "Register"}
@@ -101,12 +101,12 @@ const RegisterPage: React.FC<RegisterPageProps> = () => {
 
                   <div className="flex flex-row justify-between my-2 py-2 [font-size:var(--step--1)]">
                     {/* <Link href={"/forgot-password"}>
-                      <a className="text-white  hover:text-red-500 ease-in transition-all duration-75">
+                      <a className="text-white  hover:text-sky-500 ease-in transition-all duration-75">
                         Forgot password?
                       </a>
                     </Link> */}
                     <Link href={"/login"}>
-                      <a className="text-white  hover:text-red-500 ease-in transition-all duration-75">
+                      <a className="text-white  hover:text-sky-500 ease-in transition-all duration-75">
                         Login
                       </a>
                     </Link>

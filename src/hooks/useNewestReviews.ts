@@ -7,7 +7,7 @@ import { useQuery } from "react-query";
 const useNewestReviews = (type: MediaType) => {
   return useQuery(["newest-reviews", type], async () => {
     const { data, error } = await supabaseClient
-      .from<Review>("animettv_reviews")
+      .from<Review>("AniTrek_reviews")
       .select("*, user:sce_display_users!user_id(*)")
       .like("topic", `${type.toLowerCase()}%`)
       .order("created_at", { ascending: false });
@@ -27,7 +27,7 @@ const useNewestReviews = (type: MediaType) => {
         const media = mediaList.find((media) => media.id === Number(mediaId));
 
         const { data: likesData, error: likesError } = await supabaseClient
-          .from<ReviewLikes>("animettv_reviews_likes")
+          .from<ReviewLikes>("AniTrek_reviews_likes")
           .select("action_type")
           .eq('review_id', review.id);
 

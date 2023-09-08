@@ -81,7 +81,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ voiceActor }) => {
   return (
     <>
       <Head
-        title={`${voiceActor.name.userPreferred} - AnimetTV`}
+        title={`${voiceActor.name.userPreferred} - AniTrek`}
         image={voiceActor.image.large}
       />
 

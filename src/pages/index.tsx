@@ -86,8 +86,8 @@ const Home = () => {
   return (
     <React.Fragment>
       <Head
-        title="AnimetTV - Anime Hub"
-        description="AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads"
+        title="AniTrek - Anime Hub"
+        description="AniTrek: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AniTrek. With cutting-edge features like AI-enhanced scene search and community engagement, no ads"
       />
 
       <ClientOnly>

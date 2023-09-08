@@ -186,7 +186,7 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
       <ReadSettingsContextProvider>
         <div className="flex items-center justify-center w-full min-h-screen">
           <Head
-            title={`${title} (${currentChapter.name}) - AnimetTV`}
+            title={`${title} (${currentChapter.name}) - AniTrek`}
             description={t("head_description", {
               title,
               chapterName: currentChapter.name,

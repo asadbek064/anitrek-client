@@ -44,7 +44,7 @@ const MediaDetails: React.FC<MediaDetailsProps> = ({ media }) => {
             </TextIcon>
           )}
 
-          <TextIcon LeftIcon={AiFillHeart} iconClassName="text-red-400">
+          <TextIcon LeftIcon={AiFillHeart} iconClassName="text-sky-400">
             <p>{numberWithCommas(media.favourites)}</p>
           </TextIcon>
 

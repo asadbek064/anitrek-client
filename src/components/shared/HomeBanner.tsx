@@ -111,7 +111,7 @@ const MobileHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
                         )}
                         <TextIcon
                           LeftIcon={AiFillHeart}
-                          iconClassName="text-red-400"
+                          iconClassName="text-sky-400"
                         >
                           <p>{numberWithCommas(slide.favourites)}</p>
                         </TextIcon>
@@ -282,7 +282,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
               </TextIcon>
             )}
 
-            <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-red-400">
+            <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-sky-400">
               <p>{numberWithCommas(activeSlide.favourites)}</p>
             </TextIcon>
 

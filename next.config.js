@@ -33,6 +33,8 @@ const moduleExports = withPWA({
       "media.kitsu.io",
       "frosty-snyder-1df076.netlify.app",
       "derf9v1xhwwx1.cloudfront.net",
+      "www.chatbro.com",
+      "chatbro.com"
     ],
     minimumCacheTTL: 604800, // a week,
   },

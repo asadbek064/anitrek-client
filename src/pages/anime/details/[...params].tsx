@@ -23,7 +23,8 @@ import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
-
+/* import { getWatchProviders } from "@/services/tmdb";
+ */
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
@@ -78,6 +79,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
     [anime, locale]
   );
 
+/*   console.log(getWatchProviders(anime));
+  
+ */
   useEffect(() => {
     if (!anime) return;
 
@@ -438,6 +442,7 @@ export const getStaticProps: GetStaticProps = async ({
     // set media.recommendations.nodes to new array
     media.recommendations.nodes = filteredRecommendations;
 
+    
     return {
       props: {
         anime: media as Media,

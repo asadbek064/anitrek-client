@@ -130,3 +130,41 @@ export const getTranslations = async (media: Media): Promise<Translation[]> => {
     title: trans.data.title || trans.data.name,
   }));
 };
+
+
+// Define the WatchProvider type based on the expected data structure
+interface WatchProvider {
+  providerId: string;
+  providerName: string;
+  link: string;
+}
+
+// Define the TMDBWatchProviders type based on the expected data structure from TMDB API
+namespace TMDBWatchProviders {
+  export interface Response {
+    results: {
+      [countryCode: string]: {
+        link: string;
+        buy: Array<WatchProvider>;
+        rent: Array<WatchProvider>;
+        flatrate: Array<WatchProvider>;
+      };
+    };
+  }
+}
+
+
+
+/* export const getWatchProviders = async (media: Media): Promise<WatchProvider[]> => {
+  const type = media.format === MediaFormat.Movie ? "movie" : "tv";
+
+  const { data } = await client.get<TMDBWatchProviders.Response>(
+    `/${type}/${media}/watch/providers`
+  );
+  
+
+  const watchProviders = data.results.US; // You can adjust the country code as needed.
+
+  return null;
+};
+ */

@@ -36,8 +36,8 @@ const Card: React.FC<CardProps> = (props) => {
 
   const primaryColor = useMemo(
     () =>
-      data.coverImage?.color && isColorVisible(data.coverImage.color, "#3a3939")
-        ? data.coverImage.color
+      data?.coverImage?.color && isColorVisible(data.coverImage.color, "#3a3939")
+        ? data.coverImage?.color
         : "white",
     [data]
   );
@@ -46,10 +46,10 @@ const Card: React.FC<CardProps> = (props) => {
     [data, router?.locale]
   );
 
-  const progress = useMemo(
-    () => getProgressCompletion(Number(data.modNotes), data.episodes),
+/*   const progress = useMemo(
+    () => getProgressCompletion(Number(data?.modNotes), data?.episodes),
     [data]
-  );
+  ); */
   
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   
@@ -76,17 +76,17 @@ const Card: React.FC<CardProps> = (props) => {
           {watchList ? (
             ''
             ): (
-              <div className=" z-10 absolute bottom-0 bg-neutral-900 w-full px-2 py-0.5 flex flex-row [font-size:var(--step--1)]" style={{color: primaryColor}}>
+              <div className=" z-10 absolute bottom bg-neutral-900 w-full px-2 py-0.5 flex flex-row [font-size:var(--step--1)]" style={{color: primaryColor}}>
               <div className="flex flex-row">
                 <div className="flex">
                   <BsStarFill className="mt-0.5" /> &nbsp;
-                  {data.averageScore != null && data.averageScore != 0
+                  {data?.averageScore != null && data.averageScore != 0
                     ? (data.averageScore / 10).toFixed(1)
                     : "."}
                 </div>
               </div>
               <div className="flex flex-row mx-auto md:pl-0.5">
-                {data.episodes != null && data.episodes != 0 && data.format !== "MOVIE" ? (
+                {data?.episodes != null && data.episodes != 0 && data.format !== "MOVIE" ? (
                     <div className="flex">
                       EP &nbsp;{data.episodes}
                     </div>    
@@ -94,7 +94,7 @@ const Card: React.FC<CardProps> = (props) => {
                     ""
                   )}
                 <div className="absolute right-0 pr-2">
-                  {data.format != null ? data.format : "."}
+                  {data?.format != null ? data.format : "."}
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@ const Card: React.FC<CardProps> = (props) => {
           <a>
             {
               <Image
-                src={data.coverImage?.extraLarge || 'icons/icon-512.jpg'}
+                src={data?.coverImage?.extraLarge || 'icons/icon-512.jpg'}
                 layout="fill"
                 objectFit="cover"
                 className="rounded-tl-md rounded-tr-md"
@@ -118,27 +118,24 @@ const Card: React.FC<CardProps> = (props) => {
        
       </div>
 
-        {watchList ? (
-          <div className="bg-neutral-900 h-2 dark:bg-gray-900">
+          {/* <div className="bg-neutral-900 h-2 dark:bg-gray-900">
             <div
             style={{ width: `${progress}%` }}
               className={`${
                 progress !== 0 ? `bg-red-600 h-2 ` : ""
               }`}
             >
-              {/* if progress 100% round the corners && show progress if at least one ep watched */}
+              
               <div className="pl-1 pt-0.5 text-xs -mt-5 absolute bg-gradient-to-r from-neutral-900 to-neutral-700 pr-1 rounded-tr-md opacity-90">
                 EP {data.modNotes != null ? data.modNotes : ""}{" / "}{ data.episodes}
                 &nbsp;&nbsp;
                 {data.duration != null ? parseTime(data.duration / 2) : ""}
               </div>
             </div>
-          </div>
-        ) : (
-          ""
-        )}
+          </div> */}
+
         <p
-          className="mt-2 font-semibold [font-size:var(--step--1)] md:[font-size:var(--step-1)] line-clamp-2"
+          className="mt-2 font-semibold [font-size:var(--step--1)] md:[font-size:var(--step-0)] line-clamp-2"
           style={{ color: primaryColor }}
         >
           {title}

@@ -17,8 +17,8 @@ interface WatchListProps {
 
 const WatchListPage: NextPage<WatchListProps> = ({
   user,
-  watchListAnime = [],
-  watchListAnimeMedia = [],
+  watchListAnime,
+  watchListAnimeMedia,
 }) => {
   const [activeStatus, setActiveStatus] = useState("watching");
   const [media, setMedia] = useState(watchListAnimeMedia);

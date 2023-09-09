@@ -227,7 +227,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     }
 
     const { data: likesData, error: likesError } = await supabase
-    .from<ReviewLikes>("AniTrek_reviews_likes")
+    .from<ReviewLikes>("animettv_reviews_likes")
     .select("action_type")
     .eq('review_id', review.id);
   

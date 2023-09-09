@@ -17,12 +17,12 @@
       "sizes": "192x192"
     },
     {
-      "src": "icons/icon-32.png",
-      "sizes": "32x32"
+      "src": "icons/icon-144.jpg",
+      "sizes": "144x144"
     },
     {
-      "src": "icons/icon-16.png",
-      "sizes": "16x16"
+      "src": "icons/icon-48.jpg",
+      "sizes": "48x48"
     }
   ]
 }

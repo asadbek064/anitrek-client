@@ -1,4 +1,4 @@
-const siteUrl = process.env.SITE_URL || "https://animet.site";
+const siteUrl = process.env.SITE_URL || "https://app.anitrek.co";
 
 /** @type {import('next-sitemap').IConfig} */
 const config = {
@@ -9,3 +9,4 @@ const config = {
 };
 
 module.exports = config;
+        

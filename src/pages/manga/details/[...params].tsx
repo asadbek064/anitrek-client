@@ -81,13 +81,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
             <div className="justify-between text-center md:text-left flex flex-col items-center md:items-start py-4 mt-4 md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  <Link href={`/manga/read/${manga.id}`}>
+                 {/*  <Link href={`/manga/read/${manga.id}`}>
                     <a>
                       <Button primary LeftIcon={BsFillPlayFill}>
                         <p>{t("read_now")}</p>
                       </Button>
                     </a>
-                  </Link>
+                  </Link> */}
                   <Popup
                     reference={
                       <Button
@@ -99,7 +99,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                     type="click"
                     className="space-y-2"
                   >
-                    <Link href={`/upload/manga/${manga.id}`}>
+                    {/* <Link href={`/upload/manga/${manga.id}`}>
                       <a>
                         <Button
                           secondary
@@ -109,14 +109,14 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                           <p>Upload</p>
                         </Button>
                       </a>
-                    </Link>
+                    </Link> */}
 
-{/*                     <AddTranslationModal
+                    <AddTranslationModal
                       mediaId={manga.id}
                       mediaType={MediaType.Manga}
                       defaultDescription={description}
                       defaultTitle={title}
-                    /> */}
+                    />
                   </Popup>
                 </div>
 

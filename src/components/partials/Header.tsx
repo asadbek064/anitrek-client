@@ -90,11 +90,11 @@ const routes_verified: _route[] = [
     href: "/ai-upscale",
     icon: MdHighQuality,
   },
-  /* {
+  {
     title: "Trivia",
     href: "/trivia",
     icon: FaGamepad
-  }, */
+  },
   {
     title: "Watch2together",
     href: "/wwf",
@@ -117,7 +117,7 @@ const Header = () => {
   // rename header if not logged in
   if (user === null) {
     routes = routes_guest;
-  } else {
+  } else if (user.email === "asadbekasadbek@gmail.com") {
     routes = routes_verified;
   }
 
@@ -195,6 +195,9 @@ const Header = () => {
           <div className="flex items-center justify-center space-x-8">
             <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
             <ContactItem href={KO_FI_URL} Icon={FaDonate} />
+            <div onClick={drawerRef.current?.close}>
+              <PWAInstallPrompt />
+            </div>
           </div>
 
           <p className="text-xs flex justify-center">Verison: 3.0.0</p>
@@ -227,10 +230,16 @@ const Header = () => {
           </NavItem>
         ))}
       </div>
-
+          
       <div className="flex items-center space-x-4 ml-auto">
+        {!isMobile ? (
+          <>
+          <PWAInstallPrompt />
+          <LanguageSwitcher />
+          </>
+        ): ''}
         {user ? (<Notifications />): ''}
-
+        
         <NavItem href={searchUrl} aria-label="search button">
           {({ isActive }) => (
             <BiSearchAlt

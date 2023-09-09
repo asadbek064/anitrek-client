@@ -32,7 +32,7 @@ const LanguageSwitcher = () => {
       placement="bottom-end"
       showArrow
       reference={
-        <div className="lg:bg-background-900 rounded-3xl p-2 flex items-center gap-x-2">
+        <div className=" p-2 flex items-center gap-x-2">
           <MdOutlineLanguage className="w-6 h-6 hover:text-primary-300 transition duration-200" />
 
           <p className="hidden lg:block text-white text-base">

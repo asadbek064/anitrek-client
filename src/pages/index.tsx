@@ -97,22 +97,7 @@ const Home = () => {
           <div className="space-y-8">
             <WatchedSection />
             <RecommendedAnimeSection />
-            
-            <div>
-            
-              {/* Ad Start */}
-              <ins className="adsbygoogle"
-                    style={{ display: "block"}}
-                    data-ad-client="ca-pub-6890066986315850"
-                    data-ad-slot="3265263871"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-              {/* Ad End */}
-            </div>
+      
 
             {trendingLoading ? (
               <ListSwiperSkeleton />

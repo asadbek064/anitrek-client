@@ -161,7 +161,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
          
 
           <div className="md:col-span-8 space-y-12">
-            {user ? (
+            {(user && user?.email === "moonlightbz064@gmail.com") ? (
               <DetailsSection title={t("chapters_section")} className="relative">
               {isLoading ? (
                 <div className="h-full w-full flex items-center justify-center">

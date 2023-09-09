@@ -117,7 +117,7 @@ const Header = () => {
   // rename header if not logged in
   if (user === null) {
     routes = routes_guest;
-  } else if (user.email === "asadbekasadbek@gmail.com") {
+  } else if (user.email === "moonlightbz064@gmail.com") {
     routes = routes_verified;
   }
 

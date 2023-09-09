@@ -35,7 +35,7 @@ let routes: _route[] = [];
 const routes_guest: _route[] = [
   {
     title: "Anime",
-    href: "/",
+    href: "/home",
     icon: BsPlayFill
   },
   {
@@ -72,7 +72,7 @@ const routes_guest: _route[] = [
 const routes_verified: _route[] = [
   {
     title: "Watch",
-    href: "/",
+    href: "/home",
     icon: BsPlayFill
   },
   {

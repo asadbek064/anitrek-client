@@ -7,7 +7,6 @@ import ColumnSection from "@/components/shared/ColumnSection";
 import GenreSwiper from "@/components/shared/GenreSwiper";
 import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
-import Landing from "@/components/shared/Landing";
 import NewestComments from "@/components/shared/NewestComments";
 import NewestReviews from "@/components/shared/NewestReviews";
 import Section from "@/components/shared/Section";
@@ -93,15 +92,60 @@ const Home = () => {
 
       <ClientOnly>
         <div className="pb-8">
-          
-          <div className="space-y-8">
-           
-              <Landing />
+          <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
 
+          <div className="space-y-8">
+            <WatchedSection />
+            <RecommendedAnimeSection />
+      
+
+            {trendingLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("most_popular_season", { ns: "common" })}>
+                <CardSwiper data={trendingAnime} />
+              </Section>
+            )}
+            
             <NewestComments type={MediaType.Anime} />
 
+           {/*  {recentlyUpdatedLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("newly_added", { ns: "common" })}>
+                <CardSwiper data={recentlyUpdated} />
+              </Section>
+            )}
+            */}
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-             
+             {/* { <ColumnSection
+                title={t("most_popular_season", { ns: "common" })}
+                type={MediaType.Anime}
+                data={popularSeason}
+                viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
+                isLoading={popularSeasonLoading}
+              />} */}
+              <ColumnSection
+                title={t("most_popular", { ns: "common" })}
+                type={MediaType.Anime}
+                data={popularAllTime}
+                viewMoreHref="/browse?sort=popularity&type=anime"
+                isLoading={popularAllTimeLoading}
+              />
+              <ColumnSection
+                title={t("most_favourite_season", { ns: "common" })}
+                type={MediaType.Anime}
+                data={favouriteSeason}
+                viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
+                isLoading={favouriteSeasonLoading}
+              />
+              <ColumnSection
+                title={t("most_favourite", { ns: "common" })}
+                type={MediaType.Anime}
+                data={favouriteAllTime}
+                viewMoreHref="/browse?sort=favourites&type=anime"
+                isLoading={favouriteAllTimeLoading}
+              />
             </Section>
 
             <Section
@@ -113,6 +157,33 @@ const Home = () => {
 
             </Section>
 
+
+            {/* <div
+              className={classNames(
+                "flex gap-8",
+                isDesktop ? "flex-row" : "flex-col"
+              )}
+            >
+              <Section
+                title={t("should_watch_today", { ns: "anime_home" })}
+                className="w-full md:w-[75%] md:!pr-0 md:block hidden"
+              >
+                {randomAnime && (
+                  <ShouldWatch data={randomAnime} isLoading={!randomAnime} />
+                )}
+              </Section>
+
+              {<Section
+                title={t("genres", { ns: "common" })}
+                className="w-full md:w-[30%] md:!pl-0"
+              >
+                <GenreSwiper className="md:h-[500px]" />
+              </Section>}
+            </div> */}
+
+           {/*  <Section title={t("airing_schedule", { ns: "anime_home" })}>
+              <AnimeScheduling />
+            </Section> */}
           </div>
         </div>
       </ClientOnly>

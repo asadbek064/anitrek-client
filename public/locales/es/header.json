@@ -3,5 +3,9 @@
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
     "user": "Usuario",
-    "watch_with_friends": "Ver con amigos"
+    "watch_with_friends": "Ver con amigos",
+    "nav-anime":"Anime",
+    "nav-manga":"Manga",
+    "nav-sf":"Scene Finder",
+    "nav-trivia":"Trivia"
 }

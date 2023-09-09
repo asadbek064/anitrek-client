@@ -27,7 +27,7 @@ import { isMobile } from "react-device-detect";
 const Home = () => {
   const currentSeason = useMemo(getSeason, []);
   const { isDesktop } = useDevice();
-  const { t } = useTranslation();
+  const { t } = useTranslation("review");
 
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
@@ -96,18 +96,14 @@ const Home = () => {
           
           <div className="space-y-8">
            
-              <Landing />
-
+            <Landing />
+            
             <NewestComments type={MediaType.Anime} />
-
-            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-             
-            </Section>
 
             <Section
               isTitleLink={true}
               titleLink={'/reviews'}
-              title={t("recent_reviews", { ns: "common" })}
+              title={t("recent_reviews")}
             >
               <NewestReviews  type={MediaType.Anime} homeView={true} />
 

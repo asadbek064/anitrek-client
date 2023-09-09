@@ -32,88 +32,91 @@ interface _route {
 }
 
 let routes: _route[] = [];
-const routes_guest: _route[] = [
-  {
-    title: "Anime",
-    href: "/home",
-    icon: BsPlayFill
-  },
-  {
-    title: "Manga",
-    href: "/manga",
-    icon: AiOutlineRead
-  },
-  {
-    title: "Scene Finder",
-    href: "/scene-search",
-    icon: MdFindInPage
-  },
- /*  {
-    title: "A.I Upscaled",
-    href: "/ai-upscale",
-    icon: MdHighQuality,
-  }, */
-  {
-    title: "Trivia",
-    href: "/trivia",
-    icon: FaGamepad
-  },
-/*   {
-    title: "Watch2together",
-    href: "/wwf",
-    icon: MdOutlineLiveTv
-  }, */
-/*   {
-    title: "Clips",
-    href: "/themes",
-    icon: RiMovie2Line
-  }, */
-]
-const routes_verified: _route[] = [
-  {
-    title: "Watch",
-    href: "/home",
-    icon: BsPlayFill
-  },
-  {
-    title: "Read",
-    href: "/manga",
-    icon: AiOutlineRead
-  },
-  {
-    title: "Scene Finder",
-    href: "/scene-search",
-    icon: MdFindInPage
-  },
-  {
-    title: "A.I Upscaled",
-    href: "/ai-upscale",
-    icon: MdHighQuality,
-  },
-  {
-    title: "Trivia",
-    href: "/trivia",
-    icon: FaGamepad
-  },
-  {
-    title: "Watch2together",
-    href: "/wwf",
-    icon: MdOutlineLiveTv
-  },
-  {
-    title: "Clips",
-    href: "/themes",
-    icon: RiMovie2Line
-  },
-]
+
 
 const Header = () => {
+  
   const [isTop, setIsTop] = useState(true);
   const drawerRef = useRef<DrawerRef>();
   const { user } = useUser();
   const router = useRouter();
   const { t } = useTranslation("header");
 
+  const routes_guest: _route[] = [
+    {
+      title: `${t("nav-anime")}`,
+      href: "/home",
+      icon: BsPlayFill
+    },
+    {
+      title: `${t("nav-manga")}`,
+      href: "/manga",
+      icon: AiOutlineRead
+    },
+    {
+      title: `${t("nav-sf")}`,
+      href: "/scene-search",
+      icon: MdFindInPage
+    },
+   /*  {
+      title: "A.I Upscaled",
+      href: "/ai-upscale",
+      icon: MdHighQuality,
+    }, */
+    {
+      title: `${t("nav-trivia")}`,
+      href: "/trivia",
+      icon: FaGamepad
+    },
+  /*   {
+      title: "Watch2together",
+      href: "/wwf",
+      icon: MdOutlineLiveTv
+    }, */
+  /*   {
+      title: "Clips",
+      href: "/themes",
+      icon: RiMovie2Line
+    }, */
+  ]
+  const routes_verified: _route[] = [
+    {
+      title: "Watch",
+      href: "/home",
+      icon: BsPlayFill
+    },
+    {
+      title: "Read",
+      href: "/manga",
+      icon: AiOutlineRead
+    },
+    {
+      title: "Scene Finder",
+      href: "/scene-search",
+      icon: MdFindInPage
+    },
+    {
+      title: "A.I Upscaled",
+      href: "/ai-upscale",
+      icon: MdHighQuality,
+    },
+    {
+      title: "Trivia",
+      href: "/trivia",
+      icon: FaGamepad
+    },
+    {
+      title: "Watch2together",
+      href: "/wwf",
+      icon: MdOutlineLiveTv
+    },
+    {
+      title: "Clips",
+      href: "/themes",
+      icon: RiMovie2Line
+    },
+  ]
+  
   // rename header if not logged in
   if (user === null) {
     routes = routes_guest;

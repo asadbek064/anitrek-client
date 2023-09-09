@@ -1,4 +1,11 @@
 {
-    "choose_page_title": "Write a Review",
-    "choose_page_description": "Create Your Own Anime and Manga Review!"
+    "title": "Reseñas de anime - AniTrek",
+    "choose_page_title": "Escribe una reseña",
+    "choose_page_description": "¡Crea tu propia reseña de anime y manga!",
+    "choose_page_heading": "Seleccione un título para revisar",
+    "get_image_title": "Insertar URL de la imagen",
+    "editor_submit": "Insertar",
+    "create_review": "Escribe una reseña",
+    "review_placeholder": "Cuéntanos qué te pareció el anime o manga...",
+    "recent_reviews": "Reseñas recientes"
 }

@@ -97,6 +97,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
   }, [anime]);
 
+  alert(anime.trailer);
+  
   return (
     <>
       <Head

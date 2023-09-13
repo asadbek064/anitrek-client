@@ -65,7 +65,7 @@ const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
   );
 };
 
-const ReactAllPlayerTrailer: React.FC<ReactAllPlayerTrailerProps, > = ({
+const ReactAllPlayerTrailer: React.FC<ReactAllPlayerTrailerProps > = ({
   media,
 }) => {
   const { data, isLoading } = useThemeSearch(media.title.userPreferred, true);

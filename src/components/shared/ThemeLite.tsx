@@ -8,14 +8,15 @@ import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 import Controls from "../features/anime/Player/Controls";
 import { ReactVidPlayerProps } from "react-all-player";
-const ReactAllPlayer = dynamic(() => import("react-all-player"), {
+import { ThemePlayerContextProvider } from "@/contexts/ThemePlayerContext";
+import { ThemeSettingsContextProvider } from "@/contexts/ThemeSettingsContext";
+const ThemePlayerLite = dynamic(() => import("../features/themes/ThemePlayerLite"), {
   ssr: false
 })
 
 
-interface PlayerProps extends ReactVidPlayerProps {}
 
-interface ReactAllPlayerTrailerProps  {
+interface ThemeLiteProps  {
   media: Media;
 }
 
@@ -65,7 +66,7 @@ const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
   );
 };
 
-const ReactAllPlayerTrailer: React.FC<ReactAllPlayerTrailerProps > = ({
+const ThemeLite: React.FC<ThemeLiteProps > = ({
   media,
 }) => {
   const { data, isLoading } = useThemeSearch(media.title.userPreferred, true);
@@ -88,16 +89,23 @@ const ReactAllPlayerTrailer: React.FC<ReactAllPlayerTrailerProps > = ({
 
   return (
 
-    <div className="my-12 flex flex-col md:flex-row">
+    <div className="my-4 md:my-12 flex flex-col md:flex-row">
     {/* Video Section (Left Column) */}
-    <div className="md:w-2/3 p-4">
+    <div className="md:w-2/3 md:p-4">
       <div className="aspect-video">
         
-        <ReactAllPlayer autoPlay muted sources={sources}  />
+        {/* <ReactAllPlayer autoPlay muted sources={sources}  /> */}
+        <ThemePlayerContextProvider
+            value={{ theme: SourceData, isLoading }}
+          >
+          <ThemeSettingsContextProvider>
+                       
+            <ThemePlayerLite sources={sources} />
+            
+            <div className="mt-1 [font-size:var(--step--3)] text-gray-300 tracking-wide opacity-70">source: animethemes.moe</div>
+          </ThemeSettingsContextProvider>
+        </ThemePlayerContextProvider>
 
-        <div className="my-1 text-sm text-gray-300 tracking-wider opacity-40">
-          source: animethemes.moe
-        </div>
       </div>
     </div>
   
@@ -124,7 +132,7 @@ const ReactAllPlayerTrailer: React.FC<ReactAllPlayerTrailerProps > = ({
   );
 };
 
-export default ReactAllPlayerTrailer;
+export default ThemeLite;
 
 
 /* <div className="aspect-video my-12">

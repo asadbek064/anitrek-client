@@ -5802,10 +5802,10 @@ raw-body@2.3.3:
     iconv-lite "0.4.23"
     unpipe "1.0.0"
 
-react-all-player@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/react-all-player/-/react-all-player-2.0.7.tgz#eae0a5150a15fcaad455a74a1af4f52b5d3a0e2e"
-  integrity sha512-B/HvYu+MdI8pdlYeab2fBQcJVDPMW4E9OvPQh0f+60rtcJJbWArJwizw5mWRuDeBZR1fXUyNPN0nU1eygdyeig==
+react-all-player@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/react-all-player/-/react-all-player-2.0.8.tgz#4cf123a1ca5833a4a4a38b2a7c90d9238c47ce4f"
+  integrity sha512-8gL0xcfiVmoWlOyr2jPLQp+K3mRg5W0IqdM/mp7dFBcpGfLiwIc1ME5mFJEu8wLWKN23WxmbBbwRAs2KGO3rRQ==
   dependencies:
     "@plussub/srt-vtt-parser" "^1.1.0"
     load-script "^2.0.0"

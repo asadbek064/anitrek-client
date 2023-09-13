@@ -15,7 +15,7 @@ import MediaDescription from "@/components/shared/MediaDescription";
 import NotificationButton from "@/components/shared/NotificationButton";
 import PlainCard from "@/components/shared/PlainCard";
 import Popup from "@/components/shared/Popup";
-import ReactAllPlayerTrailer from "@/components/shared/ReactAllPlayerTrailer";
+import ThemeLite from "@/components/shared/ThemeLite";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
@@ -95,10 +95,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       episode: null,
       id: anime.id,
       nextEpUrl: null,
-    });
-
-    console.log('trailer id:', anime?.trailer?.id);
-    
+    });    
   }, [anime]);
 
   return (
@@ -297,10 +294,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 )}
               </DetailsSection>
             ) : (
-              <>
-                <ReactAllPlayerTrailer media={anime} />
-              </>
+              null
             )}
+
+            <ThemeLite media={anime} />
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />

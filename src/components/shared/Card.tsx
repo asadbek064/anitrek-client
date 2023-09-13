@@ -100,7 +100,7 @@ const Card: React.FC<CardProps> = (props) => {
             </div>
             )}
         </div>
-        <Link href={redirectUrl} >
+        <Link href={redirectUrl}  >
           <a>
             {
               <Image

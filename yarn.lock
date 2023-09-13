@@ -5802,6 +5802,15 @@ raw-body@2.3.3:
     iconv-lite "0.4.23"
     unpipe "1.0.0"
 
+react-all-player@^2.0.7:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/react-all-player/-/react-all-player-2.0.7.tgz#eae0a5150a15fcaad455a74a1af4f52b5d3a0e2e"
+  integrity sha512-B/HvYu+MdI8pdlYeab2fBQcJVDPMW4E9OvPQh0f+60rtcJJbWArJwizw5mWRuDeBZR1fXUyNPN0nU1eygdyeig==
+  dependencies:
+    "@plussub/srt-vtt-parser" "^1.1.0"
+    load-script "^2.0.0"
+    url-toolkit "^2.2.5"
+
 react-device-detect@^2.1.2:
   version "2.1.2"
   resolved "https://registry.npmjs.org/react-device-detect/-/react-device-detect-2.1.2.tgz"

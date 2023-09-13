@@ -78,10 +78,10 @@ const Home = () => {
     { enabled: !!randomTrendingAnime }
   );
 
- /*  const randomAnime = useMemo(
+  const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,
     [recommendationsAnime]
-  ); */
+  );
 
   return (
     <React.Fragment>
@@ -118,13 +118,13 @@ const Home = () => {
             )}
             */}
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-             {/* { <ColumnSection
+             { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularSeason}
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
-              />} */}
+              />}
               <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
@@ -158,28 +158,29 @@ const Home = () => {
             </Section>
 
 
-            {/* <div
+            <div
               className={classNames(
                 "flex gap-8",
                 isDesktop ? "flex-row" : "flex-col"
               )}
             >
               <Section
-                title={t("should_watch_today", { ns: "anime_home" })}
-                className="w-full md:w-[75%] md:!pr-0 md:block hidden"
+                /* title={t("should_watch_today", { ns: "anime_home" })} */
+                title="Must Watch"
+                className="w-full md:w-[92%] md:!pr-0 md:block hidden"
               >
                 {randomAnime && (
                   <ShouldWatch data={randomAnime} isLoading={!randomAnime} />
                 )}
               </Section>
 
-              {<Section
+              {/* {<Section
                 title={t("genres", { ns: "common" })}
                 className="w-full md:w-[30%] md:!pl-0"
               >
                 <GenreSwiper className="md:h-[500px]" />
-              </Section>}
-            </div> */}
+              </Section>} */}
+            </div>
 
            {/*  <Section title={t("airing_schedule", { ns: "anime_home" })}>
               <AnimeScheduling />

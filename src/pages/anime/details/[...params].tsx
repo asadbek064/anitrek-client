@@ -15,6 +15,7 @@ import MediaDescription from "@/components/shared/MediaDescription";
 import NotificationButton from "@/components/shared/NotificationButton";
 import PlainCard from "@/components/shared/PlainCard";
 import Popup from "@/components/shared/Popup";
+import ReactAllPlayerTrailer from "@/components/shared/ReactAllPlayerTrailer";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
@@ -95,6 +96,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       id: anime.id,
       nextEpUrl: null,
     });
+
+    console.log('trailer id:', anime?.trailer?.id);
+    
   }, [anime]);
 
   return (
@@ -139,7 +143,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         <Link href={DISCORD_URL}>
                           <a target={"_blank"}>
                             <Button primary LeftIcon={FaDiscord}>
-                              <p>Request Index</p>
+                              <div>Request Index</div>
                             </Button>
                           </a>
                         </Link>
@@ -149,7 +153,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     <Link href={"/login"}>
                       <a target={"_blank"}>
                         <Button primary LeftIcon={BiBookAdd}>
-                          <p>Start Tracking</p>
+                          <div>Start Tracking</div>
                         </Button>
                       </a>
                     </Link>
@@ -185,7 +189,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                           className="w-full"
                           LeftIcon={BsPencilFill}
                         >
-                          <p>Write a Review</p>
+                          <div>Write a Review</div>
                         </Button>
                       </a>
                     </Link>
@@ -293,7 +297,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 )}
               </DetailsSection>
             ) : (
-              ""
+              <>
+                <ReactAllPlayerTrailer media={anime} />
+              </>
             )}
 
             <DetailsSection title={t("comments_section")}>
@@ -382,13 +388,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               <InfoItem
                 title="Studio"
                 value={anime.studios.nodes.map((studio) => (
-                  <p key={studio.id}>
+                  <div key={studio.id}>
                     <Link href={createStudioDetailsUrl(studio)}>
                       <a className="hover:text-primary-300 transition duration-200">
                         {studio.name}
                       </a>
                     </Link>
-                  </p>
+                  </div>
                 ))}
               />
 
@@ -401,7 +407,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               <InfoItem
                 title={t("common:synonyms")}
                 value={anime.synonyms.map((synomym) => (
-                  <p key={synomym}>{synomym}</p>
+                  <div key={synomym}>{synomym}</div>
                 ))}
               />
             </div>

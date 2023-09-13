@@ -6,7 +6,6 @@ import { ThemePlayerContextProvider } from "@/contexts/ThemePlayerContext";
 import Head from "@/components/shared/Head";
 import { useRouter } from "next/router";
 import { GetServerSideProps } from "next";
-import Image from 'next/image';
 import BaseLayout from "@/components/layouts/BaseLayout";
 import Link from "next/link";
 import { getMediaDetails } from "@/services/anilist";
@@ -18,13 +17,11 @@ import TextIcon from "@/components/shared/TextIcon";
 import DotList from "@/components/shared/DotList";
 import InfoItem from "@/components/shared/InfoItem";
 import { AiFillHeart } from "react-icons/ai";
-import { MdDesktopAccessDisabled, MdTagFaces } from "react-icons/md";
+import {  MdTagFaces } from "react-icons/md";
 import { createMediaDetailsUrl, numberWithCommas } from "@/utils";
 import { convert } from "@/utils/data";
 import Description from "@/components/shared/Description";
 import Button from "@/components/shared/Button";
-import ThemeSearch from "@/components/features/themes/ThemeSearch";
-import classNames from "classnames";
 import { useUser } from "@supabase/auth-helpers-react";
 
 const ThemePlayer = dynamic(
@@ -57,6 +54,7 @@ const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
   },[media]);
 
   return (
+    // eslint-disable-next-line @next/next/link-passhref
     <Link
       href={{
         pathname:"/themes",
@@ -65,6 +63,7 @@ const Card = ({ cardDetail, animeSlug, anilistId, media }) => {
     >
       <div className="flex border-y rounded-sm hover:bg-neutral-800 cursor-pointer">
         {media ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={media.coverImage?.extraLarge}
             alt={media.title?.userPreferred}
@@ -141,7 +140,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
         description="Watch Openings and Ending songs (OP/ED) of your favorite anime show."
       />
 
-    <div className="space-y-8 mt-14 md:mt-24 flex justify-center flex-col"> 
+    <div className="space-y-8 mt-14 md:mt-24 flex justify-center flex-col  mx-4 md:mx-14"> 
  
       <div className="">
           <ThemePlayerContextProvider
@@ -152,6 +151,7 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
                 <div className="p-4">
                   <div>
                     <ThemePlayer sources={sources} />
+                    <div className="my-1 [font-size:var(--step--3)] text-gray-300 tracking-wider opacity-40">source: animethemes.moe</div>
                   </div>
                 </div>
                 

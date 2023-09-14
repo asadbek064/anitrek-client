@@ -6,8 +6,6 @@ import { useAnimeTheme } from "@/hooks/useAnimeTheme";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
-import Controls from "../features/anime/Player/Controls";
-import { ReactVidPlayerProps } from "react-all-player";
 import { ThemePlayerContextProvider } from "@/contexts/ThemePlayerContext";
 import { ThemeSettingsContextProvider } from "@/contexts/ThemeSettingsContext";
 const ThemePlayerLite = dynamic(() => import("../features/themes/ThemePlayerLite"), {

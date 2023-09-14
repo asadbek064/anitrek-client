@@ -20,9 +20,6 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
 
     const videoEl = videoRef.current;
 
-    if (endMode === "repeat") {
-      videoRef.current.loop = true;
-    }
 
     const handleVideoEnd = () => {
       if (endMode !== "refresh") return;
@@ -43,8 +40,6 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
     videoEl.autoplay = true;
   }, []);
 
-
-
   return (
     <CustomVideoStateContextProvider>
       <NetPlayer
@@ -60,6 +55,7 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
         crossOrigin={null}
         {...props}
         className="min-w-full min-h-full"
+        onLoad={() => { videoRef.current.volume = 0.5 }}
       >
         {props.children}
       </NetPlayer>

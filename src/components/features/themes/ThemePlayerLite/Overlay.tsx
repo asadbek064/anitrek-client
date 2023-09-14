@@ -20,7 +20,12 @@ const Overlay = () => {
 
     
       {theme?.anilistId && (
-        <Link href={`/anime/details/${theme.anilistId}`}>
+        <Link
+          href={{
+            pathname: "/themes",
+            query: { slug: theme.slug, type: 'OP', id: theme?.anilistId },
+          }}
+        >
           <a
             target="_blank"
             className={classNames(

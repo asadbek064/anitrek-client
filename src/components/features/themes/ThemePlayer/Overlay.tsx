@@ -10,9 +10,6 @@ import React from "react";
 import { AiOutlineDownload, AiOutlineInfoCircle } from "react-icons/ai";
 import { BsArrowLeft } from "react-icons/bs";
 import ThemeSearch from "../ThemeSearch";
-import ProgressSlider from "./ProgressSlider";
-import RefreshButton from "./RefreshButton";
-import { isMobile } from "react-device-detect";
 
 const Overlay = () => {
   const { isLoading, theme } = useThemePlayer();
@@ -75,7 +72,7 @@ const Overlay = () => {
         <RefreshButton />
       </div> */}
       
-     {/*  <div className={classNames(isMobile ?  "w-full absolute bottom-20 px-5 z-50" : "w-full absolute bottom-20 px-40 z-50")}>
+      {/* <div className={classNames(isMobile ?  "w-full absolute bottom-20 px-5 z-50" : "w-full absolute bottom-20 px-40 z-50")}>
         <ProgressSlider />
       </div> */}
 

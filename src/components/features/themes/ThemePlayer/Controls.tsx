@@ -40,6 +40,7 @@ const Controls: React.FC = () => {
       <div className="w-full flex justify-between items-center text-white">
         <div className="flex items-center space-x-4 ml-4">
           <RefreshButton />
+          {/* <LoopToggle /> */}
           <PlayPauseButton />
           {!isMobile ? (
             <TimeIndicator />

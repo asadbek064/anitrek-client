@@ -4,6 +4,7 @@ import {
   PlayPauseButton,
   SettingsButton,
   TimeIndicator,
+  VolumeButton,
   useInteract,
   useVideo,
 } from "netplayer";
@@ -12,8 +13,8 @@ import { useThemePlayer } from "@/contexts/ThemePlayerContext";
 import DotList from "@/components/shared/DotList";
 import { isMobile } from "react-device-detect";
 import ProgressSlider from "./ProgressSlider";
-import VolumeButton from "./VolumeButton";
-
+/* import VolumeButton from "./VolumeButton";
+ */
 
 const Controls: React.FC = () => {
   const { isInteracting } = useInteract();

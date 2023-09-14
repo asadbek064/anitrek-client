@@ -28,6 +28,8 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
     const handleVideoEnd = () => {
       if (endMode !== "refresh") return;
 
+      console.log(endMode);
+      
       if (endMode === "refresh") {
         refresh();
       }
@@ -74,6 +76,7 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
         // @ts-ignore
         crossOrigin={null}
         {...props}
+        onLoad={() => { videoRef.current.volume = 0.5 }}
         className="aspect-video	min-h-[16rem] max-h-[16rem]  sm:min-h-[28rem] sm:max-h-[28rem]  md:min-h-[38rem] md:max-h-[38rem] md:min-w-[68rem] md:max-w-[68rem]"
       >
         {props.children}

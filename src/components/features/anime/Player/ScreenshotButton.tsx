@@ -451,7 +451,7 @@ const ScreenshotButton = () => {
                     <CircleButton
                       secondary
                       LeftIcon={CgClose}
-                      iconClassName="w-4 h-4 text-red-500"
+                      iconClassName="w-4 h-4 text-sky-500"
                       onClick={deleteImage(index)}
                     />
                   </div>

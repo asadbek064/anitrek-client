@@ -9,6 +9,8 @@ import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
 import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
+import { BsPencilFill } from "react-icons/bs";
+
 
 const HeaderProfile = () => {
   const { user } = useUser();
@@ -50,10 +52,11 @@ const HeaderProfile = () => {
             </Button>
           </a>
         </Link> */}
-        <Link href="/upload">
+        
+        <Link href="/reviews/create">
           <a>
             <Button className="w-full" secondary>
-              <TextIcon LeftIcon={AiOutlineUpload}>Upload</TextIcon>
+              <TextIcon LeftIcon={BsPencilFill}>Write a Review</TextIcon>
             </Button>
           </a>
         </Link>

@@ -48,7 +48,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
     },
     ref
   ) => {
-    const limit = textLimit || 300;
+    const limit = textLimit || 150;
     const editor = useEditor(
       {
         extensions: [
@@ -180,7 +180,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
             
            
            <div className="opacity-80 text-sm pt-2">
-            <div className={editor.storage.characterCount.characters() < 150 ? "text-emerald-500" : (editor.storage.characterCount.characters() < 250 ? "text-yellow-400" : "text-rose-300" )}>
+            <div className={editor.storage.characterCount.characters() < limit * .25 ? "text-emerald-500" : (editor.storage.characterCount.characters() < (limit * .95) ? "text-yellow-400" : "text-rose-400" )}>
               {editor.storage.characterCount.characters()}/{limit}
             </div>
            </div>

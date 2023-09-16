@@ -224,7 +224,7 @@ const RoomPage: NextPage<RoomPageProps> = ({ room, user }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title || mediaTitle} - AnimetTV`}
+        title={`${title || mediaTitle} - AniTrek`}
         description={t("head_description", {
           mediaTitle,
           username:

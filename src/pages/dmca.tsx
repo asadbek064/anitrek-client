@@ -4,7 +4,7 @@ import React from "react";
 const dmca = () => {
   return (
     <div className="pt-20 px-4 md:px-12 space-y-4">
-      <Head title="DMCA - AnimetTV" description="DMCA AnimetTV" />
+      <Head title="DMCA - AniTrek" description="DMCA AniTrek" />
 
       <h1 className="text-2xl font-bold">DMCA takedown request</h1>
 

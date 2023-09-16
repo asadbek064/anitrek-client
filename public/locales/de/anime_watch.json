@@ -1,0 +1,8 @@
+{
+    "blur_heading": "Du schaust",
+    "rewatch_description": "Das System erkennt, dass Sie zugeschaut haben {{episodeName}}",
+    "rewatch_heading": "Nochmal ansehen {{episodeName}}",
+    "rewatch_no": "NEIN",
+    "rewatch_question": "Möchten Sie es noch einmal ansehen? {{episodeName}}?",
+    "rewatch_yes": "Ja"
+  }

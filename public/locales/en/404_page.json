@@ -1,1 +1,7 @@
-{"error_description":"Please go to the AnimetTV home page by clocking the button below","error_goback":"Go to home page","error_heading":"Page not found","error_title":"An error has occurred (404)","error_welcome":"Error <2>404</2>"}
+{
+  "error_description": "Please go to the AniTrek home page by clocking the button below",
+  "error_goback": "Go to home page",
+  "error_heading": "Page not found",
+  "error_title": "An error has occurred (404)",
+  "error_welcome": "Error <2>404</2>"
+}

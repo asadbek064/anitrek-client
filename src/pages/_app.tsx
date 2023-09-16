@@ -56,29 +56,20 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
   const getLayout =
     // @ts-ignore
     Component.getLayout || ((page) => <BaseLayout>{page}</BaseLayout>);
-
+    
     return (
       <React.Fragment>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890066986315850"
         crossOrigin="anonymous"></script>
-        
-        {/* Google AdS */}
-        <Script  
-          id="Adsense-id"  async
-          onError={(e) => { console.error("GAds script failed to load", e); }}
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6890066986315850"
-          crossOrigin="anonymous"
-        />
 
         {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
         <script id="syncData" type="application/json"></script>
 
-        {/* <Script id="chatBroEmbedCode">
+        <Script id="chatBroEmbedCode">
           {`
         function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
         ChatbroLoader({encodedChatId: '18L5g'});`}
-        </Script> */}
+        </Script>
 
         <Script
           strategy="afterInteractive"
@@ -135,6 +126,7 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
           </UserProvider>
           {process.env.NODE_ENV === "development" && <ReactQueryDevtools />}
         </QueryClientProvider>
+        
     </React.Fragment>
   );
 }

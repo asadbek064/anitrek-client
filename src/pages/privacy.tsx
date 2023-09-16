@@ -5,7 +5,7 @@ import React from "react";
 const privacy = () => {
   return (
     <Section className="space-y-8 pt-20">
-      <Head title="Privacy - AnimetTV" />
+      <Head title="Privacy - AniTrek" />
 
       <h1 className="text-2xl font-bold">Privacy Policy</h1>
       <p>Last updated: March 03, 2022</p>
@@ -50,7 +50,7 @@ const privacy = () => {
           <p>
             <strong>Company</strong> (referred to as either &quot;the
             Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-            this Agreement) refers to AnimetTV.
+            this Agreement) refers to AniTrek.
           </p>
         </li>
         <li>
@@ -109,13 +109,13 @@ const privacy = () => {
         </li>
         <li>
           <p>
-            <strong>Website</strong> refers to AnimetTV, accessible from{" "}
+            <strong>Website</strong> refers to AniTrek, accessible from{" "}
             <a
-              href="https://AnimetTV.live"
+              href="https://AniTrek.live"
               rel="external nofollow noopener noreferrer"
               target="_blank"
             >
-              https://AnimetTV.live
+              https://AniTrek.live
             </a>
           </p>
         </li>
@@ -545,11 +545,11 @@ const privacy = () => {
           <p>
             By visiting this page on our website:{" "}
             <a
-              href="https://AnimetTV.live/contact"
+              href="https://AniTrek.live/contact"
               rel="external nofollow noopener noreferrer"
               target="_blank"
             >
-              https://AnimetTV.live/contact
+              https://AniTrek.live/contact
             </a>
           </p>
         </li>

@@ -25,9 +25,9 @@ const WebStatPage: NextPage<WebStatsProps> = ({
 })  => {
   return (
     <div className="px-4 md:px-12 pt-20 space-y-4">
-      <Head title="Stats - AnimetTV" description="Website Stats" />
+      <Head title="Stats - AniTrek" description="Website Stats" />
 
-      <h1 className="text-2xl font-bold">AnimetTV Statistics</h1>
+      <h1 className="text-2xl font-bold">AniTrek Statistics</h1>
 
 
       <div className="flex justify-center mx-4 md:mx-12">

@@ -25,7 +25,7 @@ const useComments = (query: UseCommentsQuery) => {
         .select(
           "*,user:sce_display_users!user_id(*),reactions_metadata:sce_comment_reactions_metadata(*)"
         )
-        .order("created_at", { ascending: true });
+        .order("created_at", { ascending: false });
 
       if (topic) {
         query.eq("topic", topic);

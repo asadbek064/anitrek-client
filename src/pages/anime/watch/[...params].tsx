@@ -29,6 +29,7 @@ import { AnimeSourceConnection, Episode } from "@/types";
 import { filterOutMangaOvaSpecials, getAllSeasons, parseNumberFromString, sortByReleaseDate } from "@/utils";
 import { convert, getDescription, getTitle, sortMediaUnit } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
@@ -72,6 +73,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
   const { locale } = useRouter();
+  const { user } = useUser();
 
   const { isMobile } = useDevice();
   const [showInfoOverlay, setShowInfoOverlay] = useState(false);
@@ -84,6 +86,14 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   const { t } = useTranslation("anime_watch");
 
   const { params } = router.query;
+
+    // Sauce only let the chosen ones in
+    useEffect(() => {
+      if (user?.email !== "moonlightbz064@gmail.com") {
+        router.back();
+      }
+    },[router, user])
+
 
   useEventListener("visibilitychange", () => {
     if (isMobile) return;
@@ -197,6 +207,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
         break;
     }
   }
+ 
 
   // Orientation detection 
   useEffect(() => {
@@ -353,8 +364,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title} (${currentEpisode.name}) - AnimetTV`}
-        description={`Watch ${title} (${currentEpisode.name}) at AnimetTV. Completely free, no ads`}
+        title={`${title} (${currentEpisode.name}) - AniTrek`}
+        description={`Watch ${title} (${currentEpisode.name}) at AniTrek. Completely free, no ads`}
         image={anime.bannerImage}
       />
 

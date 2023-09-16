@@ -38,7 +38,7 @@ export const AppErrorFallback = ({
         </Button>
         <h3 className="text-2xl font-semibold mb-1">Error Details</h3>
 
-        <pre className="text-red-300 mb-3">Error: {error.message}</pre>
+        <pre className="text-sky-300 mb-3">Error: {error.message}</pre>
 
         <details>
           <summary className="mb-4">Expand to Show Error Stack Traces</summary>

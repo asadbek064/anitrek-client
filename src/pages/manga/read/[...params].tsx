@@ -14,6 +14,7 @@ import { Chapter, MangaSourceConnection } from "@/types";
 import { MediaType } from "@/types/anilist";
 import { getTitle, sortMediaUnit } from "@/utils/data";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
+import { useUser } from "@supabase/auth-helpers-react";
 import { GetServerSideProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -40,10 +41,18 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
   const { locale } = useRouter();
   const { t } = useTranslation("manga_read");
   const saveReadMutation = useSaveRead();
-
+  const { user } = useUser();
   const sortedChapters = useMemo(() => sortMediaUnit(chapters), [chapters]);
 
   const { params } = router.query;
+
+     // Sauce only let the chosen ones in
+     useEffect(() => {
+      if (user?.email !== "moonlightbz064@gmail.com") {
+        router.back();
+      }
+    },[router, user])
+
 
   const [
     mangaId,
@@ -186,7 +195,7 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
       <ReadSettingsContextProvider>
         <div className="flex items-center justify-center w-full min-h-screen">
           <Head
-            title={`${title} (${currentChapter.name}) - AnimetTV`}
+            title={`${title} (${currentChapter.name}) - AniTrek`}
             description={t("head_description", {
               title,
               chapterName: currentChapter.name,

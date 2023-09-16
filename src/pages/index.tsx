@@ -1,23 +1,14 @@
-import AnimeScheduling from "@/components/features/anime/AnimeScheduling";
-import RecommendedAnimeSection from "@/components/features/anime/RecommendedAnimeSection";
-import WatchedSection from "@/components/features/anime/WatchedSection";
-import CardSwiper from "@/components/shared/CardSwiper";
 import ClientOnly from "@/components/shared/ClientOnly";
-import ColumnSection from "@/components/shared/ColumnSection";
-import GenreSwiper from "@/components/shared/GenreSwiper";
 import Head from "@/components/shared/Head";
-import HomeBanner from "@/components/shared/HomeBanner";
+import Landing from "@/components/shared/Landing";
 import NewestComments from "@/components/shared/NewestComments";
+import NewestReviews from "@/components/shared/NewestReviews";
 import Section from "@/components/shared/Section";
-import ShouldWatch from "@/components/shared/ShouldWatch";
-import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
-import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
 import useRecommendations from "@/hooks/useRecommendations";
 import { MediaSort, MediaType } from "@/types/anilist";
 import { getSeason, randomElement } from "@/utils";
-import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import React, { useMemo } from "react";
 import { isMobile } from "react-device-detect";
@@ -25,7 +16,7 @@ import { isMobile } from "react-device-detect";
 const Home = () => {
   const currentSeason = useMemo(getSeason, []);
   const { isDesktop } = useDevice();
-  const { t } = useTranslation();
+  const { t } = useTranslation("review");
 
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
@@ -64,9 +55,8 @@ const Home = () => {
       perPage: 5,
     });
 
-  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } =
-    useRecentlyUpdated();
-
+/*   const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
+ */
   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
   }, [trendingAnime]);
@@ -78,120 +68,36 @@ const Home = () => {
     { enabled: !!randomTrendingAnime }
   );
 
-  const randomAnime = useMemo(
+ /*  const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,
     [recommendationsAnime]
-  );
+  ); */
 
   return (
     <React.Fragment>
       <Head
-        title="AnimetTV - Anime Hub"
-        description="AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads"
+        title="AniTrek - Anime Hub"
+        description="AniTrek: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AniTrek. With cutting-edge features like AI-enhanced scene search and community engagement, no ads"
       />
 
       <ClientOnly>
         <div className="pb-8">
-          <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
-
+          
           <div className="space-y-8">
-            <WatchedSection />
-            <RecommendedAnimeSection />
-            
-            <div>
-              {/* Coinzilla verification */}
-            
-              {/* Ad Start */}
-              <ins className="adsbygoogle"
-                    style={{ display: "block"}}
-                    data-ad-client="ca-pub-6890066986315850"
-                    data-ad-slot="3265263871"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-              {/* Ad End */}
-            </div>
-
-            {trendingLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("most_popular_season", { ns: "common" })}>
-                <CardSwiper data={trendingAnime} />
-              </Section>
-            )}
-            
-            {/* {recentlyUpdatedLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("newly_added", { ns: "common" })}>
-                <CardSwiper data={recentlyUpdated} />
-              </Section>
-            )} */}
            
-            <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
-             {/* { <ColumnSection
-                title={t("most_popular_season", { ns: "common" })}
-                type={MediaType.Anime}
-                data={popularSeason}
-                viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
-                isLoading={popularSeasonLoading}
-              />} */}
-              <ColumnSection
-                title={t("most_popular", { ns: "common" })}
-                type={MediaType.Anime}
-                data={popularAllTime}
-                viewMoreHref="/browse?sort=popularity&type=anime"
-                isLoading={popularAllTimeLoading}
-              />
-              <ColumnSection
-                title={t("most_favourite_season", { ns: "common" })}
-                type={MediaType.Anime}
-                data={favouriteSeason}
-                viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
-                isLoading={favouriteSeasonLoading}
-              />
-              <ColumnSection
-                title={t("most_favourite", { ns: "common" })}
-                type={MediaType.Anime}
-                data={favouriteAllTime}
-                viewMoreHref="/browse?sort=favourites&type=anime"
-                isLoading={favouriteAllTimeLoading}
-              />
-            </Section>
-
+            <Landing />
+            
             <NewestComments type={MediaType.Anime} />
 
-
-
-            {/* <div
-              className={classNames(
-                "flex gap-8",
-                isDesktop ? "flex-row" : "flex-col"
-              )}
+            <Section
+              isTitleLink={true}
+              titleLink={'/reviews'}
+              title={t("recent_reviews")}
             >
-              <Section
-                title={t("should_watch_today", { ns: "anime_home" })}
-                className="w-full md:w-[75%] md:!pr-0 md:block hidden"
-              >
-                {randomAnime && (
-                  <ShouldWatch data={randomAnime} isLoading={!randomAnime} />
-                )}
-              </Section>
+              <NewestReviews  type={MediaType.Anime} homeView={true} />
 
-              {<Section
-                title={t("genres", { ns: "common" })}
-                className="w-full md:w-[30%] md:!pl-0"
-              >
-                <GenreSwiper className="md:h-[500px]" />
-              </Section>}
-            </div> */}
-
-            <Section title={t("airing_schedule", { ns: "anime_home" })}>
-              <AnimeScheduling />
             </Section>
+
           </div>
         </div>
       </ClientOnly>

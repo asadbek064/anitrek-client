@@ -4,6 +4,7 @@ import AddTranslationModal from "@/components/shared/AddTranslationModal";
 import Button from "@/components/shared/Button";
 import Card from "@/components/shared/Card";
 import CharacterConnectionCard from "@/components/shared/CharacterConnectionCard";
+import Characters from "@/components/shared/Characters";
 import DetailsBanner from "@/components/shared/DetailsBanner";
 import DetailsSection from "@/components/shared/DetailsSection";
 import DotList from "@/components/shared/DotList";
@@ -14,6 +15,7 @@ import MediaDescription from "@/components/shared/MediaDescription";
 import NotificationButton from "@/components/shared/NotificationButton";
 import PlainCard from "@/components/shared/PlainCard";
 import Popup from "@/components/shared/Popup";
+import ThemeLite from "@/components/shared/ThemeLite";
 import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
@@ -23,7 +25,8 @@ import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
-
+/* import { getWatchProviders } from "@/services/tmdb";
+ */
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
@@ -40,11 +43,12 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
-import { AiOutlineUpload } from "react-icons/ai";
+import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
-import { BsFillPlayFill } from "react-icons/bs";
+import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { MdTagFaces } from "react-icons/md";
 
 interface DetailsPageProps {
   anime: Media;
@@ -78,6 +82,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
     [anime, locale]
   );
 
+  /*   console.log(getWatchProviders(anime));
+  
+ */
   useEffect(() => {
     if (!anime) return;
 
@@ -89,12 +96,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       episode: null,
       id: anime.id,
       nextEpUrl: null,
-    });
+    });    
   }, [anime]);
+
   return (
     <>
       <Head
-        title={`${title} - AnimetTV`}
+        title={`${title} - AniTrek`}
         description={description}
         image={anime.bannerImage}
       />
@@ -104,7 +112,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="relative pb-4 bg-background-900">
           <div className="flex flex-col md:flex-row md:space-x-8">
-            <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 w-[186px] -mt-20 space-y-6">
+            <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 w-[148px] md:w-[250px] -mt-20 space-y-6">
               <PlainCard src={anime.coverImage.extraLarge} alt={title} />
 
               {user && (
@@ -120,29 +128,30 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 <div className="flex items-center flex-wrap gap-2 mb-4">
                   {user ? (
                     <div>
-                      {(episodes && episodes.length > 0) ? (''
-                       /*  <Link href={`/anime/watch/${anime.id}`}>
+                      {episodes && episodes.length > 0 ? (
+                        ""
+                      ) : (
+                        /*  <Link href={`/anime/watch/${anime.id}`}>
                         <a>
                           <Button primary LeftIcon={BsFillPlayFill}>
                             <p>{t("common:watch_now")}</p>
                           </Button>
                         </a>
                       </Link> */
-                        ): (
-                          <Link href={DISCORD_URL}>
-                            <a target={'_blank'}>
-                              <Button primary LeftIcon={FaDiscord}>
-                                <p>Request Index</p>
-                              </Button>
-                            </a>
-                          </Link>
-                        )}
+                        <Link href={DISCORD_URL}>
+                          <a target={"_blank"}>
+                            <Button primary LeftIcon={FaDiscord}>
+                              <div>Request Index</div>
+                            </Button>
+                          </a>
+                        </Link>
+                      )}
                     </div>
-                  ): (
+                  ) : (
                     <Link href={"/login"}>
-                      <a target={'_blank'}>
+                      <a target={"_blank"}>
                         <Button primary LeftIcon={BiBookAdd}>
-                          <p>Start Tracking</p>
+                          <div>Start Tracking</div>
                         </Button>
                       </a>
                     </Link>
@@ -159,7 +168,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     type="click"
                     className="space-y-2"
                   >
-                   {/*  <Link href={`/wwf/create/${anime.id}`}>
+                    {/*  <Link href={`/wwf/create/${anime.id}`}>
                       <a>
                         <Button
                           secondary
@@ -170,6 +179,18 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Button>
                       </a>
                     </Link> */}
+
+                    <Link href={`/reviews/create/${anime.id}`}>
+                      <a>
+                        <Button
+                          secondary
+                          className="w-full"
+                          LeftIcon={BsPencilFill}
+                        >
+                          <div>Write a Review</div>
+                        </Button>
+                      </a>
+                    </Link>
 
                     <AddTranslationModal
                       mediaId={anime.id}
@@ -193,7 +214,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   </Popup>
                 </div>
 
-                <p className="mb-2 text-3xl font-semibold">{title}</p>
+                <p className="mb-2 [font-size:var(--step-2)] font-semibold">
+                  {title}
+                </p>
 
                 <DotList>
                   {anime.genres.map((genre) => (
@@ -202,6 +225,24 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     </span>
                   ))}
                 </DotList>
+
+                <div className="mt-4 flex flex-wrap items-center gap-x-8 text-lg">
+                   
+                    {anime.averageScore && (
+                      <TextIcon
+                        LeftIcon={MdTagFaces}
+                        iconClassName="text-primary-300"
+                      >
+                        <p>{anime.averageScore}%</p>
+                      </TextIcon>
+                    )}
+                    <TextIcon
+                      LeftIcon={AiFillHeart}
+                      iconClassName="text-sky-400"
+                    >
+                      <p>{numberWithCommas(anime.favourites)}</p>
+                    </TextIcon>
+                  </div>
 
                 <MediaDescription
                   description={description}
@@ -255,44 +296,57 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
           <div className="space-y-12 md:col-span-8">
-            {user ? (
+            {user && user?.email === "moonlightbz064@gmail.com" ? (
               <DetailsSection
-              title={t("episodes_section")}
-              className="overflow-hidden"
-            >
-              {isLoading ? (
-                <div className="h-full w-full flex items-center justify-center">
-                  <Spinner />
-                </div>
-              ) : (
-                <LocaleEpisodeSelector mediaId={anime.id} episodes={episodes} />
-              )}
-            </DetailsSection>
-            ): (
-              <div>
-
-                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
-                  <Link href={`/login?redirectedFrom=${router.asPath}`}>
-                    <a>
-                      <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                        <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
-                        <span className="font-semibold mr-2 text-left flex-auto">Members Only</span>
-                        <TextIcon LeftIcon={IoIosArrowForward}/>
-                      </div>
-                    </a>
-                  </Link>
-                </div>
-
-              </div>
+                title={t("episodes_section")}
+                className="overflow-hidden"
+              >
+                {isLoading ? (
+                  <div className="h-full w-full flex items-center justify-center">
+                    <Spinner />
+                  </div>
+                ) : (
+                  <LocaleEpisodeSelector
+                    mediaId={anime.id}
+                    episodes={episodes}
+                  />
+                )}
+              </DetailsSection>
+            ) : (
+              null
             )}
+
+            <ThemeLite media={anime} />
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
             </DetailsSection>
 
+            {/* {!!anime?.characters?.edges?.length && (
+                  <DetailsSection
+                    title={t("characters_section")}
+                    className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
+                  >
+                    {anime.characters.edges.map((characterEdge, index) => (
+                      <CharacterConnectionCard
+                        characterEdge={characterEdge}
+                        key={index}
+                      />
+                    ))}
+                  </DetailsSection>
+                )} */}
+
+            <DetailsSection title={t("characters_section")}>
+              <Characters data={anime} />
+            </DetailsSection>
+
             {!!anime?.relations?.nodes?.length && (
               <DetailsSection title={t("relations_section")}>
-                <List data={sortByReleaseDate(filterOutMangaOvaSpecials(anime.relations.nodes)).filter((x, i) => i < 8)}>{/* FILTER OUT MANGAO AND ONA and SPECIAL and sort it by release date */}
+                <List
+                  data={sortByReleaseDate(
+                    filterOutMangaOvaSpecials(anime.relations.nodes)
+                  ).filter((x, i) => i < 8)}
+                >
                   {(node) => <Card data={node} />}
                 </List>
               </DetailsSection>
@@ -301,16 +355,16 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
             {!!anime?.recommendations?.nodes?.length && (
               <DetailsSection title={t("recommendations_section")}>
                 <List
-                  data={anime.recommendations.nodes.map(
-                    (node) => node.mediaRecommendation
-                  ).filter((x, i) => i < 4)}
+                  data={anime.recommendations.nodes
+                    .map((node) => node.mediaRecommendation)
+                    .filter((x, i) => i < 12)}
                 >
                   {(node) => <Card data={node} />}
                 </List>
               </DetailsSection>
             )}
 
-            {/* {!!anime?.characters?.edges?.length && (
+            {/*  {!!anime?.characters?.edges?.length && (
               <DetailsSection
                 title={t("characters_section")}
                 className="grid w-full grid-cols-1 gap-4 md:grid-cols-2"
@@ -323,58 +377,56 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 ))}
               </DetailsSection>
             )} */}
-          
-            
           </div>
 
           <div className="hidden md:block md:col-span-2 xl:h-[max-content] space-y-4">
             <div className="flex flex-row md:flex-col overflow-x-auto bg-background-900 rounded-md p-4 gap-4 [&>*]:shrink-0 md:no-scrollbar">
-                <InfoItem
-                  title={t("common:format")}
-                  value={convert(anime.format, "format", { locale })}
-                />
-                <InfoItem title="English" value={anime.title.english} />
-                <InfoItem title="Native" value={anime.title.native} />
-                <InfoItem title="Romanji" value={anime.title.romaji} />
-                <InfoItem
-                  title={t("common:popular")}
-                  value={numberWithCommas(anime.popularity)}
-                />
-                <InfoItem
-                  title={t("common:favourite")}
-                  value={numberWithCommas(anime.favourites)}
-                />
-                <InfoItem
-                  title={t("common:trending")}
-                  value={numberWithCommas(anime.trending)}
-                />
+              <InfoItem
+                title={t("common:format")}
+                value={convert(anime.format, "format", { locale })}
+              />
+              <InfoItem title="English" value={anime.title.english} />
+              <InfoItem title="Native" value={anime.title.native} />
+              <InfoItem title="Romanji" value={anime.title.romaji} />
+              <InfoItem
+                title={t("common:popular")}
+                value={numberWithCommas(anime.popularity)}
+              />
+              <InfoItem
+                title={t("common:favourite")}
+                value={numberWithCommas(anime.favourites)}
+              />
+              <InfoItem
+                title={t("common:trending")}
+                value={numberWithCommas(anime.trending)}
+              />
 
-                <InfoItem
-                  title="Studio"
-                  value={anime.studios.nodes.map((studio) => (
-                    <p key={studio.id}>
-                      <Link href={createStudioDetailsUrl(studio)}>
-                        <a className="hover:text-primary-300 transition duration-200">
-                          {studio.name}
-                        </a>
-                      </Link>
-                    </p>
-                  ))}
-                />
+              <InfoItem
+                title="Studio"
+                value={anime.studios.nodes.map((studio) => (
+                  <div key={studio.id}>
+                    <Link href={createStudioDetailsUrl(studio)}>
+                      <a className="hover:text-primary-300 transition duration-200">
+                        {studio.name}
+                      </a>
+                    </Link>
+                  </div>
+                ))}
+              />
 
-                <InfoItem
-                  title={t("common:season")}
-                  value={`${convert(anime.season, "season", { locale })} ${
-                    anime.seasonYear
-                  }`}
-                />
-                <InfoItem
-                  title={t("common:synonyms")}
-                  value={anime.synonyms.map((synomym) => (
-                    <p key={synomym}>{synomym}</p>
-                  ))}
-                />
-              </div>
+              <InfoItem
+                title={t("common:season")}
+                value={`${convert(anime.season, "season", { locale })} ${
+                  anime.seasonYear
+                }`}
+              />
+              <InfoItem
+                title={t("common:synonyms")}
+                value={anime.synonyms.map((synomym) => (
+                  <div key={synomym}>{synomym}</div>
+                ))}
+              />
+            </div>
 
             <div className="space-y-2 text-gray-400">
               <h1 className="font-semibold">Tags</h1>
@@ -398,7 +450,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               </ul>
             </div>
           </div>
-
         </Section>
       </div>
     </>
@@ -410,7 +461,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   try {
     // default anime details
-    const { data: isDMCA } = await supabaseClient
+    /*  const { data: isDMCA } = await supabaseClient
       .from("kaguya_dmca")
       .select("id")
       .eq("mediaId", params[0])
@@ -424,7 +475,7 @@ export const getStaticProps: GetStaticProps = async ({
           destination: "/got-dmca",
         },
       };
-    }
+    } */
 
     const media = await getMediaDetails({
       type: MediaType.Anime,
@@ -444,7 +495,6 @@ export const getStaticProps: GetStaticProps = async ({
       },
       revalidate: REVALIDATE_TIME,
     };
-    
   } catch (err) {
     return { notFound: true, revalidate: REVALIDATE_TIME };
   }

@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: colors.red,
+        primary: colors.sky,
 
         background: {
           DEFAULT: "#111111",
@@ -36,6 +36,5 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio")
-
   ],
 };

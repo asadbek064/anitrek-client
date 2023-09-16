@@ -208,7 +208,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
 
                       <TextIcon
                         LeftIcon={BsFillHeartFill}
-                        iconClassName="text-red-400"
+                        iconClassName="text-sky-400"
                       >
                         <p>{numberWithCommas(data.favourites)}</p>
                       </TextIcon>
@@ -236,7 +236,7 @@ const Card: React.FC<AnimeCardProps> = (props) => {
           </motion.div>
           <div>
             <p
-              className="mt-1 text-base font-semibold line-clamp-2"
+              className="mt-1 [font-size:var(--step-0)] font-semibold line-clamp-2"
               style={{ color: primaryColor }}
             >
               {title}

@@ -184,7 +184,7 @@ const CommentComponent: React.FC<CommentProps> = ({ comment }) => {
           showActionMenu ? "flex" : "hidden"
         )}
       >
-        <ReactionSelector toggleReaction={toggleReaction} />
+        {/* <ReactionSelector toggleReaction={toggleReaction} /> */}
 
         {comment.user.id === user?.id && (
           <Button

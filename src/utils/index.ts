@@ -520,6 +520,14 @@ export const createMediaDetailsUrlAI = (title: string, type: string) => {
     return `/anime/details/hentai/${title}`;
   }
 }
+
+export const createReviewDetailsUrl = (postID: string) => {
+  if (postID !== undefined) {
+    return `/reviews/${postID}`
+  }
+  return '/';
+}
+
 export const createMediaDetailsUrl = (media: Media) => {
   if (media !== undefined) {
     if (media.type === MediaType.Anime) {

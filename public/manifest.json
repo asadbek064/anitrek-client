@@ -4,9 +4,9 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "AnimetTV",
-  "short_name": "ATV",
-  "description": "AnimetTV: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AnimetTV. With cutting-edge features like AI-enhanced scene search and community engagement, no ads",
+  "name": "AniTrek",
+  "short_name": "AniTrek",
+  "description": "AniTrek: Unleashing the Future of Anime · Explore, track, and immerse yourself in your favorite anime and manga with AniTrek. With cutting-edge features like AI-enhanced scene search and community engagement, no ads",
   "icons": [
     {
       "src": "icons/icon-512.jpg",

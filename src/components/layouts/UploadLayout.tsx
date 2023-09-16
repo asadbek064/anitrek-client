@@ -49,7 +49,7 @@ const UploadLayout: React.FC = ({ children }) => {
 
   return (
     <div className="w-full min-h-screen flex justify-end">
-      <Head title="Upload - AnimetTV" />
+      <Head title="Upload - AniTrek" />
 
       {isMobile && isMenuOpen && (
         <div

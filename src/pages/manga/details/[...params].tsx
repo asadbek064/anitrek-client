@@ -57,7 +57,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
   return (
     <>
       <Head
-        title={`${title} - AnimetTV`}
+        title={`${title} - AniTrek`}
         description={description}
         image={manga.bannerImage}
       />
@@ -81,13 +81,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
             <div className="justify-between text-center md:text-left flex flex-col items-center md:items-start py-4 mt-4 md:-mt-16 space-y-4">
               <div className="flex flex-col md:items-start items-center space-y-4">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
-                  <Link href={`/manga/read/${manga.id}`}>
+                 {/*  <Link href={`/manga/read/${manga.id}`}>
                     <a>
                       <Button primary LeftIcon={BsFillPlayFill}>
                         <p>{t("read_now")}</p>
                       </Button>
                     </a>
-                  </Link>
+                  </Link> */}
                   <Popup
                     reference={
                       <Button
@@ -99,7 +99,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                     type="click"
                     className="space-y-2"
                   >
-                    <Link href={`/upload/manga/${manga.id}`}>
+                    {/* <Link href={`/upload/manga/${manga.id}`}>
                       <a>
                         <Button
                           secondary
@@ -109,14 +109,14 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                           <p>Upload</p>
                         </Button>
                       </a>
-                    </Link>
+                    </Link> */}
 
-{/*                     <AddTranslationModal
+                    <AddTranslationModal
                       mediaId={manga.id}
                       mediaType={MediaType.Manga}
                       defaultDescription={description}
                       defaultTitle={title}
-                    /> */}
+                    />
                   </Popup>
                 </div>
 
@@ -161,23 +161,25 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
          
 
           <div className="md:col-span-8 space-y-12">
-            <DetailsSection title={t("chapters_section")} className="relative">
+            {(user && user?.email === "moonlightbz064@gmail.com") ? (
+              <DetailsSection title={t("chapters_section")} className="relative">
               {isLoading ? (
                 <div className="h-full w-full flex items-center justify-center">
                   <Spinner />
                 </div>
               ) : (
                 <>
-                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
+                {/* <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
                   <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
                     <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
                     <span className="font-semibold mr-2 text-left flex-auto">Offline temporary</span>
                   </div>
-                </div>
-                  {/* <LocaleChapterSelector mediaId={manga.id} chapters={chapters} /> */}
+                </div> */}
+                <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
                 </>
               )}
             </DetailsSection>
+            ): ''}
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`manga-${manga.id}`} />

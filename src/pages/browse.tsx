@@ -10,7 +10,6 @@ import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import Section from "@/components/shared/Section";
-import Spinner from "@/components/shared/Spinner";
 
 const components = {
   anime: AnimeBrowseList,
@@ -38,8 +37,8 @@ const typeSelectStyles = {
   singleValue: (provided) => {
     return {
       ...provided,
-      fontSize: "2.25rem",
-      lineHeight: "2.5rem",
+      fontSize: "1.8rem",
+      lineHeight: "2.0rem",
       color: "white",
       fontWeight: 600,
     };
@@ -47,8 +46,8 @@ const typeSelectStyles = {
   placeholder: (provided) => {
     return {
       ...provided,
-      fontSize: "2.25rem",
-      lineHeight: "2.5rem",
+      fontSize: "1.8rem",
+      lineHeight: "2.0rem",
       color: "white",
       fontWeight: 600,
     };
@@ -65,7 +64,7 @@ const BrowsePage = ({ query: baseQuery }) => {
     keyword = "",
     season = undefined,
     seasonYear = undefined,
-    sort = "TRENDING_DESC",
+    sort = "TRENDING",
     genres = [],
     tags = [],
     countries = [],
@@ -108,8 +107,8 @@ const BrowsePage = ({ query: baseQuery }) => {
   return (
     <Section className="py-20">
       <Head
-        title={`Search ${chosenType.label} - AnimetTV`}
-        description={`Search ${chosenType.label} AnimetTV`}
+        title={`Search ${chosenType.label} - AniTrek`}
+        description={`Search ${chosenType.label} AniTrek`}
       />
 
       <div className="mb-8 flex items-center space-x-2">

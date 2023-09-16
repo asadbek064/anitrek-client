@@ -106,7 +106,7 @@ export const getMediaDetails = async (
     .select("*")
     .eq("mediaId", media.id)
     .eq("mediaType", args?.type || MediaType.Anime);
-
+  
   if (data?.length) {
     translations = data;
   } else if (args?.type === MediaType.Manga) {

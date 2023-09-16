@@ -44,7 +44,7 @@ const Footer = ({}) => {
       </div>
 
         <div className="flex flex-col justify-center items-center w-5/6 md:w-1/3 ">
-        <p className="text-xs text-gray-300">ANIMET.SITE is an independent website presenting anime from various sources across the internet. © ANIMET.SITE 2023 | Built with AnimetTV API.</p>
+        <p className="text-xs text-gray-300"> © ANIMET.SITE 2023 | Built with AniTrek API.</p>
         </div>
     </div>
   );

@@ -3,10 +3,10 @@ import axios from "axios";
 import { Media, MediaCoverImage, MediaTitle } from "@/types/anilist";
 import config from "next/config";
 
-const ANIMETTV_SERVER_URL = process.env.NEXT_PUBLIC_ANIMETTV_SERVER_URL;
+const AniTrek_SERVER_URL = process.env.NEXT_PUBLIC_AniTrek_SERVER_URL;
 
-export const animettvFetcher = async(apiRoute:string) => {
-    const { data } = await axios.get<any[]>(ANIMETTV_SERVER_URL+apiRoute);
+export const AniTrekFetcher = async(apiRoute:string) => {
+    const { data } = await axios.get<any[]>(AniTrek_SERVER_URL+apiRoute);
     return data;
 };
 
@@ -15,7 +15,7 @@ export const animettvFetcher = async(apiRoute:string) => {
     this keeps support for legacy website to use same endpoint
 */
 export const getAiTitles = async () => {
-    const response = await animettvFetcher(
+    const response = await AniTrekFetcher(
         "/api/watch-anime/anime60fps-available-titles",
     );
 
@@ -50,7 +50,7 @@ export const getAiTitles = async () => {
 
 
 export const getAiTitle = async(title: string) => {
-    const response = await animettvFetcher(
+    const response = await AniTrekFetcher(
         `/api/watch-anime/anime60fps?title=${encodeURIComponent(title)}`
     );
 

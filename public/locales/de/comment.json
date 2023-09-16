@@ -1,0 +1,13 @@
+{
+    "comment_delete": "Löschen",
+    "comment_edit": "Bearbeiten",
+    "comment_placeholder": "Drücken Sie Ihre Gedanken aus",
+    "editing_escape": "Drücken Sie ESC, um <2>Ausfahrt</2>.",
+    "is_edited": "Bearbeitet",
+    "like": "Wie",
+    "liked": "Gefallen",
+    "need_login_msg": "Du musst <2>Anmeldung</2> kommentieren",
+    "no_comments_msg": "Seien Sie der Erste, der diese Serie kommentiert!",
+    "reply": "Antwort",
+    "reply_placeholder": "Antwort"
+  }

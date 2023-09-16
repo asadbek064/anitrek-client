@@ -111,7 +111,7 @@ const MobileHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
                         )}
                         <TextIcon
                           LeftIcon={AiFillHeart}
-                          iconClassName="text-red-400"
+                          iconClassName="text-sky-400"
                         >
                           <p>{numberWithCommas(slide.favourites)}</p>
                         </TextIcon>
@@ -250,7 +250,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
                     modestbranding: 1,
                     controls: 0,
                     mute: 1,
-                    origin: "https://animet.tv",
+                    origin: "https://anitrek.co",
                   },
                 }}
                 containerClassName={classNames(
@@ -271,7 +271,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
           className="absolute left-4 top-1/2 w-full -translate-y-1/2 md:left-12 md:w-[45%] lg:left-20 xl:left-28 2xl:left-36"
           transition={{ ease: transition, duration: 1 }}
         >
-          <h1 className="text-2xl font-bold uppercase line-clamp-2 sm:line-clamp-3 md:text-4xl md:line-clamp-4">
+          <h1 className="[font-size:var(--step-2)] font-bold uppercase line-clamp-2 sm:line-clamp-3  md:line-clamp-4">
             {title}
           </h1>
 
@@ -282,7 +282,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
               </TextIcon>
             )}
 
-            <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-red-400">
+            <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-sky-400">
               <p>{numberWithCommas(activeSlide.favourites)}</p>
             </TextIcon>
 

@@ -90,8 +90,8 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
   return (
     <React.Fragment>
       <Head
-        title={`${title} A.I Upscaled - AnimetTV`}
-        description={`Watch ${title} A.I Upscaled at AnimetTV. Completely free, no ads`}
+        title={`${title} A.I Upscaled - AniTrek`}
+        description={`Watch ${title} A.I Upscaled at AniTrek. Completely free, no ads`}
       />
     <div>
 

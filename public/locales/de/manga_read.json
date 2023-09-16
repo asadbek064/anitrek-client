@@ -1,0 +1,18 @@
+{
+    "error_goback": "zurück zur vorherigen Seite",
+    "error_message": "Ein Fehler ist aufgetreten ({{error}})",
+    "fit_mode": "Fit-Modus",
+    "head_description": "Lesen {{title}} ({{chapterName}}) bei AniTrek.",
+    "layout_direction": "Layoutrichtung",
+    "next_chapter": "Nächstes Kapitel",
+    "next_image": "Nächstes Bild",
+    "previous_chapter": "Vorheriges Kapitel",
+    "previous_image": "Vorheriges Bild",
+    "reading": "Lektüre",
+    "reread_description": "Das System erkennt, dass Sie gelesen haben {{chapterName}}",
+    "reread_heading": "Lesen {{chapterName}}",
+    "reread_no": "NEIN",
+    "reread_question": "Möchten Sie lesen? {{chapterName}}?",
+    "reread_yes": "Ja",
+    "search_chapter_placeholder": "Kapitelname"
+  }

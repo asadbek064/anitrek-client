@@ -1,0 +1,6 @@
+{
+    "error_description": "Bitte gehen Sie zur AniTrek-Homepage, indem Sie auf die Schaltfläche unten klicken",
+    "error_heading": "Hoppla, da ist ein Fehler aufgetreten. Bitte melden Sie es auf unserem DISCORD-Server",
+    "error_title": "Ein Fehler ist aufgetreten ({{statusCode}})",
+    "error_welcome": "Code <2>Die {{statusCode}} ☹️</2>"
+  }

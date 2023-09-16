@@ -43,11 +43,12 @@ import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useMemo } from "react";
-import { AiOutlineUpload } from "react-icons/ai";
+import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
+import { MdTagFaces } from "react-icons/md";
 
 interface DetailsPageProps {
   anime: Media;
@@ -224,6 +225,24 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     </span>
                   ))}
                 </DotList>
+
+                <div className="mt-4 flex flex-wrap items-center gap-x-8 text-lg">
+                   
+                    {anime.averageScore && (
+                      <TextIcon
+                        LeftIcon={MdTagFaces}
+                        iconClassName="text-primary-300"
+                      >
+                        <p>{anime.averageScore}%</p>
+                      </TextIcon>
+                    )}
+                    <TextIcon
+                      LeftIcon={AiFillHeart}
+                      iconClassName="text-sky-400"
+                    >
+                      <p>{numberWithCommas(anime.favourites)}</p>
+                    </TextIcon>
+                  </div>
 
                 <MediaDescription
                   description={description}

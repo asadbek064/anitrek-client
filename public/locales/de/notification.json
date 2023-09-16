@@ -1,0 +1,7 @@
+{
+  "subscribed_msg": "{{mediaTitle}}Benachrichtigung aktiviert",
+  "subscription_needed_msg": "Sie müssen den Empfang von Benachrichtigungen zulassen, bevor Sie sich anmelden",
+  "unsubscribed_msg": "{{mediaTitle}}Die Benachrichtigung wurde deaktiviert",
+  "notification_heading": "Benachrichtigungen",
+  "no_notifications_msg": "Keine Benachrichtigungen"
+}

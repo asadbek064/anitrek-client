@@ -1,0 +1,18 @@
+{
+    "browse_files": "Wählen Sie ein Bild von Ihrem Gerät aus",
+    "description": "Hier erfahren Sie, welcher Anime, welche Episode und wann genau diese Szene erscheint",
+    "drag_and_drop": "Ziehen und ablegen",
+    "heading": "Anime-Szenensuche nach Bild",
+    "invalid_url": "ungültige URL",
+    "made_by": "Verwendung einer Suchmaschine von",
+    "note": "Hinweis: Suchergebnisse sind nicht 100 % genau. ",
+    "num_of_found_images": "Gesucht {{num}} Bilder",
+    "percent_similarity": "~{{percent}}% Ähnlichkeit",
+    "tab_title": "Anime-Szenensuche nach Bild",
+    "try_again": "Versuchen Sie es mit einem anderen Bild",
+    "upload": "Hochladen",
+    "upload_another_image": "Anderes Bild",
+    "upload_image": "Laden Sie Ihr Bild hoch",
+    "upload_supported_extensions": "PNG, JPG unterstützt.",
+    "your_image": "Ihr Suchbild"
+  }

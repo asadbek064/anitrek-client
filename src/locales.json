@@ -1,5 +1,6 @@
 [
   { "locale": "en", "name": "English" },
+  { "locale": "de", "name": "German" },
   { "locale": "ru", "name": "Русский" },
   { "locale": "es", "name": "Español" }
 ]

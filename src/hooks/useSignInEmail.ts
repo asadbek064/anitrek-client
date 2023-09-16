@@ -28,10 +28,10 @@ const useSignInWithEmail = (options?: UseSignInWithEmailOptions) => {
     {
       onSuccess: (user) => {
         // Perform any actions after successful sign-in, like redirecting
-        if (options?.redirectTo && !options.redirectTo?.includes("/")) {
+        if (options?.redirectTo && !options.redirectTo?.includes("/home")) {
           router.replace({pathname: options.redirectTo});
         } else {
-          router.replace({pathname: "/"});
+          router.replace({pathname: "/home"});
         }
       },
     }

@@ -23,11 +23,14 @@ const registerEmailUser =async (data:RegisterData) => {
 }
 
 const useEmailRegister = () => {
+    const router = useRouter();
     const queryClient = useQueryClient();
 
     return useMutation(registerEmailUser, {
         onSuccess: () => {
             queryClient.invalidateQueries();
+
+            router.replace({ pathname: '/home'});
         }
     });
 }

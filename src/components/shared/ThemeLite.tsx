@@ -98,7 +98,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
           >
           <ThemeSettingsContextProvider>
                        
-            <ThemePlayerLite sources={sources} />
+            <ThemePlayerLite sources={sources}/>
             
             <div className="mt-1 [font-size:var(--step--3)] text-gray-300 tracking-wide opacity-70">source: animethemes.moe</div>
           </ThemeSettingsContextProvider>

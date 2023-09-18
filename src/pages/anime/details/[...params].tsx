@@ -101,6 +101,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
     });
   }, [anime]);
 
+  console.log(anime);
+  
   return (
     <>
       <Head
@@ -126,9 +128,12 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   )}
 
                 </div>
-                <div className="flex flex-col space-y-2 -mt-16 md:hidden">
+                <div className="flex flex-col space-y-2 -mt-14 md:hidden">
                     <AnimeStatus status={anime.status} />
-                    <div className="[font-size:var(--step-1)]"><span className="font-semibold">{anime.episodes} eps</span> aired</div>
+
+                    {anime.episodes && (
+                      <div className="[font-size:var(--step-1)]"><span className="font-semibold">{anime.episodes} eps</span> aired</div>
+                    )}
 
                     {user ? (
                       <div className="flex flex-col items-center">
@@ -150,27 +155,35 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 {user && (
                   <div className="flex flex-col space-y-2">
                     <div className="flex flex-row space-x-4 pt-2">
-                    <NotificationButton type="anime" source={anime} />
 
-                      <Link href={`/reviews/create/${anime.id}`}>
-                        <a className="w-full">
-                          <Button
-                            secondary
-                            className="[font-size:var(--step--1)]"
-                            LeftIcon={BsPencilFill}
-                          >
-                            <div>Write a Review</div>
-                          </Button>
-                        </a>
-                      </Link>
+                    <div>
+                      <NotificationButton type="anime" source={anime} />
+                    </div>
+                      
+                      <div>
+                        <Link href={`/reviews/create/${anime.id}`}>
+                          <a className="w-full">
+                            <Button
+                              secondary
+                              className="[font-size:var(--step--1)]"
+                              LeftIcon={BsPencilFill}
+                            >
+                              <div>Write a Review</div>
+                            </Button>
+                          </a>
+                        </Link>
+                      </div>
+                      
+                      <div>
+                        <AddTranslationModal
+                          mediaId={anime.id}
+                          mediaType={MediaType.Anime}
+                          defaultDescription={description}
+                          defaultTitle={title}
+                          textLimit={2000}
+                        />
+                      </div>
 
-                      <AddTranslationModal
-                        mediaId={anime.id}
-                        mediaType={MediaType.Anime}
-                        defaultDescription={description}
-                        defaultTitle={title}
-                        textLimit={2000}
-                      />
                     </div>
                   </div>
                 )}
@@ -201,7 +214,17 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Link>
                       )}
                     </div>
-                  ) : null}
+                  ) : (
+                    <div className="md:block hidden">
+                      <Link href={"/login"}>
+                        <a target={"_blank"}>
+                          <Button primary LeftIcon={BiBookAdd}>
+                            <div>Start Tracking</div>
+                          </Button>
+                        </a>
+                      </Link>
+                    </div>
+                  )}
 
                   {!isMobile && (
                      <Popup

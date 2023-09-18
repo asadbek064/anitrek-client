@@ -5,6 +5,7 @@ import NetPlayer, { NetPlayerProps } from "netplayer";
 import React, { useEffect, useMemo, useRef } from "react";
 import Controls from "./Controls";
 import Overlay from "./Overlay";
+import { isMobile } from "react-device-detect";
 
 interface ThemePlayerProps extends NetPlayerProps {}
 
@@ -37,7 +38,8 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
 
     const videoEl = videoRef.current;
 
-    videoEl.autoplay = true;
+    videoEl.autoplay = !isMobile;
+    videoEl.volume = 0;
   }, []);
 
   return (
@@ -55,7 +57,6 @@ const ThemePlayer: React.FC<ThemePlayerProps> = (props) => {
         crossOrigin={null}
         {...props}
         className="min-w-full min-h-full"
-        onLoad={() => { videoRef.current.volume = 0.5 }}
       >
         {props.children}
       </NetPlayer>

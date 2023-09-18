@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import React from "react";
-import Image from 'next/image'
+import { isMobile } from "react-device-detect";
 
 const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   className,
@@ -17,8 +17,8 @@ const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   );
 };
 
-const SVGComponent = () => {
-  const svgContent = `
+const SVGComponent = () => {  
+  const svgDesktop = `
     <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="128" height="41">
       <defs>
         <linearGradient id="P" gradientUnits="userSpaceOnUse"/>
@@ -32,6 +32,24 @@ const SVGComponent = () => {
       <path class="a" d="m18.5 34l-1.5-4.6h-8.2l-1.4 4.6h-6.5l9.2-24.9h5.6l9.2 24.9zm-5.6-17.9l-2.6 8.6h5.3zm12.6-0.6h5.5l0.1 2.2q2-2.5 5.3-2.5 2.9 0 4.3 1.7 1.5 1.7 1.5 5.2v11.9h-5.8v-11.6q0-1.4-0.5-2.1-0.6-0.7-2.1-0.7-1.7 0-2.5 1.4v13h-5.8zm26 0v18.5h-5.8v-18.5zm-6.1-4.7q0-1.3 0.9-2.1 0.9-0.7 2.3-0.7 1.4 0 2.3 0.7 0.9 0.8 0.9 2.1 0 1.2-0.9 2-0.9 0.8-2.3 0.8-1.4 0-2.3-0.8-0.9-0.8-0.9-2zm29.4-1.7v4.7h-7.4v20.2h-6v-20.2h-7.4v-4.7zm12.5 6.3l-0.1 5.3-1.9-0.1q-2.7 0-3.5 1.7v11.7h-5.8v-18.5h5.4l0.2 2.4q1.5-2.7 4.1-2.7 0.9 0 1.6 0.2zm10.6 19q-4.3 0-6.9-2.6-2.6-2.5-2.6-6.6v-0.5q0-2.8 1-5 1.1-2.1 3.1-3.3 2-1.2 4.8-1.2 3.9 0 6.1 2.4 2.3 2.4 2.3 6.7v2.3h-11.5q0.3 1.5 1.4 2.4 1 0.9 2.7 0.9 2.7 0 4.2-1.9l2.7 3.1q-1.1 1.5-3.1 2.4-1.9 0.9-4.2 0.9zm-0.7-14.8q-2.5 0-3 3.4h5.8v-0.5q0.1-1.3-0.7-2.1-0.7-0.8-2.1-0.8zm22.2 14.4l-4-6.9-1.6 1.7v5.2h-5.8v-26.2h5.8v13.9l0.6-0.8 4.3-5.4h6.9l-6.5 7.6 6.9 10.9z"/>
     </svg>
   `;
+
+  const svgMobile = `
+  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="80" height="41">
+    <defs>
+      <linearGradient id="P" gradientUnits="userSpaceOnUse"/>
+      <linearGradient id="g1" x2="1" href="#P" gradientTransform="matrix(126,0,0,28,0,21)">
+        <stop stop-color="#3b82f6"/>
+        <stop offset=".78" stop-color="#38bdf8"/>
+        <stop offset="1" stop-color="#38bdf8"/>
+      </linearGradient>
+    </defs>
+    <style>.a{fill:url(#g1)}</style>
+    <path class="a" d="m18.5 34l-1.5-4.6h-8.2l-1.4 4.6h-6.5l9.2-24.9h5.6l9.2 24.9zm-5.6-17.9l-2.6 8.6h5.3zm12.6-0.6h5.5l0.1 2.2q2-2.5 5.3-2.5 2.9 0 4.3 1.7 1.5 1.7 1.5 5.2v11.9h-5.8v-11.6q0-1.4-0.5-2.1-0.6-0.7-2.1-0.7-1.7 0-2.5 1.4v13h-5.8zm26 0v18.5h-5.8v-18.5zm-6.1-4.7q0-1.3 0.9-2.1 0.9-0.7 2.3-0.7 1.4 0 2.3 0.7 0.9 0.8 0.9 2.1 0 1.2-0.9 2-0.9 0.8-2.3 0.8-1.4 0-2.3-0.8-0.9-0.8-0.9-2zm29.4-1.7v4.7h-7.4v20.2h-6v-20.2h-7.4v-4.7zm12.5 6.3l-0.1 5.3-1.9-0.1q-2.7 0-3.5 1.7v11.7h-5.8v-18.5h5.4l0.2 2.4q1.5-2.7 4.1-2.7 0.9 0 1.6 0.2zm10.6 19q-4.3 0-6.9-2.6-2.6-2.5-2.6-6.6v-0.5q0-2.8 1-5 1.1-2.1 3.1-3.3 2-1.2 4.8-1.2 3.9 0 6.1 2.4 2.3 2.4 2.3 6.7v2.3h-11.5q0.3 1.5 1.4 2.4 1 0.9 2.7 0.9 2.7 0 4.2-1.9l2.7 3.1q-1.1 1.5-3.1 2.4-1.9 0.9-4.2 0.9zm-0.7-14.8q-2.5 0-3 3.4h5.8v-0.5q0.1-1.3-0.7-2.1-0.7-0.8-2.1-0.8zm22.2 14.4l-4-6.9-1.6 1.7v5.2h-5.8v-26.2h5.8v13.9l0.6-0.8 4.3-5.4h6.9l-6.5 7.6 6.9 10.9z"/>
+  </svg>
+`;
+
+  const svgContent = isMobile ? (svgMobile) : (svgDesktop);
+ 
 
   return (
     <div dangerouslySetInnerHTML={{ __html: svgContent }} />

@@ -112,7 +112,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
       <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">
         {t("related")}
       </h1>
-      <div className="overflow-y-auto min-h-[24rem] max-h-[24rem] md:min-h-[34rem] md:max-h-[34rem]">
+      <div className="overflow-y-auto min-h-[0rem] max-h-[24rem] md:min-h-[34rem] md:max-h-[34rem]">
         <ul className="space-y-4 relative">
           {SourceData?.related.map((card, index) => (
             <Card

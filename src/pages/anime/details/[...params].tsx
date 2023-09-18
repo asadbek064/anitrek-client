@@ -49,6 +49,8 @@ import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdTagFaces } from "react-icons/md";
+import AnimeStatus from "@/components/shared/AnimeStatus";
+import { isMobile } from "react-device-detect";
 
 interface DetailsPageProps {
   anime: Media;
@@ -96,7 +98,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       episode: null,
       id: anime.id,
       nextEpUrl: null,
-    });    
+    });
   }, [anime]);
 
   return (
@@ -112,19 +114,71 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="relative pb-4 bg-background-900">
           <div className="flex flex-col md:flex-row md:space-x-8">
-            <div className="shrink-0 relative left-1/2 -translate-x-1/2 md:static md:left-0 md:-translate-x-0 w-[148px] md:w-[250px] -mt-20 space-y-6">
-              <PlainCard src={anime.coverImage.extraLarge} alt={title} />
+            <div>
+              <div className="flex flex-row space-x-3">
+                <div className="shrink-0 relative md:static md:left-0 md:-translate-x-0 w-[125px] md:w-[250px] -mt-36 md:-ml-0 md:-mt-20 space-y-6">
+                  <PlainCard src={anime.coverImage.extraLarge} alt={title} />
+                  {(user && !isMobile) && (
+                    <div className="flex items-center space-x-1">
+                      <SourceStatus type="anime" source={anime} />
+                      <NotificationButton type="anime" source={anime} />
+                    </div>
+                  )}
 
-              {user && (
-                <div className="flex items-center space-x-1">
-                  <SourceStatus type="anime" source={anime} />
-                  <NotificationButton type="anime" source={anime} />
                 </div>
-              )}
+                <div className="flex flex-col space-y-2 -mt-16 md:hidden">
+                    <AnimeStatus status={anime.status} />
+                    <div className="[font-size:var(--step-1)]"><span className="font-semibold">{anime.episodes} eps</span> aired</div>
+
+                    {user ? (
+                      <div className="flex flex-col items-center">
+                      <SourceStatus type="anime" source={anime} />
+                    </div>
+                    ) : (
+                      <Link href={"/login"}>
+                      <a target={"_blank"}>
+                        <Button primary LeftIcon={BiBookAdd}>
+                          <div>Start Tracking</div>
+                        </Button>
+                      </a>
+                    </Link>
+                    )}
+                 </div>
+              </div>
+                
+              <div className="my-4 md:hidden">
+                {user && (
+                  <div className="flex flex-col space-y-2">
+                    <div className="flex flex-row space-x-4 pt-2">
+                    <NotificationButton type="anime" source={anime} />
+
+                      <Link href={`/reviews/create/${anime.id}`}>
+                        <a className="w-full">
+                          <Button
+                            secondary
+                            className="[font-size:var(--step--1)]"
+                            LeftIcon={BsPencilFill}
+                          >
+                            <div>Write a Review</div>
+                          </Button>
+                        </a>
+                      </Link>
+
+                      <AddTranslationModal
+                        mediaId={anime.id}
+                        mediaType={MediaType.Anime}
+                        defaultDescription={description}
+                        defaultTitle={title}
+                        textLimit={2000}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
 
-            <div className="flex flex-col  justify-between py-4 mt-4  md:text-left md:items-start md:-mt-16 space-y-4">
-              <div className="flex flex-col md:items-start items-center space-y-4 md:no-scrollbar">
+            <div className="flex flex-col  justify-between md:py-4  md:text-left md:items-start md:-mt-16 space-y-4">
+              <div className="flex flex-col md:items-start items-center space-y-3 md:space-y-4 md:no-scrollbar">
                 <div className="flex items-center flex-wrap gap-2 mb-4">
                   {user ? (
                     <div>
@@ -147,71 +201,65 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         </Link>
                       )}
                     </div>
-                  ) : (
-                    <Link href={"/login"}>
-                      <a target={"_blank"}>
-                        <Button primary LeftIcon={BiBookAdd}>
-                          <div>Start Tracking</div>
-                        </Button>
-                      </a>
-                    </Link>
+                  ) : null}
+
+                  {!isMobile && (
+                     <Popup
+                     reference={
+                       <Button
+                         className="!bg-[#393a3b]"
+                         LeftIcon={BiDotsHorizontalRounded}
+                       ></Button>
+                     }
+                     placement="bottom"
+                     type="click"
+                     className="space-y-2"
+                   >
+                     {/*  <Link href={`/wwf/create/${anime.id}`}>
+                       <a>
+                         <Button
+                           secondary
+                           className="w-full"
+                           LeftIcon={BsFillPlayFill}
+                         >
+                           <p>{t("watch_with_friends")}</p>
+                         </Button>
+                       </a>
+                     </Link> */}
+ 
+                     <Link href={`/reviews/create/${anime.id}`}>
+                       <a>
+                         <Button
+                           secondary
+                           className="w-full"
+                           LeftIcon={BsPencilFill}
+                         >
+                           <div>Write a Review</div>
+                         </Button>
+                       </a>
+                     </Link>
+ 
+                     <AddTranslationModal
+                       mediaId={anime.id}
+                       mediaType={MediaType.Anime}
+                       defaultDescription={description}
+                       defaultTitle={title}
+                       textLimit={2000}
+                     />
+ 
+                   {/*   <Link href={`/upload/anime/${anime.id}`}>
+                       <a>
+                         <Button
+                           secondary
+                           className="w-full"
+                           LeftIcon={AiOutlineUpload}
+                         >
+                           <p>Upload</p>
+                         </Button>
+                       </a>
+                     </Link> */}
+                   </Popup>
                   )}
-
-                  <Popup
-                    reference={
-                      <Button
-                        className="!bg-[#393a3b]"
-                        LeftIcon={BiDotsHorizontalRounded}
-                      ></Button>
-                    }
-                    placement="bottom"
-                    type="click"
-                    className="space-y-2"
-                  >
-                    {/*  <Link href={`/wwf/create/${anime.id}`}>
-                      <a>
-                        <Button
-                          secondary
-                          className="w-full"
-                          LeftIcon={BsFillPlayFill}
-                        >
-                          <p>{t("watch_with_friends")}</p>
-                        </Button>
-                      </a>
-                    </Link> */}
-
-                    <Link href={`/reviews/create/${anime.id}`}>
-                      <a>
-                        <Button
-                          secondary
-                          className="w-full"
-                          LeftIcon={BsPencilFill}
-                        >
-                          <div>Write a Review</div>
-                        </Button>
-                      </a>
-                    </Link>
-
-                    <AddTranslationModal
-                      mediaId={anime.id}
-                      mediaType={MediaType.Anime}
-                      defaultDescription={description}
-                      defaultTitle={title}
-                      textLimit={2000}
-                    />
-
-                    {/* <Link href={`/upload/anime/${anime.id}`}>
-                      <a>
-                        <Button
-                          secondary
-                          className="w-full"
-                          LeftIcon={AiOutlineUpload}
-                        >
-                          <p>Upload</p>
-                        </Button>
-                      </a>
-                    </Link> */}
-                  </Popup>
                 </div>
 
                 <p className="mb-2 [font-size:var(--step-2)] font-semibold">
@@ -227,22 +275,18 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 </DotList>
 
                 <div className="mt-4 flex flex-wrap items-center gap-x-8 text-lg">
-                   
-                    {anime.averageScore && (
-                      <TextIcon
-                        LeftIcon={MdTagFaces}
-                        iconClassName="text-primary-300"
-                      >
-                        <p>{anime.averageScore}%</p>
-                      </TextIcon>
-                    )}
+                  {anime.averageScore && (
                     <TextIcon
-                      LeftIcon={AiFillHeart}
-                      iconClassName="text-sky-400"
+                      LeftIcon={MdTagFaces}
+                      iconClassName="text-primary-300"
                     >
-                      <p>{numberWithCommas(anime.favourites)}</p>
+                      <p>{anime.averageScore}%</p>
                     </TextIcon>
-                  </div>
+                  )}
+                  <TextIcon LeftIcon={AiFillHeart} iconClassName="text-sky-400">
+                    <p>{numberWithCommas(anime.favourites)}</p>
+                  </TextIcon>
+                </div>
 
                 <MediaDescription
                   description={description}
@@ -312,9 +356,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   />
                 )}
               </DetailsSection>
-            ) : (
-              null
-            )}
+            ) : null}
 
             <ThemeLite media={anime} />
 

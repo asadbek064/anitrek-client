@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { ComponentType, useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
-import { AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
+import { AiFillStar, AiOutlineRead, AiOutlineSearch } from "react-icons/ai";
 import { BiLogIn, BiSearchAlt } from "react-icons/bi";
 import { FaDiscord, FaDonate, FaGamepad, FaMusic } from "react-icons/fa";
 import { GiGamepad, GiHamburgerMenu } from "react-icons/gi";
@@ -54,6 +54,11 @@ const Header = () => {
       icon: AiOutlineRead
     },
     {
+      title: `${t("nav-review")}`,
+      href: "/reviews",
+      icon: AiFillStar
+    },
+    {
       title: `${t("nav-sf")}`,
       href: "/scene-search",
       icon: MdFindInPage
@@ -89,6 +94,11 @@ const Header = () => {
       title: "Read",
       href: "/manga",
       icon: AiOutlineRead
+    },
+    {
+      title: `${t("nav-review")}`,
+      href: "/reviews",
+      icon: AiFillStar
     },
     {
       title: "Scene Finder",
@@ -160,7 +170,7 @@ const Header = () => {
               <div onClick={drawerRef.current?.close} key={route.href}>
                 <NavItem className="block" href={route.href}>
                   {({ isActive }) => (
-                    <div className="flex flex-row pl-2 py-1.5">
+                    <div className="flex flex-row pl-2 py-1.5 ml-4">
                       <TextIcon
                       iconClassName="py-0.5"
                       LeftIcon={route.icon}
@@ -196,8 +206,8 @@ const Header = () => {
 
         <div className="px-4 space-y-4">
           <div className="flex items-center justify-center space-x-8">
-            <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
-            <ContactItem href={KO_FI_URL} Icon={FaDonate} />
+            {/* <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
+            <ContactItem href={KO_FI_URL} Icon={FaDonate} /> */}
             <div onClick={drawerRef.current?.close}>
               <PWAInstallPrompt />
             </div>

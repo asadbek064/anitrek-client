@@ -22,7 +22,7 @@ const HeaderProfile = () => {
     <Popup
       type="click"
       placement="bottom-start"
-      offset={[3.5, 10]}
+      offset={[5, 10]}
       showArrow
       reference={<Avatar src={user.user_metadata.avatar_url} />}
     >
@@ -37,7 +37,7 @@ const HeaderProfile = () => {
         </div>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-6">
         <Link href="/watchlist">
           <a>
             <Button className="w-full" secondary>

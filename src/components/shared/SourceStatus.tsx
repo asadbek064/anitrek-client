@@ -76,20 +76,20 @@ const SourceStatus = <T extends "anime" | "manga">(
   };
 
   return isLoading ? (
-    <div className="grow z-50 bg-primary-500 flex items-center justify-center py-2 rounded-md">
+    <div className="grow z-9 bg-primary-500 flex items-center justify-center py-2 rounded-md">
       <AiOutlineLoading3Quarters className="w-6 h-6 text-white animate-spin" />
     </div>
   ) : (
     <Select
       placeholder={
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 py-2 [font-size:var(--step-0)]">
           <AiFillPlusCircle className="w-6 h-6" />
 
           <p>{t("add_to_list")}</p>
         </div>
       }
       styles={styles}
-      className="grow z-50"
+      className="grow z-9"
       options={options}
       isClearable={false}
       isSearchable={false}

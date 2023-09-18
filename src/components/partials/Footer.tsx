@@ -18,8 +18,8 @@ const Footer = ({}) => {
       <Logo className="!mb-0" />
 
       <div className="flex items-center space-x-4">
-        <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
-        <ContactItem href={KO_FI_URL} Icon={FaDonate}/>
+        {/* <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
+        <ContactItem href={KO_FI_URL} Icon={FaDonate}/> */}
       </div>
 
       <div className="flex items-center space-x-8 text-center">

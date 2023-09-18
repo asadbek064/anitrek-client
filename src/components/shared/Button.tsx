@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
         "text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80",
         className,
         props.primary && "hover:bg-primary-500",
-        secondary && "bg-transparent hover:bg-white/20"
+        secondary && "bg-neutral-800 hover:bg-white/20"
       )}
       {...props}
     >

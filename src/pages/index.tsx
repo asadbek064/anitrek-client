@@ -18,7 +18,7 @@ const Home = () => {
   const { isDesktop } = useDevice();
   const { t } = useTranslation("review");
 
-  const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
+/*   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
     perPage: isMobile ? 10 : 20,
@@ -54,10 +54,10 @@ const Home = () => {
       sort: [MediaSort.Favourites_desc],
       perPage: 5,
     });
-
+ */
 /*   const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
  */
-  const randomTrendingAnime = useMemo(() => {
+/*   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
   }, [trendingAnime]);
 
@@ -66,7 +66,7 @@ const Home = () => {
       mediaId: randomTrendingAnime?.id,
     },
     { enabled: !!randomTrendingAnime }
-  );
+  ); */
 
  /*  const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,

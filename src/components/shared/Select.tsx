@@ -73,10 +73,10 @@ const Select = React.forwardRef<any, Props>(
           ...theme,
           colors: {
             ...theme.colors,
-            primary: "#ef4444",
-            primary75: "#f87171",
-            primary50: "#fca5a5",
-            primary20: "#fecaca",
+            primary: "#0ea5e9",
+            primary75: "#22d3ee",
+            primary50: "#67e8f9",
+            primary20: "#67e8f9",
           },
         })}
         styles={{
@@ -84,8 +84,8 @@ const Select = React.forwardRef<any, Props>(
             return {
               ...provided,
               backgroundColor: "#1a1a1a",
-              minWidth: "12rem",
-              maxWidth: "14rem",
+              minWidth: "14rem",
+              maxWidth: "16rem",
             };
           },
           menu: (provided) => {
@@ -99,7 +99,7 @@ const Select = React.forwardRef<any, Props>(
             return {
               ...provided,
               backgroundColor: "#262626",
-              maxWidth: "70%",
+              maxWidth: "80%",
             };
           },
           multiValueLabel: (provided) => {
@@ -113,7 +113,7 @@ const Select = React.forwardRef<any, Props>(
                 backgroundColor: "transparent",
                 color: "white",
               },
-              transition: "all 250ms",
+              transition: "all 200ms",
             };
           },
 

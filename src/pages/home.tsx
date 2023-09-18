@@ -18,6 +18,7 @@ import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
 import useRecommendations from "@/hooks/useRecommendations";
 import { MediaSort, MediaType } from "@/types/anilist";
 import { getSeason, randomElement } from "@/utils";
+import { useUser } from "@supabase/auth-helpers-react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
 import React, { useMemo } from "react";
@@ -27,6 +28,7 @@ const Home = () => {
   const currentSeason = useMemo(getSeason, []);
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
+  const { user } = useUser();
 
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
@@ -95,8 +97,12 @@ const Home = () => {
           <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
 
           <div className="space-y-8">
-            <WatchedSection />
-            <RecommendedAnimeSection />
+            {user?.email === "moonlightbz064@gmail.com" && (
+             <>
+              <WatchedSection />
+              <RecommendedAnimeSection />
+              </>
+            )}
       
 
             {trendingLoading ? (

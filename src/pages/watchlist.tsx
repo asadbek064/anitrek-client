@@ -60,8 +60,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "all"
-                ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
+                ? "bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+                : `bg-neutral-700 hover:bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("all")}
           >
@@ -72,8 +72,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "watching"
-               ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
-                : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
+               ? "bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+                : `bg-neutral-700 hover:bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("watching")}
           >
@@ -84,8 +84,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "planning"
-              ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
-              : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
+              ? "bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+              : `bg-neutral-700 hover:bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("planning")}
           >
@@ -96,8 +96,8 @@ const WatchListPage: NextPage<WatchListProps> = ({
           <button
             className={
               activeStatus === "completed"
-              ? "bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
-              : `bg-neutral-700 hover:bg-red-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
+              ? "bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded"
+              : `bg-neutral-700 hover:bg-primary-500 text-white font-bold py-2 px-2 md:py-2 md:px-4 rounded}`
             }
             onClick={() => handlerStatusClick("completed")}
           >

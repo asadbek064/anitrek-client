@@ -97,12 +97,12 @@ const Home = () => {
           <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
 
           <div className="space-y-8">
-            {user?.email === "moonlightbz064@gmail.com" && (
+            {/* {user?.email === "moonlightbz064@gmail.com" && (
              <>
               <WatchedSection />
               <RecommendedAnimeSection />
               </>
-            )}
+            )} */}
       
 
             {trendingLoading ? (

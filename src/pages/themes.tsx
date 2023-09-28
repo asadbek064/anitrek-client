@@ -151,7 +151,12 @@ const ThemesPage = ({ slug, type, media }: ThemesPageProps) => {
                 <div className="p-4">
                   <div>
                     <ThemePlayer sources={sources} />
-                    <div className="my-1 [font-size:var(--step--3)] text-gray-300 tracking-wider opacity-40">source: animethemes.moe</div>
+                    <div className="my-1 [font-size:var(--step--3)] text-gray-300 tracking-wider opacity-40">source: 
+                    <Link 
+                      href={sources[0].file}
+                    >
+                    animethemes.moe
+                    </Link></div>
                   </div>
                 </div>
                 

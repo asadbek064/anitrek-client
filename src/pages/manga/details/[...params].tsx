@@ -175,7 +175,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
                     <span className="font-semibold mr-2 text-left flex-auto">Offline temporary</span>
                   </div>
                 </div> */}
-                <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
+                {/* <LocaleChapterSelector mediaId={manga.id} chapters={chapters} /> */}
                 </>
               )}
             </DetailsSection>

@@ -7,7 +7,7 @@ import useBrowse, { UseBrowseOptions } from "@/hooks/useBrowseAnime";
 import useConstantTranslation from "@/hooks/useConstantTranslation";
 import { MediaSort } from "@/types/anilist";
 import { useTranslation } from "next-i18next";
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { MobileView } from "react-device-detect";
 import { useForm } from "react-hook-form";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
@@ -19,8 +19,13 @@ import InView from "@/components/shared/InView";
 import Link from "next/link";
 import Button from "@/components/shared/Button";
 import Input from "@/components/shared/Input";
+import useCreateRoom from "@/hooks/useCreateRoom";
 
 const seasonYears = SEASON_YEARS.map((year) => ({ label: year, value: year }));
+
+const size: number [] = [5, 10, 15, 20, 25,30,35,40,45,50,55,60];
+const playlistSize = size.map((size) => ({ label: size, value: size }));
+const guessTime = size.map((size) => ({ label: size, value: size }));
 
 const initialValues: UseBrowseOptions = {
     format: undefined,
@@ -67,12 +72,16 @@ const ChooseTriviaPage = () => {
         hasNextPage,
         isError,
       } = useBrowse(query);
-    
+
+ 
       const handleFetch = () => {
         if (isFetchingNextPage || !hasNextPage) return;
     
         fetchNextPage();
       };
+
+    const [roomTitle, setRoomTitle] = useState("");
+      
 
     const { SEASONS, STATUS, COUNTRIES } = useConstantTranslation();
 
@@ -101,6 +110,16 @@ const ChooseTriviaPage = () => {
         }
     })
 
+    const handleInputChange = useCallback(
+        (event: React.ChangeEvent<HTMLInputElement>) => {
+          setRoomTitle(event.target.value);
+        },
+        []
+      );
+
+    
+      
+
     return (
         <Section className="py-20">
             <Head
@@ -108,7 +127,7 @@ const ChooseTriviaPage = () => {
                 description={t("choose_page_description ")}
             />
 
-            <h1 className="text-4xl font-semibold mb-8">
+            <h1 className="[font-size:var(--step-2)] font-semibold mb-8">
                 {t("choose_page_heading")}
             </h1>
 
@@ -141,13 +160,14 @@ const ChooseTriviaPage = () => {
                 <div className="py-2 grow overflow-x-hidden no-scrollbar">
                     <TabPanel className="hidden h-full p-2">
                             <Section>
-                                <form>
-                                <div className="flex flex-col md:flex-row md:items-end gap-6 lg:flex-wrap lg:justify-between lg:space-x-0">
+                                <form className="space-y-4">
+                                <div className="flex flex-col items-start  gap-6 md:flex-row md:flex-wrap lg:justify-between lg:space-x-0">
                                     <Input
-                                        containerInputClassName="border border-white/80"
+                                        containerInputClassName="border border-white/80 px-2"
+                                        onChange={handleInputChange}
                                         label={t("room_name")}
                                     />
-                                    <div className="snap-x overflow-x-auto flex items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
+                                    <div className="snap-x overflow-x-auto flex items-center flex-wrap gap-4 md:gap-6 no-scrollbar overflow-y-auto">
                                         <GenresFormSelect
                                             value={[...query.genres, ...query.tags]}
                                             onChange={handleGenresChange}
@@ -185,30 +205,39 @@ const ChooseTriviaPage = () => {
                                                 }}
                                                 label={t("country")}
                                             />
+                                        <FormSelect
+                                            control={control}
+                                            name="status"
+                                            defaultValue={defaultValues.status}
+                                            selectProps={{
+                                            placeholder: t("status"),
+                                            options: STATUS,
+                                            }}
+                                            label={t("status")}
+                                        />
 
-                                        <MobileView renderWithFragment>
-                                            <FormSelect
-                                                control={control}
-                                                name="country"
-                                                defaultValue={defaultValues.country}
-                                                selectProps={{
-                                                placeholder: t("country"),
-                                                options: COUNTRIES,
-                                                }}
-                                                label={t("country")}
-                                            />
+                                        <FormSelect
+                                            control={control}
+                                            name="number of anime"
+                                            defaultValue={playlistSize}
+                                            selectProps={{
+                                            placeholder: "5",
+                                            options: playlistSize,
+                                            }}
+                                            label={'Number of anime'}
+                                        />
 
-                                            <FormSelect
-                                                control={control}
-                                                name="status"
-                                                defaultValue={defaultValues.status}
-                                                selectProps={{
-                                                placeholder: t("status"),
-                                                options: STATUS,
-                                                }}
-                                                label={t("status")}
-                                            />
-                                        </MobileView>
+                                        <FormSelect
+                                            control={control}
+                                            name="guess time"
+                                            defaultValue={guessTime}
+                                            selectProps={{
+                                            placeholder: "5",
+                                            options: guessTime,
+                                            }}
+                                            label={'Guess time (sec)'}
+                                        />
+
                                     </div>
 
                                     <Link href="/trivia/create/HASH#">

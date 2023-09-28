@@ -25,6 +25,7 @@ export interface UseBrowseOptions {
   isAdult?: boolean;
 }
 
+
 const useBrowse = (options: UseBrowseOptions) => {
   const {
     format = undefined,

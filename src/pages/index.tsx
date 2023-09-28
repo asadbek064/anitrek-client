@@ -87,8 +87,6 @@ const Home = () => {
            
             <Landing />
             
-            <NewestComments type={MediaType.Anime} />
-
             <Section
               isTitleLink={true}
               titleLink={'/reviews'}
@@ -97,6 +95,10 @@ const Home = () => {
               <NewestReviews  type={MediaType.Anime} homeView={true} />
 
             </Section>
+
+
+           {/*  <NewestComments type={MediaType.Anime} />
+ */}
 
           </div>
         </div>

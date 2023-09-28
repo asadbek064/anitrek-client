@@ -363,7 +363,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
         <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
           <div className="space-y-12 md:col-span-8">
-            {user && user?.email === "moonlightbz064@gmail.com" ? (
+            {/* {user && user?.email === "moonlightbz064@gmail.com" ? (
               <DetailsSection
                 title={t("episodes_section")}
                 className="overflow-hidden"
@@ -379,10 +379,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                   />
                 )}
               </DetailsSection>
-            ) : null}
-
+            ) : null} */}
+{/* 
             <ThemeLite media={anime} />
-
+ */}
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
             </DetailsSection>

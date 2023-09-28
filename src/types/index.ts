@@ -243,6 +243,9 @@ export type Room = {
   translations: Translation[];
 };
 
+
+
+
 export type Chat = {
   body?: string;
   user: RoomUser;

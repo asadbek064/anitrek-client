@@ -24,7 +24,6 @@ import { BsArrowReturnRight, BsReplyFill } from "react-icons/bs";
 import CommentReactions from "./CommentReactions";
 import Comments from "./Comments";
 import Editor from "./Editor";
-import ReactionSelector from "./ReactionSelector";
 
 interface CommentContainerProps {
   commentId: string;

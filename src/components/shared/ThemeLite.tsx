@@ -89,7 +89,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
 
     <div className="my-4 md:my-12 flex flex-col md:flex-row">
     {/* Video Section (Left Column) */}
-    <div className="md:w-2/3 md:p-4">
+    <div className="md:w-2/3">
       <div className="aspect-video">
         
         {/* <ReactAllPlayer autoPlay muted sources={sources}  /> */}
@@ -109,7 +109,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
   
     {/* Playlist Section (Right Column) */}
     <div className="md:w-1/3 p-4">
-      <h1 className="uppercase text-xl md:text-2xl font-semibold mb-4">
+      <h1 className="uppercase text-xl md:text-xl font-semibold mb-4">
         {t("related")}
       </h1>
       <div className="overflow-y-auto min-h-[0rem] max-h-[24rem] md:min-h-[34rem] md:max-h-[34rem]">

@@ -116,7 +116,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDirty]);
 
-  const [isSettingsOpen, seSettingsOpen] = useState(false);
+  const [isSettingsOpen, seSettingsOpen] = useState(true);
   return (
     <div className="min-h-screen">
       <form className="space-y-4">

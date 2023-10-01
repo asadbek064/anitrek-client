@@ -42,7 +42,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
@@ -51,6 +51,8 @@ import { IoIosArrowForward } from "react-icons/io";
 import { MdTagFaces } from "react-icons/md";
 import AnimeStatus from "@/components/shared/AnimeStatus";
 import { isMobile } from "react-device-detect";
+import { WatchProviderResult, getWatchProvidersByTitle, search } from "@/services/tmdb";
+import WatchProvider from "@/components/features/watch-provider/WatchProvider";
 
 interface DetailsPageProps {
   anime: Media;
@@ -59,7 +61,7 @@ interface DetailsPageProps {
 const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
   const { user } = useUser();
   const { locale } = useRouter();
-  const router = useRouter();
+
   const { t } = useTranslation("anime_details");
 
   const { data: episodes, isLoading } = useEpisodes(anime.id);
@@ -84,9 +86,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
     [anime, locale]
   );
 
-  /*   console.log(getWatchProviders(anime));
-  
- */
   useEffect(() => {
     if (!anime) return;
 
@@ -99,9 +98,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       id: anime.id,
       nextEpUrl: null,
     });
+
   }, [anime]);
 
-  console.log(anime);
+
   
   return (
     <>
@@ -380,9 +380,13 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 )}
               </DetailsSection>
             ) : null} */}
-{/* 
-            <ThemeLite media={anime} />
- */}
+
+            {/* <ThemeLite media={anime} /> */}
+
+            <DetailsSection title="Watch Now">
+              <WatchProvider media={anime} />
+            </DetailsSection>
+            
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
             </DetailsSection>
@@ -548,12 +552,12 @@ export const getStaticProps: GetStaticProps = async ({
     });
 
     // filter out each nodes in media.recommendations by isAdult = false and set it to new array
-    const filteredRecommendations = media.recommendations.nodes.filter(
+   /*  const filteredRecommendations = media.recommendations.nodes.filter(
       (node) => node.mediaRecommendation.isAdult === false
     );
     // set media.recommendations.nodes to new array
     media.recommendations.nodes = filteredRecommendations;
-
+ */
     return {
       props: {
         anime: media as Media,

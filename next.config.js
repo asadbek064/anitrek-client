@@ -36,7 +36,9 @@ const moduleExports = withPWA({
       "www.chatbro.com",
       "chatbro.com",
       "cdn.plyr.io",
-      "anitrek.co"
+      "anitrek.co",
+      "image.tmdb.org",
+      "f002.backblazeb2.com"
     ],
     minimumCacheTTL: 604800, // a week,
   },

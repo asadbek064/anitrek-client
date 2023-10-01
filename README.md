@@ -21,7 +21,7 @@ The official website is [anitrek.co](https://anitrek.co)
 - TailwindCSS
 - Supabase (SelfHost)
 - Socket.io
-- I18n (en, es, ru, de)
+- i18n (en, es, ru, de)
 - Libraries such as SwiperJS, Framer Motion, React Query...
 
 ## Screenshots
@@ -56,7 +56,7 @@ The official website is [anitrek.co](https://anitrek.co)
 ## Sources
 
 - Video player design by asadbek064 [ReactAllPlayer](https://reactallplayer.asadbek.dev/)
-- Info from [Anilist](anilist.co)
+- Anime Data from [Anilist](anilist.co)
 - AI Search [Tracer.moe](https://trace.moe/)
 - Anime themes from [animethemes.moe](https://animethemes.moe/)
 

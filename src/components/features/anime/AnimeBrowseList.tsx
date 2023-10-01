@@ -137,7 +137,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
           }
 
           {isSettingsOpen ? (
-            <div className="snap-x overflow-x-auto flex sm:flex-wrap items-center gap-4 md:gap-6 no-scrollbar overflow-y-auto">
+            <div className="snap-x overflow-x-auto  flex w-full flex-row md:flex-wrap items-center gap-4 md:gap-6 no-scrollbar">
 
             <GenresFormSelect
               value={[...query.genres, ...query.tags]}

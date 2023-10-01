@@ -25,8 +25,7 @@ import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
-/* import { getWatchProviders } from "@/services/tmdb";
- */
+
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
@@ -51,7 +50,6 @@ import { IoIosArrowForward } from "react-icons/io";
 import { MdTagFaces } from "react-icons/md";
 import AnimeStatus from "@/components/shared/AnimeStatus";
 import { isMobile } from "react-device-detect";
-import { WatchProviderResult, getWatchProvidersByTitle, search } from "@/services/tmdb";
 import WatchProvider from "@/components/features/watch-provider/WatchProvider";
 
 interface DetailsPageProps {
@@ -383,9 +381,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
             {/* <ThemeLite media={anime} /> */}
 
-            <DetailsSection title="Watch Now">
-              <WatchProvider media={anime} />
-            </DetailsSection>
+            <WatchProvider media={anime} />
             
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
@@ -546,6 +542,7 @@ export const getStaticProps: GetStaticProps = async ({
       };
     } */
 
+    
     const media = await getMediaDetails({
       type: MediaType.Anime,
       id: Number(params[0]),
@@ -558,6 +555,7 @@ export const getStaticProps: GetStaticProps = async ({
     // set media.recommendations.nodes to new array
     media.recommendations.nodes = filteredRecommendations;
  */
+    
     return {
       props: {
         anime: media as Media,
@@ -577,7 +575,7 @@ export default withRedirect(DetailsPage, (router, props) => {
   const { params } = router.query;
   const [id, slug] = params as string[];
   const title = getTitle(props.anime, router.locale);
-
+  
   if (slug) return null;
 
   return {

@@ -78,7 +78,7 @@ export declare module TMDBTranlations {
 
   export interface Response {
     id: number;
-    translations: Translation[];
+    translations?: Translation[];
   }
 }
 
@@ -144,7 +144,7 @@ export const getTranslations = async (media: Media): Promise<Translation[]> => {
     media.title.native || media.title.userPreferred,
     type
   );
-
+  
   if (!searchResult) return [];
 
   const { data } = await client.get<TMDBTranlations.Response>(
@@ -178,16 +178,14 @@ export const getWatchProviders = async (id: number, type: 'movie' | 'tv'): Promi
 export const getWatchProvidersByTitle = async (media: Media, local:string): Promise<WatchProviderResult | null> => {
   try {
     const type = media.format === MediaFormat.Movie ? "movie" : "tv";
-    console.log(type);
-    
+
     const result = await search(media.title.romaji, type);
     const country = localeToCountryCode(local.toUpperCase());
     
     if (result) {
       const details = await getWatchProviders(result.id, type);
       if (details) {
-        console.log(details.results[country]);
-        
+
        return details.results[country];
       }
     }

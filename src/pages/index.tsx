@@ -97,8 +97,8 @@ const Home = () => {
             </Section>
 
 
-           {/*  <NewestComments type={MediaType.Anime} />
- */}
+            {/* <NewestComments type={MediaType.Anime} /> */}
+
 
           </div>
         </div>

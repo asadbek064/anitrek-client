@@ -59,11 +59,11 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
             onMouseLeave={handleMouseLeave}
           >
             <div className="flex items-center flex-col">
-              {provider.logo_path && (
+              {provider.logo_path && getProviderBaseUrl(provider.provider_id) && (
                 <Link
                   href={getProviderBaseUrl(provider.provider_id)}
                 >
-                  <a>
+                  <a target="_blank">
                     <Image
                       src={getProviderLogo(provider.provider_id)}
                       alt={provider.provider_name}
@@ -88,9 +88,12 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
 
   return (
     <div className="bg-neutral-900 px-3 py-1">
-      {watchProviderData.rent?.length > 0 && renderWatchProviders(watchProviderData.rent, "Rent")}
-      {watchProviderData.buy?.length > 0 && renderWatchProviders(watchProviderData.buy, "Buy")}
-      {watchProviderData.flatrate?.length > 0 && renderWatchProviders(watchProviderData.flatrate, "Flatrate")}
+      {watchProviderData.rent?.length > 0 &&
+        renderWatchProviders(watchProviderData.rent, "Rent")}
+      {watchProviderData.buy?.length > 0 &&
+        renderWatchProviders(watchProviderData.buy, "Buy")}
+      {watchProviderData.flatrate?.length > 0 &&
+        renderWatchProviders(watchProviderData.flatrate, "Flatrate")}
     </div>
   );
 };

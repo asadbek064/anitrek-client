@@ -93,6 +93,7 @@ export const getMediaDetails = async (
   args: MediaArgs & PageArgs,
   fields?: string
 ) => {
+  
   const response = await anilistFetcher<MediaDetailsQueryResponse>(
     mediaDetailsQuery(fields),
     args

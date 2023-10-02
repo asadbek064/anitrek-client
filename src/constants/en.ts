@@ -85,7 +85,7 @@ export const GENRES = [
     value: "Fantasy",
     label: "Fantasy",
     thumbnail:
-      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101759-MhlCoeqnODso.jpg",
+      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
   },
 /*   {
     value: "Hentai",
@@ -97,7 +97,7 @@ export const GENRES = [
     value: "Horror",
     label: "Horror",
     thumbnail:
-      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101759-MhlCoeqnODso.jpg",
+      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11111.jpg",
   },
   {
     value: "Mahou Shoujo",
@@ -133,7 +133,7 @@ export const GENRES = [
     value: "Romance",
     label: "Romance",
     thumbnail:
-      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/101921-GgvvFhlNhzlF.jpg",
+      "https://s4.anilist.co/file/anilistcdn/media/anime/banner/44-C4I2Dy8MMyy0.jpg",
   },
   {
     value: "Sci-Fi",

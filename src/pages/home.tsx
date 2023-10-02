@@ -4,6 +4,7 @@ import WatchedSection from "@/components/features/anime/WatchedSection";
 import CardSwiper from "@/components/shared/CardSwiper";
 import ClientOnly from "@/components/shared/ClientOnly";
 import ColumnSection from "@/components/shared/ColumnSection";
+import EndOfPage from "@/components/shared/EndOfPage";
 import GenreSwiper from "@/components/shared/GenreSwiper";
 import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
@@ -170,23 +171,19 @@ const Home = () => {
                 isDesktop ? "flex-row" : "flex-col"
               )}
             >
-              <Section
-                /* title={t("should_watch_today", { ns: "anime_home" })} */
-                title="Must Watch"
-                className="w-full md:w-[92%] md:!pr-0 md:block hidden"
-              >
-                {randomAnime && (
-                  <ShouldWatch data={randomAnime} isLoading={!randomAnime} />
-                )}
-              </Section>
 
-              {/* {<Section
+              {<Section
                 title={t("genres", { ns: "common" })}
-                className="w-full md:w-[30%] md:!pl-0"
+                className="w-full"
               >
-                <GenreSwiper className="md:h-[500px]" />
-              </Section>} */}
+                <GenreSwiper
+                    direction={"horizontal"} 
+                    isOverflowHidden={false} 
+                    className="h-[150px] md:h-[300px]" />
+              </Section>}
             </div>
+                
+            <EndOfPage />
 
            {/*  <Section title={t("airing_schedule", { ns: "anime_home" })}>
               <AnimeScheduling />

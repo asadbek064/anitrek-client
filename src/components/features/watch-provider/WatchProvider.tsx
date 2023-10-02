@@ -33,7 +33,8 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getWatchProvidersByTitle(media, currentLanguage);
-
+      console.log(result);
+      
       setWatchProviderData(result);
     };
 

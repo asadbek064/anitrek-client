@@ -54,7 +54,7 @@ const GenreSwiper: React.FC<GenresSwiperProps> = ({
               <div
                 className={classNames(
                   "group relative w-full",
-                  isMobile && "aspect-w-16 aspect-h-9",
+                  isMobile && "aspect-w-16 aspect-h-9 ",
                   !isMobile && "h-full"
                 )}
               >
@@ -63,11 +63,14 @@ const GenreSwiper: React.FC<GenresSwiperProps> = ({
                   alt={genre.value}
                   layout="fill"
                   objectFit="cover"
-                  className="rounded-md group-hover:scale-105 transition duration-200"
+                  className="rounded-sm
+                  group-hover:border group-hover:border-white border border-neutral-900
+                  ease-int transition duration-75
+                  "
                 />
 
-                <div className="h-full w-full flex items-center justify-center absolute inset-0 bg-black/60">
-                  <p className="text-center uppercase text-xl font-bold tracking-widest text-gray-300 group-hover:text-white transition duration-200">
+                <div className="h-full w-full flex items-center justify-center absolute inset-0 bg-black/50">
+                  <p className="text-center uppercase [font-size:var(--step-1)] font-bold tracking-widest text-gray-300 group-hover:text-white ease-int transition duration-100">
                     {genre.value}
                   </p>
                 </div>

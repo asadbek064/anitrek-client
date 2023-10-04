@@ -66,7 +66,7 @@ const Landing = () => {
       <div className="mx-auto">
         <div className="my-16 flex justify-center flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0">
             <div className="">
-              <Link href={"/browse?type=anime"} passHref>
+              <Link href={"/home"} passHref>
                   <Button className="[font-size:var(--step--1)] md:[font-size:var(--step-0)] tracking-wide font-semibold px-6 py-4  md:py-6 md:px-8 rounded outline outline-1 outline-sky-600" primary>{t("button-search")}</Button>
               </Link>
             </div>

@@ -13,6 +13,7 @@ import NewestReviews from "@/components/shared/NewestReviews";
 import Section from "@/components/shared/Section";
 import ShouldWatch from "@/components/shared/ShouldWatch";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
+import { GENRES } from "@/constants/en";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
 import useRecentlyUpdated from "@/hooks/useRecentlyUpdated";
@@ -22,7 +23,7 @@ import { getSeason, randomElement } from "@/utils";
 import { useUser } from "@supabase/auth-helpers-react";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { isMobile } from "react-device-detect";
 
 const Home = () => {
@@ -30,12 +31,24 @@ const Home = () => {
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
   const { user } = useUser();
+  const [randomSelectedGenre, setRandomSelectedGenre] = useState(randomElement(GENRES).label);
+  const currentYear: number = new Date().getFullYear();
 
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
     perPage: isMobile ? 10 : 20,
   });
+
+
+  const { data: trendingRandomGenreYear, isLoading: trendingRandomGenreYearLoading } =
+    useMedia({
+      type: MediaType.Anime,
+      genre: randomSelectedGenre,
+      seasonYear: currentSeason.year,
+      sort: [MediaSort.Favourites_desc],
+      perPage: isMobile ? 10 : 20,
+    });
 
   const { data: popularSeason, isLoading: popularSeasonLoading } = useMedia({
     type: MediaType.Anime,
@@ -68,8 +81,8 @@ const Home = () => {
       perPage: 5,
     });
 
-/*   const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
- */
+ /*  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated(); */
+
   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
   }, [trendingAnime]);
@@ -86,6 +99,7 @@ const Home = () => {
     [recommendationsAnime]
   );
 
+
   return (
     <React.Fragment>
       <Head
@@ -98,32 +112,46 @@ const Home = () => {
           <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
 
           <div className="space-y-8">
-            {/* {user?.email === "moonlightbz064@gmail.com" && (
+            {/* {user && (
              <>
               <WatchedSection />
               <RecommendedAnimeSection />
               </>
             )} */}
-      
-
+    
             {trendingLoading ? (
               <ListSwiperSkeleton />
             ) : (
-              <Section title={t("most_popular_season", { ns: "common" })}>
+              <Section title={`${t("most_popular_season", { ns: "common" })} 🔥` }>
                 <CardSwiper data={trendingAnime} />
               </Section>
             )}
-            
-            <NewestComments type={MediaType.Anime} />
 
-           {/*  {recentlyUpdatedLoading ? (
+            {trendingRandomGenreYearLoading ? (
+              <ListSwiperSkeleton />
+            ): (
+              <Section title={`Top ${randomSelectedGenre} ${currentYear}`}>
+                <CardSwiper data={trendingRandomGenreYear} />
+              </Section>
+            )}
+            
+            <Section
+              isTitleLink={true}
+              titleLink={'/reviews'}
+              title={t("recent_reviews", { ns: "common" })}
+            >
+              <NewestReviews  type={MediaType.Anime} homeView={true} />
+
+            </Section>
+
+            {/* {recentlyUpdatedLoading ? (
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("newly_added", { ns: "common" })}>
                 <CardSwiper data={recentlyUpdated} />
               </Section>
-            )}
-            */}
+            )} */}
+           
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              { <ColumnSection
                 title={t("most_popular_season", { ns: "common" })}
@@ -155,14 +183,7 @@ const Home = () => {
               />
             </Section>
 
-            <Section
-              isTitleLink={true}
-              titleLink={'/reviews'}
-              title={t("recent_reviews", { ns: "common" })}
-            >
-              <NewestReviews  type={MediaType.Anime} homeView={true} />
-
-            </Section>
+            <NewestComments type={MediaType.Anime} />
 
 
             <div

@@ -17,7 +17,7 @@ const NavItem: React.FC<NavItemProps> = ({ onClick, ...props }) => {
 
   return (
     <Link {...props}>
-      <a className={props.className} onClick={onClick}>
+      <a className={props.className} onClick={onClick} role="button">
         {props.children({ isActive })}
       </a>
     </Link>

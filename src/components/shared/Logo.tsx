@@ -9,6 +9,7 @@ const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
   return (
     <div
+      aria-label="Anitrek logo"
       className={classNames("relative flex mx-auto h-24 w-24 mb-8", className)}
       {...props}
     >

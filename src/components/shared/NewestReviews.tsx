@@ -187,6 +187,7 @@ const NewestReviews: React.FC<NewestReviewsProps> = (props) => {
                           <a
                             className="block text-sm font-semibold text-primary-300 transition duration-200 line-clamp-1 hover:text-primary-400"
                             title={title}
+                            href={redirectUrl}
                           >
                             {title}
                           </a>

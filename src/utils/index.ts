@@ -30,11 +30,22 @@ export const randomElements = <T>(array: T[], length: number): T[] => {
   return randomArr;
 };
 
+// Fisher-Yates shuffle algorithm: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+export const shuffleArray = <T>(array: T[]): T[] => {
+  for(let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+}
+
 //https://stackoverflow.com/questions/9733288/how-to-programmatically-calculate-the-contrast-ratio-between-two-colors
+//https://en.wikipedia.org/wiki/SRGB#Computing_the_transfer_function
 export function luminance(r: number, g: number, b: number) {
   var a = [r, g, b].map(function (v) {
     v /= 255;
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    return v <= 0.0392857 ? v / 12.9232102 : Math.pow((v + 0.055) / 1.055, 2.4);
   });
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 }

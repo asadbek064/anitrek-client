@@ -10,6 +10,7 @@ import Head from "@/components/shared/Head";
 import HomeBanner from "@/components/shared/HomeBanner";
 import NewestComments from "@/components/shared/NewestComments";
 import NewestReviews from "@/components/shared/NewestReviews";
+import RandomGenreSection from "@/components/shared/RandomGenreSection";
 import Section from "@/components/shared/Section";
 import ShouldWatch from "@/components/shared/ShouldWatch";
 import ListSwiperSkeleton from "@/components/skeletons/ListSwiperSkeleton";
@@ -31,24 +32,12 @@ const Home = () => {
   const { isDesktop } = useDevice();
   const { t } = useTranslation();
   const { user } = useUser();
-  const [randomSelectedGenre, setRandomSelectedGenre] = useState(randomElement(GENRES).label);
-  const currentYear: number = new Date().getFullYear();
 
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
     perPage: isMobile ? 10 : 20,
   });
-
-
-  const { data: trendingRandomGenreYear, isLoading: trendingRandomGenreYearLoading } =
-    useMedia({
-      type: MediaType.Anime,
-      genre: randomSelectedGenre,
-      seasonYear: currentSeason.year,
-      sort: [MediaSort.Favourites_desc],
-      perPage: isMobile ? 10 : 20,
-    });
 
   const { data: popularSeason, isLoading: popularSeasonLoading } = useMedia({
     type: MediaType.Anime,
@@ -127,13 +116,11 @@ const Home = () => {
               </Section>
             )}
 
-            {trendingRandomGenreYearLoading ? (
-              <ListSwiperSkeleton />
-            ): (
-              <Section title={`Top ${randomSelectedGenre} ${currentYear}`}>
-                <CardSwiper data={trendingRandomGenreYear} />
-              </Section>
-            )}
+            {[...Array(5)].map((_, index) => (
+              // eslint-disable-next-line react/jsx-key
+              <RandomGenreSection isMobile={isMobile}/>
+            ))}
+
             
             <Section
               isTitleLink={true}

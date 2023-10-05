@@ -76,7 +76,7 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>((props, ref) => {
 
   return (
     <div className={classNames(containerClassName)}>
-      <button className={classNames(buttonClassName)} onClick={handleOpen}>
+      <button role="button" aria-label="menu" className={classNames(buttonClassName)} onClick={handleOpen}>
         {button}
       </button>
 

@@ -9,7 +9,7 @@ const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
   return (
     <div
-      aria-label="Anitrek logo"
+      aria-label="Anitrek Logo"
       className={classNames("relative flex mx-auto h-24 w-24 mb-8", className)}
       {...props}
     >
@@ -20,7 +20,7 @@ const Logo: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 
 const SVGComponent = () => {  
   const svgDesktop = `
-    <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="128" height="41">
+    <svg aria-label="Anitrek Logo" role="img" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="128" height="41">
       <defs>
         <linearGradient id="P" gradientUnits="userSpaceOnUse"/>
         <linearGradient id="g1" x2="1" href="#P" gradientTransform="matrix(126,0,0,28,0,21)">
@@ -35,7 +35,7 @@ const SVGComponent = () => {
   `;
 
   const svgMobile = `
-  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="80" height="41">
+  <svg aria-label="Anitrek Logo" role="img" version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 41" width="80" height="41">
     <defs>
       <linearGradient id="P" gradientUnits="userSpaceOnUse"/>
       <linearGradient id="g1" x2="1" href="#P" gradientTransform="matrix(126,0,0,28,0,21)">

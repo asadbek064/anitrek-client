@@ -44,7 +44,7 @@ const Footer = ({}) => {
       </div>
 
         <div className="flex flex-col justify-center items-center w-5/6 md:w-1/3 ">
-        <p className="text-xs text-gray-300"> © ANIMET.SITE 2023 | Built with AniTrek API.</p>
+        <p className="text-xs text-gray-300"> © AniTrek 2023.</p>
         </div>
     </div>
   );

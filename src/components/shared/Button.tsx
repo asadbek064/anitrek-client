@@ -15,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <BaseButton
       type="button"
+      aria-label="button"
       className={classNames(
         "text-base flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-opacity-80",
         className,

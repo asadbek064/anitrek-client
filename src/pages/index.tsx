@@ -73,6 +73,7 @@ const Home = () => {
     [recommendationsAnime]
   ); */
 
+
   return (
     <React.Fragment>
       <Head
@@ -87,14 +88,14 @@ const Home = () => {
            
             <Landing />
             
-            <Section
+            {/* <Section
               isTitleLink={true}
               titleLink={'/reviews'}
               title={t("recent_reviews")}
             >
               <NewestReviews  type={MediaType.Anime} homeView={true} />
 
-            </Section>
+            </Section> */}
 
 
             {/* <NewestComments type={MediaType.Anime} /> */}

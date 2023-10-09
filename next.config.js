@@ -29,7 +29,6 @@ const moduleExports = withPWA({
       "emojis.slackmojis.com",
       "pic-bstarstatic.akamaized.net",
       "cdn.discordapp.com",
-      "img.animet.site",
       "media.kitsu.io",
       "frosty-snyder-1df076.netlify.app",
       "derf9v1xhwwx1.cloudfront.net",

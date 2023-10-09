@@ -1,13 +1,38 @@
 import React from "react";
-import { FiStar, FiUsers, FiMonitor } from "react-icons/fi";
-import Image from "next/image";
 import Button from "./Button";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import FeatureCard, { FeatureCardData } from "./FeatureCard";
 
 const Landing = () => {
     const { t } = useTranslation("landing");
 
+    const FeatureCardData: FeatureCardData[] = [
+      {
+        title: t("all-in-one-place-title"),
+        heading: t("all-in-one-place-heading"),
+        description: t("all-in-one-place-description"),
+        img :"/features/all_in_one_place.png"
+      },
+      {
+        title: t("advance-search-title"),
+        heading: t("advance-search-heading"),
+        description: t("advance-search-description"),
+        img :"/features/advance_search.png"
+      },
+      {
+        title: t("one-synced-title"),
+        heading: t("one-synced-heading"),
+        description: t("one-synced-description"),
+        img :"/features/one_synced.png"
+      },
+      {
+        title: t("push-notification-title"),
+        heading: t("push-notification-heading"),
+        description: t("push-notification-description"),
+        img :"/features/push_notification.png"
+      },
+    ]
   return (
     <div className=" text-white py-24 px-4 flex flex-col">
       <div className="container mx-auto md:text-center">
@@ -19,46 +44,13 @@ const Landing = () => {
         <p className="text-center md:text-center [font-size:var(--step-0)] md:[font-size:var(--step-1)]  mb-12">
          {t("heading-sub")}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8 leading-6 md:leading-8">
-          <div className="p-2 md:p-6 md:bg-neutral-800 rounded-lg md:shadow-lg flex flex-row md:flex-col justify-center space-x-2">
-            <div className="w-1/4 md:w-full">
-              <FiStar className="[font-size:var(--step-4)] text-primary-500 mx-auto mb-4" />
-            </div>
-            <div className="w-full">
-              <h2 className="[font-size:var(--step-1)] font-semibold mb-4 md:tracking-wide">
-                {t("discover-head")}
-              </h2>
-              <p className="[font-size:var(--step--2)] md:[font-size:var(--step-0)] mb-4">
-              {t("discover-sub")}
-              </p>
-            </div>
-          </div>
-
-          <div className="p-2 md:p-6 md:bg-neutral-800 rounded-lg md:shadow-lg flex flex-row md:flex-col justify-center space-x-2">
-            <div className="w-1/4 md:w-full">
-              <FiUsers className="[font-size:var(--step-4)] text-primary-500 mx-auto mb-4" />
-            </div>
-            <div className="w-full">
-              <h2 className="[font-size:var(--step-1)] font-semibold mb-4 md:tracking-wide ">
-              {t("engage-head")}
-              </h2>
-              <p className="[font-size:var(--step--2)] md:[font-size:var(--step-0)] mb-4">
-              {t("engage-sub")}
-              </p>
-            </div>
-          </div>
-          <div className="p-2 md:p-6 md:bg-neutral-800 rounded-lg md:shadow-lg flex flex-row md:flex-col justify-center space-x-2">
-            <div className="w-1/4 md:w-full">
-              <FiMonitor className="[font-size:var(--step-4)] text-primary-500 mx-auto mb-4" />
-            </div>
-            <div className="w-full">
-              <h2 className="[font-size:var(--step-1)] font-semibold mb-4 md:tracking-wide">
-              {t("track-head")}
-              </h2>
-              <p className="[font-size:var(--step--2)] md:[font-size:var(--step-0)] mb-4">
-              {t("track-sub")}
-              </p>
-            </div>
+        
+        <div className="flex justify-center">
+          <div className="flex lg:flex-row flex-col lg:space-x-12 lg:space-y-0 space-y-12">
+            {FeatureCardData.map((card, index) => (
+              // eslint-disable-next-line react/jsx-key
+              <FeatureCard cardData={card} />
+            ))}
           </div>
         </div>
       </div>

@@ -6,8 +6,8 @@ self.addEventListener("push", function (event) {
   event.waitUntil(
     registration.showNotification(title, {
       ...options,
-      icon: "https://animet.tv/assets/logo/animet-tv_chibi_1.webp",
-      badge: "https://animet.tv/assets/logo/animet-tv_chibi_1.webp",
+      icon: "https://anitrek.co/icons/icon-512.jpg",
+      badge: "https://anitrek.co/icons/icon-512.jpg",
     })
   );
 });

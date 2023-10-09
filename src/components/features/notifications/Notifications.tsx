@@ -44,7 +44,7 @@ const Notifications = () => {
       showArrow
       reference={
         <div className="relative">
-          <MdNotifications className="w-6 h-6" />
+          <MdNotifications className="w-7 h-7 md:w-6 md:h-6" />
 
           {unreadCount > 0 && (
             <div className="flex items-center justify-center absolute w-4 h-4 -top-1 -right-1 text-xs text-white font-semibold bg-primary-500 rounded-full">

@@ -29,7 +29,7 @@ const overlayVariants: Variants = {
 
 const drawerVariants: Variants = {
   initial: {
-    x: "-100%",
+    x: "100%",
   },
 
   enter: {
@@ -37,12 +37,13 @@ const drawerVariants: Variants = {
   },
 
   exit: {
-    x: "-100%",
+    x: "100%",
   },
 };
 
 const transition: Transition = {
   ease: "easeInOut",
+  duration: 0.35
 };
 
 export type DrawerRef = {
@@ -101,7 +102,7 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>((props, ref) => {
               {/* Drawer */}
               <motion.div
                 className={classNames(
-                  "z-[9999] bg-background-900 y fixed top-0 w-[70vw] max-w-[360px] pb-16 md:pb-0 h-screen left-0",
+                  "z-[9999] bg-background-900  fixed top-0 w-[100vw] max-w-[100vw] pb-16 md:pb-0 h-screen left-0 pt-12",
                   className
                 )}
                 variants={drawerVariants}
@@ -111,10 +112,10 @@ const Drawer = React.forwardRef<DrawerRef, DrawerProps>((props, ref) => {
                 transition={transition}
               >
                 <button
-                  className="absolute right-4 top-3"
+                  className="absolute right-5 top-5"
                   onClick={handleClose}
                 >
-                  <ImCross className="w-5 h-5 text-gray-500" />
+                  <ImCross className="w-5 h-5 text-gray-400" />
                 </button>
 
                 {children}

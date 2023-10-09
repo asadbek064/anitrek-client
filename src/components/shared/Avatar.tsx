@@ -17,7 +17,7 @@ const Avatar: React.FC<AvatarProps> = ({ src, className, ...props }) => {
   return (
     <div
       className={classNames(
-        "shrink-0 relative w-10 h-10 rounded-full",
+        "shrink-0 relative w-8 h-8  md:w-10 md:h-10 rounded-full",
         className
       )}
       {...props}

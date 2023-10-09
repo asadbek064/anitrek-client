@@ -2,7 +2,7 @@ import Portal from "@/components/shared/Portal";
 import useDevice from "@/hooks/useDevice";
 import { Modifier, Options, Placement } from "@popperjs/core";
 import classNames from "classnames";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Transition, Variants } from "framer-motion";
 import React, { useCallback, useMemo, useState } from "react";
 import { usePopper } from "react-popper";
 
@@ -36,6 +36,12 @@ const variants: Variants = {
     opacity: 0,
   },
 };
+
+const transition: Transition = {
+  ease: "easeInOut",
+  duration: 0.075
+};
+
 
 const emptyFn = () => {};
 
@@ -174,12 +180,13 @@ const Popup: React.FC<PopupProps> = (props) => {
 
             <PopperComponent
               variants={variants}
+              transition={transition}
               animate="animate"
               exit="exit"
               initial="initial"
-              transition={[0.83, 0, 0.17, 1]}
               ref={setPopperElement}
               style={styles.popper}
+              
               className={classNames(
                 "popup z-50 relative bg-background-900 p-4 rounded-md drop-shadow-lg",
                 className

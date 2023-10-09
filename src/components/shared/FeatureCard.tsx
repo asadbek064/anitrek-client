@@ -21,7 +21,7 @@ const FeatureCard: React.FC<FeatureCardProps> =  ({cardData}) => {
             bg-gradient-to-b from-neutral-900 to bg-neutral-950
             w-full px-4 my-2
             ">
-            <div className="md:h-2/5 h-1/2 flex justify-center ">
+            <div className="lg:h-2/5 h-1/2 flex justify-center ">
             {isMobile ? (
                 <Image
                 src={cardData.img}

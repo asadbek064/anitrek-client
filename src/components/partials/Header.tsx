@@ -155,68 +155,6 @@ const Header = () => {
           : "bg-gradient-to-b from-neutral-900/100 via-neutral-900/70 to-transparent"
       )}
     >
-      <Drawer
-        ref={drawerRef}
-        containerClassName="md:hidden mr-4"
-        className="flex justify-between flex-col py-8"
-        aria-label="Menu lable"
-        button={<GiHamburgerMenu className="w-6 h-6" />}
-      >
-        <div>
-          <Logo />
-
-          <div className="space-y-3">
-            {routes.map((route) => (
-              <div onClick={drawerRef.current?.close} key={route.href}>
-                <NavItem className="block" href={route.href}>
-                  {({ isActive }) => (
-                    <div className="flex flex-row pl-2 py-1.5 ml-4">
-                      <TextIcon
-                      iconClassName="py-0.5"
-                      LeftIcon={route.icon}
-                    ></TextIcon>
-                      <p
-                        className={classNames(
-                          "pl-3 border-l-4 font-semibold [font-size:var(--step-1)]",
-                          isActive
-                            ? "border-primary-500 text-white"
-                            : "border-background-900 text-typography-secondary"
-                        )}
-                      >
-                        {t(route.title)}
-                      </p>
-                    </div>
-                  )}
-                </NavItem>
-              </div>
-            ))}
-
-            {user ? '': (
-              <Link  href={`/login?redirectedFrom=${router.asPath}`}>
-              <a onClick={drawerRef.current?.close}>
-                <Button  secondary className="mt-16 ml-1 [font-size:var(--step-1)]">
-                  <TextIcon  LeftIcon={BiLogIn}></TextIcon>
-                  <p className="line-clamp-1 font-semibold">{t("login")}</p>
-                </Button>
-              </a>
-            </Link>
-            )}
-          </div>
-        </div>
-
-        <div className="px-4 space-y-4">
-          <div className="flex items-center justify-center space-x-8">
-            {/* <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
-            <ContactItem href={KO_FI_URL} Icon={FaDonate} /> */}
-            <div onClick={drawerRef.current?.close}>
-              <PWAInstallPrompt />
-            </div>
-          </div>
-
-          <p className="text-xs flex justify-center">Verison: 3.0.0</p>
-        </div>
-      </Drawer>
-
       <div className="relative h-2/3  mr-8">
         <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
       </div>
@@ -257,22 +195,27 @@ const Header = () => {
           {({ isActive }) => (
             <BiSearchAlt
               className={classNames(
-                "w-8 h-8   hover:text-primary-500 transition duration-75",
+                "w-7 h-7   hover:text-primary-500 transition duration-100",
                 isActive && "text-primary-300"
               )}
             />
           )}
         </NavItem>
-        {/* <div className="hidden 2xl:block">
-          <LanguageSwitcher/>
-        </div> */}
         
         {user ? (
-          <HeaderProfile />
+          <>
+            {isMobile ? (
+              <div className="pr-4 ">
+                <HeaderProfile />
+              </div>
+            ) : (
+              <HeaderProfile />
+            )}
+          </>
         ) : (
           <div>
               { !isMobile ? 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-3">
                 <Link href={`/login?redirectedFrom=${router.asPath}`}>
                   <a>
                     <Button secondary>
@@ -285,6 +228,67 @@ const Header = () => {
           </div>
         )}
       </div>
+
+      <Drawer
+        ref={drawerRef}
+        containerClassName="md:hidden mr-4"
+        className="flex justify-between flex-col py-4"
+        aria-label="Menu lable"
+        button={<GiHamburgerMenu className="w-7 h-7" />}
+      >
+        <div>
+          <div className="space-y-3">
+            {routes.map((route) => (
+              <div onClick={drawerRef.current?.close} key={route.href}>
+                <NavItem className="block" href={route.href}>
+                  {({ isActive }) => (
+                    <div className="flex flex-row pl-2 py-3 ml-4">
+                      <TextIcon
+                      iconClassName="py-0.5"
+                      LeftIcon={route.icon}
+                    ></TextIcon>
+                      <p
+                        className={classNames(
+                          "pl-3 border-l-4 font-semibold [font-size:var(--step-2)]",
+                          isActive
+                            ? "border-primary-500 text-white"
+                            : "border-background-900 text-typography-secondary"
+                        )}
+                      >
+                        {t(route.title)}
+                      </p>
+                    </div>
+                  )}
+                </NavItem>
+              </div>
+            ))}
+
+            {user ? '': (
+              <Link  href={`/login?redirectedFrom=${router.asPath}`}>
+              <a onClick={drawerRef.current?.close}>
+                <div className="flex flex-row pl-2 py-3 ml-4 [font-size:var(--step-2)]">
+                  <TextIcon  LeftIcon={BiLogIn}></TextIcon>
+                  <p className="line-clamp-1 font-semibold pl-3">{t("login")}</p>
+                </div>
+              </a>
+            </Link>
+            )}
+          </div>
+        </div>
+
+        <div className="px-4 space-y-4">
+          <div className="flex items-center justify-center space-x-8">
+            {/* <ContactItem href={DISCORD_URL} Icon={FaDiscord} />
+            <ContactItem href={KO_FI_URL} Icon={FaDonate} /> */}
+            <div onClick={drawerRef.current?.close}>
+              <PWAInstallPrompt />
+            </div>
+          </div>
+
+          <p className="text-xs flex justify-center">Verison: 3.0.0</p>
+        </div>
+      </Drawer>
+      
     </Section>
   );
 };

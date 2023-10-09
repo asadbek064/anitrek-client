@@ -8,7 +8,7 @@ import { useTranslation } from "next-i18next";
 import React from "react";
 import { HiOutlineLogout } from "react-icons/hi";
 import Link from "next/link";
-import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
 
 
@@ -24,9 +24,9 @@ const HeaderProfile = () => {
       placement="bottom-start"
       offset={[3.5, 10]}
       showArrow
-      reference={<Avatar src={user.user_metadata.avatar_url} />}
+      reference={<Avatar src={user.user_metadata?.avatar_url} />}
     >
-      <div className="flex items-center mb-8 space-x-2">
+      <div className="flex items-center mb-3 md:mb-5 space-x-2">
         <Avatar src={user.user_metadata.avatar_url} className="!w-14 !h-14" />
 
         <div>
@@ -64,7 +64,8 @@ const HeaderProfile = () => {
         </Link>
 
         <Button
-          className="w-full !bg-transparent hover:!bg-white/20"
+          secondary
+          className="w-full"
           onClick={() => {
             supabase.auth.signOut();
           }}

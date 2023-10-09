@@ -46,7 +46,7 @@ const Landing = () => {
         </p>
         
         <div className="flex justify-center">
-          <div className="flex lg:flex-row flex-col lg:space-x-12 lg:space-y-0 space-y-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 duration-200 ease-in-out transition">
             {FeatureCardData.map((card, index) => (
               // eslint-disable-next-line react/jsx-key
               <FeatureCard cardData={card} />

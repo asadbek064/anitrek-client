@@ -3,6 +3,7 @@ import Head from "@/components/shared/Head";
 import Landing from "@/components/shared/Landing";
 import NewestComments from "@/components/shared/NewestComments";
 import NewestReviews from "@/components/shared/NewestReviews";
+import RandomGenreSection from "@/components/shared/RandomGenreSection";
 import Section from "@/components/shared/Section";
 import useDevice from "@/hooks/useDevice";
 import useMedia from "@/hooks/useMedia";
@@ -97,7 +98,13 @@ const Home = () => {
 
             </Section> */}
 
-
+            <div className="px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36
+                [font-size:var(--step-4)] font-bold pb-12"> Explore the Latest Trending Anime & Manga Titles</div>
+                {[...Array(2)].map((_, index) => (
+                // eslint-disable-next-line react/jsx-key
+                  <RandomGenreSection isMobile={isMobile}/>
+                ))}
+             
             {/* <NewestComments type={MediaType.Anime} /> */}
 
 

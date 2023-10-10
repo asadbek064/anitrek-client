@@ -134,7 +134,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                     )}
 
                     {user ? (
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col">
                       <SourceStatus type="anime" source={anime} />
                     </div>
                     ) : (
@@ -196,20 +196,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                       {episodes && episodes.length > 0 ? (
                         ""
                       ) : (
-                        /*  <Link href={`/anime/watch/${anime.id}`}>
-                        <a>
-                          <Button primary LeftIcon={BsFillPlayFill}>
-                            <p>{t("common:watch_now")}</p>
-                          </Button>
-                        </a>
-                      </Link> */
-                        <Link href={DISCORD_URL}>
-                          <a target={"_blank"}>
-                            <Button primary LeftIcon={FaDiscord}>
-                              <div>Request Index</div>
-                            </Button>
-                          </a>
-                        </Link>
+                        null
                       )}
                     </div>
                   ) : (

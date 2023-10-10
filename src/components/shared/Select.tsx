@@ -99,7 +99,7 @@ const Select = React.forwardRef<any, Props>(
             return {
               ...provided,
               backgroundColor: "#262626",
-              maxWidth: "80%",
+              maxWidth: "85%",
             };
           },
           multiValueLabel: (provided) => {
@@ -113,7 +113,7 @@ const Select = React.forwardRef<any, Props>(
                 backgroundColor: "transparent",
                 color: "white",
               },
-              transition: "all 200ms",
+              transition: "all 150ms",
             };
           },
 

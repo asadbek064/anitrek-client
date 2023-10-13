@@ -99,7 +99,7 @@ const Home = () => {
             </Section> */}
 
             <div className="px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36
-                [font-size:var(--step-4)] font-bold pb-12"> Explore the Latest Trending Anime & Manga Titles</div>
+                [font-size:var(--step-3)] md:[font-size:var(--step-4)] font-bold md:pb-12">Trending Anime Genres </div>
                 {[...Array(2)].map((_, index) => (
                 // eslint-disable-next-line react/jsx-key
                   <RandomGenreSection isMobile={isMobile}/>

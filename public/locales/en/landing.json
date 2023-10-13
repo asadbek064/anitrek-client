@@ -1,8 +1,8 @@
 {
     "heading": "Your Anime Streaming Guide",
-    "heading-sub":"Track, share, and discover your favorite anime and manga with AniTrek.",
+    "heading-sub":"Track, Discover, and Get Episode Alerts for Anime and Manga.",
     "discover-head":"Streaming Guide",
-    "discover-sub": "Find where to stream, TV shows and movies with AniTrek.",
+    "discover-sub": "Find where to stream, TV shows and manga with AniTrek.",
     "engage-head": "Engage in discussions",
     "engage-sub":"Join our lively community, connect, and discover recommendations.",
     "track-head": "Stay up-to-date",
@@ -10,15 +10,15 @@
     "button-search": "Discover Anime & Manga",
     "button-register":"Sign up for free",
     "all-in-one-place-title": "ALL IN ONE PLACE",
-    "all-in-one-place-heading": "The complete streaming guide",
+    "all-in-one-place-heading": "The Streaming Guide",
     "all-in-one-place-description": "Discover new content easily with personalized recommendations for your favorite streaming services.",
     "advance-search-title": "ADVANCE SEARCH",
     "advance-search-heading": "One search, all platforms",
     "advance-search-description": "Say goodbye to platform-hopping. Our vast database has you covered across providers.",
-    "one-synced-title": "ONE SYNCED ANIME & MANGA LIST",
-    "one-synced-heading": "Merge your watchlists into one",
-    "one-synced-description": "Merge your anime and manga preferences into a single synced list, accessible across all devices and streaming platforms.",
+    "one-synced-title": "SYNCED ANIME & MANGA LIST",
+    "one-synced-heading": "Combine Watchlists",
+    "one-synced-description": "Automatically track what you're watching.",
     "push-notification-title": "RELEASE ALERTS",
     "push-notification-heading": "Get Instant Updates",
-    "push-notification-description": "Stay updated with push notifications for the latest releases in anime and manga."
+    "push-notification-description": "Get notified about new episodes or chapters for your favorite shows and manga."
 }

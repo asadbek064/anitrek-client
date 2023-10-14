@@ -45,7 +45,7 @@ const TracePage = () => {
     <React.Fragment>
       <Head
         title={`${t("tab_title")} - AniTrek`}
-        description="Anime Scene Search Engine. Lookup the exact moment and the episode."
+        description={`${t("description")}`}
       />
 
       <Section className="pt-20 space-y-16 flex flex-col items-center justify-center">

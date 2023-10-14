@@ -143,8 +143,8 @@ const Header = () => {
   }, []);
 
   const searchUrl = router.asPath.includes("manga")
-    ? "/browse?type=manga"
-    : "/browse?type=anime";
+    ? "/browse?sort=TRENDING_DESC&type=manga"
+    : "/browse?sort=TRENDING_DESC&type=anime";
 
   return (
     <Section

@@ -28,9 +28,9 @@ const initialValues: UseBrowseOptions = {
   keyword: "",
   genres: [],
   season: undefined,
-  seasonYear: undefined,
+  seasonYear: seasonYears[0].value,
   tags: [],
-  sort: MediaSort.Trending_desc,
+  sort: MediaSort.Popularity_desc,
   country: undefined,
   isAdult: false,
 };
@@ -217,20 +217,7 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
               </div>
              ): (
-              <div className="opacity-20 flex items-center justify-center">
-               <label
-                className="inline-block text-white font-semibold"
-                htmlFor="adultCheckbox"
-              >
-                18+
-              </label>
-              <input
-                className="ml-1 h-8 w-8 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                type="checkbox"
-                id="adultCheckbox"
-                disabled
-              />
-              </div>
+              null
              )}
             </div>
 

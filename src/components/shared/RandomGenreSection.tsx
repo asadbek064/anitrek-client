@@ -23,8 +23,9 @@ function RandomGenreSection({ isMobile }) {
     type: MediaType.Anime,
     genre: randomSelectedGenre,
     seasonYear: currentSeason.year,
-    sort: [MediaSort.Favourites_desc],
+    sort: [MediaSort.Trending_desc],
     perPage: isMobile ? 10 : 20,
+    isAdult: false,
   });
 
   return (

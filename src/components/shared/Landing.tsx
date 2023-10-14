@@ -36,7 +36,7 @@ const Landing = () => {
   return (
     <div className=" text-white py-24 px-4 flex flex-col">
       <div className="container mx-auto md:text-center">
-        <h1 className="mx-4 text-center md:text-center [font-size:var(--step-4)] md:[font-size:var(--step-6)] font-black mb-8
+        <h1 className="mx-4 text-center md:text-center [font-size:var(--step-4)] md:[font-size:var(--step-5)] font-black mb-8
         bg-gradient-to-r from-cyan-200 to-blue-300 inline-block text-transparent bg-clip-text
         ">
           {t("heading")}

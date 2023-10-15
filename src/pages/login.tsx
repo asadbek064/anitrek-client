@@ -99,7 +99,29 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
         )}
 
 
-        <div className="relative col-span-3 xl:col-span-2 bg-background-900/60 flex items-center justify-center">
+      <div className="relative flex justify-center flex-col">
+          <div className="py-5 md:py-0 md:px-4 mx-auto space-y-4 flex flex-col ease-in-out transition-all duration-75">
+          <h1 className="[font-size:var(--step-3)] font-bold mb-8">{t("login_heading")}</h1>
+            <Button
+              className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#fcfcff] !hover:bg-white/20 text-neutral-800 font-bold flex items-center justify-center w-full py-4 hover:!bg-opacity-90"
+              LeftIcon={FcGoogle}
+              iconClassName=""
+              onClick={handleSignIn("google")}
+            >
+              <p className="tracking-wide">{t("login_with_google")}</p>
+            </Button>
+            <Button
+              className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full py-4  hover:!bg-opacity-90"
+              LeftIcon={FaDiscord}
+              iconClassName=""
+              onClick={handleSignIn("discord")}
+            >
+              <p className="tracking-wide ">{t("login_with_discord")}</p>
+            </Button>
+          </div>
+      </div>
+
+        {/* <div className="relative col-span-3 xl:col-span-2 bg-background-900/60 flex items-center justify-center">
           <div className="w-full px-4 md:px-0 md:w-full lg:w-1/2 mx-2">
             <h1 className="[font-size:var(--step-3)] font-bold mb-8">{t("login_heading")}</h1>
               <div className="flex items-center justify-center rounded-sm py-4 md:flex-row-reverse flex-col">
@@ -157,11 +179,11 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                     </button>
 
                     <div className="flex flex-row justify-between my-2 py-2 [font-size:var(--step--1)]">
-                       {/*  <Link
+                        <Link
                           href={"/forgot-password"}
                         >
                         <a className="text-white hover:text-sky-500 ease-in transition-all duration-75">Forgot password?</a>
-                        </Link> */}
+                        </Link>
                       <Link
                           href={"/register"}
                         >
@@ -173,7 +195,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
                 </div>
               </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </React.Fragment>
   );

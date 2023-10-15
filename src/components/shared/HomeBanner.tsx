@@ -144,8 +144,7 @@ const MobileHomeBannerSkeleton = () => (
 const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
   const [index, setIndex] = useState<number>(0);
   const [showTrailer, setShowTrailer] = useState(false);
-  const [player, setPlayer] =
-    useState<ReturnType<YouTube["getInternalPlayer"]>>();
+  const [player, setPlayer] = useState<ReturnType<YouTube["getInternalPlayer"]>>();
   const [isMuted, setIsMuted] = useState(true);
   const isRanOnce = useRef(false);
   const { locale } = useRouter();

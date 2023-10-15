@@ -33,12 +33,15 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getWatchProvidersByTitle(media, currentLanguage);
-      console.log(result);
-      
+
       setWatchProviderData(result);
     };
 
     fetchData();
+
+    console.log(media.trailer?.site);
+    
+    
   }, [currentLanguage, media]);
 
   if (!watchProviderData) {
@@ -94,7 +97,7 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
       {watchProviderData.buy?.length > 0 &&
         renderWatchProviders(watchProviderData.buy, "Buy")}
       {watchProviderData.flatrate?.length > 0 &&
-        renderWatchProviders(watchProviderData.flatrate, "Flatrate")}
+        renderWatchProviders(watchProviderData.flatrate, "Subscription")}
     </div>
   );
 };

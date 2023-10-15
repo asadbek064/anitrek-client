@@ -87,7 +87,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes }) => {
 
   const { params } = router.query;
 
-    // Sauce only let the chosen ones in
+    // this component is deprecated
     useEffect(() => {
       if (user?.email !== "moonlightbz064@gmail.com") {
         router.back();

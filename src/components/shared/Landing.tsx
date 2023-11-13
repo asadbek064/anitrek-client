@@ -12,25 +12,29 @@ const Landing = () => {
         title: t("all-in-one-place-title"),
         heading: t("all-in-one-place-heading"),
         description: t("all-in-one-place-description"),
-        img :"/features/all_in_one_place.png"
+        img :"/features/all_in_one_place.png",
+        link: "/home",
       },
       {
         title: t("advance-search-title"),
         heading: t("advance-search-heading"),
         description: t("advance-search-description"),
-        img :"/features/advance_search.png"
+        img :"/features/advance_search.png",
+        link: "/browse?sort=TRENDING_DESC&type=anime",
       },
       {
         title: t("one-synced-title"),
         heading: t("one-synced-heading"),
         description: t("one-synced-description"),
-        img :"/features/one_synced.png"
+        img :"/features/one_synced.png",
+        link:"/watchlist"
       },
       {
         title: t("push-notification-title"),
         heading: t("push-notification-heading"),
         description: t("push-notification-description"),
-        img :"/features/push_notification.png"
+        img :"/features/push_notification.png",
+        
       },
     ]
   return (

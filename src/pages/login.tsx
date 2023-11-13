@@ -99,7 +99,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
         )}
 
 
-      <div className="relative flex justify-center flex-col">
+      {/* <div className="relative flex justify-center flex-col">
           <div className="py-5 md:py-0 md:px-4 mx-auto space-y-4 flex flex-col ease-in-out transition-all duration-75">
           <h1 className="[font-size:var(--step-3)] font-bold mb-8">{t("login_heading")}</h1>
             <Button
@@ -119,32 +119,13 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
               <p className="tracking-wide ">{t("login_with_discord")}</p>
             </Button>
           </div>
-      </div>
+      </div> */}
 
-        {/* <div className="relative col-span-3 xl:col-span-2 bg-background-900/60 flex items-center justify-center">
+        <div className="relative col-span-3 xl:col-span-2 bg-background-900/60 flex items-center justify-center">
           <div className="w-full px-4 md:px-0 md:w-full lg:w-1/2 mx-2">
             <h1 className="[font-size:var(--step-3)] font-bold mb-8">{t("login_heading")}</h1>
               <div className="flex items-center justify-center rounded-sm py-4 md:flex-row-reverse flex-col">
-                <div className="py-5 md:py-0 md:px-4 w-full md:w-1/2 space-y-4 flex flex-col ease-in-out transition-all duration-75">
-                    <Button
-                      className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#fcfcff] !hover:bg-white/20 text-neutral-800 font-bold flex items-center justify-center w-full py-4 hover:!bg-opacity-90"
-                      LeftIcon={FcGoogle}
-                      iconClassName=""
-                      onClick={handleSignIn("google")}
-                    >
-                      <p className="tracking-wide">{t("login_with_google")}</p>
-                    </Button>
-                    <Button
-                      className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full py-4  hover:!bg-opacity-90"
-                      LeftIcon={FaDiscord}
-                      iconClassName=""
-                      onClick={handleSignIn("discord")}
-                    >
-                      <p className="tracking-wide ">{t("login_with_discord")}</p>
-                    </Button>
-                  </div>      
-
-                <div className="bg-neutral-900/70 hover:bg-neutral-900/95 p-8 shadow-md w-full ease-in-out transition-all duration-100">
+              <div className="bg-neutral-900/70 hover:bg-neutral-900/95 p-8 shadow-md w-full ease-in-out transition-all duration-100">
                   <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                       <label className="block text-sm font-medium text-white-100">
@@ -193,9 +174,29 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
 
                   </form>
                 </div>
+                <div className="py-5 md:py-0 md:px-4 w-full md:w-1/2 space-y-4 flex flex-col ease-in-out transition-all duration-75">
+                    <Button
+                      className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#fcfcff] !hover:bg-white/20 text-neutral-800 font-bold flex items-center justify-center w-full py-4 hover:!bg-opacity-90"
+                      LeftIcon={FcGoogle}
+                      iconClassName=""
+                      onClick={handleSignIn("google")}
+                    >
+                      <p className="tracking-wide">{t("login_with_google")}</p>
+                    </Button>
+                    <Button
+                      className="ease-in duration-75 rounded-sm shadow-lg relative bg-[#5865F2] !hover:bg-white/20 text-white font-bold flex items-center justify-center w-full py-4  hover:!bg-opacity-90"
+                      LeftIcon={FaDiscord}
+                      iconClassName=""
+                      onClick={handleSignIn("discord")}
+                    >
+                      <p className="tracking-wide ">{t("login_with_discord")}</p>
+                    </Button>
+                  </div>      
+
+                
               </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </React.Fragment>
   );

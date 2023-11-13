@@ -1,12 +1,14 @@
 import React from "react";
 import Image from 'next/image'
 import { isMobile } from "react-device-detect";
+import Link from "next/link";
 
 export interface FeatureCardData {
     title: string;
     heading: string;
     description: string;
     img: string;
+    link?: string;
 }
 
 interface FeatureCardProps {
@@ -24,8 +26,21 @@ const FeatureCard: React.FC<FeatureCardProps> =  ({cardData}) => {
                     alt="feature backdrop"
                 />
             </div>
-            <div className="flex flex-col justify-between mt-4 py-0 lg:mt-8 px-2 md:px-6 lg:py-4 text-center h-full">
-                <div className="[font-size:var(--step--1)] md:[font-size:var(--step--1)] font-semibold text-primary-600 mb-2">{cardData.title}</div>
+            <div className="flex flex-col justify-between mt-4 py-0 lg:mt-8 px-2 md:px-6 lg:py-4 text-center h-full">  
+                {cardData?.link ? (
+                    <>
+                    <Link href={cardData.link}>
+                        <a>
+                        <div className="[font-size:var(--step--1)] md:[font-size:var(--step--1)] font-semibold text-primary-600 mb-2">{cardData.title}</div>
+                        </a>
+                    </Link>
+                    </>
+                ) : (
+                    <>
+                     <div className="[font-size:var(--step--1)] md:[font-size:var(--step--1)] font-semibold text-primary-600 mb-2">{cardData.title}</div>
+                    </>
+                )} 
+
                 <div className="[font-size:var(--step-2)]  md:[font-size:var(--step-1)] font-bold leading-8 py-4 text-white text-base">{cardData.heading}</div>
                 <div className="[font-size:var(--step--1)] md:[font-size:var(--step--0)] text-white text-base">{cardData.description}</div>            
             </div>

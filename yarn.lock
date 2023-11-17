@@ -1823,14 +1823,10 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-list-item/-/extension-list-item-2.0.0-beta.23.tgz"
   integrity sha512-AkzvdELz3ZnrlZM0r9+ritBDOnAjXHR/8zCZhW0ZlWx4zyKPMsNG5ygivY+xr4QT65NEGRT8P8b2zOhXrMjjMQ==
 
-"@tiptap/extension-mention@^2.0.0-beta.102":
-  version "2.0.0-beta.102"
-  resolved "https://registry.npmjs.org/@tiptap/extension-mention/-/extension-mention-2.0.0-beta.102.tgz"
-  integrity sha512-QTBBpWnRnoV7/ZW31HwhPvZL3HiwnlehlHSLeMioVxAQPF5WrRtlOpxK/SRu7+KuwdCb7ZA1eWW/yjbXI3oktg==
-  dependencies:
-    "@tiptap/suggestion" "^2.0.0-beta.97"
-    prosemirror-model "1.18.1"
-    prosemirror-state "1.4.1"
+"@tiptap/extension-mention@^2.1.11":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-mention/-/extension-mention-2.1.12.tgz#a395e7757b45630ec3047f14b0ba2dde8e1c9c93"
+  integrity sha512-Nc8wFlyPp+/48IpOFPk2O3hYsF465wizcM3aihMvZM96Ahic7dvv9yVptyOfoOwgpExl2FIn1QPjRDXF60VAUg==
 
 "@tiptap/extension-ordered-list@^2.0.0-beta.30":
   version "2.0.0-beta.30"
@@ -1923,15 +1919,6 @@
     "@tiptap/extension-paragraph" "^2.0.0-beta.26"
     "@tiptap/extension-strike" "^2.0.0-beta.29"
     "@tiptap/extension-text" "^2.0.0-beta.17"
-
-"@tiptap/suggestion@^2.0.0-beta.97":
-  version "2.0.0-beta.97"
-  resolved "https://registry.npmjs.org/@tiptap/suggestion/-/suggestion-2.0.0-beta.97.tgz"
-  integrity sha512-3NWG+HE7v2w97Ek6z1tUosoZKpCDH+oAtIG9XoNkK1PmlaVV/H4d6HT9uPX+Y6SeN7fSAqlcXFUGLXcDi9d+Zw==
-  dependencies:
-    prosemirror-model "1.18.1"
-    prosemirror-state "1.4.1"
-    prosemirror-view "1.26.2"
 
 "@types/ace@*":
   version "0.0.48"

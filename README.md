@@ -1,9 +1,8 @@
 <div style="text-align: center;">
 <h1>AniTrek</h1>
 
-### AniTrek is a multi-language website that provides an all-inclusive platform for anime fans, streamlining watchlist management, content discovery, and community engagement through reviews and comments
+### AniTrek is a multi-language website that provides an all-inclusive platform for anime fans, easy watchlist management, content discovery, and community engagement through reviews and comments
 
-Since it is an open-source project, there won't be any ads in this website.
 
 The official website is [anitrek.co](https://anitrek.co)
 

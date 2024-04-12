@@ -15,6 +15,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { MdTagFaces } from "react-icons/md";
 import { ImageType } from "react-images-uploading";
 import TraceCard from "./TraceCard";
+import WatchProvider from "../watch-provider/WatchProvider";
 
 interface TracePanelProps {
   data: TraceImageResponse;
@@ -143,13 +144,13 @@ const TracePanel: React.FC<TracePanelProps> = ({ data, image }) => {
                 className="text-gray-300 line-clamp-5"
               />
 
-              <Link href={createMediaDetailsUrl(card.anime)}>
+              {/* <Link href={createMediaDetailsUrl(card.anime)}>
                 <a className="block">
                   <Button primary className="mx-auto md:mx-auto">
                     <p>{t("common:watch_now")}</p>
                   </Button>
                 </a>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

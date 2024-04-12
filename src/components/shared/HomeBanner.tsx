@@ -249,7 +249,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
                     modestbranding: 1,
                     controls: 0,
                     mute: 1,
-                    origin: "https://anitrek.co",
+                    origin: "https://anitrek.com",
                   },
                 }}
                 containerClassName={classNames(

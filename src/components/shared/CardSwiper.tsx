@@ -30,7 +30,6 @@ const getVisibleIndex = (swiper: SwiperInstance) => {
   };
 };
 
-
 const CardSwiper: React.FC<CardSwiperProps> = (props) => {
   const {
     data,
@@ -38,7 +37,6 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
       <SwiperCard isExpanded={isHover} data={data} />
     ),
   } = props;
-
 
   const [swiper, setSwiper] = useState<SwiperInstance>();
   const [activeIndex, setActiveIndex] = useState(null);
@@ -208,35 +206,43 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
       speed={500}
       watchSlidesVisibility
     >
-      {data.map((item, index) => {
-        let debounceTimeout: NodeJS.Timeout = null;
+      {(data && data.length > 0) && (
+        <>
+          {data.map((item, index) => {
+            let debounceTimeout: NodeJS.Timeout = null;
 
-        const debounce = (fn: (...args: any[]) => void, wait: number) => {
-          return (...args: any[]) => {
-            const later = () => {
-              debounceTimeout = null;
-              fn(...args);
+            const debounce = (fn: (...args: any[]) => void, wait: number) => {
+              return (...args: any[]) => {
+                const later = () => {
+                  debounceTimeout = null;
+                  fn(...args);
+                };
+
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(later, wait);
+              };
             };
 
-            clearTimeout(debounceTimeout);
-            debounceTimeout = setTimeout(later, wait);
-          };
-        };
-
-        return (
-          <SwiperSlide
-            onMouseEnter={
-              /* isMobile */true ? noop : debounce(handleSlideHover(index), 300)
-            }
-            onMouseLeave={
-              /* isMobile */true ? noop : debounce(handleSlideLeave(index), 300)
-            }
-            key={index}
-          >
-            {onEachCard(item, activeIndex === index)}
-          </SwiperSlide>
-        );
-      })}
+            return (
+              <SwiperSlide
+                onMouseEnter={
+                  /* isMobile */ true
+                    ? noop
+                    : debounce(handleSlideHover(index), 300)
+                }
+                onMouseLeave={
+                  /* isMobile */ true
+                    ? noop
+                    : debounce(handleSlideLeave(index), 300)
+                }
+                key={index}
+              >
+                {onEachCard(item, activeIndex === index)}
+              </SwiperSlide>
+            );
+          })}
+        </>
+      )}
     </Swiper>
   );
 };

@@ -29,13 +29,17 @@ const ColumnSection: React.FC<ColumnSectionProps> = ({
       )}
 
       <div className="space-y-2">
-        {data.map((data) => (
+        {(data && data.length > 0) && (
+          <>
+          {data.map((data) => (
           <HorizontalCard
             className="px-4 odd:bg-background-700"
             data={data}
             key={data.id}
           />
         ))}
+          </>
+        )}
       </div>
 
       {viewMoreHref && (

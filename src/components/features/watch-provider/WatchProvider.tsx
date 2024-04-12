@@ -38,9 +38,6 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
     };
 
     fetchData();
-
-    console.log(media.trailer?.site);
-    
     
   }, [currentLanguage, media]);
 
@@ -91,7 +88,8 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
   );
 
   return (
-    <div className="bg-neutral-900 px-3 py-1">
+    <div className="bg-neutral-900 px-6 py-1">
+      <div className="[font-size:var(--step-1)] font-bold py-4">Available</div>
       {watchProviderData.rent?.length > 0 &&
         renderWatchProviders(watchProviderData.rent, "Rent")}
       {watchProviderData.buy?.length > 0 &&

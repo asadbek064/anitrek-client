@@ -48,9 +48,7 @@ const ReadPage: NextPage<ReadPageProps> = ({ chapters }) => {
 
      // Sauce only let the chosen ones in
      useEffect(() => {
-      if (user?.email !== "moonlightbz064@gmail.com") {
-        router.back();
-      }
+      router.back();
     },[router, user])
 
 

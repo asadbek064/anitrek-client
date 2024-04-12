@@ -161,25 +161,23 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ manga }) => {
          
 
           <div className="md:col-span-8 space-y-12">
-            {/* {(user && user?.email === "moonlightbz064@gmail.com") ? (
-              <DetailsSection title={t("chapters_section")} className="relative">
+          {/* <DetailsSection title={t("chapters_section")} className="relative">
               {isLoading ? (
                 <div className="h-full w-full flex items-center justify-center">
                   <Spinner />
                 </div>
               ) : (
                 <>
-                <div className="bg-rose-900 text-center py-4 px-6 lg:px-4">
-                  <div className="p-2 bg-rose-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-                    <span className="flex rounded-full bg-rose-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
+                <div className="bg-blue-900 text-center py-4 px-6 lg:px-4">
+                  <div className="p-2 bg-blue-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+                    <span className="flex rounded-full bg-blue-500 uppercase px-2 py-1 text-xs font-bold mr-3">Notice</span>
                     <span className="font-semibold mr-2 text-left flex-auto">Offline temporary</span>
                   </div>
                 </div>
                 <LocaleChapterSelector mediaId={manga.id} chapters={chapters} />
                 </>
               )}
-            </DetailsSection>
-            ): ''} */}
+            </DetailsSection> */}
 
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`manga-${manga.id}`} />

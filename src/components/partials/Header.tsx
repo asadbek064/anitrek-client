@@ -31,9 +31,6 @@ interface _route {
   icon: ComponentType<IconProps>;
 }
 
-let routes: _route[] = [];
-
-
 const Header = () => {
   
   const [isTop, setIsTop] = useState(true);
@@ -42,7 +39,7 @@ const Header = () => {
   const router = useRouter();
   const { t } = useTranslation("header");
 
-  const routes_guest: _route[] = [
+  const routes: _route[] = [
     {
       title: `${t("nav-anime")}`,
       href: "/home",
@@ -78,61 +75,12 @@ const Header = () => {
       href: "/wwf",
       icon: MdOutlineLiveTv
     }, */
-  /*   {
-      title: "Clips",
-      href: "/themes",
-      icon: RiMovie2Line
-    }, */
-  ]
-  const routes_verified: _route[] = [
-    {
-      title: "Watch",
-      href: "/home",
-      icon: BsPlayFill
-    },
-    {
-      title: "Read",
-      href: "/manga",
-      icon: AiOutlineRead
-    },
-    {
-      title: `${t("nav-review")}`,
-      href: "/reviews",
-      icon: AiFillStar
-    },
-    {
-      title: "Scene Finder",
-      href: "/scene-search",
-      icon: MdFindInPage
-    },
-    {
-      title: "A.I Upscaled",
-      href: "/ai-upscale",
-      icon: MdHighQuality,
-    },
-    {
-      title: "Trivia",
-      href: "/trivia",
-      icon: FaGamepad
-    },
-    {
-      title: "Watch2together",
-      href: "/wwf",
-      icon: MdOutlineLiveTv
-    },
     {
       title: "Clips",
       href: "/themes",
       icon: RiMovie2Line
     },
   ]
-  
-  // rename header if not logged in
-  if (user === null) {
-    routes = routes_guest;
-  } else if (user.email === "moonlightbz064@gmail.com") {
-    routes = routes_verified;
-  }
 
   useEffect(() => {
     const handleScroll = () => {

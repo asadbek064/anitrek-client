@@ -104,7 +104,7 @@ const Header = () => {
       )}
     >
       <div className="relative h-2/3  mr-8">
-        <NavItem href="/">{() => <Logo className="!w-full !h-full" />}</NavItem>
+        <NavItem href={user ? "/home" : '/'}>{() => <Logo className="!w-full !h-full" />}</NavItem>
       </div>
 
       <div className="hidden md:flex items-center md:space-x-4 xl:space-x-8 [font-size:var(--step-0)] font-semibold text-typography-secondary">

@@ -21,6 +21,8 @@ const LanguageSwitcher = () => {
     nookies.set(null, "NEXT_LOCALE", lang, { path: "/" });
   };
 
+
+
   const currentLocale = useMemo(
     () => locales.find(({ locale }) => router.locale === locale),
     [router.locale]

@@ -23,7 +23,7 @@ const TriviaWithFriendPage = () => {
                     poster="https://cdn.discordapp.com/attachments/820893881980813314/1094571392512577566/poster-thumbnail.jpg"
                     className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-30"
                 >
-                    <source  src="https://cdn.discordapp.com/attachments/792449672480292865/821118888624128020/3s326y.mp4" type="video/mp4" />
+                    <source  src="wallpapers/3s326y.mp4" type="video/mp4" />
                 </video>
                 <div className="flex flex-col justify-center items-center h-full relative z-10 mx-2">
                     <h2 className="text-center text-white text-3xl md:text-5xl font-bold mb-8">

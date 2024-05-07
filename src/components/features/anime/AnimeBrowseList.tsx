@@ -257,11 +257,11 @@ const BrowseList: React.FC<BrowseListProps> = ({
               </div>
             )}
 
-            {((totalData.length && !isFetchingNextPage) || hasNextPage) && (
+            {((totalData?.length && !isFetchingNextPage) || hasNextPage) && (
               <InView onInView={handleFetch} />
             )}
 
-            {!hasNextPage && !!totalData.length && (
+            {!hasNextPage && !!totalData?.length && (
               <p className="mt-8 text-2xl text-center">It&lsquo;s over...</p>
             )}
           </React.Fragment>

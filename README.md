@@ -1,16 +1,17 @@
 <div style="text-align: center;">
 <h1>AniTrek</h1>
 
-### AniTrek is a multi-language website that provides an all-inclusive platform for anime fans, easy watchlist management, content discovery, and community engagement through reviews and comments
+### AniTrek is a multi-language platform for anime fans, offering easy watchlist management, content discovery, and community engagement. It gathers data on anime titles for easy discovery and features comment engine, AI scene search, Anime/Manga/Voice/Character/OP/ED search and consolidated watchlists from various providers.  No streaming sources provided.
 
 
-The official website is [anitrek.co](https://anitrek.co)
+The official website is [anitrek.com](https://anitrek.com)
 
 </div>
 
 ## Table of contents
 
 - [Technologies](#technologies)
+- [Features](#features)
 - [Screenshots](#screenshots)
 - [Sources](#sources)
 
@@ -23,40 +24,68 @@ The official website is [anitrek.co](https://anitrek.co)
 - i18n (en, es, ru, de)
 - Libraries such as SwiperJS, Framer Motion, React Query...
 
+## Features
+
+- Anime/Manga/Voice/Character/OP/ED search
+- AI scene search
+- Custom comment engine
+    - nested replies
+    - reactions
+    - markdown support
+- Websites localized
+    - en
+    - es
+    - de
+    - ru
+- Anime/Manga Reviews
+- Custom video player
+- Auth social and regular email & password
+- Where to watch
+
 ## Screenshots
 
-![Home page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701738567090176/localhost_3000_.png)
+![Home page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/home-min.png)
 
-![Anime](https://cdn.discordapp.com/attachments/1152701701724315718/1152701737942134894/localhost_3000__1.png)
+![Localized](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/New%20Project.png)
 
-![Manga](https://cdn.discordapp.com/attachments/1152701701724315718/1152701736977436862/localhost_3000__2.png)
+![Anime](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/anime-min.png)
 
-![Themes](https://cdn.discordapp.com/attachments/1152701701724315718/1152701735475875971/localhost_3000_themes.png)
+![Manga](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/manga-min.png)
 
-![Details page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701733965926551/localhost_3000_home_1.png)
+![Themes](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/themes-min.png)
+![Themes Search](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/theme_search-min.png)
 
-![Search page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701734632828968/localhost_3000_home.png)
 
-![Character page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701732967690410/localhost_3000_home_2.png)
+![Details page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/anime_view-min.png)
 
-![Voice actor page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701732263039056/localhost_3000_home_3.png)
+![Custom Comment Engine](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/comment-engine-min.png)
 
-![Image search page](https://cdn.discordapp.com/attachments/1152701701724315718/1152701736625127504/localhost_3000__3.png)
+
+![Anime Search page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/anime_seach-min.png)
+
+![Manga Search page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/manga_search-min.png)
+
+![Character page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/characters-min.png)
+
+![Voice actor page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/voice_actor-min.png)
+
+![AI scene search page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/ai_scene_search-min.png)
 
 ![Reviews page](https://cdn.discordapp.com/attachments/1152701701724315718/1152702353376546969/localhost_3000__6.png)
 
-![Review slug](https://cdn.discordapp.com/attachments/1152701701724315718/1152702353892442142/localhost_3000__7.png)
+![Login page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/localhost_3000_login_redirectedFrom_trivia.png)
+![Register page](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/register-min.png)
 
-![Login page](https://cdn.discordapp.com/attachments/1152701701724315718/1152705139732393994/localhost_3000_login_redirectedFrom_trivia.png)
 
-![Anime Trivia](https://cdn.discordapp.com/attachments/1152701701724315718/1152701736105025707/localhost_3000__4.png)
+![Anime Trivia](https://pub-5e5002a97ed346e5906448c5ab66c50b.r2.dev/trivia-min.png)
 
 
 ## Sources
 
-- Video player design by asadbek064 [ReactAllPlayer](https://reactallplayer.asadbek.dev/)
-- Anime Data from [Anilist](anilist.co)
-- AI Search [Tracer.moe](https://trace.moe/)
+- Custom HTML Video player design & developed by [asadbek064](https://github.com/asadbek064) [ReactAllPlayer](https://reactallplayer.asadbek.dev/)
+- Anime/Manga data from [Anilist](anilist.co)
+- Schedule data from [themoviedb](https://www.themoviedb.org/)
+- AI Search from [Tracer.moe](https://trace.moe/)
 - Anime themes from [animethemes.moe](https://animethemes.moe/)
 
 <!-- ## Installation

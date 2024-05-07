@@ -3,7 +3,7 @@ import dayjs from "@/lib/dayjs";
 const START_YEAR = 1940;
 const CURRENT_YEAR = dayjs().year();
 
-export const WEBSITE_URL = "https://anitrek.co";
+export const WEBSITE_URL = "https://anitrek.com";
 export const DISCORD_URL = "";
 export const FACEBOOK_URL = "";
 export const KO_FI_URL = "";

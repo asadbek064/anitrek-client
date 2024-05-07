@@ -98,7 +98,7 @@ const Home = () => {
 
       <ClientOnly>
         <div className="pb-8">
-          <HomeBanner data={trendingAnime} isLoading={trendingLoading} isManga={false}/>
+          <HomeBanner data={trendingAnime ? trendingAnime : null} isLoading={trendingLoading} isManga={false}/>
 
           <div className="space-y-8">
             {/* {user && (

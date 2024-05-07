@@ -149,7 +149,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
   const isRanOnce = useRef(false);
   const { locale } = useRouter();
 
-  const activeSlide = useMemo(() => data[index], [data, index]);
+  const activeSlide = useMemo(() => data ? data[index]: data[0], [data, index]);
 
   const handleSlideChange: SwiperProps["onSlideChange"] = useCallback(
     (swiper) => {

@@ -158,8 +158,12 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ voiceActor }) => {
   );
 };
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+
 export const getStaticProps: GetStaticProps = async ({
   params: { params },
+  locale
 }) => {
   try {
     const data = await getStaffDetails({
@@ -169,6 +173,7 @@ export const getStaticProps: GetStaticProps = async ({
     return {
       props: {
         voiceActor: data,
+        ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
       },
       revalidate: REVALIDATE_TIME,
     };

@@ -7,7 +7,11 @@ const isDev = process.env.NODE_ENV === "development";
 
 module.exports = {
   backend: {
-    backendOptions: [{ expirationTime: isDev ? 60 : 60 * 60 * 1000 }], // 1 hour
+    backendOptions: [{ expirationTime: isDev ? 60 : 60 * 60 * 1000 },
+    {
+      loadPath: require('path').resolve('/locales/{{lng}}/{{ns}}.json')
+    }
+    ], // 1 hour
     backends:
       typeof window !== "undefined" ? [LocalStorageBackend, HttpBackend] : [],
   },
@@ -15,7 +19,10 @@ module.exports = {
     locales: ["en", "de", "ru", "es"],
     defaultLocale: "en",
     reloadOnPrerender: isDev,
+
   },
+  localePath: require('path').resolve('./public/locales'),
+  localeDetection: false,
   serializeConfig: false,
   use: typeof window !== "undefined" ? [ChainedBackend] : [],
 };

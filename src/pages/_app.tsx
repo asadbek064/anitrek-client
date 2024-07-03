@@ -84,7 +84,7 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
           `}
         </Script> */}
 
-        <Script type="text/javascript">
+        <Script id="clarity-analytics" type="text/javascript">
           {`
           (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

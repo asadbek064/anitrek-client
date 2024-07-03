@@ -68,7 +68,7 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
         ChatbroLoader({encodedChatId: '18L5g'});`}
         </Script> */}
 
-        {/* <Script
+        <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         />
@@ -82,7 +82,7 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
                 page_path: window.location.pathname,
               });
           `}
-        </Script> */}
+        </Script>
 
         <Script id="clarity-analytics" type="text/javascript">
           {`

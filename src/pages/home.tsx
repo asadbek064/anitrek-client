@@ -63,12 +63,12 @@ const Home = () => {
     }
   );
 
-  const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
+/*   const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
     useMedia({
       type: MediaType.Anime,
       sort: [MediaSort.Favourites_desc],
       perPage: 5,
-    });
+    }); */
 
  /*  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated(); */
 
@@ -116,7 +116,7 @@ const Home = () => {
               </Section>
             )}
 
-            {[...Array(5)].map((_, index) => (
+            {[...Array(2)].map((_, index) => (
               // eslint-disable-next-line react/jsx-key
               <RandomGenreSection isMobile={isMobile}/>
             ))}
@@ -147,13 +147,13 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
               />}
-              <ColumnSection
+              {/* <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularAllTime}
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
-              />
+              /> */}
               <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}
@@ -161,13 +161,13 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={favouriteSeasonLoading}
               />
-              <ColumnSection
+              {/* <ColumnSection
                 title={t("most_favourite", { ns: "common" })}
                 type={MediaType.Anime}
                 data={favouriteAllTime}
                 viewMoreHref="/browse?sort=favourites&type=anime"
                 isLoading={favouriteAllTimeLoading}
-              />
+              /> */}
             </Section>
 
             <NewestComments type={MediaType.Anime} />

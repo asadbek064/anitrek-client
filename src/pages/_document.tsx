@@ -8,6 +8,9 @@ class MyDocument extends Document {
           <meta httpEquiv="Cache-Control" content="max-age=200" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link rel="icon" href="/favicon.ico" type="image/ico" />
+          
+
+          
         </Head>
         <body  className=" bg-dark text-white">
           <Main />

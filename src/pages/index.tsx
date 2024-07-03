@@ -10,15 +10,18 @@ import useMedia from "@/hooks/useMedia";
 import useRecommendations from "@/hooks/useRecommendations";
 import { MediaSort, MediaType } from "@/types/anilist";
 import { getSeason, randomElement } from "@/utils";
+import { useUser } from "@supabase/auth-helpers-react";
 import { useTranslation } from "next-i18next";
-import React, { useMemo } from "react";
+import Router, { useRouter } from "next/router";
+import React, { useEffect, useMemo } from "react";
 import { isMobile } from "react-device-detect";
 
 const Home = () => {
   const currentSeason = useMemo(getSeason, []);
   const { isDesktop } = useDevice();
   const { t } = useTranslation("review");
-
+  const { user } = useUser();
+  const router = useRouter();
 /*   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
@@ -74,6 +77,11 @@ const Home = () => {
     [recommendationsAnime]
   ); */
 
+  useEffect(() => {
+    if (user) {
+      router.push('/home')
+    }
+  }, [user])
 
   return (
     <React.Fragment>

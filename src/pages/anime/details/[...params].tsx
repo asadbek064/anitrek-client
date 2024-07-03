@@ -364,9 +364,9 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 )}
               </DetailsSection>  */}
 
-            <ThemeLite media={anime} /> 
+            {/*<ThemeLite media={anime} /> */}
 
-            <WatchProvider media={anime} />
+            {/*<WatchProvider media={anime} />*/}
             
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />

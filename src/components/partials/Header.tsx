@@ -75,11 +75,11 @@ const Header = () => {
       href: "/wwf",
       icon: MdOutlineLiveTv
     }, */
-    {
+  /*   {
       title: "Clips",
       href: "/themes",
       icon: RiMovie2Line
-    },
+    }, */
   ]
 
   useEffect(() => {

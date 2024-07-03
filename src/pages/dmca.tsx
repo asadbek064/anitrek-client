@@ -57,7 +57,7 @@ const dmca = () => {
       <p></p>
       <p>
         Your DMCA takedown request should be emailed to:{" "}
-        admin@animet.tv
+        moonlightbz@proton.me
       </p>
       <p>
       We will then review your DMCA request and take action

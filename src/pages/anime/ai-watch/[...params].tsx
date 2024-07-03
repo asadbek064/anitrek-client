@@ -62,7 +62,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
     setSelectedEpisodeNumber(episode);
     
     const selectedEpisode: AiEpisode = episodes[episode-1];
-    const externalPlayerDomain = "https://internal.animet.site/"; //dev http://127.0.0.1:5500 
+    const externalPlayerDomain = "https://internal.anitrek.com/"; //dev http://127.0.0.1:5500 
     
     const useHLS = selectedEpisode.src.includes("m3u8");
 

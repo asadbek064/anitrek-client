@@ -10,7 +10,7 @@ const DeletionPrivacy = () => {
       <h1>Privacy Policy for AniTrek</h1>
 
       <p>
-        At AniTrek, accessible from https://animet.tv, one of our main
+        At AniTrek, accessible from https://anitrek.com, one of our main
         priorities is the privacy of our visitors. This Privacy Policy document
         contains types of information that is collected and recorded by AniTrek
         and how we use it.

@@ -4,7 +4,7 @@ import { escapeXmlCHaracters } from '@/lib/utils';
 import supabase from '@/lib/supabase';
 import { NextApiResponse } from 'next';
 
-const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL || 'https://anitrek.com';
+const baseUrl = 'https://anitrek.com';
 
 function generateSiteMap(pages: string[]) {
     // Generate XML for the sitemap index

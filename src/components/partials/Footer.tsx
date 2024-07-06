@@ -25,17 +25,17 @@ const Footer = ({}) => {
       <div className="flex items-center space-x-8 text-center">
         {/* <Link href="/tos">
           <p className="text-md md:text-lg">{t("term_of_services")}</p>
-        </Link>
+        </Link> */}
 
         <Link href="/dmca">
           <p className="text-lg">{t("dmca")}</p>
         </Link>
 
-        <Link href="/contact">
+       {/*  <Link href="/contact">
           <p className="text-md md:text-lg">{t("contact")}</p>
-        </Link>
+        </Link> */}
 
-        <Link href="/deletion-privacy">
+        {/* <Link href="/deletion-privacy">
           <p className="text-md md:text-lg">Deletion Privacy</p>
         </Link>
         <Link href="/web-stats">

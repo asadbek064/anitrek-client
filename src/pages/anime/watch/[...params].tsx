@@ -1,3 +1,4 @@
+/* DEPRECATED: NO LONGER WORKS */
 import LocaleEpisodeSelector from "@/components/features/anime/Player/LocaleEpisodeSelector";
 import { WatchPlayerProps } from "@/components/features/anime/WatchPlayer";
 import Comments from "@/components/features/comment/Comments";

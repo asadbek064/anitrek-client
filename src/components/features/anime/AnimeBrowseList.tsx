@@ -201,24 +201,20 @@ const BrowseList: React.FC<BrowseListProps> = ({
               />
 
             <div className=" mt-7">
-             {user ? (
               <div className="flex items-center justify-center">
-                 <label
-                className="inline-block text-white font-semibold"
-                htmlFor="adultCheckbox"
-              >
-                18+
-              </label>
-              <input
-                className="ml-1 h-8 w-8 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                type="checkbox"
-                id="adultCheckbox"
-                {...register("isAdult")}
-              />
-              </div>
-             ): (
-              null
-             )}
+                  <label
+                  className="inline-block text-white font-semibold"
+                  htmlFor="adultCheckbox"
+                >
+                  18+
+                </label>
+                <input
+                  className="ml-1 h-8 w-8 border border-gray-300 rounded-sm bg-gray-600 checked:bg-primary-500 checked:border-primary-500 focus:outline-none transition duration-200 mr-2 cursor-pointer"
+                  type="checkbox"
+                  id="adultCheckbox"
+                  {...register("isAdult")}
+                />
+                </div>
             </div>
 
           </div>

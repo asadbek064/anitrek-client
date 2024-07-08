@@ -365,8 +365,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               </DetailsSection>  */}
 
             {/*<ThemeLite media={anime} /> */}
-
-            {/*<WatchProvider media={anime} />*/}
+            
+            <DetailsSection title="Where to watch">
+              <WatchProvider media={anime} />
+            </DetailsSection>
             
             <DetailsSection title={t("comments_section")}>
               <Comments topic={`anime-${anime.id}`} />
@@ -547,7 +549,7 @@ export const getStaticProps: GetStaticProps = async ({
     return {
       props: {
         anime: media as Media,
-        ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
+        ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'source_status', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
       },
       revalidate: REVALIDATE_TIME,
     };

@@ -64,13 +64,13 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
                 <Link
                   href={getProviderBaseUrl(provider.provider_id)}
                 >
-                  <a target="_blank">
+                  <a target="_blank" href={`https://www.google.com/search?q=${provider.provider_name} ${media.title.english}`}>
                     <Image
                       src={getProviderLogo(provider.provider_id)}
                       alt={provider.provider_name}
                       width={55}
                       height={55}
-                      className="rounded-sm"
+                      className="rounded-md"
                     />
                   </a>
                 </Link>
@@ -88,8 +88,7 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
   );
 
   return (
-    <div className="bg-neutral-900 px-6 py-1">
-      <div className="[font-size:var(--step-1)] font-bold py-4">Available</div>
+    <div className="bg-neutral-900 px-6">
       {watchProviderData.rent?.length > 0 &&
         renderWatchProviders(watchProviderData.rent, "Rent")}
       {watchProviderData.buy?.length > 0 &&

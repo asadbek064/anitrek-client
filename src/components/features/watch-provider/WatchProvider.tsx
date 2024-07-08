@@ -64,7 +64,7 @@ const WatchProvider: React.FC<WatchProviderProps> = ({ media }) => {
                 <Link
                   href={getProviderBaseUrl(provider.provider_id)}
                 >
-                  <a target="_blank" href={`https://www.google.com/search?q=${provider.provider_name} ${media.title.english}`}>
+                  <a target="_blank" href={`https://www.google.com/search?q=${provider.provider_name} ${media.title.english}`} rel="noreferrer">
                     <Image
                       src={getProviderLogo(provider.provider_id)}
                       alt={provider.provider_name}

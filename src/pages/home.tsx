@@ -36,7 +36,7 @@ const Home = () => {
   const { data: trendingAnime, isLoading: trendingLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Trending_desc, MediaSort.Popularity_desc],
-    perPage: isMobile ? 10 : 20,
+    perPage: isMobile ? 15 : 20,
   });
 
   const { data: popularSeason, isLoading: popularSeasonLoading } = useMedia({
@@ -50,7 +50,7 @@ const Home = () => {
   const { data: popularAllTime, isLoading: popularAllTimeLoading } = useMedia({
     type: MediaType.Anime,
     sort: [MediaSort.Popularity_desc],
-    perPage: 5,
+    perPage: 10,
   });
 
   const { data: favouriteSeason, isLoading: favouriteSeasonLoading } = useMedia(
@@ -59,18 +59,18 @@ const Home = () => {
       sort: [MediaSort.Favourites_desc],
       season: currentSeason.season,
       seasonYear: currentSeason.year,
-      perPage: 5,
+      perPage: 10,
     }
   );
 
-/*   const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
+  const { data: favouriteAllTime, isLoading: favouriteAllTimeLoading } =
     useMedia({
       type: MediaType.Anime,
       sort: [MediaSort.Favourites_desc],
-      perPage: 5,
-    }); */
+      perPage: 10,
+    });
 
- /*  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated(); */
+  const { data: recentlyUpdated, isLoading: recentlyUpdatedLoading } = useRecentlyUpdated();
 
   const randomTrendingAnime = useMemo(() => {
     return randomElement(trendingAnime || []);
@@ -83,10 +83,10 @@ const Home = () => {
     { enabled: !!randomTrendingAnime }
   );
 
-  const randomAnime = useMemo(
+  /* const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,
     [recommendationsAnime]
-  );
+  ); */
 
 
   return (
@@ -107,6 +107,7 @@ const Home = () => {
               <RecommendedAnimeSection />
               </>
             )} */}
+            
     
             {trendingLoading ? (
               <ListSwiperSkeleton />
@@ -116,7 +117,15 @@ const Home = () => {
               </Section>
             )}
 
-            {[...Array(2)].map((_, index) => (
+          {recentlyUpdatedLoading ? (
+              <ListSwiperSkeleton />
+            ) : (
+              <Section title={t("newly_added", { ns: "common" })}>
+                <CardSwiper data={recentlyUpdated} />
+              </Section>
+            )}
+
+            {[...Array(3)].map((_, index) => (
               // eslint-disable-next-line react/jsx-key
               <RandomGenreSection isMobile={isMobile}/>
             ))}
@@ -130,14 +139,6 @@ const Home = () => {
               <NewestReviews  type={MediaType.Anime} homeView={true} />
 
             </Section>
-
-            {/* {recentlyUpdatedLoading ? (
-              <ListSwiperSkeleton />
-            ) : (
-              <Section title={t("newly_added", { ns: "common" })}>
-                <CardSwiper data={recentlyUpdated} />
-              </Section>
-            )} */}
            
             <Section className="md:space-between flex flex-col items-center space-y-4 space-x-0 md:flex-row md:space-y-0 md:space-x-4">
              { <ColumnSection
@@ -147,13 +148,13 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=popularity&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={popularSeasonLoading}
               />}
-              {/* <ColumnSection
+              <ColumnSection
                 title={t("most_popular", { ns: "common" })}
                 type={MediaType.Anime}
                 data={popularAllTime}
                 viewMoreHref="/browse?sort=popularity&type=anime"
                 isLoading={popularAllTimeLoading}
-              /> */}
+              />
               <ColumnSection
                 title={t("most_favourite_season", { ns: "common" })}
                 type={MediaType.Anime}
@@ -161,13 +162,13 @@ const Home = () => {
                 viewMoreHref={`/browse?sort=favourites&type=anime&season=${currentSeason.season}&seasonYear=${currentSeason.year}`}
                 isLoading={favouriteSeasonLoading}
               />
-              {/* <ColumnSection
+              <ColumnSection
                 title={t("most_favourite", { ns: "common" })}
                 type={MediaType.Anime}
                 data={favouriteAllTime}
                 viewMoreHref="/browse?sort=favourites&type=anime"
                 isLoading={favouriteAllTimeLoading}
-              /> */}
+              />
             </Section>
 
             <NewestComments type={MediaType.Anime} />

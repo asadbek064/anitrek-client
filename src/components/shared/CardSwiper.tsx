@@ -236,6 +236,7 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
                     : debounce(handleSlideLeave(index), 300)
                 }
                 key={index}
+                id={`${index}-id`}
               >
                 {onEachCard(item, activeIndex === index)}
               </SwiperSlide>

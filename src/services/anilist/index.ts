@@ -31,21 +31,39 @@ import {
   studiosQuery,
 } from "./queries";
 
-
 const GRAPHQL_URL = "https://graphql.anilist.co";
-
+const AVAILABLE_WORKER_URL = `${process.env.NEXT_PUBLIC_NODE_SERVER_URL}/available-worker`;
 
 export const anilistFetcher = async <T>(query: string, variables: any) => {
   type Response = {
     data: T;
   };
 
-  const { data } = await axios.post<Response>(GRAPHQL_URL, {
-    query,
-    variables,
-  });
+  try {
+    // Make the initial request
+    const initialResponse = await axios.post<Response>(GRAPHQL_URL, {
+      query,
+      variables,
+    });
 
-  return data?.data;
+    return initialResponse.data?.data;
+
+  } catch (error) {
+      console.log('proxy worker in use \N');
+      
+      // Fetch the new available worker URL
+      const response = await axios.get<{ urlId: string }>(AVAILABLE_WORKER_URL);
+      const newUrl = response.data.urlId;
+
+      // Retry the original request with the new URL
+      const retryResponse = await axios.post<Response>(`https://${newUrl}/${GRAPHQL_URL}`, {
+        query,
+        variables,
+      });
+
+      // Return the data from the retry attempt
+      return retryResponse.data?.data;
+  }
 };
 
 export const getPageMedia = async (
@@ -70,21 +88,21 @@ export const getMedia = async (args: MediaArgs & PageArgs, fields?: string) => {
 
   const mediaIdList = mediaList.map((media) => media.id);
 
-  const { data: mediaTranslations, error } = await supabaseClient
+  /* const { data: mediaTranslations, error } = await supabaseClient
     .from<Translation>("kaguya_translations")
     .select("*")
     .in("mediaId", mediaIdList);
 
-  if (error || !mediaTranslations?.length) return mediaList;
+  if (error || !mediaTranslations?.length) return mediaList; */
 
   return mediaList.map((media) => {
-    const translations = mediaTranslations.filter(
+    /* const translations = mediaTranslations.filter(
       (trans) => trans.mediaId === media.id
-    );
+    ); */
 
     return {
       ...media,
-      translations,
+     /*  translations, */
     };
   });
 };
@@ -93,7 +111,6 @@ export const getMediaDetails = async (
   args: MediaArgs & PageArgs,
   fields?: string
 ) => {
-  
   const response = await anilistFetcher<MediaDetailsQueryResponse>(
     mediaDetailsQuery(fields),
     args
@@ -107,13 +124,13 @@ export const getMediaDetails = async (
     .select("*")
     .eq("mediaId", media.id)
     .eq("mediaType", args?.type || MediaType.Anime);
-  
+
   if (data?.length) {
     translations = data;
   } else if (args?.type === MediaType.Manga) {
     translations = null;
   } else {
-    translations = await getTranslations(media);    
+    translations = await getTranslations(media);
   }
 
   return {

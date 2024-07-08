@@ -8,7 +8,7 @@ const useMedia = (
   options?: Omit<
     UseQueryOptions<Media[], AxiosError, Media[]>,
     "queryKey" | "queryFn"
-  >
+  >,
 ) => {
   return useQuery<Media[]>(["media", { args }], () => getMedia(args), options);
 };

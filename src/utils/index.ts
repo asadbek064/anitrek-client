@@ -13,6 +13,7 @@ import axios from "axios";
 import mime from "mime";
 import { stringify } from "querystring";
 import { toast } from "react-toastify";
+import  objectHash from 'object-hash';
 
 export const randomElement = <T>(array: T[]): T => {
   const index = Math.floor(Math.random() * array.length);
@@ -82,7 +83,9 @@ export const isColorVisible = (
 
 // https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 export function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  if (x)
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return;
 }
 
 export function parseTime(seconds: string | number) {

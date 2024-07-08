@@ -80,7 +80,7 @@ const MobileHomeBanner: React.FC<HomeBannerProps> = ({ data }) => {
         const title = getTitle(slide, locale);
 
         return (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index} id={`${index}-id`}>
             <Link href={createMediaDetailsUrl(slide)}>
               <a>
                 <div className="aspect-w-16 aspect-h-9 relative rounded-md">
@@ -193,7 +193,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
     <React.Fragment>
       <div className="group relative w-full overflow-hidden md:h-[450px] xl:h-[500px] 2xl:h-[550px]">
         <AnimatePresence>
-          {isValidUrl(activeSlide.bannerImage) && !showTrailer && (
+          {isValidUrl(activeSlide?.bannerImage) && !showTrailer && (
             <motion.div
               variants={bannerVariants}
               animate="animate"
@@ -275,18 +275,18 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
           </h1>
 
           <div className="mt-4 flex flex-wrap items-center gap-x-8 text-lg">
-            {activeSlide.averageScore && (
+            {activeSlide?.averageScore && (
               <TextIcon LeftIcon={AiFillLike} iconClassName="text-green-300">
                 <p>{activeSlide.averageScore}%</p>
               </TextIcon>
             )}
 
             <TextIcon LeftIcon={BsFillHeartFill} iconClassName="text-sky-400">
-              <p>{numberWithCommas(activeSlide.favourites)}</p>
+              <p>{numberWithCommas(activeSlide?.favourites)}</p>
             </TextIcon>
 
             <DotList>
-              {activeSlide.genres.map((genre) => (
+              {activeSlide?.genres.map((genre) => (
                 <span key={genre}>{convert(genre, "genre", { locale })}</span>
               ))}
             </DotList>

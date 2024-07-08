@@ -51,14 +51,14 @@ const Header = () => {
       icon: AiOutlineRead
     },
     {
-      title: `${t("nav-review")}`,
-      href: "/reviews",
-      icon: AiFillStar
-    },
-    {
       title: `${t("nav-sf")}`,
       href: "/scene-search",
       icon: MdFindInPage
+    },
+    {
+      title: `${t("nav-review")}`,
+      href: "/reviews",
+      icon: AiFillStar
     },
    /*  {
       title: "A.I Upscaled",

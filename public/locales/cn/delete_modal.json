@@ -1,0 +1,5 @@
+{
+  "deleteRequirement": "请键入 <1>{{confirmString}}</1> 以确认。",
+  "deleteAccept": "我明白。",
+  "deleteDefaultConfirmString": "我明白"
+}

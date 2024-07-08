@@ -1,0 +1,6 @@
+{
+    "error_description": "请点击下面的按钮转到 AniTrek 主页",
+    "error_heading": "糟糕，出了点问题，请报告到我们的 DISCORD 服务器",
+    "error_title": "发生了错误 ({{statusCode}})",
+    "error_welcome": "代码 <2> {{statusCode}} ☹️</2>"
+  }

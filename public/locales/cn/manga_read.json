@@ -1,0 +1,19 @@
+{
+    "error_goback": "返回上一页",
+    "error_message": "发生了错误 ({{error}})",
+    "fit_mode": "适合模式",
+    "head_description": "在 AniTrek 上阅读 {{title}} ({{chapterName}})。",
+    "layout_direction": "布局方向",
+    "next_chapter": "下一章",
+    "next_image": "下一张图片",
+    "previous_chapter": "上一章",
+    "previous_image": "上一张图片",
+    "reading": "阅读中",
+    "reread_description": "系统检测到您已阅读过 {{chapterName}}。",
+    "reread_heading": "重新阅读 {{chapterName}}",
+    "reread_no": "否",
+    "reread_question": "您是否想阅读 {{chapterName}}？",
+    "reread_yes": "是",
+    "search_chapter_placeholder": "章节名称"
+  }
+  

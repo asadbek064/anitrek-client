@@ -44,7 +44,7 @@ const Home = () => {
     sort: [MediaSort.Popularity_desc],
     season: currentSeason.season,
     seasonYear: currentSeason.year,
-    perPage: 5,
+    perPage: 10,
   });
 
   const { data: popularAllTime, isLoading: popularAllTimeLoading } = useMedia({

@@ -1,0 +1,14 @@
+{
+    "comment_delete": "删除",
+    "comment_edit": "编辑",
+    "comment_placeholder": "表达您的想法",
+    "editing_escape": "按 ESC <2>退出</2>。",
+    "is_edited": "已编辑",
+    "like": "赞",
+    "liked": "已赞",
+    "need_login_msg": "您必须先 <2>登录</2> 才能评论",
+    "no_comments_msg": "成为第一个评论此系列的人！",
+    "reply": "回复",
+    "reply_placeholder": "回复"
+  }
+  

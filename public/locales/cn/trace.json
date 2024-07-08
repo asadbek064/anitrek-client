@@ -1,0 +1,18 @@
+{
+  "browse_files": "从您的设备选择图片",
+  "description": "通过截图搜索动漫。查找确切的场景和剧集。",
+  "drag_and_drop": "拖放",
+  "heading": "通过图片搜索动漫场景",
+  "invalid_url": "无效的URL",
+  "made_by": "使用搜索引擎制作",
+  "note": "注意：搜索结果并非百分之百准确。仅适用于动漫场景。",
+  "num_of_found_images": "搜索了 {{num}} 张图片",
+  "percent_similarity": "约 {{percent}}% 相似度",
+  "tab_title": "动漫场景搜索引擎",
+  "try_again": "尝试另一张图片",
+  "upload": "上传",
+  "upload_another_image": "其他图片",
+  "upload_image": "上传您的图片",
+  "upload_supported_extensions": "支持 PNG、JPG 格式。",
+  "your_image": "您的搜索图片"
+}

@@ -27,12 +27,12 @@ const List = <T extends any[]>({
   return (
     <div
       className={classNames(
-        data.length ? "grid gap-4" : "text-center",
+        (data && data.length) ? "grid gap-4" : "text-center",
         validClassName
       )}
       {...props}
     >
-      {data.length ? (
+      {(data && data.length) ? (
         data.map((item, index) => (
           <div className="col-span-1" key={index}>
             {children(item)}

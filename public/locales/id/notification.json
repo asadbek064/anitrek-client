@@ -1,0 +1,7 @@
+{
+  "subscribed_msg": "Notifikasi untuk {{mediaTitle}} diaktifkan",
+  "subscription_needed_msg": "Anda harus mengizinkan menerima notifikasi sebelum berlangganan",
+  "unsubscribed_msg": "Notifikasi untuk {{mediaTitle}} dimatikan",
+  "notification_heading": "Notifikasi",
+  "no_notifications_msg": "Tidak ada notifikasi"
+}

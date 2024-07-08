@@ -2,5 +2,7 @@
   { "locale": "en", "name": "English" },
   { "locale": "de", "name": "German" },
   { "locale": "ru", "name": "Русский" },
-  { "locale": "es", "name": "Español" }
+  { "locale": "es", "name": "Español" },
+  { "locale": "cn", "name": "简体中文" },
+  { "locale": "id", "name": "Bahasa Indonesia" }
 ]

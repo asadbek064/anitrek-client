@@ -1,0 +1,18 @@
+{
+  "browse_files": "Pilih gambar dari perangkat Anda",
+  "description": "Cari Anime berdasarkan tangkapan layar. Temukan momen dan episode yang tepat.",
+  "drag_and_drop": "Seret dan lepas",
+  "heading": "Pencarian Adegan Anime dengan Gambar",
+  "invalid_url": "URL tidak valid",
+  "made_by": "Menggunakan mesin pencari yang dibuat oleh",
+  "note": "Catatan: Hasil pencarian tidak 100% akurat. Hanya berfungsi dengan adegan anime.",
+  "num_of_found_images": "Mencari {{num}} gambar",
+  "percent_similarity": "Kemiripan ~{{percent}}%",
+  "tab_title": "Mesin Pencari Adegan Anime",
+  "try_again": "Coba gambar lain",
+  "upload": "Unggah",
+  "upload_another_image": "Gambar lain",
+  "upload_image": "Unggah gambar Anda",
+  "upload_supported_extensions": "Didukung PNG, JPG.",
+  "your_image": "Gambar pencarian Anda"
+}

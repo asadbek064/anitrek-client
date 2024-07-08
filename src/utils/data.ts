@@ -1,6 +1,9 @@
 import enTranslations from "@/constants/en";
 import ruTranslations from "@/constants/ru";
 import esTranslations from "@/constants/es";
+import cnTranslations from "@/constants/cn";
+import idTranslations from "@/constants/id";
+
 import { Chapter, Episode, Translation as TranslationType } from "@/types";
 import { Media } from "@/types/anilist";
 import { Translation } from "next-i18next";
@@ -38,6 +41,10 @@ export const getConstantTranslation = (locale: string) => {
       return ruTranslations;
     case "es":
       return esTranslations;
+    case "cn":
+      return cnTranslations;
+    case "cn":
+      return idTranslations;
     default:
       return enTranslations;
   }

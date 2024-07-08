@@ -144,13 +144,13 @@ const TracePanel: React.FC<TracePanelProps> = ({ data, image }) => {
                 className="text-gray-300 line-clamp-5"
               />
 
-              {/* <Link href={createMediaDetailsUrl(card.anime)}>
+              <Link href={createMediaDetailsUrl(card.anime)}>
                 <a className="block">
                   <Button primary className="mx-auto md:mx-auto">
-                    <p>{t("common:watch_now")}</p>
+                    <p>View</p>
                   </Button>
                 </a>
-              </Link> */}
+              </Link>
             </div>
           </div>
         </div>

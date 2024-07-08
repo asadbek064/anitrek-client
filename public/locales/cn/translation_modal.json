@@ -1,0 +1,9 @@
+{
+  "add_translation_button": "添加翻译",
+  "modal_heading": "添加翻译",
+  "modal_media-title": "标题",
+  "modal_media-description": "描述",
+  "modal_save": "保存翻译",
+  "modal_cancel": "取消",
+  "modal_translation-notice": "翻译可能需要一些时间生效。"
+}

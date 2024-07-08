@@ -4,7 +4,7 @@ import Input from "@/components/shared/Input";
 import { isValidUrl } from "@/utils";
 import classNames from "classnames";
 import { useTranslation } from "next-i18next";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineCloudUpload, AiOutlineSearch } from "react-icons/ai";
 import { BiCloudUpload } from "react-icons/bi";
 import { MdOutlineDelete, MdOutlineRestartAlt } from "react-icons/md";
@@ -23,10 +23,30 @@ const TraceImageSearch: React.FC<TraceImageSearchProps> = ({
   const [image, setImage] = useState<ImageType>(null);
   const [inputValue, setInputValue] = useState(null);
   const { t } = useTranslation("trace");
+  const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
   const handleSearch = () => {
     onSearch?.(image);
   };
+
+/*   const fetchRecentSearches = async () => {
+    try {
+      const response = await fetch("/api/ai-scene-search/recent-searches");
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setRecentSearches(data);
+      } else {
+        throw new Error("Failed to fetch recent searches");
+      }
+    } catch (error) {
+      console.error("Error fetching recent searches:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecentSearches();
+  }, []); */
 
   return (
     <ReactImageUploading

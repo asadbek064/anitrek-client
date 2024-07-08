@@ -1,0 +1,9 @@
+{
+    "blur_heading": "您正在观看",
+    "rewatch_description": "系统检测到您已观看过 {{episodeName}}",
+    "rewatch_heading": "重新观看 {{episodeName}}",
+    "rewatch_no": "否",
+    "rewatch_question": "您是否想重新观看 {{episodeName}}？",
+    "rewatch_yes": "是"
+  }
+  

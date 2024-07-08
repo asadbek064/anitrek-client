@@ -72,7 +72,7 @@ const NewestComments: React.FC<NewestCommentsProps> = (props) => {
                         <p className="line-clamp-1">{user?.name}</p>
 
                         <p className="text-gray-300 line-clamp-1 text-xs">
-                          {dayjs(comment.created_at, { locale }).fromNow()}
+                          {dayjs(comment.created_at).fromNow()}
                         </p>
                       </div>
                     </div>

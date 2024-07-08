@@ -1,0 +1,7 @@
+{
+  "subscribed_msg": "已启用 {{mediaTitle}} 的通知",
+  "subscription_needed_msg": "您必须在订阅之前允许接收通知",
+  "unsubscribed_msg": "已关闭 {{mediaTitle}} 的通知",
+  "notification_heading": "通知",
+  "no_notifications_msg": "没有通知"
+}

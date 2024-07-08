@@ -1,0 +1,5 @@
+{
+  "deleteRequirement": "Silakan ketik <1>{{confirmString}}</1> untuk mengkonfirmasi.",
+  "deleteAccept": "Saya mengerti.",
+  "deleteDefaultConfirmString": "Saya mengerti"
+}

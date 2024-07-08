@@ -1,0 +1,19 @@
+{
+    "error_goback": "Kembali ke halaman sebelumnya",
+    "error_message": "Terjadi kesalahan ({{error}})",
+    "fit_mode": "Mode fit",
+    "head_description": "Baca {{title}} ({{chapterName}}) di AniTrek.",
+    "layout_direction": "Arah tata letak",
+    "next_chapter": "Chapter berikutnya",
+    "next_image": "Gambar berikutnya",
+    "previous_chapter": "Chapter sebelumnya",
+    "previous_image": "Gambar sebelumnya",
+    "reading": "Membaca",
+    "reread_description": "Sistem mengenali Anda telah membaca {{chapterName}}",
+    "reread_heading": "Baca ulang {{chapterName}}",
+    "reread_no": "Tidak",
+    "reread_question": "Apakah Anda ingin membaca ulang {{chapterName}}?",
+    "reread_yes": "Ya",
+    "search_chapter_placeholder": "Nama chapter"
+  }
+  

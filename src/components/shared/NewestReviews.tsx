@@ -100,7 +100,7 @@ const NewestReviews: React.FC<NewestReviewsProps> = (props) => {
                               <p className="line-clamp-1">{user?.name}</p>
 
                               <p className="text-gray-300 line-clamp-1 text-xs">
-                                {dayjs(review.created_at, { locale }).fromNow()}
+                                {dayjs(review.created_at).fromNow()}
                               </p>
                             </div>
                           </div>

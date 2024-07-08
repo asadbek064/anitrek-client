@@ -140,7 +140,7 @@ const CommentComponent: React.FC<CommentProps> = ({ comment }) => {
           <span className="font-semibold">{comment.user.name}</span>
 
           <span className="text-gray-400 text-sm">
-            {dayjs(comment.created_at, { locale }).fromNow()}
+            {dayjs(comment.created_at).fromNow()}
           </span>
         </DotList>
 

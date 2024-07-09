@@ -138,7 +138,7 @@ const Home = () => {
 
             {selectedGenres.map((genre, index) => (
               <RandomGenreSection key={index} isMobile={isMobile} GENRE={genre.label} />
-              ))}
+            ))}
 
             
             <Section

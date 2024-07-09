@@ -27,6 +27,8 @@ import { useTranslation } from "next-i18next";
 import React, { useMemo, useState } from "react";
 import { isMobile } from "react-device-detect";
 
+const getRandomStartIndex = () => Math.floor(Math.random() * GENRES.length);
+
 const Home = () => {
   const currentSeason = useMemo(getSeason, []);
   const { isDesktop } = useDevice();
@@ -76,18 +78,27 @@ const Home = () => {
     return randomElement(trendingAnime || []);
   }, [trendingAnime]);
 
-  const { data: recommendationsAnime } = useRecommendations(
+/*   const { data: recommendationsAnime } = useRecommendations(
     {
       mediaId: randomTrendingAnime?.id,
     },
     { enabled: !!randomTrendingAnime }
-  );
+  ); */
 
   /* const randomAnime = useMemo(
     () => randomElement(recommendationsAnime || [])?.media,
     [recommendationsAnime]
   ); */
 
+  const limit = 2;
+  const start = getRandomStartIndex();
+
+  // Ensure unique selection of genres
+  const selectedGenres = [];
+  for (let i = 0; i < limit; i++) {
+    const index = (start + i) % GENRES.length;
+    selectedGenres.push(GENRES[index]);
+  }
 
   return (
     <React.Fragment>
@@ -117,7 +128,7 @@ const Home = () => {
               </Section>
             )}
 
-          {recentlyUpdatedLoading ? (
+           {recentlyUpdatedLoading ? (
               <ListSwiperSkeleton />
             ) : (
               <Section title={t("newly_added", { ns: "common" })}>
@@ -125,10 +136,9 @@ const Home = () => {
               </Section>
             )}
 
-            {[...Array(3)].map((_, index) => (
-              // eslint-disable-next-line react/jsx-key
-              <RandomGenreSection isMobile={isMobile}/>
-            ))}
+            {selectedGenres.map((genre, index) => (
+              <RandomGenreSection key={index} isMobile={isMobile} GENRE={genre.label} />
+              ))}
 
             
             <Section
@@ -194,9 +204,9 @@ const Home = () => {
                 
             <EndOfPage />
 
-           {/*  <Section title={t("airing_schedule", { ns: "anime_home" })}>
+            <Section title={t("airing_schedule", { ns: "anime_home" })}>
               <AnimeScheduling />
-            </Section> */}
+            </Section>
           </div>
         </div>
       </ClientOnly>

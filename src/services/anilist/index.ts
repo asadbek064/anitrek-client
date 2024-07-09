@@ -30,23 +30,74 @@ import {
   StudioDetailsQueryResponse,
   studiosQuery,
 } from "./queries";
+import dayjs from "@/lib/dayjs";
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
 const AVAILABLE_WORKER_URL = `${process.env.NEXT_PUBLIC_NODE_SERVER_URL}/available-worker`;
+
+const fetchFromApi = async (method: string, key: string, value?: any) => {
+  const url = `/api/redis?key=${key}`;
+
+  try{
+    if (method === 'GET') {
+      const response = await axios.get(url);
+      return response.data;
+    } else if (method === 'PUT') {
+      const response = await axios.put(url, { key, value });
+      return response.data;
+    }
+  } catch(error) {
+    return false;
+  }
+};
+
+const simpleHash = str => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+  }
+  // Convert to 32bit unsigned integer in base 36 and pad with "0" to ensure length is 7.
+  return (hash >>> 0).toString(36).padStart(7, '0');
+};
 
 export const anilistFetcher = async <T>(query: string, variables: any) => {
   type Response = {
     data: T;
   };
 
+  const clonedVariables = JSON.parse(JSON.stringify(variables));
+
+  if (clonedVariables.airingAt_lesser) {
+    let date = dayjs.unix(clonedVariables.airingAt_lesser);
+    clonedVariables.airingAt_lesser = date;
+  }
+
+  const cacheKey = `${simpleHash(JSON.stringify(variables))}`;
+
   try {
+    // Check cache first
+    const cacheResponse = await fetchFromApi('GET', cacheKey);
+
+
+    if (cacheResponse !== false) {
+      // @ts-ignore
+      return JSON.parse(cacheResponse.value);
+    }
     // Make the initial request
     const initialResponse = await axios.post<Response>(GRAPHQL_URL, {
       query,
       variables,
     });
 
-    return initialResponse.data?.data;
+    const data = initialResponse.data?.data;
+
+    console.log('cache missed fetching fresh and saving to cache');
+    
+    // Cache the response
+    await fetchFromApi('PUT', cacheKey, data);
+
+    return data;
 
   } catch (error) {
       console.log('proxy worker in use \N');
@@ -60,6 +111,11 @@ export const anilistFetcher = async <T>(query: string, variables: any) => {
         query,
         variables,
       });
+
+      if (retryResponse.status === 200) {
+        // Cache the response
+        await fetchFromApi('PUT', cacheKey, retryResponse.data?.data);
+      }
 
       // Return the data from the retry attempt
       return retryResponse.data?.data;
@@ -88,21 +144,21 @@ export const getMedia = async (args: MediaArgs & PageArgs, fields?: string) => {
 
   const mediaIdList = mediaList.map((media) => media.id);
 
-  /* const { data: mediaTranslations, error } = await supabaseClient
+  const { data: mediaTranslations, error } = await supabaseClient
     .from<Translation>("kaguya_translations")
     .select("*")
     .in("mediaId", mediaIdList);
 
-  if (error || !mediaTranslations?.length) return mediaList; */
+  if (error || !mediaTranslations?.length) return mediaList;
 
   return mediaList.map((media) => {
-    /* const translations = mediaTranslations.filter(
+    const translations = mediaTranslations.filter(
       (trans) => trans.mediaId === media.id
-    ); */
+    );
 
     return {
       ...media,
-     /*  translations, */
+      translations,
     };
   });
 };

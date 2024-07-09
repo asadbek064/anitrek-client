@@ -8,13 +8,12 @@ import CardSwiper from "./CardSwiper";
 import Section from "./Section";
 import { useTranslation } from "next-i18next";
 
-function RandomGenreSection({ isMobile }) {
+function RandomGenreSection({ isMobile, GENRE }) {
   const currentSeason = useMemo(getSeason, []);
   const { t } = useTranslation();
-  
-  const [randomSelectedGenre, setRandomSelectedGenre] = useState(
-    randomElement(GENRES).label
-  );
+
+  const randomSelectedGenre = GENRE;
+
 
   const {
     data: trendingRandomGenreYear,

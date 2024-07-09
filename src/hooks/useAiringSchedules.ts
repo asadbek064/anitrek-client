@@ -15,7 +15,7 @@ const useAiringSchedules = (
     () => {
       return getAiringSchedules(args);
     },
-    options
+    options,
   );
 };
 

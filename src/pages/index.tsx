@@ -15,6 +15,9 @@ import { useTranslation } from "next-i18next";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useMemo } from "react";
 import { isMobile } from "react-device-detect";
+import { GENRES } from "@/constants/en";
+
+const getRandomStartIndex = () => Math.floor(Math.random() * GENRES.length);
 
 const Home = () => {
   const currentSeason = useMemo(getSeason, []);
@@ -83,6 +86,17 @@ const Home = () => {
     }
   }, [user])
 
+  const limit = 2;
+  const start = getRandomStartIndex();
+
+  // Ensure unique selection of genres
+  const selectedGenres = [];
+  for (let i = 0; i < limit; i++) {
+    const index = (start + i) % GENRES.length;
+    selectedGenres.push(GENRES[index]);
+  }
+
+
   return (
     <React.Fragment>
       <Head
@@ -108,9 +122,8 @@ const Home = () => {
 
             <div className="px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36
                 [font-size:var(--step-3)] md:[font-size:var(--step-4)] font-black md:pb-4">Trending Anime Genres </div>
-                {[...Array(2)].map((_, index) => (
-                // eslint-disable-next-line react/jsx-key
-                  <RandomGenreSection isMobile={isMobile} GENRE={_.label}/>
+                {selectedGenres.map((genre, index) => (
+                  <RandomGenreSection key={index} isMobile={isMobile} GENRE={genre.label} />
                 ))}
              
             {/* <NewestComments type={MediaType.Anime} /> */}

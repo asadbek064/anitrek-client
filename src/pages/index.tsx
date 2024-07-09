@@ -110,7 +110,7 @@ const Home = () => {
                 [font-size:var(--step-3)] md:[font-size:var(--step-4)] font-black md:pb-4">Trending Anime Genres </div>
                 {[...Array(2)].map((_, index) => (
                 // eslint-disable-next-line react/jsx-key
-                  <RandomGenreSection isMobile={isMobile}/>
+                  <RandomGenreSection isMobile={isMobile} GENRE={_.label}/>
                 ))}
              
             {/* <NewestComments type={MediaType.Anime} /> */}

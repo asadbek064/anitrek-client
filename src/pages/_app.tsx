@@ -62,11 +62,11 @@ function App({ Component, pageProps, router, err }: WorkaroundAppProps) {
         {/* A placeholder to integrate MAL-Sync (https://github.com/MALSync/MALSync)*/}
         <script id="syncData" type="application/json"></script>
 
-       {/*  <Script id="chatBroEmbedCode">
+        <Script id="chatBroEmbedCode">
           {`
         function ChatbroLoader(chats,async){async=!1!==async;var params={embedChatsParameters:chats instanceof Array?chats:[chats],lang:navigator.language||navigator.userLanguage,needLoadCode:'undefined'==typeof Chatbro,embedParamsVersion:localStorage.embedParamsVersion,chatbroScriptVersion:localStorage.chatbroScriptVersion},xhr=new XMLHttpRequest;xhr.withCredentials=!0,xhr.onload=function(){eval(xhr.responseText)},xhr.onerror=function(){console.error('Chatbro loading error')},xhr.open('GET','https://www.chatbro.com/embed.js?'+btoa(unescape(encodeURIComponent(JSON.stringify(params)))),async),xhr.send()}
         ChatbroLoader({encodedChatId: '18L5g'});`}
-        </Script> */}
+        </Script>
 
         <Script
           strategy="afterInteractive"

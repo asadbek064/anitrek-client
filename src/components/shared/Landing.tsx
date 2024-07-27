@@ -53,7 +53,7 @@ const Landing = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 duration-200 ease-in-out transition">
             {FeatureCardData.map((card, index) => (
               // eslint-disable-next-line react/jsx-key
-              <FeatureCard cardData={card} />
+              <FeatureCard key={index} cardData={card} />
             ))}
           </div>
         </div>
@@ -62,15 +62,15 @@ const Landing = () => {
       <div className="mx-auto">
         <div className="my-16 flex justify-center flex-col md:flex-row space-y-4 md:space-x-4 md:space-y-0">
             <div className="">
-              <Link href={"/home"} passHref>
+              <a key={'link-home'} href={"/home"} >
                   <Button aria-label="go to discovery page" className="[font-size:var(--step--1)] md:[font-size:var(--step-0)] tracking-wide font-semibold px-4 py-3  md:py-6 md:px-8 rounded-sm  outline-sky-700" primary>{t("button-search")}</Button>
-              </Link>
+              </a>
             </div>
 
             <div className="flex justify-center">
-              <Link href={"/register"} passHref>
+              <a key={'link-register'} href={"/register"}>
                   <Button aria-label="sign up" className="[font-size:var(--step--1)] md:[font-size:var(--step-0)] tracking-wide font-semibold px-4 py-3 md:py-6 md:px-8 rounded-sm " secondary>{t("button-register")}</Button>
-              </Link>
+              </a>
             </div>
         </div>
       </div>

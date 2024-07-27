@@ -189,6 +189,7 @@ const DesktopHomeBanner: React.FC<HomeBannerProps> = ({ data, isManga }) => {
     setShowTrailer(false);
   }, [activeSlide]);
 
+  
   return (
     <React.Fragment>
       <div className="group relative w-full overflow-hidden md:h-[450px] xl:h-[500px] 2xl:h-[550px]">

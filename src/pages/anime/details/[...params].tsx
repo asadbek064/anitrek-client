@@ -99,8 +99,6 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
   }, [anime]);
 
-
-  
   return (
     <>
       <Head
@@ -112,7 +110,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
       <div className="pb-8">
         <DetailsBanner image={anime.bannerImage} />
 
-        <Section className="relative pb-4 bg-background-900">
+        <Section key={'anime-detail-section'} className="relative pb-4 bg-background-900">
           <div className="flex flex-col md:flex-row md:space-x-8">
             <div>
               <div className="flex flex-row space-x-3">
@@ -308,32 +306,38 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 
               <div className="flex flex-wrap text-xs md:text-base md:flex-row gap-x-6 gap-y-3 md:overflow-x-auto md:gap-x-16 [&>*]:shrink-0">
                 <InfoItem
+                  key={t("common:country")}
                   title={t("common:country")}
                   value={convert(anime.countryOfOrigin, "country", { locale })}
                 />
                 <InfoItem
+                  key={t("common:total_episodes")}
                   title={t("common:total_episodes")}
                   value={anime.episodes}
                 />
 
                 {anime.duration && (
                   <InfoItem
-                    title={t("common:duration")}
+                  key={t("common:duration")}  
+                  title={t("common:duration")}
                     value={`${anime.duration} ${t("common:minutes")}`}
                   />
                 )}
 
                 <InfoItem
+                  key={t("common:status")}
                   title={t("common:status")}
                   value={convert(anime.status, "status", { locale })}
                 />
                 <InfoItem
+                  key={t("common:age_rated")}
                   title={t("common:age_rated")}
                   value={anime.isAdult ? "18+" : ""}
                 />
 
                 {nextAiringSchedule && (
                   <InfoItem
+                  key={t("next_airing_schedule")}
                     className="!text-primary-300"
                     title={t("next_airing_schedule")}
                     value={`${t("common:episode")} ${
@@ -346,7 +350,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
           </div>
         </Section>
 
-        <Section className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
+        <Section key={'sub-anime-detail-comp'} className="w-full min-h-screen gap-8 mt-8 space-y-8 md:space-y-0 md:grid md:grid-cols-10 sm:px-12">
           <div className="space-y-12 md:col-span-8">
              {/* <DetailsSection
                 title={t("episodes_section")}
@@ -364,7 +368,10 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                 )}
               </DetailsSection>  */}
 
-            {/*<ThemeLite media={anime} /> */}
+            {/* <ThemeLite media={anime} /> */}
+
+            
+            
             
             <DetailsSection title="Where to watch">
               <WatchProvider media={anime} />
@@ -434,26 +441,31 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
           <div className="hidden md:block md:col-span-2 xl:h-[max-content] space-y-4">
             <div className="flex flex-row md:flex-col overflow-x-auto bg-background-900 rounded-md p-4 gap-4 [&>*]:shrink-0 md:no-scrollbar">
               <InfoItem
+                key={t("common:format")}
                 title={t("common:format")}
                 value={convert(anime.format, "format", { locale })}
               />
-              <InfoItem title="English" value={anime.title.english} />
-              <InfoItem title="Native" value={anime.title.native} />
-              <InfoItem title="Romanji" value={anime.title.romaji} />
+              <InfoItem key="English" title="English" value={anime.title.english} />
+              <InfoItem key="Native" title="Native" value={anime.title.native} />
+              <InfoItem key="Romanji" title="Romanji" value={anime.title.romaji} />
               <InfoItem
+                key={t("common:popular")}
                 title={t("common:popular")}
                 value={numberWithCommas(anime.popularity)}
               />
               <InfoItem
+                key={t("common:favourite")}
                 title={t("common:favourite")}
                 value={numberWithCommas(anime.favourites)}
               />
               <InfoItem
+                key={t("common:trending")}
                 title={t("common:trending")}
                 value={numberWithCommas(anime.trending)}
               />
 
               <InfoItem
+                key="Studio"
                 title="Studio"
                 value={anime.studios.nodes.map((studio) => (
                   <div key={studio.id}>
@@ -467,12 +479,14 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               />
 
               <InfoItem
+                key={t("common:season")}
                 title={t("common:season")}
                 value={`${convert(anime.season, "season", { locale })} ${
                   anime.seasonYear
                 }`}
               />
               <InfoItem
+                key={t("common:synonyms")}
                 title={t("common:synonyms")}
                 value={anime.synonyms.map((synomym) => (
                   <div key={synomym}>{synomym}</div>

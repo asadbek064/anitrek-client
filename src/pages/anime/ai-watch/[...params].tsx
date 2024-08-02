@@ -58,7 +58,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedEpisodeNumber, setSelectedEpisodeNumber] = useState(null);
 
-  const handleEpisodeChange = (episode: number) => {
+  /* const handleEpisodeChange = (episode: number) => {
     setSelectedEpisodeNumber(episode);
     
     const selectedEpisode: AiEpisode = episodes[episode-1];
@@ -84,7 +84,7 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
    // load the first episode always
    useEffect(() => {
     handleEpisodeChange(1);
-  }, []);
+  }, []); */
 
 
   return (
@@ -128,13 +128,13 @@ const WatchPage: NextPage<WatchPageProps> = ({ episodes, title, internal }) => {
           <div className="text-lg font-medium tracking-wide">{title} | Ep {selectedEpisodeNumber}</div>
           <div className="mt-4">
             
-            <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2 ease-in-out duration-200">
+            {/* <div className="grid xl:grid-cols-12 lg:grid-cols-7 md:grid-cols-6 sm:grid-cols-5 grid-cols-4 gap-2 ease-in-out duration-200">
                 {episodes.map(episode => (
                     <div key={episode.episode_number} onClick={() => handleEpisodeChange(episode.episode_number)} className="bg-neutral-800 hover:bg-white/20 cursor-pointer  rounded-lg p-4 ease-in duration-100">
                         <div className="text-lg font-medium">{episode.episode_number}</div>
                     </div>
                 ))}
-            </div>
+            </div> */}
               
           </div>
         </div>

@@ -33,7 +33,7 @@ const Overlay = () => {
           <a
             target="_blank"
             className={classNames(
-              "absolute transition-all duration-200 cursor-pointer top-4 right-28 hover:text-gray-200",
+              "absolute transition-all duration-200 cursor-pointer top-4 right-16 hover:text-gray-200",
               isInteracting ? "opacity-100 visible" : "opacity-0 invisible"
             )}
           >
@@ -42,7 +42,7 @@ const Overlay = () => {
         </Link>
       )}
 
-      {theme?.sources?.length && (
+      {/* {theme?.sources?.length && (
         <AiOutlineDownload
           className={classNames(
             "w-8 h-8 absolute transition-all duration-200 cursor-pointer top-4 right-16 hover:text-gray-200",
@@ -57,7 +57,7 @@ const Overlay = () => {
             );
           }}
         />
-      )}
+      )} */}
 
       <ThemeSearch
         className={classNames(

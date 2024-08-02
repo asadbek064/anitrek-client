@@ -9,7 +9,7 @@ interface InfoItemProps {
 
 const InfoItem: React.FC<InfoItemProps> = ({ title, value, className }) => {
   return value ? (
-    <div className={classNames("text-gray-400", className)}>
+    <div className={classNames("text-gray-400", className)} key={title}>
       <div className="font-semibold">{title}</div>
       <div className="whitespace-pre-line flex flex-row md:flex-col gap-2">
         {value}

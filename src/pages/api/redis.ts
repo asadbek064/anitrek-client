@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           return res.status(400).json({ error: 'Key and value are required' });
         }
 
-        await client.set(key, JSON.stringify(value), 'EX', 43200);
+        await client.set(key, JSON.stringify(value));
         res.status(200).json({ message: 'Key set successfully', key, value });
       } catch (error) {
         res.status(500).json({ error: 'Internal Server Error', details: error.message });

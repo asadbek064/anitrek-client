@@ -26,10 +26,18 @@ import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
 import { getMediaDetails } from "@/services/anilist";
 
+import Image from "@/components/shared/Image";
+import dynamic from "next/dynamic";
+
+const ReactAllPlayer = dynamic(() => import('react-all-player'), {
+  ssr: false,
+});
+
 import { Media, MediaType } from "@/types/anilist";
 import {
   createStudioDetailsUrl,
   filterOutMangaOvaSpecials,
+  isValidUrl,
   numberWithCommas,
   sortByReleaseDate,
   vietnameseSlug,
@@ -41,10 +49,10 @@ import { GetStaticPaths, GetStaticProps, NextPage, NextPageContext } from "next"
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { AiFillHeart, AiOutlineUpload } from "react-icons/ai";
 import { BiBookAdd, BiDotsHorizontalRounded } from "react-icons/bi";
-import { BsFillPlayFill, BsPencilFill } from "react-icons/bs";
+import { BsFillPlayFill, BsFillVolumeMuteFill, BsFillVolumeUpFill, BsPencilFill } from "react-icons/bs";
 import { FaDiscord } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { MdTagFaces } from "react-icons/md";
@@ -55,6 +63,14 @@ import WatchProvider from "@/components/features/watch-provider/WatchProvider";
 interface DetailsPageProps {
   anime: Media;
 }
+
+const bannerVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const transition = [0.33, 1, 0.68, 1];
 
 const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
   const { user } = useUser();
@@ -98,6 +114,8 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
     });
 
   }, [anime]);
+
+
 
   return (
     <>
@@ -369,7 +387,25 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               </DetailsSection>  */}
 
             {/* <ThemeLite media={anime} /> */}
+            
+            <div className="aspect-video min-w-full">
+            {anime?.type === MediaType.Anime &&
+            anime?.trailer?.id &&
+            anime.trailer?.site === "youtube" && (
+              <div className="">
+                <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%', height: 0 }}>
+                    <iframe
+                      src={`http://127.0.0.1:8080?provider=YOUTUBE&id=${anime.trailer.id}`}
+                      allowFullScreen
+                      allow="autoplay"
+                      className="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                  </div>
+                  <a target="_blank" rel="noreferrer" className="hover:text-blue-500 text-neutral-500 text-sm" href={`https://youtube.com/watch?v=${anime?.trailer?.id}`}>source: youtube.com</a>
+              </div>
+            )}
 
+            </div>
             
             
             
@@ -523,12 +559,15 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
 };
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import classNames from "classnames";
+import { AnimatePresence, motion } from "framer-motion";
+import CircleButton from "@/components/shared/CircleButton";
 
 export const getStaticProps: GetStaticProps = async ({
   params: { params },
   locale
 }) => {
-  try {
+  try {    
     // default anime details
     /*  const { data: isDMCA } = await supabaseClient
       .from("kaguya_dmca")
@@ -550,7 +589,7 @@ export const getStaticProps: GetStaticProps = async ({
     const media = await getMediaDetails({
       type: MediaType.Anime,
       id: Number(params[0]),
-    });
+    });    
 
     // filter out each nodes in media.recommendations by isAdult = false and set it to new array
    /*  const filteredRecommendations = media.recommendations.nodes.filter(

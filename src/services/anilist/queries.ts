@@ -344,6 +344,10 @@ airingSchedule(notYetAired: true, perPage: 1) {
     airingAt
     episode
   }
+},
+trailer {
+  id
+  site 
 }
 `;
 

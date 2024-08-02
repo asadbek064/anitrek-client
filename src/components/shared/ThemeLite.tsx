@@ -89,7 +89,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
 
     <div className="my-4 md:my-12 flex flex-col md:flex-row">
     {/* Video Section (Left Column) */}
-    <div className="md:w-2/3">
+    <div className="aspect-video min-w-full">
       <div className="aspect-video">
         
         {/* <ReactAllPlayer autoPlay muted sources={sources}  /> */}
@@ -100,15 +100,15 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
                        
             <ThemePlayerLite sources={sources}/>
             
-            <div className="mt-1 [font-size:var(--step--3)] text-gray-300 tracking-wide opacity-70">source: animethemes.moe</div>
-          </ThemeSettingsContextProvider>
+{/*             <div className="mt-1 [font-size:var(--step--2)] text-gray-300 tracking-wide opacity-85">source: <a href="https://animethemes.moe/" target="_blank">animethemes.moe</a> and youtube.com</div>
+ */}          </ThemeSettingsContextProvider>
         </ThemePlayerContextProvider>
 
       </div>
     </div>
   
     {/* Playlist Section (Right Column) */}
-    <div className="md:w-1/3 p-4">
+  {/*   <div className="md:w-1/3 p-4">
       <h1 className="uppercase text-xl md:text-xl font-semibold mb-4">
         {t("related")}
       </h1>
@@ -125,7 +125,7 @@ const ThemeLite: React.FC<ThemeLiteProps > = ({
           ))}
         </ul>
       </div>
-    </div>
+    </div> */}
   </div>
   );
 };

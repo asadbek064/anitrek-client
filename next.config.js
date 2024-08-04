@@ -35,7 +35,10 @@ const moduleExports = withPWA({
       "cdn.plyr.io",
       "anitrek.com",
       "image.tmdb.org",
-      "f002.backblazeb2.com"
+      "f002.backblazeb2.com",
+      "anitrek-player-plyr.pages.dev",
+      "youtube.com",
+      "google.com"
     ],
     minimumCacheTTL: 604800, // a week,
   },

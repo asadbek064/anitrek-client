@@ -395,7 +395,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
               <div className="">
                 <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%', height: 0 }}>
                     <iframe
-                      src={`http://127.0.0.1:8080?provider=YOUTUBE&id=${anime.trailer.id}`}
+                      src={`https://anitrek-player-plyr.pages.dev?provider=YOUTUBE&id=${anime.trailer.id}`}
                       allowFullScreen
                       allow="autoplay"
                       className="absolute top-0 left-0 w-full h-full"

@@ -38,7 +38,8 @@ const moduleExports = withPWA({
       "f002.backblazeb2.com",
       "anitrek-player-plyr.pages.dev",
       "youtube.com",
-      "google.com"
+      "google.com",
+      "jkuhmgfrgofwdtrlbqxj.supabase.co"
     ],
     minimumCacheTTL: 604800, // a week,
   },

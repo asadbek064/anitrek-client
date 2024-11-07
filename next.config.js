@@ -57,6 +57,9 @@ const moduleExports = withPWA({
   },
   i18n,
   envVars,
+  experimental: {
+    fetchCache: 'force-no-store'
+  }
 });
 
 module.exports = moduleExports;

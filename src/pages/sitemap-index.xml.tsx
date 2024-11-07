@@ -38,6 +38,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
             });
         }
 
+        
         const sitemap = generateSiteMap(pathList);
 
         // Set the content type to XML

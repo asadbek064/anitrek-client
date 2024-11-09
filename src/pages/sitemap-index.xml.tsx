@@ -42,7 +42,7 @@ export async function getServerSideProps({ res }: { res: NextApiResponse }) {
         const sitemap = generateSiteMap(pathList);
 
         // Set the content type to XML
-        res.setHeader("Content-Type", "text/xml");
+        res.setHeader("Content-Type", "application/xml");
         // Send the generated XML to the browser
         res.write(sitemap);
         res.end();

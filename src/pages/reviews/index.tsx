@@ -40,10 +40,9 @@ export const getStaticProps: GetStaticProps = async ({}) => {
     try {
         return {
             props: { },
-            revalidate: REVALIDATE_TIME,
         };
     } catch (error) {
-        return { notFound: true, revalidate: REVALIDATE_TIME }
+        return { notFound: true}
     }
 }
 export default ReviewPage;

@@ -215,7 +215,6 @@ export const getStaticProps: GetStaticProps = async () => {
       props: {
         wallpapers: wallpapers
       },
-      revalidate: REVALIDATE_TIME,
     };
   } catch (err) {
     return {

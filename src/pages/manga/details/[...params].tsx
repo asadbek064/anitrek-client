@@ -299,11 +299,10 @@ export const getStaticProps: GetStaticProps = async ({
     return {
       props: {
         manga: media as Media,
-      },
-      revalidate: REVALIDATE_TIME,
+      }, 
     };
   } catch (err) {
-    return { notFound: true, revalidate: REVALIDATE_TIME };
+    return { notFound: true};
   }
 };
 

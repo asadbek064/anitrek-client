@@ -34,7 +34,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
   /* const randomQuote = useMemo(() => randomElement(quotes), [quotes]); */
-  const randomLiveWallpaper = useMemo(() => randomElement(wallpapers), [wallpapers]);
+  /* const randomLiveWallpaper = useMemo(() => randomElement(wallpapers), [wallpapers]); */
 
   const { t } = useTranslation("login");
 
@@ -77,7 +77,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
 
       <div
         style={{
-          backgroundImage: isMobile  ? "url('/login-background.jpg')" : "none",
+          backgroundImage: "url('/login-background.jpg')",
           backgroundPosition: "center center",
           backgroundSize: "cover"
         }}
@@ -85,7 +85,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
       >
       </div>
 
-      {isMobile ? ('') :
+{/*       {isMobile ? ('') :
         (
           <video
           className="absolute top-0 left-0 w-full h-full object-cover z-0"
@@ -96,7 +96,7 @@ const LoginPage: NextPage<LoginPageProps> = ({ wallpapers }) => {
           >
             <source src={randomLiveWallpaper.url} type="video/mp4" />
           </video>
-        )}
+        )} */}
 
 
       {/* <div className="relative flex justify-center flex-col">

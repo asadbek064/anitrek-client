@@ -16,7 +16,7 @@ const TriviaWithFriendPage = () => {
 
             <div className="relative h-screen">
 
-                <video
+               {/*  <video
                     autoPlay
                     muted
                     loop
@@ -24,7 +24,7 @@ const TriviaWithFriendPage = () => {
                     className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-30"
                 >
                     <source  src="wallpapers/3s326y.mp4" type="video/mp4" />
-                </video>
+                </video> */}
                 <div className="flex flex-col justify-center items-center h-full relative z-10 mx-2">
                     <h2 className="text-center text-white text-3xl md:text-5xl font-bold mb-8">
                     {t("heading")}

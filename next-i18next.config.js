@@ -17,9 +17,7 @@ module.exports = {
   },
   i18n: {
     locales: ["en", "de", "ru", "es", "cn", "id"],
-    defaultLocale: "en",
-    reloadOnPrerender: isDev,
-
+    defaultLocale: "en"
   },
   localePath: require('path').resolve('./public/locales'),
   localeDetection: false,

@@ -4,18 +4,32 @@ const { i18n } = require("./next-i18next.config");
 
 const envVars = {
   env: {
-    NEXT_PUBLIC_NODE_SERVER_URL:"http://localhost:3001",
-    NEXT_PUBLIC_AniTrek_SERVER_URL:"http://localhost:3011",
-    NEXT_PUBLIC_SOCKET_SERVER_URL:"",
-    NEXT_PUBLIC_PROXY_SERVER_URL:"https://cors-daddy.onrender.com/",
-    NEXT_PUBLIC_WEB_PUSH:"BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
-    SENTRY_AUTH_TOKEN:"34dae03c4b0811ed9e9f4ed53395ef1a",
-    SENTRY_DSN: "https://97cdd21525fe4685b8d62348e2d39c66@o610195.ingest.sentry.io/4503976885354496",
-    NODE_ENV: "development",
+    NEXT_PUBLIC_NODE_SERVER_URL: "http://localhost:3001",
+    NEXT_PUBLIC_AniTrek_SERVER_URL: "http://localhost:3011",
+    NEXT_PUBLIC_SOCKET_SERVER_URL: "",
+    NEXT_PUBLIC_PROXY_SERVER_URL: "https://cors-daddy.onrender.com/",
+    NEXT_PUBLIC_WEB_PUSH: "BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
+    SENTRY_AUTH_TOKEN: "34dae03c4b0811ed9e9f4ed53395ef1a",
+    SENTRY_DSN: "https://97cdd21525fe4685b8d62348e2d39c66@o610195.ingest.sentry.io/4503976885354496"
   }
-}
-const moduleExports = withPWA({
-  future: { webpack: true },
+};
+
+// Separate PWA configuration
+const withPWAConfig = withPWA({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  buildExcludes: [
+    /middleware-manifest\.json$/,
+    /_middleware\.js$/,
+    /_middleware\.js\.map$/,
+    /middleware-runtime\.js$/,
+    /middleware-runtime\.js\.map$/,
+  ],
+  runtimeCaching: defaultRuntimeCaching,
+});
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     domains: [
       "s4.anilist.co",
@@ -41,26 +55,14 @@ const moduleExports = withPWA({
       "google.com",
       "jkuhmgfrgofwdtrlbqxj.supabase.co"
     ],
-    minimumCacheTTL: 604800, // a week,
-  },
-  pwa: {
-    dest: "public",
-    buildExcludes: [
-      /middleware-manifest\.json$/,
-      /_middleware\.js$/,
-      /_middleware\.js\.map$/,
-      /middleware-runtime\.js$/,
-      /middleware-runtime\.js\.map$/,
-    ],
-    disable: process.env.NODE_ENV === "development",
-    runtimeCaching: defaultRuntimeCaching,
+    minimumCacheTTL: 604800, // a week
   },
   i18n,
-  envVars,
+  ...envVars,
   experimental: {
     fetchCache: 'force-no-store'
   }
-});
+};
 
-module.exports = moduleExports;
-
+// Apply PWA config to Next.js config
+module.exports = withPWAConfig(nextConfig);

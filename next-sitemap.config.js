@@ -6,6 +6,14 @@ const config = {
   generateRobotsTxt: true,
   changefreq: "weekly",
   exclude: ["/upload/*"],
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "Amazonbot",
+        disallow: "/", // block Amazonbot entirely
+      },
+    ]
+  }
 };
 
 module.exports = config;

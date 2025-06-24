@@ -58,7 +58,7 @@ const Header = () => {
     {
       title: `${t("nav-review")}`,
       href: "/reviews",
-      icon: AiFillStar
+      icon: AiFillStar,
     },
    /*  {
       title: "A.I Upscaled",
@@ -166,7 +166,7 @@ const Header = () => {
                 <div className="flex items-center space-x-3">
                 <Link href={`/login?redirectedFrom=${router.asPath}`}>
                   <a>
-                    <Button secondary>
+                    <Button primary>
                       <p className="line-clamp-1 font-semibold [font-size:var(--step-0)]">{t("login")}</p>
                     </Button>
                   </a>

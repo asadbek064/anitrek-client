@@ -65,7 +65,7 @@ const AddTranslationModal: React.FC<AddTranslationModalProps> = ({
     <React.Fragment>
       <Button
         onClick={handleModalState("open")}
-        secondary
+        primary
         className="w-full [font-size:var(--step--1)]"
         LeftIcon={AiOutlineTranslation}
       >

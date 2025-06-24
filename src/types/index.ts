@@ -1,7 +1,7 @@
 import { SkeletonProps } from "@/components/shared/Skeleton";
 import { Attachment, FileInfo } from "@/services/upload";
 import { SupabaseQueryFunction, SupabaseQueryOptions } from "@/utils/supabase";
-import { User } from "@supabase/gotrue-js";
+import { User } from "@supabase/auth-helpers-nextjs";
 import { QueryKey } from "react-query";
 import { Media, MediaTitle as ALMediaTitle } from "./anilist";
 import { AnimeThemeAPI } from "@/hooks/useAnimeTheme";

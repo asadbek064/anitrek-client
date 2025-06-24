@@ -19,18 +19,13 @@ const EndOfPage = ({}) => {
                 </div>
 
                 <div className="flex space-x-4 justify-center">
-                    <Link passHref href={"/browse?sort=UPDATED_AT_DESC&type=anime"}>
-                        <a>
-                        <Button className="font-semibold [font-size:var(--step-0)] px-5 py-4" secondary>Check what's new</Button>
-                        </a>
+                    <Link href={"/browse?sort=UPDATED_AT_DESC&type=anime"}>
+                        <Button className="font-semibold [font-size:var(--step-0)] px-5 py-4" primary>Check what's new</Button>
                     </Link>
 
-                    <Link passHref href={"/browse"}>
-                        <a>
-                            <Button className="font-semibold [font-size:var(--step-0)] px-5 py-4" secondary>Browse and filter</Button>
-                        </a>
+                    <Link href={"/browse"}>
+                        <Button className="font-semibold [font-size:var(--step-0)] px-5 py-4" primary>Browse and filter</Button>
                     </Link>
-                    
                 </div>
             </div>
 

@@ -41,7 +41,7 @@ const HeaderProfile = () => {
        <div className="py-2">
        <Link href="/watchlist">
           <a>
-            <Button className="w-full" secondary>
+            <Button className="w-full" primary>
               <TextIcon LeftIcon={AiFillHeart}>Watch List</TextIcon>
             </Button>
           </a>
@@ -57,7 +57,7 @@ const HeaderProfile = () => {
         
         <Link href="/reviews/create">
           <a>
-            <Button className="w-full" secondary>
+            <Button className="w-full" primary>
               <TextIcon LeftIcon={BsPencilFill}>Write a Review</TextIcon>
             </Button>
           </a>

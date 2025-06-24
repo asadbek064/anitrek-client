@@ -3,7 +3,7 @@ import Link, { LinkProps } from "next/link";
 import React, { useMemo } from "react";
 
 interface NavItemProps extends LinkProps {
-  children({ isActive: boolean }): React.ReactNode;
+  children: (props: { isActive: boolean }) => React.ReactNode;
   className?: string;
   onClick?: () => void;
 }

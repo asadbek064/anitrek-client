@@ -62,6 +62,5 @@ yarn-error.log*
 # Sentry
 .sentryclirc
 
-public/robots.txt
 public/sitemap*.xml
 .vercel

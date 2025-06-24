@@ -39,6 +39,11 @@ const Table = <T extends object = {}>({
   onPageIndexChange,
   ...props
 }: PropsWithChildren<TableProps<T>>) => {
+  const tableInstance = useTable<T>(
+    props,
+    usePagination
+  ) as TableInstanceWithHooks<T>;
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -52,11 +57,7 @@ const Table = <T extends object = {}>({
     canNextPage,
     setPageSize,
     page,
-  } = useTable(
-    // @ts-ignore
-    props,
-    usePagination
-  ) as TableInstanceWithHooks<T>;
+  } = tableInstance;
 
   useEffect(() => {
     onPageSizeChange?.(pageSize);

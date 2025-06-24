@@ -6,7 +6,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useMemo } from "react";
 import { AiFillEye } from "react-icons/ai";
-import { GoPrimitiveDot } from "react-icons/go";
 import Avatar from "./Avatar";
 import DotList from "./DotList";
 import Image from "./Image";
@@ -39,7 +38,6 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
 
             <div className="w-full h-full">
               <TextIcon
-                LeftIcon={GoPrimitiveDot}
                 iconClassName="w-4 h-4"
                 className="absolute left-2 top-2 px-2 py-0.5 rounded-md bg-red-500"
               >

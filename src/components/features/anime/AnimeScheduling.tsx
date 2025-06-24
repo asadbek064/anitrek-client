@@ -49,7 +49,7 @@ const AnimeScheduling: React.FC<AnimeSchedulingProps> = () => {
     sort: [AiringSort.Time_desc],
   });
 
-  const handleTabSelect = (index: number) => {
+  const handleTabSelect = (index) => {
     setSelectedTab(index);
   };
 

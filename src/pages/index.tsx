@@ -111,7 +111,8 @@ const Home = () => {
            
             <Landing />
             
-            {/* <Section
+            {/* 
+            <Section
               isTitleLink={true}
               titleLink={'/reviews'}
               title={t("recent_reviews")}

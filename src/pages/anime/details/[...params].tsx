@@ -178,7 +178,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                         <Link href={`/reviews/create/${anime.id}`}>
                           <a className="w-full">
                             <Button
-                              secondary
+                              primary
                               className="[font-size:var(--step--1)]"
                               LeftIcon={BsPencilFill}
                             >
@@ -254,7 +254,7 @@ const DetailsPage: NextPage<DetailsPageProps> = ({ anime }) => {
                      <Link href={`/reviews/create/${anime.id}`}>
                        <a>
                          <Button
-                           secondary
+                           primary
                            className="w-full"
                            LeftIcon={BsPencilFill}
                          >

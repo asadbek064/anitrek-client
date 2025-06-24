@@ -66,7 +66,7 @@ const Comments: React.FC<CommentsProps> = ({ parentId = null, topic }) => {
         </div>
       ) : (
         comments &&
-        comments.map((comment) => (
+        comments.map((comment: any) => (
           <CommentComponent key={comment.id} commentId={comment.id} />
         ))
       )}

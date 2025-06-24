@@ -69,7 +69,7 @@ const Landing = () => {
 
             <div className="flex justify-center ">
               <a key={'link-register'} href={"/register"}>
-                  <Button aria-label="sign up" className="[font-size:var(--step--1)] md:[font-size:var(--step-0)] tracking-wide font-semibold px-4 py-3 md:py-6 md:px-8 rounded-sm dark:bg-neutral-900" secondary>{t("button-register")}</Button>
+                  <Button aria-label="sign up" className="[font-size:var(--step--1)] md:[font-size:var(--step-0)] tracking-wide font-semibold px-4 py-3 md:py-6 md:px-8 rounded-sm dark:bg-neutral-900" primary>{t("button-register")}</Button>
               </a>
             </div>
         </div>

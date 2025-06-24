@@ -45,7 +45,7 @@ const NotificationButton = <T extends "anime" | "manga">(
   if (isLoading) {
     return (
       <CircleButton
-        secondary
+        primary
         iconClassName="w-7 h-7 animate-spin"
         LeftIcon={AiOutlineLoading3Quarters}
       />
@@ -54,14 +54,14 @@ const NotificationButton = <T extends "anime" | "manga">(
 
   return !!isSubscribed ? (
     <CircleButton
-      secondary
+    primary
       iconClassName="w-7 h-7"
       LeftIcon={MdNotificationsActive}
       onClick={handleSubscribe("UNSUBSCRIBE")}
     />
   ) : (
     <CircleButton
-      secondary
+    primary
       iconClassName="w-7 h-7"
       LeftIcon={MdNotificationsNone}
       onClick={handleSubscribe("SUBSCRIBE")}

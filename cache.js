@@ -20,7 +20,7 @@ module.exports = [
       cacheName: "google-fonts-stylesheets",
       expiration: {
         maxEntries: 4,
-        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
       },
     },
   },
@@ -31,7 +31,7 @@ module.exports = [
       cacheName: "static-font-assets",
       expiration: {
         maxEntries: 4,
-        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 365 days
       },
     },
   },
@@ -42,7 +42,7 @@ module.exports = [
       cacheName: "static-image-assets",
       expiration: {
         maxEntries: 64,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
       },
     },
   },
@@ -53,7 +53,7 @@ module.exports = [
       cacheName: "next-image",
       expiration: {
         maxEntries: 64,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 24 hours
       },
     },
   },
@@ -65,7 +65,7 @@ module.exports = [
       cacheName: "static-audio-assets",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 365 * 24 * 60 * 60, // 24 hours
       },
     },
   },
@@ -76,7 +76,7 @@ module.exports = [
       cacheName: "static-js-assets",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 24 hours
       },
     },
   },
@@ -87,7 +87,7 @@ module.exports = [
       cacheName: "static-style-assets",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 24 hours
       },
     },
   },
@@ -98,7 +98,7 @@ module.exports = [
       cacheName: "next-data",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
       },
     },
   },
@@ -109,7 +109,7 @@ module.exports = [
       cacheName: "static-data-assets",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
       },
     },
   },
@@ -131,7 +131,7 @@ module.exports = [
       cacheName: "apis",
       expiration: {
         maxEntries: 16,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
       },
       networkTimeoutSeconds: 10, // fall back to cache if api does not response within 10 seconds
     },
@@ -149,7 +149,7 @@ module.exports = [
       cacheName: "others",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 24 * 60 * 60, // 24 hours
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
       },
       networkTimeoutSeconds: 10,
     },
@@ -172,7 +172,7 @@ module.exports = [
       cacheName: "cross-origin",
       expiration: {
         maxEntries: 32,
-        maxAgeSeconds: 60 * 60, // 1 hour
+        maxAgeSeconds:  7 * 24 * 60 * 60, // 7 days
       },
       networkTimeoutSeconds: 10,
     },

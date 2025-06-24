@@ -148,7 +148,6 @@ const Home = () => {
                 title={t("recent_reviews", { ns: "common" })}
               >
                 <NewestReviews  type={MediaType.Anime} homeView={true} />
-
               </Section>
              */}
            

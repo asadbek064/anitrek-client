@@ -58,11 +58,15 @@ const nextConfig = {
     minimumCacheTTL: 604800, // a week
   },
   i18n,
-  ...envVars,
-  experimental: {
-    fetchCache: 'force-no-store'
-  }
+  ...envVars
 };
 
 // Apply PWA config to Next.js config
 module.exports = withPWAConfig(nextConfig);
+
+/**
+ * 
+ *   experimental: {
+    fetchCache: 'force-no-store'
+  }
+ */

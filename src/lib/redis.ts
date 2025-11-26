@@ -4,7 +4,7 @@ import { Redis } from '@upstash/redis';
 let redis: Redis | null = null;
 let redisEnabled = true; // Circuit breaker for Redis failures
 let consecutiveErrors = 0;
-const MAX_CONSECUTIVE_ERRORS = 5;
+const MAX_CONSECUTIVE_ERRORS = 3;
 
 export const getRedisClient = () => {
   if (!redisEnabled) {

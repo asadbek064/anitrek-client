@@ -54,12 +54,12 @@ const GRAPHQL_URL = "https://graphql.anilist.co";
 // Cache TTL configurations (in seconds)
 // Optimized for free tier: 500K commands/month, 256 MB storage
 const CACHE_TTL = {
-  MEDIA_LIST: 600,        // 10 minutes for media lists (popular pages)
-  MEDIA_DETAILS: 3600,    // 1 hour for media details (most viewed content)
-  AIRING_SCHEDULE: 300,   // 5 minutes for airing schedules (changes often)
-  CHARACTER: 7200,        // 2 hours for character data (rarely changes)
-  STAFF: 7200,            // 2 hours for staff data (rarely changes)
-  STUDIO: 14400,          // 4 hours for studio data (very stable)
+  MEDIA_LIST: 43200,        // 12 hours
+  MEDIA_DETAILS: 86400,    // 24 hours
+  AIRING_SCHEDULE: 3600,   // 1 hour (only thing that truly changes often)
+  CHARACTER: 604800,       // 7 days
+  STAFF: 604800,           // 7 days
+  STUDIO: 1209600,         // 14 days (almost immutable)
 };
 
 // Generate cache key from query and variables

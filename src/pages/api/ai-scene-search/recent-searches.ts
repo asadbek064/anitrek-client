@@ -6,7 +6,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 // @ts-ignore
 const redis = new Redis(process.env.REDIS_URL);
 
-const MAX_ITEMS = 10; // Maximupm items in the array
+const MAX_ITEMS = 20; // Maximupm items in the array
 
 export default async function handler(
   req: NextApiRequest,
@@ -33,10 +33,9 @@ export default async function handler(
       const data = await redis.lrange('recent_ai_search', 0, MAX_ITEMS - 1);
       const parsedData = data.map((item) => JSON.parse(item));
 
-      // Cache at edge for 30 seconds, serve stale for up to 2 minutes while revalidating
       res.setHeader(
         'Cache-Control',
-        'public, s-maxage=30, stale-while-revalidate=120'
+        'public, s-maxage=43200, stale-while-revalidate=604800'
       );
       res.status(200).json(parsedData);
     } catch (error) {

@@ -9,7 +9,7 @@ export const FACEBOOK_URL = "";
 export const KO_FI_URL = "";
 export const DISCORD_REG_URL = "";
 
-export const REVALIDATE_TIME = 86_400; // 24 hours
+export const REVALIDATE_TIME = 2_592_000; // 30 days
 export const SKIP_TIME = 90; // 1m30s
 
 export const supportedUploadVideoFormats = [

@@ -110,6 +110,7 @@ export const getStaticProps: GetStaticProps = async ({
         studio: data,
         ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
       },
+      revalidate: REVALIDATE_TIME,
     };
   } catch (error) {
     console.log(error);

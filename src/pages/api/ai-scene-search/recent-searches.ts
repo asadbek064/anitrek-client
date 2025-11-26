@@ -33,6 +33,11 @@ export default async function handler(
       const data = await redis.lrange('recent_ai_search', 0, MAX_ITEMS - 1);
       const parsedData = data.map((item) => JSON.parse(item));
 
+      // Cache at edge for 30 seconds, serve stale for up to 2 minutes while revalidating
+      res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=30, stale-while-revalidate=120'
+      );
       res.status(200).json(parsedData);
     } catch (error) {
       console.error('Error retrieving data:', error);

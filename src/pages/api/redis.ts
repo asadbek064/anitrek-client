@@ -16,6 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const response = await client.get(key);
         if (response) {
+          // Cache at edge for 60 seconds, serve stale for up to 5 minutes while revalidating
+          res.setHeader(
+            'Cache-Control',
+            'public, s-maxage=60, stale-while-revalidate=300'
+          );
           res.status(200).json({ key, value: response });
         } else {
           res.status(404).json({ error: 'Key not found' });

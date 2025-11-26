@@ -69,9 +69,23 @@ export default async function handler(
 
     return res.status(200).json(response.data);
   } catch (error: any) {
-    console.error('AniList API error:', error.response?.data || error.message);
-    return res.status(error.response?.status || 500).json({
-      error: error.response?.data || { message: 'Internal server error' },
+    const status = error.response?.status || 500;
+    const errorData = error.response?.data || { message: 'Internal server error' };
+
+    // Handle rate limiting gracefully - don't retry, just return error
+    if (status === 429) {
+      console.warn('AniList rate limit hit - returning error without retry');
+      return res.status(429).json({
+        error: {
+          message: 'Rate limit exceeded. Please try again later.',
+          status: 429,
+        },
+      });
+    }
+
+    console.error('AniList API error:', errorData);
+    return res.status(status).json({
+      error: errorData,
     });
   }
 }

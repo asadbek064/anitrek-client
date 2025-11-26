@@ -97,41 +97,55 @@ export const anilistFetcher = async <T>(
 
   // Client-side: use Next.js API route to avoid CORS (with caching in API route)
   // Server-side: call AniList directly for better performance and use Redis cache here
-  if (typeof window !== 'undefined') {
-    // Client-side request through API route
-    const response = await axios.post<Response>(
-      '/api/anilist',
-      {
-        query,
-        variables,
-        cacheTTL, // Pass cacheTTL to API route
-      },
-      {
-        timeout: 10000,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+  try {
+    if (typeof window !== 'undefined') {
+      // Client-side request through API route
+      const response = await axios.post<Response>(
+        '/api/anilist',
+        {
+          query,
+          variables,
+          cacheTTL, // Pass cacheTTL to API route
         },
-      }
-    );
-    responseData = response.data?.data;
-  } else {
-    // Server-side direct request
-    const response = await axios.post<Response>(
-      GRAPHQL_URL,
-      {
-        query,
-        variables,
-      },
-      {
-        timeout: 10000,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
+        {
+          timeout: 10000,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        }
+      );
+      responseData = response.data?.data;
+    } else {
+      // Server-side direct request
+      const response = await axios.post<Response>(
+        GRAPHQL_URL,
+        {
+          query,
+          variables,
         },
-      }
-    );
-    responseData = response.data?.data;
+        {
+          timeout: 10000,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        }
+      );
+      responseData = response.data?.data;
+    }
+  } catch (error: any) {
+    const status = error?.response?.status;
+
+    // Handle rate limiting gracefully
+    if (status === 429) {
+      console.warn('AniList rate limit exceeded - serving from cache or returning empty');
+      // Return undefined to gracefully handle in UI
+      return undefined;
+    }
+
+    // Re-throw other errors for normal error handling
+    throw error;
   }
 
   // Cache the response (server-side only)

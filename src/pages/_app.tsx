@@ -29,7 +29,15 @@ const queryClient = new QueryClient({
       refetchOnWindowFocus: false,
       refetchOnMount: false,
       refetchOnReconnect: false,
-      retry: 1,
+      retry: (failureCount, error: any) => {
+        // Don't retry on 429 (rate limit) or 4xx client errors
+        const status = error?.response?.status;
+        if (status === 429 || (status >= 400 && status < 500)) {
+          return false;
+        }
+        // Retry once for other errors
+        return failureCount < 1;
+      },
     },
   },
 });

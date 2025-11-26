@@ -4,13 +4,13 @@ const { i18n } = require("./next-i18next.config");
 
 const envVars = {
   env: {
-    NEXT_PUBLIC_NODE_SERVER_URL: "http://localhost:3001",
-    NEXT_PUBLIC_AniTrek_SERVER_URL: "http://localhost:3011",
-    NEXT_PUBLIC_SOCKET_SERVER_URL: "",
-    NEXT_PUBLIC_PROXY_SERVER_URL: "https://cors-daddy.onrender.com/",
-    NEXT_PUBLIC_WEB_PUSH: "BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
-    SENTRY_AUTH_TOKEN: "",
-    SENTRY_DSN: ""
+    NEXT_PUBLIC_NODE_SERVER_URL: process.env.NEXT_PUBLIC_NODE_SERVER_URL || "http://localhost:3001",
+    NEXT_PUBLIC_AniTrek_SERVER_URL: process.env.NEXT_PUBLIC_AniTrek_SERVER_URL || "http://localhost:3011",
+    NEXT_PUBLIC_SOCKET_SERVER_URL: process.env.NEXT_PUBLIC_SOCKET_SERVER_URL || "",
+    NEXT_PUBLIC_PROXY_SERVER_URL: process.env.NEXT_PUBLIC_PROXY_SERVER_URL || "https://cors-daddy.onrender.com/",
+    NEXT_PUBLIC_WEB_PUSH: process.env.NEXT_PUBLIC_WEB_PUSH || "BM_SuH7oXb676nhhzuimIM0kp9nVCxF38Ua6orQyV2MW7CooeysNfsoF-Y82uEgDsTDuhrWErpt4qXsxAe6ab-4",
+    SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN || "",
+    SENTRY_DSN: process.env.SENTRY_DSN || ""
   }
 };
 

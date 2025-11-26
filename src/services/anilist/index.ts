@@ -13,8 +13,6 @@ import {
 import { removeArrayOfObjectDup } from "@/utils";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import axios from "axios";
-import crypto from "crypto";
-import { cacheGet, cacheSet } from "@/lib/redis";
 import { getTranslations } from "../tmdb";
 import {
   airingSchedulesQuery,
@@ -33,9 +31,25 @@ import {
   studiosQuery,
 } from "./queries";
 
+// Type definitions for lazy-loaded modules
+type CacheGetFn = <T>(key: string) => Promise<T | null>;
+type CacheSetFn = (key: string, value: any, ttlSeconds?: number) => Promise<boolean>;
+type CryptoModule = typeof import('crypto');
+
+// Lazy load Redis utilities only on server-side to avoid bundling Node.js modules in browser
+let cacheGet: CacheGetFn | null = null;
+let cacheSet: CacheSetFn | null = null;
+let crypto: CryptoModule | null = null;
+
+if (typeof window === 'undefined') {
+  // Only import on server-side
+  const redisModule = require('@/lib/redis');
+  cacheGet = redisModule.cacheGet;
+  cacheSet = redisModule.cacheSet;
+  crypto = require('crypto');
+}
+
 const GRAPHQL_URL = "https://graphql.anilist.co";
-const PROXY_URL = process.env.NEXT_PUBLIC_PROXY_SERVER_URL;
-const AVAILABLE_WORKER_URL = `${process.env.NEXT_PUBLIC_NODE_SERVER_URL}/available-worker`;
 
 // Cache TTL configurations (in seconds)
 // Optimized for free tier: 500K commands/month, 256 MB storage
@@ -50,6 +64,10 @@ const CACHE_TTL = {
 
 // Generate cache key from query and variables
 const generateCacheKey = (query: string, variables: any): string => {
+  if (!crypto) {
+    // Fallback for client-side (shouldn't happen as cache is server-side only)
+    return `anilist:${query.substring(0, 20)}_${JSON.stringify(variables).substring(0, 20)}`;
+  }
   const hash = crypto
     .createHash('md5')
     .update(query + JSON.stringify(variables))
@@ -67,7 +85,7 @@ export const anilistFetcher = async <T>(
   };
 
   // Try to get from cache first (server-side only)
-  if (typeof window === 'undefined' && cacheTTL) {
+  if (typeof window === 'undefined' && cacheTTL && cacheGet) {
     const cacheKey = generateCacheKey(query, variables);
     const cached = await cacheGet<T>(cacheKey);
     if (cached) {
@@ -77,88 +95,47 @@ export const anilistFetcher = async <T>(
 
   let responseData: T | undefined;
 
-  // If we have a proxy URL configured, use it directly (browser-side)
-  if (PROXY_URL && typeof window !== 'undefined') {
-    try {
-      const response = await axios.post<Response>(
-        `${PROXY_URL}/${GRAPHQL_URL}`,
-        {
-          query,
-          variables,
+  // Client-side: use Next.js API route to avoid CORS (with caching in API route)
+  // Server-side: call AniList directly for better performance and use Redis cache here
+  if (typeof window !== 'undefined') {
+    // Client-side request through API route
+    const response = await axios.post<Response>(
+      '/api/anilist',
+      {
+        query,
+        variables,
+        cacheTTL, // Pass cacheTTL to API route
+      },
+      {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        {
-          timeout: 10000, // 10 second timeout
-        }
-      );
-      responseData = response.data?.data;
-    } catch (proxyError) {
-      console.error('Proxy request failed:', proxyError);
-      // Fall through to worker proxy
-    }
-  }
-
-  // Make the request if not already fetched from proxy
-  if (!responseData) {
-    try {
-      // Make the initial request (server-side or if no proxy configured)
-      const initialResponse = await axios.post<Response>(
-        GRAPHQL_URL,
-        {
-          query,
-          variables,
+      }
+    );
+    responseData = response.data?.data;
+  } else {
+    // Server-side direct request
+    const response = await axios.post<Response>(
+      GRAPHQL_URL,
+      {
+        query,
+        variables,
+      },
+      {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        {
-          timeout: 10000, // 10 second timeout
-        }
-      );
-
-      responseData = initialResponse.data?.data;
-
-    } catch (error) {
-      // Only try worker proxy if we have the URL configured
-      if (!AVAILABLE_WORKER_URL || !process.env.NEXT_PUBLIC_NODE_SERVER_URL) {
-        console.error('AniList request failed and no worker proxy configured');
-        throw error;
       }
-
-      try {
-        console.log('proxy worker in use');
-        // Fetch the new available worker URL
-        const response = await axios.get<{ urlId: string }>(
-          AVAILABLE_WORKER_URL,
-          {
-            timeout: 5000, // 5 second timeout for worker check
-          }
-        );
-        const newUrl = response.data.urlId;
-
-        if (!newUrl) {
-          throw new Error('Worker proxy returned invalid URL');
-        }
-
-        // Retry the original request with the new URL
-        const retryResponse = await axios.post<Response>(
-          `https://${newUrl}/${GRAPHQL_URL}`,
-          {
-            query,
-            variables,
-          },
-          {
-            timeout: 10000, // 10 second timeout
-          }
-        );
-
-        responseData = retryResponse.data?.data;
-      } catch (workerError) {
-        console.error('Worker proxy failed:', workerError);
-        // Don't retry again - throw the error
-        throw workerError;
-      }
-    }
+    );
+    responseData = response.data?.data;
   }
 
   // Cache the response (server-side only)
-  if (typeof window === 'undefined' && cacheTTL && responseData) {
+  if (typeof window === 'undefined' && cacheTTL && responseData && cacheSet) {
     const cacheKey = generateCacheKey(query, variables);
     await cacheSet(cacheKey, responseData, cacheTTL);
   }

@@ -50,6 +50,8 @@ const Head: React.FC<HeadProps> = (props) => {
         content="black-translucent"
       />
       <meta name="msapplication-starturl" content="/" />
+      <meta name="google-adsense-account" content="ca-pub-2316360310434252"/>
+
 
     </NextHead>
   );

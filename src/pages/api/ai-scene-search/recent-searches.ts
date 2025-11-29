@@ -35,7 +35,7 @@ export default async function handler(
 
       res.setHeader(
         'Cache-Control',
-        'public, s-maxage=43200, stale-while-revalidate=604800'
+        'public, s-maxage=300, stale-while-revalidate=600'
       );
       res.status(200).json(parsedData);
     } catch (error) {

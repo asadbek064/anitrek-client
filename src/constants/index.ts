@@ -9,7 +9,9 @@ export const FACEBOOK_URL = "";
 export const KO_FI_URL = "";
 export const DISCORD_REG_URL = "";
 
-export const REVALIDATE_TIME = 2_592_000; // 30 days
+// REVALIDATE_TIME removed - using pure SSG (no auto-revalidation)
+// Use /api/revalidate endpoint for manual updates when needed
+// export const REVALIDATE_TIME = 604_800;
 export const SKIP_TIME = 90; // 1m30s
 
 export const supportedUploadVideoFormats = [

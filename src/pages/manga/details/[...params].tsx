@@ -18,7 +18,7 @@ import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
 import TextIcon from "@/components/shared/TextIcon";
-import { REVALIDATE_TIME } from "@/constants";
+// REVALIDATE_TIME removed - using pure SSG
 import withRedirect from "@/hocs/withRedirect";
 import useChapters from "@/hooks/useChapters";
 import { getMediaDetails } from "@/services/anilist";
@@ -300,7 +300,7 @@ export const getStaticProps: GetStaticProps = async ({
       props: {
         manga: media as Media,
       },
-      revalidate: REVALIDATE_TIME,
+      // No revalidate - pure SSG. Use /api/revalidate for manual updates
     };
   } catch (err) {
     return { notFound: true};

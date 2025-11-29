@@ -1,6 +1,6 @@
 import Button from "@/components/shared/Button";
 import Head from "@/components/shared/Head";
-import { REVALIDATE_TIME } from "@/constants";
+// REVALIDATE_TIME removed - using pure SSG
 import useSignIn from "@/hooks/useSignIn";
 import wallpapers from "@/wallpapers.json";
 import { randomElement } from "@/utils";

@@ -20,7 +20,7 @@ import Section from "@/components/shared/Section";
 import SourceStatus from "@/components/shared/SourceStatus";
 import Spinner from "@/components/shared/Spinner";
 import TextIcon from "@/components/shared/TextIcon";
-import { DISCORD_URL, REVALIDATE_TIME } from "@/constants";
+import { DISCORD_URL } from "@/constants";
 import withRedirect from "@/hocs/withRedirect";
 import useEpisodes from "@/hooks/useEpisodes";
 import dayjs from "@/lib/dayjs";
@@ -604,7 +604,7 @@ export const getStaticProps: GetStaticProps = async ({
         anime: media as Media,
         ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'source_status', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
       },
-      revalidate: REVALIDATE_TIME,
+      // No revalidate - pure SSG. Use /api/revalidate for manual updates
     };
   } catch (err) {
     return { notFound: true };

@@ -55,7 +55,17 @@ const nextConfig = {
       "google.com",
       "jkuhmgfrgofwdtrlbqxj.supabase.co"
     ],
-    minimumCacheTTL: 604800, // a week
+    minimumCacheTTL: 604800,
+  },
+  // Optimize bundle size
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+  experimental: {
+    outputFileTracingIncludes: {
+      '/api/**/*': ['./node_modules/@upstash/redis/**/*'],
+    },
   },
   i18n,
   ...envVars

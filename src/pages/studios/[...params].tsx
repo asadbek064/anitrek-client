@@ -6,7 +6,7 @@ import List from "@/components/shared/List";
 import Section from "@/components/shared/Section";
 import TextIcon from "@/components/shared/TextIcon";
 import ListSkeleton from "@/components/skeletons/ListSkeleton";
-import { REVALIDATE_TIME } from "@/constants";
+// REVALIDATE_TIME removed - using pure SSG
 import withRedirect from "@/hocs/withRedirect";
 import { useStudio } from "@/hooks/useStudio";
 import { getStudioDetails } from "@/services/anilist";
@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps = async ({
         studio: data,
         ...(await serverSideTranslations(locale || 'en', ['_error_page', '404_page','anime_details', 'anime_home', 'anime_watch', 'browse', 'character_details', 'comment', 'delete_modal', 'footer', 'header', 'landing', 'login', 'manga_detail', 'manga_home', 'manga_read', 'notification', 'pwa_install_prompt', 'register', 'review', 'theme', 'trace', 'trivia', 'voice_actor_detail', 'wwwf']))
       },
-      revalidate: REVALIDATE_TIME,
+      // No revalidate - pure SSG. Use /api/revalidate for manual updates
     };
   } catch (error) {
     console.log(error);

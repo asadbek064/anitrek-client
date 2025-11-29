@@ -2,7 +2,7 @@ import Head from "@/components/shared/Head";
 import { useTranslation } from "next-i18next";
 import Section from "@/components/shared/Section";
 import { GetStaticProps } from "next";
-import { REVALIDATE_TIME } from "@/constants";
+// REVALIDATE_TIME removed - using pure SSG
 import { Review } from "@/types";
 import ClientOnly from "@/components/shared/ClientOnly";
 import NewestReviews from "@/components/shared/NewestReviews";

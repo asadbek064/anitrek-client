@@ -33,7 +33,7 @@ const List = <T extends any[]>({
       {...props}
     >
       {(data && data.length) ? (
-        data.map((item, index) => (
+        data.filter(item => item).map((item, index) => (
           <div className="col-span-1" key={index}>
             {children(item)}
           </div>

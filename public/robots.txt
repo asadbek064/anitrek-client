@@ -3,7 +3,7 @@ User-agent: Amazonbot
 Disallow: /
 
 # Host
-Host: http://localhost:3000
+Host: https://www.anitrek.com
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
+Sitemap: https://www.anitrek.com/sitemap.xml

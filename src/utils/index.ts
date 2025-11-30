@@ -543,19 +543,19 @@ export const createReviewDetailsUrl = (postID: string) => {
 }
 
 export const createMediaDetailsUrl = (media: Media) => {
-  if (media !== undefined) {
-    if (media.type === MediaType.Anime) {
-      return `/anime/details/${media.id}/${vietnameseSlug(
-        media.title.userPreferred
-      )}`;
-    }
-  
-    return `/manga/details/${media.id}/${vietnameseSlug(
+  if (!media || !media.type || !media.title?.userPreferred) {
+    return '/';
+  }
+
+  if (media.type === MediaType.Anime) {
+    return `/anime/details/${media.id}/${vietnameseSlug(
       media.title.userPreferred
     )}`;
-  } 
-  return '/';
+  }
 
+  return `/manga/details/${media.id}/${vietnameseSlug(
+    media.title.userPreferred
+  )}`;
 };
 
 export const createCharacterDetailsUrl = (character: Character) => {

@@ -208,7 +208,7 @@ const CardSwiper: React.FC<CardSwiperProps> = (props) => {
     >
       {(data && data.length > 0) && (
         <>
-          {data.map((item, index) => {
+          {data.filter(item => item).map((item, index) => {
             let debounceTimeout: NodeJS.Timeout = null;
 
             const debounce = (fn: (...args: any[]) => void, wait: number) => {

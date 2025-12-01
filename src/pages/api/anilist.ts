@@ -4,9 +4,10 @@ import { cacheGet, cacheSet } from '@/lib/redis';
 import crypto from 'crypto';
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
+const PROXY_URL = "https://proxy.anitrek.com/proxy?url=";
 
-// Default cache TTL: 10 minutes (client-side requests)
-const DEFAULT_CACHE_TTL = 600;
+// Default cache TTL: 1 year (31536000 seconds)
+const DEFAULT_CACHE_TTL = 31536000;
 
 // Generate cache key from query and variables
 const generateCacheKey = (query: string, variables: any): string => {
@@ -32,8 +33,9 @@ export default async function handler(
       return res.status(400).json({ error: 'Query is required' });
     }
 
-    // Try to get from cache first
     const cacheKey = generateCacheKey(query, variables);
+
+    // Try to get from cache first
     const cached = await cacheGet<any>(cacheKey);
 
     if (cached) {
@@ -43,23 +45,67 @@ export default async function handler(
 
     console.log('Cache miss - fetching from AniList API');
 
-    // Make the request to AniList
-    const response = await axios.post<{ data: any }>(
-      GRAPHQL_URL,
-      {
-        query,
-        variables,
-      },
-      {
-        timeout: 10000,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      }
-    );
+    let responseData: any;
 
-    const responseData = response.data?.data;
+    // Try direct AniList request first
+    try {
+      const response = await axios.post<{ data: any }>(
+        GRAPHQL_URL,
+        {
+          query,
+          variables,
+        },
+        {
+          timeout: 10000,
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+        }
+      );
+
+      responseData = response.data?.data;
+    } catch (error: any) {
+      const status = error.response?.status;
+
+      // If rate limited, try proxy fallback
+      if (status === 429) {
+        console.warn('AniList rate limit hit - trying proxy fallback');
+        try {
+          const proxyResponse = await axios.post<{ data: any }>(
+            PROXY_URL + encodeURIComponent(GRAPHQL_URL),
+            {
+              query,
+              variables,
+            },
+            {
+              timeout: 15000,
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+            }
+          );
+
+          responseData = proxyResponse.data?.data;
+          console.log('Proxy fallback successful');
+        } catch (proxyError: any) {
+          console.error('Proxy fallback failed:', proxyError.message);
+          return res.status(429).json({
+            error: {
+              message: 'Rate limit exceeded and proxy failed. Please try again later.',
+              status: 429,
+            },
+          });
+        }
+      } else {
+        // Re-throw non-rate-limit errors
+        console.error('AniList API error:', error.response?.data || error.message);
+        return res.status(status || 500).json({
+          error: error.response?.data || { message: 'Internal server error' },
+        });
+      }
+    }
 
     // Cache the response
     if (responseData) {
@@ -67,25 +113,11 @@ export default async function handler(
       await cacheSet(cacheKey, responseData, ttl);
     }
 
-    return res.status(200).json(response.data);
+    return res.status(200).json({ data: responseData });
   } catch (error: any) {
-    const status = error.response?.status || 500;
-    const errorData = error.response?.data || { message: 'Internal server error' };
-
-    // Handle rate limiting gracefully - don't retry, just return error
-    if (status === 429) {
-      console.warn('AniList rate limit hit - returning error without retry');
-      return res.status(429).json({
-        error: {
-          message: 'Rate limit exceeded. Please try again later.',
-          status: 429,
-        },
-      });
-    }
-
-    console.error('AniList API error:', errorData);
-    return res.status(status).json({
-      error: errorData,
+    console.error('Unexpected error:', error.message);
+    return res.status(500).json({
+      error: { message: 'Internal server error' },
     });
   }
 }

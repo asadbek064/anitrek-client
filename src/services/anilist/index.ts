@@ -50,16 +50,17 @@ if (typeof window === 'undefined') {
 }
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
+const PROXY_URL = "https://proxy.anitrek.com/proxy?url=";
 
 // Cache TTL configurations (in seconds)
-// Optimized for free tier: 500K commands/month, 256 MB storage
+// Set to 1 year to minimize AniList API calls and avoid rate limiting
 const CACHE_TTL = {
-  MEDIA_LIST: 43200,        // 12 hours
-  MEDIA_DETAILS: 86400,    // 24 hours
-  AIRING_SCHEDULE: 3600,   // 1 hour (only thing that truly changes often)
-  CHARACTER: 604800,       // 7 days
-  STAFF: 604800,           // 7 days
-  STUDIO: 1209600,         // 14 days (almost immutable)
+  MEDIA_LIST: 31536000,        // 1 year
+  MEDIA_DETAILS: 31536000,     // 1 year
+  AIRING_SCHEDULE: 31536000,   // 1 year
+  CHARACTER: 31536000,         // 1 year
+  STAFF: 31536000,             // 1 year
+  STUDIO: 31536000,            // 1 year
 };
 
 // Generate cache key from query and variables
@@ -84,40 +85,22 @@ export const anilistFetcher = async <T>(
     data: T;
   };
 
-  // Try to get from cache first (server-side only)
-  if (typeof window === 'undefined' && cacheTTL && cacheGet) {
-    const cacheKey = generateCacheKey(query, variables);
-    const cached = await cacheGet<T>(cacheKey);
-    if (cached) {
-      return cached;
+  const isClient = typeof window !== 'undefined';
+
+  // Server-side: Check Redis cache and call AniList directly
+  if (!isClient) {
+    if (cacheTTL && cacheGet) {
+      const cacheKey = generateCacheKey(query, variables);
+      const cached = await cacheGet<T>(cacheKey);
+      if (cached) {
+        return cached;
+      }
     }
-  }
 
-  let responseData: T | undefined;
+    // Server-side: Call AniList directly (no CORS restriction)
+    let responseData: T | undefined;
 
-  // Client-side: use Next.js API route to avoid CORS (with caching in API route)
-  // Server-side: call AniList directly for better performance and use Redis cache here
-  try {
-    if (typeof window !== 'undefined') {
-      // Client-side request through API route
-      const response = await axios.post<Response>(
-        '/api/anilist',
-        {
-          query,
-          variables,
-          cacheTTL, // Pass cacheTTL to API route
-        },
-        {
-          timeout: 10000,
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-          },
-        }
-      );
-      responseData = response.data?.data;
-    } else {
-      // Server-side direct request
+    try {
       const response = await axios.post<Response>(
         GRAPHQL_URL,
         {
@@ -132,29 +115,76 @@ export const anilistFetcher = async <T>(
           },
         }
       );
+
       responseData = response.data?.data;
+    } catch (error: any) {
+      const status = error?.response?.status;
+
+      // If rate limited, try proxy fallback
+      if (status === 429) {
+        console.warn('AniList rate limit exceeded - trying proxy fallback');
+        try {
+          const proxyResponse = await axios.post<Response>(
+            PROXY_URL + encodeURIComponent(GRAPHQL_URL),
+            {
+              query,
+              variables,
+            },
+            {
+              timeout: 15000,
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+              },
+            }
+          );
+
+          responseData = proxyResponse.data?.data;
+          console.log('Proxy fallback successful');
+        } catch (proxyError: any) {
+          console.error('Proxy fallback failed:', proxyError);
+          return undefined;
+        }
+      } else {
+        throw error;
+      }
     }
+
+    // Cache the response
+    if (responseData && cacheTTL && cacheSet) {
+      const cacheKey = generateCacheKey(query, variables);
+      await cacheSet(cacheKey, responseData, cacheTTL);
+    }
+
+    return responseData;
+  }
+
+  // Client-side: Use API route to avoid CORS
+  try {
+    const response = await axios.post<Response>(
+      '/api/anilist',
+      {
+        query,
+        variables,
+        cacheTTL,
+      },
+      {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+      }
+    );
+    return response.data?.data;
   } catch (error: any) {
     const status = error?.response?.status;
-
-    // Handle rate limiting gracefully
     if (status === 429) {
-      console.warn('AniList rate limit exceeded - serving from cache or returning empty');
-      // Return undefined to gracefully handle in UI
+      console.warn('AniList rate limit exceeded');
       return undefined;
     }
-
-    // Re-throw other errors for normal error handling
     throw error;
   }
-
-  // Cache the response (server-side only)
-  if (typeof window === 'undefined' && cacheTTL && responseData && cacheSet) {
-    const cacheKey = generateCacheKey(query, variables);
-    await cacheSet(cacheKey, responseData, cacheTTL);
-  }
-
-  return responseData;
 };
 
 export const getPageMedia = async (

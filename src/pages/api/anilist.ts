@@ -2,9 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import { cacheGet, cacheSet } from '@/lib/redis';
 import crypto from 'crypto';
+import { proxyPool } from '@/services/proxy';
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
-const PROXY_URL = "https://proxy.anitrek.com/proxy?url=";
 
 // Default cache TTL: 1 year (31536000 seconds)
 const DEFAULT_CACHE_TTL = 31536000;
@@ -68,12 +68,13 @@ export default async function handler(
     } catch (error: any) {
       const status = error.response?.status;
 
-      // If rate limited, try proxy fallback
+      // If rate limited, try proxy pool fallback
       if (status === 429) {
-        console.warn('AniList rate limit hit - trying proxy fallback');
+        console.warn('AniList rate limit hit - trying proxy pool fallback');
         try {
+          const proxyUrl = await proxyPool.getProxy();
           const proxyResponse = await axios.post<{ data: any }>(
-            PROXY_URL + encodeURIComponent(GRAPHQL_URL),
+            proxyUrl + encodeURIComponent(GRAPHQL_URL),
             {
               query,
               variables,
@@ -88,12 +89,16 @@ export default async function handler(
           );
 
           responseData = proxyResponse.data?.data;
-          console.log('Proxy fallback successful');
+          console.log('Proxy pool fallback successful');
         } catch (proxyError: any) {
-          console.error('Proxy fallback failed:', proxyError.message);
+          console.error('Proxy pool fallback failed:', proxyError.message);
+          // Check if it's a rate limit capacity error
+          const isCapacityError = proxyError.message?.includes('Rate limit exceeded');
           return res.status(429).json({
             error: {
-              message: 'Rate limit exceeded and proxy failed. Please try again later.',
+              message: isCapacityError
+                ? 'Rate limit exceeded - proxy capacity full. Please try again later.'
+                : 'Rate limit exceeded and proxy failed. Please try again later.',
               status: 429,
             },
           });

@@ -51,6 +51,7 @@ const Editor = React.forwardRef<EditorType, EditorProps>(
     const limit = textLimit || 150;
     const editor = useEditor(
       {
+        immediatelyRender: false,
         extensions: [
           StarterKit,
           Underline,

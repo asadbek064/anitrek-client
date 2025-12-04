@@ -14,6 +14,7 @@ import { removeArrayOfObjectDup } from "@/utils";
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import axios from "axios";
 import { getTranslations } from "../tmdb";
+import { proxyPool } from "../proxy";
 import {
   airingSchedulesQuery,
   charactersDefaultFields,
@@ -50,7 +51,6 @@ if (typeof window === 'undefined') {
 }
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
-const PROXY_URL = "https://proxy.anitrek.com/proxy?url=";
 
 // Cache TTL configurations (in seconds)
 // Set to 1 year to minimize AniList API calls and avoid rate limiting
@@ -120,12 +120,13 @@ export const anilistFetcher = async <T>(
     } catch (error: any) {
       const status = error?.response?.status;
 
-      // If rate limited, try proxy fallback
+      // If rate limited, try proxy pool fallback
       if (status === 429) {
-        console.warn('AniList rate limit exceeded - trying proxy fallback');
+        console.warn('AniList rate limit exceeded - trying proxy pool fallback');
         try {
+          const proxyUrl = await proxyPool.getProxy();
           const proxyResponse = await axios.post<Response>(
-            PROXY_URL + encodeURIComponent(GRAPHQL_URL),
+            proxyUrl + encodeURIComponent(GRAPHQL_URL),
             {
               query,
               variables,
@@ -140,9 +141,13 @@ export const anilistFetcher = async <T>(
           );
 
           responseData = proxyResponse.data?.data;
-          console.log('Proxy fallback successful');
+          console.log('Proxy pool fallback successful');
         } catch (proxyError: any) {
-          console.error('Proxy fallback failed:', proxyError);
+          console.error('Proxy pool fallback failed:', proxyError);
+          // If proxy pool is at capacity, throw the rate limit error
+          if (proxyError.message?.includes('Rate limit exceeded')) {
+            throw new Error('Rate limit exceeded - proxy capacity full');
+          }
           return undefined;
         }
       } else {

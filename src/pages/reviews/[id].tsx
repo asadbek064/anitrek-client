@@ -38,10 +38,11 @@ const ViewReviewPage: NextPage<ViewReviewPageProps> = ({ media, review, likeCoun
     editable: false,
     content: review.content,
     extensions: [StarterKit, Text, ImageTipTap, Document, Paragraph, Text],
+    immediatelyRender: false
   })
   const mediaTitle = useMemo(() => getTitle(media, locale), [media, locale]);
   const redirectUrl = `/anime/details/${media.id}`;
-  const { mutate: likeReview } = useLikeDislike(); 
+  const { mutate: likeReview } = useLikeDislike();
 
   // Use local state to track like and dislike counts
   const [localLikeCount, setLocalLikeCount] = useState(likeCount);

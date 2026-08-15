@@ -18,6 +18,9 @@ src/data.json
 /.next/
 /out/
 
+# local disk cache (SQLite)
+/.cache/
+
 # production
 /build
 

@@ -34,6 +34,7 @@
     "@upstash/redis": "^1.35.7",
     "add": "^2.0.6",
     "axios": "^0.23.0",
+    "better-sqlite3": "^13.0.3",
     "classnames": "^2.3.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.10.7",
@@ -89,6 +90,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@tiptap/core": "^2.22.3",
     "@types/audioworklet": "^0.0.29",
+    "@types/better-sqlite3": "^9.6.0",
     "@types/formidable": "^2.0.5",
     "@types/jsdom": "^16.2.13",
     "@types/jsoneditor": "^9.5.1",
@@ -112,6 +114,11 @@
     "commitizen": {
       "path": "git-cz"
     }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
   },
   "engines": {
     "node": ">=0.7.0 <20.16.0"

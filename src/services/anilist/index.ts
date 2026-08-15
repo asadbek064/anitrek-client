@@ -52,15 +52,20 @@ if (typeof window === 'undefined') {
 
 const GRAPHQL_URL = "https://graphql.anilist.co";
 
-// Cache TTL configurations (in seconds)
-// Set to 1 year to minimize AniList API calls and avoid rate limiting
+// Cache TTLs in seconds.
+// Stable records use long TTLs to minimize AniList requests. Redis still has a hard
+// `maxmemory` + `allkeys-lru` limit, so old unused keys are evicted instead of growing
+// indefinitely
+const HOUR = 3600;
+const DAY = 24 * HOUR;
+
 const CACHE_TTL = {
-  MEDIA_LIST: 31536000,        // 1 year
-  MEDIA_DETAILS: 31536000,     // 1 year
-  AIRING_SCHEDULE: 31536000,   // 1 year
-  CHARACTER: 31536000,         // 1 year
-  STAFF: 31536000,             // 1 year
-  STUDIO: 31536000,            // 1 year
+  MEDIA_LIST: 1 * DAY,         // browse/search/trending — high-cardinality; LRU caps its size
+  MEDIA_DETAILS: 30 * DAY,     // media metadata — effectively immutable
+  AIRING_SCHEDULE: 6 * HOUR,   // few keys; airingAt is absolute so countdowns stay accurate
+  CHARACTER: 30 * DAY,         // effectively immutable
+  STAFF: 30 * DAY,             // effectively immutable
+  STUDIO: 30 * DAY,            // effectively immutable
 };
 
 // Generate cache key from query and variables

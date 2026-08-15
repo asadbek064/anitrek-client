@@ -67,6 +67,15 @@ const nextConfig = {
       '/api/**/*': ['./node_modules/@upstash/redis/**/*'],
     },
   },
+  // better-sqlite3 is native: load from node_modules on the server, keep it out of the client bundle.
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = [...(config.externals || []), 'better-sqlite3'];
+    } else {
+      config.resolve.alias = { ...config.resolve.alias, 'better-sqlite3': false };
+    }
+    return config;
+  },
   i18n,
   ...envVars
 };

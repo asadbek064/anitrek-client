@@ -8,6 +8,9 @@ const config = {
   webPushPublicKey: process.env.NEXT_PUBLIC_WEB_PUSH,
   AniTrekServer: process.env.NEXT_PUBLIC_AniTrek_SERVER_URL,
   externalPlayerDomain: process.env.EXTERNAL_PLAYER_DOMAIN,
+  // "sqlite" = persistent disk cache (VPS), otherwise Upstash. Server-only bare names.
+  cacheBackend: process.env.CACHE_BACKEND,
+  cacheDbPath: process.env.CACHE_DB_PATH,
 };
 
 export default config;
